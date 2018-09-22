@@ -1,7 +1,7 @@
 (provide 'jd:eshell-mode-keybindings.el)
 
-;;;;;;;;;;;;;;;;;;;
-;;; eshell-mode-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `eshell-mode-map' --- `esh-mode.el'
 (defun jd:eshell-mode-map ()
   (setf (cdr eshell-mode-map) nil)
   (define-key eshell-mode-map (kbd "<jd:ret>") 'eshell-send-input)
@@ -14,14 +14,14 @@
   (define-key eshell-mode-map (kbd "<C-x> u") 'eshell-bol))
 (add-hook 'eshell-mode-hook 'jd:eshell-mode-map)
 
-;;;;;;;;;;;;;;;;;;;;;;
-;;; eshell-isearch-map
-(defun jd:eshell-isearch-map ()
-  (setf (cdr eshell-isearch-map) nil))
-(add-hook 'eshell-mode-hook 'jd:eshell-isearch-map)
-
-;;;;;;;;;;;;;;;;;;;;;;
-;;; eshell-command-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `eshell-command-map' --- `esh-mode.el'
 (defun jd:eshell-command-map ()
   (setf (cdr eshell-command-map) nil))
 (add-hook 'eshell-mode-hook 'jd:eshell-command-map)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `eshell-isearch-map' --- `em-hist.el'
+(defun jd:eshell-isearch-map ()
+  (setf (cdr eshell-isearch-map) nil))
+(add-hook 'eshell-mode-hook 'jd:eshell-isearch-map)

@@ -10,8 +10,8 @@
   (interactive "^")
   (c-end-of-defun))
 
-;;;;;;;;;;;;;;;;
-;;; c++-mode-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `c++-mode-map' --- `cc-mode.el'
 (defun jd:c++-mode-map ()
   (setf (cdr c++-mode-map) nil)
   (define-key c++-mode-map (kbd "<jd:tab>") 'c-indent-line-or-region)
@@ -35,8 +35,14 @@
   (define-key c++-mode-map (kbd "*") 'c-electric-star))
 (add-hook 'c++-mode-hook 'jd:c++-mode-map)
 
-;;;;;;;;;;;;;;;;;;;
-;;; c-mode-base-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `c-mode-base-map' --- `cc-mode.el'
 (defun jd:c-mode-base-map ()
   (setf (cdr c-mode-base-map) nil))
 (add-hook 'c++-mode-hook 'jd:c-mode-base-map)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `c-c++-menu' --- `cc-mode.el'
+(defun jd:c-c++-menu ()
+  (setf (cdr c-c++-menu) nil))
+(add-hook 'c++-mode-hook 'jd:c-c++-menu)

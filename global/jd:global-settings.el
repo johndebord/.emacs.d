@@ -20,8 +20,9 @@
     (with-current-buffer standard-output ;; temp buffer
       (setq help-xref-stack-item (list #'my-describe-keymap keymap)))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Mode line configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Custom mode line configuration
+;;; Fully comprehend it later on
 (setq mode-line-position
       '((-3 "%p")
         (line-number-mode (" %l" (column-number-mode ":%c")))))
@@ -31,32 +32,64 @@
 (setq gdb-many-windows t
       gdb-show-main t)
 
-(defun display-startup-echo-area-message () (message ""))
-
+;;;;;;;;;;;;;;;;;;;
+;;; `C source code'
 (defalias 'yes-or-no-p 'y-or-n-p)
-
-(setq auto-save-file-name-transforms `((".*" ,"~/.emacs.d/file-backups/" t)))
-(setq backup-by-copying t)
-(setq backup-directory-alist `((".*" . ,"~/.emacs.d/file-backups/")))
-(setq column-number-mode 1)
 (setq debug-on-error t)
 (setq echo-keystrokes 0.001)
 (setq enable-recursive-minibuffers t)
-(setq eshell-banner-message "")
 (setq fill-column 80)
+(setq indent-tabs-mode nil)
 (setq gc-cons-threshold 64000000)
-(setq inhibit-startup-screen 1)
-(setq initial-scratch-message "")
 (setq make-pointer-invisible nil)
 (setq x-stretch-cursor 1)
 
-(blink-cursor-mode 0)
+;;;;;;;;;;;;;;;;;;
+;;; `elec-pair.el'
 (electric-pair-mode 1)
-(global-linum-mode t)
+
+;;;;;;;;;;;;;;
+;;; `files.el'
+(setq auto-save-file-name-transforms `((".*" ,"~/.emacs.d/file-backups/" t)))
+(setq backup-by-copying t)
+(setq backup-directory-alist `((".*" . ,"~/.emacs.d/file-backups/")))
+
+;;;;;;;;;;;;;;
+;;; `frame.el'
+(blink-cursor-mode 0)
+
+;;;;;;;;;;;;;;
+;;; `linum.el'
+(global-linum-mode 1)
+
+;;;;;;;;;;;;;;;;;
+;;; `mb-depth.el'
+(minibuffer-depth-indicate-mode 1)
+
+;;;;;;;;;;;;;;;;;
+;;; `menu-bar.el'
 (menu-bar-mode 0)
-(minibuffer-depth-indicate-mode)
-(scroll-bar-mode 0)
+
+;;;;;;;;;;;;;;
+;;; `paren.el'
 (show-paren-mode 1)
+
+;;;;;;;;;;;;;;;;;;;
+;;; `scroll-bar.el'
+(scroll-bar-mode 0)
+
+;;;;;;;;;;;;;;;
+;;; `simple.el'
+(setq column-number-mode 1)
+
+;;;;;;;;;;;;;;;;
+;;; `startup.el'
+(defun display-startup-echo-area-message () (message ""))
+(setq inhibit-startup-screen 1)
+(setq initial-scratch-message "")
+
+;;;;;;;;;;;;;;;;;
+;;; `tool-bar.el'
 (tool-bar-mode 0)
 
 (custom-set-faces

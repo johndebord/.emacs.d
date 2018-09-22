@@ -8,8 +8,8 @@
   (interactive)
   (isearch-printing-char #x9))
 
-;;;;;;;;;;;;;;;;;;;;
-;;; isearch-mode-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `isearch-mode-map' --- `isearch.el'
 (defun jd:isearch-mode-map ()
   (setq jd:temp-isearch-mode-map (make-sparse-keymap))
   (substitute-key-definition
@@ -29,8 +29,8 @@
   (define-key isearch-mode-map (kbd "<C-x> <jd:tab>") 'isearch-complete))
 (add-hook 'isearch-mode-hook 'jd:isearch-mode-map)
 
-;;;;;;;;;;;;;;;;;;;;
-;;; isearch-help-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `isearch-help-map' --- `isearch.el'
 (defun jd:isearch-help-map ()
   (setf (cdr isearch-help-map) nil))
 (add-hook 'isearch-mode-hook 'jd:isearch-help-map)

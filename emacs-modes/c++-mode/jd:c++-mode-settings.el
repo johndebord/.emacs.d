@@ -1,10 +1,16 @@
 (provide 'jd:c++-mode-settings.el)
 
-(setq c-basic-offset 4)
-(setq c-default-style "stroustrup")
-(setq compile-command "g++ -std=c++11 main.cpp && ./a.out")
-(setq indent-tabs-mode nil)
+(defun jd:disable-abbrev-mode ()
+  (abbrev-mode -1))
 
+;;;;;;;;;;;;;;;;;;
+;;; `cc-styles.el'
 (c-set-offset 'inline-open '0)
 
-(add-hook 'c++-mode-hook (lambda () (abbrev-mode -1)))
+;;;;;;;;;;;;;;;;
+;;; `cc-vars.el'
+(setq c-basic-offset 4)
+(setq c-default-style "stroustrup")
+
+(add-hook 'c++-mode-hook 'jd:disable-abbrev-mode)
+

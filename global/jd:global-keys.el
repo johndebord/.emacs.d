@@ -1,19 +1,19 @@
 (provide 'jd:global-keys.el)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; remove the union relationship of Meta and Esc
+;;; remove the union relationship of Meta and ESC
 (setq meta-prefix-char nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;
-;;; key-translation-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `key-translation-map' --- `C source code'
 (setf (cdr key-translation-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;
-;;; function-key-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `function-key-map' --- `C source code'
 (setf (cdr function-key-map) nil)
 
-;;;;;;;;;;;;;;
-;;; global-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `global-map' --- `subr.el'
 (setq jd:temp-global-map (make-sparse-keymap))
 (substitute-key-definition
  'self-insert-command 'self-insert-command jd:temp-global-map global-map)
@@ -21,8 +21,8 @@
 (substitute-key-definition
  'self-insert-command 'self-insert-command global-map jd:temp-global-map)
 
-;;;;;;;;;;;;;;;;;;;;
-;;; input-decode-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `input-decode-map' --- `C source code'
 (define-key input-decode-map (kbd "C-a")  [\C-\a])
 (define-key input-decode-map (kbd "C-b")  [\C-\b])
 (define-key input-decode-map (kbd "C-c")  [\C-\c])
@@ -230,7 +230,6 @@
 (define-key input-decode-map (kbd "M-_")  [\M-\_])
 (define-key input-decode-map (kbd "M-+")  [\M-\+])
 
-;;; 
 (define-key input-decode-map (kbd "M-A")    [\M-\S-\a])
 (define-key input-decode-map (kbd "M-B")    [\M-\S-\b])
 (define-key input-decode-map (kbd "M-C")    [\M-\S-\c])

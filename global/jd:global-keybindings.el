@@ -22,8 +22,8 @@
   (scroll-up-command)
   (move-to-window-line nil))
 
-;;;;;;;;;;;;;;
-;;; global-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `global-map' --- `subr.el'
 (define-key global-map (kbd "<jd:C-bks>") 'backward-kill-word)
 (define-key global-map (kbd "<jd:C-ret>") 'open-line)
 (define-key global-map (kbd "<jd:C-spc>") 'cua-set-mark)
@@ -143,15 +143,21 @@
 ;; (define-key global-map (kbd "<jd:ml> <jd:down-m1>") 'mouse-drag-mode-line)
 ;; (define-key global-map (kbd "<jd:ml> <jd:m1>")      'mouse-select-window)
 
-;;;;;;;;;;;;;;;;;;;;;
-;;; query-replace-map
-(setf (cdr query-replace-map) nil)
-(define-key query-replace-map (kbd "a") 'automatic)
-(define-key query-replace-map (kbd "n") 'skip)
-(define-key query-replace-map (kbd "y") 'act)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `minibuffer-local-map' --- `C source code'
+(setf (cdr minibuffer-local-map) nil)
+(define-key minibuffer-local-map (kbd "<jd:ret>") 'exit-minibuffer)
+(define-key minibuffer-local-map (kbd "<jd:tab>") 'minibuffer-complete)
+(define-key minibuffer-local-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-map (kbd "<C-M-i>") 'previous-history-element)
+(define-key minibuffer-local-map (kbd "<C-M-k>") 'next-history-element)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; minibuffer-local-must-match-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `minibuffer-local-ns-map' --- `C source code'
+(setf (cdr minibuffer-local-ns-map) nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `minibuffer-local-must-match-map' --- `minibuffer.el'
 (setf (cdr minibuffer-local-must-match-map) nil)
 (define-key minibuffer-local-must-match-map (kbd "<jd:ret>") 'minibuffer-complete-and-exit)
 (define-key minibuffer-local-must-match-map (kbd "<jd:spc>") 'minibuffer-complete-word)
@@ -160,17 +166,30 @@
 (define-key minibuffer-local-must-match-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-must-match-map (kbd "<C-M-k>") 'next-history-element)
 
-;;;;;;;;;;;;;;;;;;;;;;;;
-;;; minibuffer-local-map
-(setf (cdr minibuffer-local-map) nil)
-(define-key minibuffer-local-map (kbd "<jd:ret>") 'exit-minibuffer)
-(define-key minibuffer-local-map (kbd "<jd:tab>") 'minibuffer-complete)
-(define-key minibuffer-local-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-map (kbd "<C-M-i>") 'previous-history-element)
-(define-key minibuffer-local-map (kbd "<C-M-k>") 'next-history-element)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `minibuffer-local-completion-map' --- `minibuffer.el'
+(setf (cdr minibuffer-local-completion-map) nil)
+(define-key minibuffer-local-completion-map (kbd "<jd:ret>") 'exit-minibuffer)
+(define-key minibuffer-local-completion-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; minibuffer-local-shell-command-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `minibuffer-inactive-mode-map' --- `minibuffer.el'
+(setf (cdr minibuffer-inactive-mode-map) nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `minibuffer-local-filename-completion-map' --- `minibuffer.el'
+(setf (cdr minibuffer-local-filename-completion-map) nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `minibuffer-local-filename-must-match-map' --- `minibuffer.el'
+(setf (cdr minibuffer-local-filename-must-match-map) nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `minibuffer-local-isearch-map' --- `isearch.el'
+(setf (cdr minibuffer-local-isearch-map) nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `minibuffer-local-shell-command-map' --- `simple.el'
 (setf (cdr minibuffer-local-shell-command-map) nil)
 (define-key minibuffer-local-shell-command-map (kbd "<jd:ret>") 'exit-minibuffer)
 (define-key minibuffer-local-shell-command-map (kbd "<jd:tab>") 'completion-at-point)
@@ -178,29 +197,18 @@
 (define-key minibuffer-local-shell-command-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-shell-command-map (kbd "<C-M-k>") 'next-history-element)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; minibuffer-local-completion-map
-(setf (cdr minibuffer-local-completion-map) nil)
-(define-key minibuffer-local-completion-map (kbd "<jd:ret>") 'exit-minibuffer)
-(define-key minibuffer-local-completion-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `query-replace-map' --- `replace.el'
+(setf (cdr query-replace-map) nil)
+(define-key query-replace-map (kbd "a") 'automatic)
+(define-key query-replace-map (kbd "n") 'skip)
+(define-key query-replace-map (kbd "y") 'act)
 
-;;;;;;;;;;;;;;;;;;;;;;;
-;;; read-expression-map
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `read-expression-map' --- `simple.el'
 (setf (cdr read-expression-map) nil)
 (define-key read-expression-map (kbd "<jd:ret>") 'exit-minibuffer)
 (define-key read-expression-map (kbd "<jd:tab>") 'completion-at-point)
 (define-key read-expression-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
 (define-key read-expression-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key read-expression-map (kbd "<C-M-k>") 'next-history-element)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; minibuffer-inactive-mode-map
-(setf (cdr minibuffer-inactive-mode-map) nil)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; minibuffer-local-isearch-map
-(setf (cdr minibuffer-local-isearch-map) nil)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; minibuffer-local-ns-map
-(setf (cdr minibuffer-local-ns-map) nil)
