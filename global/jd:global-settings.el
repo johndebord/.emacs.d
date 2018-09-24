@@ -74,6 +74,10 @@
 ;;; `paren.el'
 (show-paren-mode 1)
 
+;;;;;;;;;;;;;;;;;
+;;; `register.el'
+(setq register-preview-delay 0.001)
+
 ;;;;;;;;;;;;;;;;;;;
 ;;; `scroll-bar.el'
 (scroll-bar-mode 0)

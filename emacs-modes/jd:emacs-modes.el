@@ -22,3 +22,5 @@
          "~/.emacs.d/emacs-modes/help-mode/jd:help-mode.el")
 (require 'jd:isearch-mode.el
          "~/.emacs.d/emacs-modes/isearch-mode/jd:isearch-mode.el")
+(require 'jd:view-mode.el
+         "~/.emacs.d/emacs-modes/view-mode/jd:view-mode.el")

@@ -1,6 +1,6 @@
 (provide 'jd:debugger-mode-keybindings.el)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `debugger-mode-map' --- `debug.el'
 (defun jd:debugger-mode-map ()
   (setf (cdr debugger-mode-map) nil)
