@@ -92,7 +92,7 @@
 
 (define-key global-map (kbd "<C-x> <jd:C-ret>") 'previous-error)
 (define-key global-map (kbd "<C-x> <jd:C-tab>") 'align)
-(define-key global-map (kbd "<C-x> <C-b>") 'list-buffers)
+(define-key global-map (kbd "<C-x> <C-b>") 'buffer-menu)
 (define-key global-map (kbd "<C-x> <C-c>") 'save-buffers-kill-terminal)
 (define-key global-map (kbd "<C-x> <C-f>") 'find-file)
 (define-key global-map (kbd "<C-x> <C-s>") 'write-file)

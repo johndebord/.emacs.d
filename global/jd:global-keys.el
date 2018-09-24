@@ -4,13 +4,17 @@
 ;;; remove the union relationship of Meta and ESC
 (setq meta-prefix-char nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `key-translation-map' --- `C source code'
 (setf (cdr key-translation-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `function-key-map' --- `C source code'
 (setf (cdr function-key-map) nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `local-function-key-map' --- `C source code'
+(setf (cdr local-function-key-map) nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `global-map' --- `subr.el'
