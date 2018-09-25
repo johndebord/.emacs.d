@@ -1,5 +1,13 @@
 (provide 'jd:global-keybindings.el)
 
+(defun jd:delete-word (argument)
+  (interactive "p")
+  (delete-region (point) (progn (forward-word argument) (point))))
+
+(defun jd:backward-delete-word (argument)
+  (interactive "p")
+  (jd:delete-word (- argument)))
+
 (defun jd:self-insert-space ()
   (interactive)
   (insert " "))
@@ -24,7 +32,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `global-map' --- `subr.el'
-(define-key global-map (kbd "<jd:C-bks>") 'backward-kill-word)
+(define-key global-map (kbd "<jd:C-bks>") 'jd:backward-delete-word)
 (define-key global-map (kbd "<jd:C-ret>") 'open-line)
 (define-key global-map (kbd "<jd:C-spc>") 'cua-set-mark)
 (define-key global-map (kbd "<C-a>") 'mark-whole-buffer)
