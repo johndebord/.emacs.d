@@ -8,6 +8,8 @@
          "~/.emacs.d/emacs-modes/major-modes/c++-mode/jd:c++-mode.el")
 (require 'jd:compilation-mode.el
          "~/.emacs.d/emacs-modes/major-modes/compilation-mode/jd:compilation-mode.el")
+(require 'jd:completion-list-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/completion-list-mode/jd:completion-list-mode.el")
 (require 'jd:debugger-mode.el
          "~/.emacs.d/emacs-modes/major-modes/debugger-mode/jd:debugger-mode.el")
 (require 'jd:dired-mode.el
