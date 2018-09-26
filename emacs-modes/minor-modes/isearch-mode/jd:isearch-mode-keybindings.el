@@ -26,6 +26,7 @@
   (define-key isearch-mode-map (kbd "<C-j>") 'isearch-repeat-backward)
   (define-key isearch-mode-map (kbd "<C-l>") 'isearch-repeat-forward)
   (define-key isearch-mode-map (kbd "<C-t>") 'isearch-toggle-case-fold)
+  (define-key isearch-mode-map (kbd "<C-v>") 'isearch-yank-kill)
   (define-key isearch-mode-map (kbd "<C-x> <jd:tab>") 'isearch-complete))
 (add-hook 'isearch-mode-hook 'jd:isearch-mode-map)
 
