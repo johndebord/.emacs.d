@@ -1,6 +1,6 @@
 (provide 'jd:edmacro-mode.el)
 
-(require 'jd:c++-mode-keybindings.el
+(require 'jd:edmacro-mode-keybindings.el
          "~/.emacs.d/emacs-modes/major-modes/edmacro-mode/jd:edmacro-mode-keybindings.el")
-(require 'jd:c++-mode-settings.el
+(require 'jd:edmacro-mode-settings.el
          "~/.emacs.d/emacs-modes/major-modes/edmacro-mode/jd:edmacro-mode-settings.el")
