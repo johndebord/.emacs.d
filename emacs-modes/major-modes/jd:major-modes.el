@@ -18,5 +18,7 @@
          "~/.emacs.d/emacs-modes/major-modes/edmacro-mode/jd:edmacro-mode.el")
 (require 'jd:eshell-mode.el
          "~/.emacs.d/emacs-modes/major-modes/eshell-mode/jd:eshell-mode.el")
+(require 'jd:gud-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/gud-mode/jd:gud-mode.el")
 (require 'jd:help-mode.el
          "~/.emacs.d/emacs-modes/major-modes/help-mode/jd:help-mode.el")

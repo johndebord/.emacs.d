@@ -1,5 +1,11 @@
 (provide 'jd:eshell-mode-keybindings.el)
 
+(defun jd:eshell-clear-buffer ()
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (eshell-send-input)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `eshell-mode-map' --- `esh-mode.el'
 (defun jd:eshell-mode-map ()
@@ -11,6 +17,7 @@
   (define-key eshell-mode-map (kbd "<C-M-i>") 'eshell-previous-input)
   (define-key eshell-mode-map (kbd "<C-M-k>") 'eshell-next-input)
   (define-key eshell-mode-map (kbd "<C-c> <C-c>") 'eshell-interrupt-process)
+  (define-key eshell-mode-map (kbd "<C-c> <C-l>") 'jd:eshell-clear-buffer)
   (define-key eshell-mode-map (kbd "<C-x> u") 'eshell-bol))
 (add-hook 'eshell-mode-hook 'jd:eshell-mode-map)
 

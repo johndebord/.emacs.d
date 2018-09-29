@@ -56,7 +56,6 @@
 (define-key global-map (kbd "<jd:C-spc>") 'cua-set-mark) 
 (define-key global-map (kbd "<C-a>") 'mark-whole-buffer)
 (define-key global-map (kbd "<C-b>") 'compile)
-(define-key global-map (kbd "<C-e>") 'jump-to-register)
 (define-key global-map (kbd "<C-f>") 'isearch-forward)
 (define-key global-map (kbd "<C-g>") 'keyboard-quit)
 (define-key global-map (kbd "<C-j>") 'jd:scroll-up)
@@ -64,7 +63,7 @@
 (define-key global-map (kbd "<C-n>") 'transpose-lines)
 (define-key global-map (kbd "<C-o>") 'end-of-buffer)
 (define-key global-map (kbd "<C-q>") 'quoted-insert)
-(define-key global-map (kbd "<C-r>") 'point-to-register)
+(define-key global-map (kbd "<C-r>") 'jump-to-register)
 (define-key global-map (kbd "<C-s>") 'save-buffer)
 (define-key global-map (kbd "<C-t>") 'split-window-right)
 (define-key global-map (kbd "<C-u>") 'beginning-of-buffer)
@@ -118,6 +117,7 @@
 (define-key global-map (kbd "<C-x> <f1>") 'eval-expression)
 (define-key global-map (kbd "<C-x> <f4>") 'kmacro-edit-macro)
 (define-key global-map (kbd "<C-x> b") 'switch-to-buffer)
+(define-key global-map (kbd "<C-x> r") 'point-to-register)
 
 (define-key global-map (kbd "<C-x> <jd:C-ret>") 'previous-error)
 (define-key global-map (kbd "<C-x> <C-b>") 'buffer-menu)
@@ -205,6 +205,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-filename-completion-map' --- `minibuffer.el'
 (setf (cdr minibuffer-local-filename-completion-map) nil)
+(define-key minibuffer-local-filename-completion-map (kbd "<jd:tab>") 'minibuffer-complete)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-filename-must-match-map' --- `minibuffer.el'

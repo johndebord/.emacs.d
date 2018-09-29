@@ -2,6 +2,7 @@
 
 (defun jd:disable-abbrev-mode ()
   (abbrev-mode -1))
+(add-hook 'c++-mode-hook 'jd:disable-abbrev-mode)
 
 ;;;;;;;;;;;;;;;;;;
 ;;; `cc-styles.el'
@@ -11,6 +12,3 @@
 ;;; `cc-vars.el'
 (setq c-basic-offset 4)
 (setq c-default-style "stroustrup")
-
-(add-hook 'c++-mode-hook 'jd:disable-abbrev-mode)
-

@@ -27,11 +27,6 @@
       '((-3 "%p")
         (line-number-mode (" %l" (column-number-mode ":%c")))))
 
-;;;;;;;;;;;;;;;;;;;;
-;;; gdb-mode setting
-(setq gdb-many-windows t
-      gdb-show-main t)
-
 ;;;;;;;;;;;;;;;;;;;
 ;;; `C source code'
 (defalias 'yes-or-no-p 'y-or-n-p)
