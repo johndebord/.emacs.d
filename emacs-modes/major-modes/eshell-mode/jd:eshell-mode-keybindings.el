@@ -17,6 +17,7 @@
   (define-key eshell-mode-map (kbd "<C-M-i>") 'eshell-previous-input)
   (define-key eshell-mode-map (kbd "<C-M-k>") 'eshell-next-input)
   (define-key eshell-mode-map (kbd "<C-c> <C-c>") 'eshell-interrupt-process)
+  (define-key eshell-mode-map (kbd "<C-c> <C-d>") 'eshell-send-eof-to-process)
   (define-key eshell-mode-map (kbd "<C-c> <C-l>") 'jd:eshell-clear-buffer)
   (define-key eshell-mode-map (kbd "<C-x> u") 'eshell-bol))
 (add-hook 'eshell-mode-hook 'jd:eshell-mode-map)
