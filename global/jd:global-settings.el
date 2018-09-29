@@ -48,6 +48,7 @@
 (setq auto-save-file-name-transforms `((".*" ,"~/.emacs.d/file-backups/" t)))
 (setq backup-by-copying t)
 (setq backup-directory-alist `((".*" . ,"~/.emacs.d/file-backups/")))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;;;;;;;;;;;;;;
 ;;; `frame.el'
