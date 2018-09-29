@@ -1,7 +1,5 @@
 (provide 'jd:c++-mode-keybindings.el)
 
-(provide 'cpp-keybindings)
-
 (defun jd:c-beginning-of-defun-hl ()
   (interactive "^")
   (c-beginning-of-defun))
