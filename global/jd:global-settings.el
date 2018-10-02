@@ -49,6 +49,7 @@
 (setq backup-by-copying t)
 (setq backup-directory-alist `((".*" . ,"~/.emacs.d/file-backups/")))
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
 
 ;;;;;;;;;;;;;;
 ;;; `frame.el'
