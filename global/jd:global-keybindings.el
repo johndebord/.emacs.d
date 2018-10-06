@@ -55,7 +55,7 @@
 (define-key global-map (kbd "<jd:C-bks>") 'jd:backward-delete-word)
 (define-key global-map (kbd "<jd:C-spc>") 'cua-set-mark) 
 (define-key global-map (kbd "<C-a>") 'mark-whole-buffer)
-(define-key global-map (kbd "<C-b>") 'compile)
+(define-key global-map (kbd "<C-b>") 'flymake-compile)
 (define-key global-map (kbd "<C-f>") 'isearch-forward)
 (define-key global-map (kbd "<C-g>") 'keyboard-quit)
 (define-key global-map (kbd "<C-j>") 'jd:scroll-up)
@@ -70,6 +70,8 @@
 (define-key global-map (kbd "<C-w>") 'delete-window)
 (define-key global-map (kbd "<C-/>") 'comment-region)
 (define-key global-map (kbd "<C-?>") 'uncomment-region)
+
+(define-key global-map (kbd "<jd:S-bks>") 'delete-backward-char)
 
 (define-key global-map (kbd "<jd:C-S-bks>") 'zap-to-char)
 (define-key global-map (kbd "<C-S-f>") 'query-replace)

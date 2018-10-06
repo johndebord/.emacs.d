@@ -4,9 +4,9 @@
   (abbrev-mode -1))
 (add-hook 'c++-mode-hook 'jd:c++-mode-disable-abbrev-mode)
 
-(defun jd:c++-mode-disabl-indent-tabs-mode ()
+(defun jd:c++-mode-disable-indent-tabs-mode ()
   (setq indent-tabs-mode nil))
-(add-hook 'c++-mode-hook 'jd:c++-mode-disabl-indent-tabs-mode)
+(add-hook 'c++-mode-hook 'jd:c++-mode-disable-indent-tabs-mode)
 
 ;;;;;;;;;;;;;;;;;;
 ;;; `cc-styles.el'
