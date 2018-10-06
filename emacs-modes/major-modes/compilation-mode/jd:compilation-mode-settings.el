@@ -2,4 +2,4 @@
 
 ;;;;;;;;;;;;;;;;
 ;;; `compile.el'
-(setq compile-command "g++ -std=c++11 main.cpp && ./a.out")
+(setq compile-command "clang++ -std=c++11 ")

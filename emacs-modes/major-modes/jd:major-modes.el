@@ -2,6 +2,8 @@
 
 (require 'jd:Buffer-menu-mode.el
          "~/.emacs.d/emacs-modes/major-modes/Buffer-menu-mode/jd:Buffer-menu-mode.el")
+(require 'jd:Custom-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/Custom-mode/jd:Custom-mode.el")
 (require 'jd:apropos-mode.el
          "~/.emacs.d/emacs-modes/major-modes/apropos-mode/jd:apropos-mode.el")
 (require 'jd:c++-mode.el
@@ -22,3 +24,5 @@
          "~/.emacs.d/emacs-modes/major-modes/gud-mode/jd:gud-mode.el")
 (require 'jd:help-mode.el
          "~/.emacs.d/emacs-modes/major-modes/help-mode/jd:help-mode.el")
+(require 'jd:makefile-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/makefile-mode/jd:makefile-mode.el")

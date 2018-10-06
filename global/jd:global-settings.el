@@ -45,11 +45,13 @@
 
 ;;;;;;;;;;;;;;
 ;;; `files.el'
+(defalias 'ff 'find-file)
 (setq auto-save-file-name-transforms `((".*" ,"~/.emacs.d/file-backups/" t)))
 (setq backup-by-copying t)
 (setq backup-directory-alist `((".*" . ,"~/.emacs.d/file-backups/")))
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("[Mm]akefile\\'" . makefile-mode))
 
 ;;;;;;;;;;;;;;
 ;;; `frame.el'
@@ -237,6 +239,8 @@
  '(flycheck-fringe-warning ((t (:background "#ff7400" :foreground "#000000"))))
  '(flycheck-info ((t (:underline (:color "#00cc00" :style wave)))))
  '(flycheck-warning ((t (:underline (:color "#ff7400" :style wave)))))
+ '(flymake-errline ((t (:underline (:color "#ff0000" :style wave)))))
+ '(flymake-warnline ((t (:underline (:color "#ff7400" :style wave)))))
  '(font-lock-builtin-face ((t (:foreground "#569cd6"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "#57a64a"))))
  '(font-lock-comment-face ((t (:foreground "#57a64a"))))
