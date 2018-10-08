@@ -16,6 +16,8 @@
          "~/.emacs.d/emacs-modes/major-modes/debugger-mode/jd:debugger-mode.el")
 (require 'jd:dired-mode.el
          "~/.emacs.d/emacs-modes/major-modes/dired-mode/jd:dired-mode.el")
+(require 'jd:edit-abbrevs-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/edit-abbrevs-mode/jd:edit-abbrevs-mode.el")
 (require 'jd:edmacro-mode.el
          "~/.emacs.d/emacs-modes/major-modes/edmacro-mode/jd:edmacro-mode.el")
 (require 'jd:eshell-mode.el

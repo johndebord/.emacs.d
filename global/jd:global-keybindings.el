@@ -2,6 +2,7 @@
 
 (defun jd:self-insert-space ()
   (interactive)
+  (expand-abbrev)
   (insert " "))
 
 (defun jd:backward-transpose-chars ()
@@ -72,6 +73,7 @@
 (define-key global-map (kbd "<C-?>") 'uncomment-region)
 
 (define-key global-map (kbd "<jd:S-bks>") 'delete-backward-char)
+(define-key global-map (kbd "<jd:S-spc>") 'unexpand-abbrev)
 
 (define-key global-map (kbd "<jd:C-S-bks>") 'zap-to-char)
 (define-key global-map (kbd "<C-S-f>") 'query-replace)
