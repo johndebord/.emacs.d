@@ -28,3 +28,5 @@
          "~/.emacs.d/emacs-modes/major-modes/help-mode/jd:help-mode.el")
 (require 'jd:makefile-mode.el
          "~/.emacs.d/emacs-modes/major-modes/makefile-mode/jd:makefile-mode.el")
+(require 'jd:rcirc-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/rcirc-mode/jd:rcirc-mode.el")
