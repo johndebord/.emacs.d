@@ -1,6 +1,6 @@
 (provide 'jd:flymake-mode-settings.el)
 
-(defun jd:quick-make ()
+(defun jd:quick-makefile ()
   (interactive)
   (defconst text (concat
 		  "CC = clang++
