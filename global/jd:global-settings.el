@@ -100,7 +100,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "MS  " :family "Consolas"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :family "Ubuntu Mono"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:foreground "#00ffff" :box (:line-width 1 :color "#00ffff")))))
@@ -307,7 +307,7 @@
  '(lazy-highlight ((t (:background "purple" :foreground "black"))))
  '(link ((t (:foreground "#00ffff" :box (:line-width 1 :color "#00ffff")))))
  '(link-visited ((t (:background "purple" :foreground "black"))))
- '(linum ((t (:background "#131313" :foreground "#424242"))))
+ '(linum ((t (:inherit nil :stipple nil :background "#131313" :foreground "#424242" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1.0 :width normal))))
  '(log-edit-header ((t (:background "purple" :foreground "black"))))
  '(log-edit-summary ((t (:background "purple" :foreground "black"))))
  '(log-edit-unknown-header ((t (:background "purple" :foreground "black"))))

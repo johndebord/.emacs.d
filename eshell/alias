@@ -1,0 +1,4 @@
+alias la ls -a $*
+alias lla ls -la $*
+alias up cd .. $*
+alias ll ls -l $*
