@@ -4,19 +4,9 @@
 
 (defun jd:gud-clear-buffer ()
   (interactive)  
-  (backward-char 6)
-  (if (equal (preceding-char) 0)
-      (end-of-line)
-    (set-mark-command nil)
-    (beginning-of-buffer)
-    (backward-delete-char 1)
-    (end-of-line)))
-
-;; (defun jd:gud-clear-buffer ()
-;;   (interactive)  
-;;   (mark-whole-buffer)
-;;   (backward-delete-char 1)
-;;   (insert "(gdb) "))
+  (mark-whole-buffer)
+  (backward-delete-char 1)
+  (insert "(gdb) "))
 
 (defun jd:gud-start ()
   (interactive)
