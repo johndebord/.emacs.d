@@ -47,7 +47,7 @@
  '(change-log-function ((t (:background "purple" :foreground "black"))))
  '(change-log-list ((t (:background "purple" :foreground "black"))))
  '(change-log-name ((t (:background "purple" :foreground "black"))))
- '(comint-highlight-input ((t (:background "purple" :foreground "black"))))
+ '(comint-highlight-input ((t (:background "#323232" :foreground "#e6e6e6"))))
  '(comint-highlight-prompt ((t (:foreground "#e6e6e6"))))
  '(company-echo ((t (:background "purple" :foreground "black"))) t)
  '(company-echo-common ((t (:background "purple" :foreground "black"))))

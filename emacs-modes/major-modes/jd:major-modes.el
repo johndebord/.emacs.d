@@ -22,6 +22,18 @@
          "~/.emacs.d/emacs-modes/major-modes/edmacro-mode/jd:edmacro-mode.el")
 (require 'jd:eshell-mode.el
          "~/.emacs.d/emacs-modes/major-modes/eshell-mode/jd:eshell-mode.el")
+(require 'jd:gdb-breakpoints-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/gdb-breakpoints-mode/jd:gdb-breakpoints-mode.el")
+(require 'jd:gdb-frames-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/gdb-frames-mode/jd:gdb-frames-mode.el")
+(require 'jd:gdb-inferior-io-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/gdb-inferior-io-mode/jd:gdb-inferior-io-mode.el")
+(require 'jd:gdb-locals-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/gdb-locals-mode/jd:gdb-locals-mode.el")
+(require 'jd:gdb-registers-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/gdb-registers-mode/jd:gdb-registers-mode.el")
+(require 'jd:gdb-threads-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/gdb-threads-mode/jd:gdb-threads-mode.el")
 (require 'jd:gud-mode.el
          "~/.emacs.d/emacs-modes/major-modes/gud-mode/jd:gud-mode.el")
 (require 'jd:help-mode.el

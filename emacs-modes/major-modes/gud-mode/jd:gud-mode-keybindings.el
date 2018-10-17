@@ -1,11 +1,15 @@
 (provide 'jd:gud-mode-keybindings.el)
 
+;; TODO add the code debugging binds to all modes in the many-windows
+;; TODO make it so that when they are called the point switched to the `gud-mode' buffer
+
 (defun jd:gud-clear-buffer ()
   (interactive)  
   (mark-whole-buffer)
   (backward-delete-char 1)
   (insert "(gdb) "))
 
+;; TODO clear io buffer in this function
 (defun jd:gud-start ()
   (interactive)
   (insert "start")
