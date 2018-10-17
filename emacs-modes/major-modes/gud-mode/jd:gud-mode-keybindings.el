@@ -1,7 +1,5 @@
 (provide 'jd:gud-mode-keybindings.el)
 
-(require 'gud)
-
 (defun jd:gud-clear-buffer ()
   (interactive)  
   (mark-whole-buffer)

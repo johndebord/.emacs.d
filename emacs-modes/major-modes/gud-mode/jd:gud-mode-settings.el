@@ -1,10 +1,5 @@
 (provide 'jd:gud-mode-settings.el)
 
-;; (defun jd:set-gdb-window-to-dedicated ()
-;;   (interactive)
-;;   (set-window-dedicated-p (get-buffer-window "gud-prog") t))
-;; (add-hook 'gdb-breakpoints-mode-hook 'jd:set-gdb-window-to-dedicated)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Function to open up gdb in a new frame
 ;;; Refine this function to define `<switch-frame>'
