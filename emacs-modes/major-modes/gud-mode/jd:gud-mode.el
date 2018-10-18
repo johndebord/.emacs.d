@@ -1,5 +1,6 @@
 (provide 'jd:gud-mode.el)
 
+(require 'cl)
 (require 'gud)
 
 (require 'jd:gud-mode-keybindings.el

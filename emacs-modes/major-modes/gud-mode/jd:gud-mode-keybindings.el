@@ -2,18 +2,28 @@
 
 ;; TODO add the code debugging binds to all modes in the many-windows
 ;; TODO make it so that when they are called the point switched to the `gud-mode' buffer
+;; down  gud-step
+;; left  gud-start
+;; right gud-next
+;; up    gud-finish
 
-(defun jd:gud-clear-buffer ()
-  (interactive)  
-  (mark-whole-buffer)
-  (backward-delete-char 1)
-  (insert "(gdb) "))
-
-;; TODO clear io buffer in this function
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Function to erase input/output upon start
+;;; Fully comprehend it later on
 (defun jd:gud-start ()
   (interactive)
+  (save-excursion
+    (let ((b (loop for b in (buffer-list)
+		   if (string-match "*input/output of *"
+				    (buffer-name b)) return b)))
+      (when b (with-current-buffer b (erase-buffer)))))
   (insert "start")
   (comint-send-input))
+
+(defun jd:gud-clear-buffer ()
+  (interactive)
+  (erase-buffer)
+  (insert "(gdb) "))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `gud-mode-map' --- `gud.el'
@@ -21,10 +31,10 @@
   (setf (cdr gud-mode-map) nil)
   (define-key gud-mode-map (kbd "<jd:tab>") 'completion-at-point)
   (define-key gud-mode-map (kbd "<jd:ret>") 'comint-send-input)
-  (define-key gud-mode-map (kbd "<up>") 'gud-finish)
   (define-key gud-mode-map (kbd "<down>") 'gud-step)
   (define-key gud-mode-map (kbd "<left>") 'jd:gud-start)
   (define-key gud-mode-map (kbd "<right>") 'gud-next)
+  (define-key gud-mode-map (kbd "<up>") 'gud-finish)
   (define-key gud-mode-map (kbd "<C-M-i>") 'comint-previous-input)
   (define-key gud-mode-map (kbd "<C-M-k>") 'comint-next-input)
   (define-key gud-mode-map (kbd "<C-c> <jd:bks>") 'gud-remove)

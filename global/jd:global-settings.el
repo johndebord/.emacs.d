@@ -30,6 +30,7 @@
 ;;;;;;;;;;;;;;;;;;;
 ;;; `C source code'
 (defalias 'yes-or-no-p 'y-or-n-p)
+(put 'erase-buffer 'disabled nil)
 (setq debug-on-error t)
 (setq echo-keystrokes 0.001)
 (setq enable-recursive-minibuffers t)

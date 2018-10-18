@@ -17,6 +17,6 @@
 
 ;;;;;;;;;;;;;;;
 ;;; `gdb-mi.el'
-(setq gud-gdb-command-name "gdb -q -i=mi")
+(setq gud-gdb-command-name "gdb --data-directory /home/i/repos/gdb-8.2/gdb/data-directory/ -q -i=mi")
 (setq gdb-many-windows t)
 (setq gdb-show-main t)
