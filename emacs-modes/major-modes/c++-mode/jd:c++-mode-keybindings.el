@@ -8,17 +8,6 @@
   (interactive "^")
   (c-end-of-defun))
 
-(defun jd:move-backward-paren ()
-  (interactive "^")
-  (if (looking-at "{") (backward-char 1))
-  (while (not (looking-at "{")) (backward-char 1)))
-
-(defun jd:move-forward-paren ()
-  (interactive "^")
-  (if (looking-at "}") (forward-char 1))
-  (while (not (looking-at "}")) (forward-char 1))
-  (forward-char 1))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `c++-mode-map' --- `cc-mode.el'
 (defun jd:c++-mode-map ()
