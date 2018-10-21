@@ -1,9 +1,11 @@
 (provide 'jd:flymake-mode-settings.el)
 
+(setq flymake-cursor-error-display-delay 0.001)
+
 (defun jd:quick-makefile ()
   (interactive)
   (defconst text (concat
-		  "CC = clang++
+		  "CC = g++
 
 CFLAGS = -c -Wall -Wextra -std=c++11
 
@@ -28,4 +30,3 @@ check-syntax:
 	$(CC) -Wall -Wextra -fsyntax-only -std=c++11 -S $(CHK_SOURCES)\n"))
   (write-region text nil "Makefile")
   (flymake-mode))
-

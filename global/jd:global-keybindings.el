@@ -2,7 +2,6 @@
 
 (defun jd:self-insert-space ()
   (interactive)
-  (expand-abbrev)
   (insert " "))
 
 (defun jd:backward-transpose-chars ()
@@ -141,6 +140,7 @@
 (define-key global-map (kbd "<right>") 'forward-char)
 (define-key global-map (kbd "<up>") 'previous-line)
 (define-key global-map (kbd "<f1>") 'eval-last-sexp)
+(define-key global-map (kbd "<f2>") 'eshell)
 (define-key global-map (kbd "<f3>") 'kmacro-start-macro)
 (define-key global-map (kbd "<f4>") 'kmacro-end-or-call-macro)
 

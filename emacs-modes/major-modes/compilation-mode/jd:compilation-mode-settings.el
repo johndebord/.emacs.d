@@ -2,5 +2,5 @@
 
 ;;;;;;;;;;;;;;;;
 ;;; `compile.el'
-(setq compile-command "clang++ -Wall -Wextra -std=c++11 -o prog ")
+(setq compile-command "g++ -Wall -Wextra -std=c++11 -o prog ")
 

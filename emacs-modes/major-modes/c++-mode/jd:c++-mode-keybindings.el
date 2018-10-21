@@ -8,13 +8,24 @@
   (interactive "^")
   (c-end-of-defun))
 
+(defun jd:move-backward-paren ()
+  (interactive "^")
+  (if (looking-at "{") (backward-char 1))
+  (while (not (looking-at "{")) (backward-char 1)))
+
+(defun jd:move-forward-paren ()
+  (interactive "^")
+  (if (looking-at "}") (forward-char 1))
+  (while (not (looking-at "}")) (forward-char 1))
+  (forward-char 1))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `c++-mode-map' --- `cc-mode.el'
 (defun jd:c++-mode-map ()
   (setf (cdr c++-mode-map) nil)
   (define-key c++-mode-map (kbd "<jd:tab>") 'c-indent-line-or-region)
-  (define-key c++-mode-map (kbd "<C-i>") 'c-beginning-of-defun-hl)
-  (define-key c++-mode-map (kbd "<C-k>") 'c-end-of-defun-hl)
+  (define-key c++-mode-map (kbd "<C-i>") 'jd:c-beginning-of-defun-hl)
+  (define-key c++-mode-map (kbd "<C-k>") 'jd:c-end-of-defun-hl)
   (define-key c++-mode-map (kbd "<C-;>") 'c-mark-function)
   (define-key c++-mode-map (kbd "{") 'c-electric-brace)
   (define-key c++-mode-map (kbd "}") 'c-electric-brace)
@@ -27,7 +38,8 @@
   (define-key c++-mode-map (kbd ",") 'c-electric-semi&comma)
   (define-key c++-mode-map (kbd "/") 'c-electric-slash)
   (define-key c++-mode-map (kbd "#") 'c-electric-pound)
-  (define-key c++-mode-map (kbd "*") 'c-electric-star))
+  (define-key c++-mode-map (kbd "*") 'c-electric-star)
+  (define-key c++-mode-map (kbd "<C-x> <jd:tab>") 'dabbrev-completion))
 (add-hook 'c++-mode-hook 'jd:c++-mode-map)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
