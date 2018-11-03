@@ -56,7 +56,6 @@
 (define-key global-map (kbd "<jd:C-spc>") 'cua-set-mark) 
 (define-key global-map (kbd "<C-a>") 'mark-whole-buffer)
 (define-key global-map (kbd "<C-b>") 'flymake-compile)
-(define-key global-map (kbd "<C-f>") 'isearch-forward)
 (define-key global-map (kbd "<C-g>") 'keyboard-quit)
 (define-key global-map (kbd "<C-j>") 'jd:scroll-up)
 (define-key global-map (kbd "<C-l>") 'jd:scroll-down)
@@ -75,7 +74,6 @@
 (define-key global-map (kbd "<jd:S-spc>") 'unexpand-abbrev)
 
 (define-key global-map (kbd "<jd:C-S-bks>") 'zap-to-char)
-(define-key global-map (kbd "<C-S-f>") 'query-replace)
 (define-key global-map (kbd "<C-S-n>") 'jd:backward-transpose-lines)
 (define-key global-map (kbd "<C-S-t>") 'split-window-below)
 
@@ -89,7 +87,6 @@
 (define-key global-map (kbd "<M-o>") 'end-of-line)
 (define-key global-map (kbd "<M-u>") 'back-to-indentation)
 (define-key global-map (kbd "<M-w>") 'delete-other-windows)
-(define-key global-map (kbd "<M-x>") 'execute-extended-command)
 (define-key global-map (kbd "<M-;>") 'recenter)
 
 (define-key global-map (kbd "<M-S-n>") 'jd:backward-transpose-chars)
@@ -102,17 +99,14 @@
 
 (define-key global-map (kbd "<C-M-S-n>") 'jd:backward-transpose-words)
 
-(define-key global-map (kbd "<C-h> a") 'apropos)
 (define-key global-map (kbd "<C-h> b") 'describe-bindings)
 (define-key global-map (kbd "<C-h> c") 'apropos-command)
 (define-key global-map (kbd "<C-h> d") 'apropos-documentation)
-(define-key global-map (kbd "<C-h> f") 'describe-function)
 (define-key global-map (kbd "<C-h> k") 'describe-key)
 (define-key global-map (kbd "<C-h> l") 'view-lossage)
 (define-key global-map (kbd "<C-h> m") 'describe-mode)
 (define-key global-map (kbd "<C-h> p") 'describe-package)
 (define-key global-map (kbd "<C-h> s") 'describe-symbol)
-(define-key global-map (kbd "<C-h> v") 'describe-variable)
 
 (define-key global-map (kbd "<C-x> <jd:bks>") 'jd:delete-line)
 (define-key global-map (kbd "<C-x> <jd:ret>") 'next-error)
@@ -125,7 +119,6 @@
 (define-key global-map (kbd "<C-x> <jd:C-ret>") 'previous-error)
 (define-key global-map (kbd "<C-x> <C-b>") 'buffer-menu)
 (define-key global-map (kbd "<C-x> <C-c>") 'save-buffers-kill-terminal)
-(define-key global-map (kbd "<C-x> <C-f>") 'find-file)
 (define-key global-map (kbd "<C-x> <C-s>") 'write-file)
 (define-key global-map (kbd "<C-x> <C-w>") 'kill-buffer)
 
@@ -143,6 +136,7 @@
 (define-key global-map (kbd "<f2>") 'eshell)
 (define-key global-map (kbd "<f3>") 'kmacro-start-macro)
 (define-key global-map (kbd "<f4>") 'kmacro-end-or-call-macro)
+(define-key global-map (kbd "<f12>") 'scroll-lock-mode)
 
 (define-key global-map (kbd "<mouse-1>") 'mouse-set-point)
 (define-key global-map (kbd "<mouse-4>") 'mwheel-scroll)

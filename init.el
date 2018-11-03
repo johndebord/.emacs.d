@@ -7,29 +7,42 @@
 ;;; `info-emacs-manual' figure out major mode
 
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;; ;; Added by Package.el.  This must come before configurations of
+;; ;; installed packages.  Don't delete this line.  If you don't want it,
+;; ;; just comment it out by adding a semicolon to the start of the line.
+;; ;; You may delete these explanatory comments.
 (package-initialize)
+
+;;(require 'jd:theme.el)
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+
+(require 'counsel)
+;;(require 'counsel-etags)
 
 (require 'jd:global.el
          "~/.emacs.d/global/jd:global.el")
 
 (require 'jd:emacs-modes.el
          "~/.emacs.d/emacs-modes/jd:emacs-modes.el")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :family "Ubuntu Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "DAMA" :family "Ubuntu Mono"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:foreground "#00ffff" :box (:line-width 1 :color "#00ffff")))))
@@ -143,10 +156,10 @@
  '(eshell-ls-directory ((t (:foreground "#569cd6"))))
  '(eshell-ls-executable ((t (:foreground "#00cc00"))))
  '(eshell-ls-missing ((t (:background "purple" :foreground "black"))))
- '(eshell-ls-product ((t (:background "purple" :foreground "black"))))
- '(eshell-ls-readonly ((t (:background "purple" :foreground "black"))))
- '(eshell-ls-special ((t (:background "purple" :foreground "black"))))
- '(eshell-ls-symlink ((t (:foreground "#e6e6e6"))))
+ '(eshell-ls-product ((t (:background "#e6e6e6" :foreground "#000000"))))
+ '(eshell-ls-readonly ((t (:foreground "#5c5c5c"))))
+ '(eshell-ls-special ((t (:foreground "#d6c556"))))
+ '(eshell-ls-symlink ((t (:foreground "#60ffdf"))))
  '(eshell-ls-unreadable ((t (:background "purple" :foreground "black"))))
  '(eshell-prompt ((t (:foreground "#e6e6e6"))))
  '(ffap ((t (:background "purple" :foreground "black"))))
@@ -171,10 +184,10 @@
  '(flymake-errline ((t (:underline (:color "#ff0000" :style wave)))))
  '(flymake-warnline ((t (:underline (:color "#ff7400" :style wave)))))
  '(font-lock-builtin-face ((t (:foreground "#569cd6"))))
- '(font-lock-comment-delimiter-face ((t (:foreground "#57a64a"))))
- '(font-lock-comment-face ((t (:foreground "#57a64a"))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "#424242"))))
+ '(font-lock-comment-face ((t (:foreground "#424242"))))
  '(font-lock-constant-face ((t (:foreground "#569cd6"))))
- '(font-lock-doc-face ((t (:foreground "#57a64a"))))
+ '(font-lock-doc-face ((t (:foreground "#424242"))))
  '(font-lock-function-name-face ((t nil)))
  '(font-lock-keyword-face ((t (:foreground "#569cd6"))))
  '(font-lock-negation-char-face ((t nil)))
