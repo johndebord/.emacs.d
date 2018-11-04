@@ -6,21 +6,11 @@
 ;;; `process-list'? figure out major mode
 ;;; `info-emacs-manual' figure out major mode
 
-
-;; ;; Added by Package.el.  This must come before configurations of
-;; ;; installed packages.  Don't delete this line.  If you don't want it,
-;; ;; just comment it out by adding a semicolon to the start of the line.
-;; ;; You may delete these explanatory comments.
 (package-initialize)
-
-;;(require 'jd:theme.el)
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
-
-(require 'counsel)
-;;(require 'counsel-etags)
 
 (require 'jd:global.el
          "~/.emacs.d/global/jd:global.el")
@@ -28,20 +18,9 @@
 (require 'jd:emacs-modes.el
          "~/.emacs.d/emacs-modes/jd:emacs-modes.el")
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"]))
+;;'(flycheck-info ((t (:underline (:color "#00cc00" :style wave)))))
+
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "DAMA" :family "Ubuntu Mono"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
@@ -237,10 +216,12 @@
  '(ivy-cursor ((t (:background "purple" :foreground "black"))))
  '(ivy-highlight-face ((t (:background "purple" :foreground "black"))))
  '(ivy-match-required-face ((t (:background "purple" :foreground "black"))))
- '(ivy-minibuffer-match-face-1 ((t (:background "#ffffff" :foreground "#000000"))))
- '(ivy-minibuffer-match-face-2 ((t (:background "#dddddd" :foreground "#000000"))))
- '(ivy-minibuffer-match-face-3 ((t (:background "#bbbbbb" :foreground "#000000"))))
- '(ivy-minibuffer-match-face-4 ((t (:background "#999999" :foreground "#000000"))))
+ '(ivy-minibuffer-match-face-1 ((t (:inherit nil :underline nil))))
+ ;;'(flycheck-info ((t (:underline (:color "#00cc00" :style wave)))))
+ '(ivy-minibuffer-match-face-2 ((t (:underline (:color "#ffffff" :style wave) :inherit default))))
+ '(ivy-minibuffer-match-face-3 ((t (:inherit default))))
+ '(ivy-minibuffer-match-face-4 ((t (:inherit default))))
+ '(ivy-minibuffer-match-highlight ((t (:background "#535353"))))
  '(ivy-modified-buffer ((t (:background "purple" :foreground "black"))))
  '(ivy-prompt-match ((t (:background "purple" :foreground "black"))))
  '(ivy-remote ((t (:background "purple" :foreground "black"))))
