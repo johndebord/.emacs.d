@@ -45,11 +45,16 @@
 (electric-pair-mode 1)
 
 ;;;;;;;;;;;;;;
+;;; `etags.el'
+(setq tags-revert-without-query t)
+
+;;;;;;;;;;;;;;
 ;;; `files.el'
 (defalias 'ff 'find-file)
 (setq auto-save-file-name-transforms `((".*" ,"~/.emacs.d/file-backups/" t)))
 (setq backup-by-copying t)
 (setq backup-directory-alist `((".*" . ,"~/.emacs.d/file-backups/")))
+(setq large-file-warning-threshold nil)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("[Mm]akefile\\'" . makefile-mode))
@@ -95,3 +100,12 @@
 ;;;;;;;;;;;;;;;;;
 ;;; `tool-bar.el'
 (tool-bar-mode 0)
+
+;;;;;;;;;;;;;;;
+;;; `window.el'
+(setq pop-up-frames nil)
+(setq pop-up-windows nil)
+(add-to-list 'same-window-buffer-names "*Completions*")
+(add-to-list 'same-window-buffer-names "*Help*")
+(add-to-list 'same-window-buffer-names "*Faces*")
+(add-to-list 'same-window-regexps ".+el.gz")

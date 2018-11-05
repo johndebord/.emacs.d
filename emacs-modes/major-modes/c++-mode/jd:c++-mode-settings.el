@@ -1,5 +1,13 @@
 (provide 'jd:c++-mode-settings.el)
 
+(defun jd:enable-modern-c++-font-lock-mode ()
+  (modern-c++-font-lock-mode t))
+(add-hook 'c++-mode-hook 'jd:enable-modern-c++-font-lock-mode)
+
+(defun jd:enable-yasnippet-mode ()
+  (yas-minor-mode t))
+(add-hook 'c++-mode-hook 'jd:enable-yasnippet-mode)
+
 (defun jd:disable-abbrev-mode ()
   (abbrev-mode -1))
 (add-hook 'c++-mode-hook 'jd:disable-abbrev-mode)

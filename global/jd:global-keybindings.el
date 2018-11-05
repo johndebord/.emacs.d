@@ -71,7 +71,7 @@
 (define-key global-map (kbd "<C-?>") 'uncomment-region)
 
 (define-key global-map (kbd "<jd:S-bks>") 'delete-backward-char)
-(define-key global-map (kbd "<jd:S-spc>") 'unexpand-abbrev)
+(define-key global-map (kbd "<jd:S-spc>") 'previous-buffer)
 
 (define-key global-map (kbd "<jd:C-S-bks>") 'zap-to-char)
 (define-key global-map (kbd "<C-S-n>") 'jd:backward-transpose-lines)
@@ -113,10 +113,10 @@
 (define-key global-map (kbd "<C-x> <jd:tab>") 'completion-at-point)
 (define-key global-map (kbd "<C-x> <f1>") 'eval-expression)
 (define-key global-map (kbd "<C-x> <f4>") 'kmacro-edit-macro)
-(define-key global-map (kbd "<C-x> b") 'switch-to-buffer)
 (define-key global-map (kbd "<C-x> r") 'point-to-register)
 
 (define-key global-map (kbd "<C-x> <jd:C-ret>") 'previous-error)
+(define-key global-map (kbd "<C-x> <jd:C-tab>") 'dabbrev-expand)
 (define-key global-map (kbd "<C-x> <C-b>") 'buffer-menu)
 (define-key global-map (kbd "<C-x> <C-c>") 'save-buffers-kill-terminal)
 (define-key global-map (kbd "<C-x> <C-s>") 'write-file)

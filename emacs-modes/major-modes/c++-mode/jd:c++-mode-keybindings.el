@@ -27,8 +27,7 @@
   (define-key c++-mode-map (kbd ",") 'c-electric-semi&comma)
   (define-key c++-mode-map (kbd "/") 'c-electric-slash)
   (define-key c++-mode-map (kbd "#") 'c-electric-pound)
-  (define-key c++-mode-map (kbd "*") 'c-electric-star)
-  (define-key c++-mode-map (kbd "<C-x> <jd:tab>") 'dabbrev-completion))
+  (define-key c++-mode-map (kbd "*") 'c-electric-star))
 (add-hook 'c++-mode-hook 'jd:c++-mode-map)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
