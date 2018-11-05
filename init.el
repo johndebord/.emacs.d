@@ -224,7 +224,7 @@
  '(ivy-minibuffer-match-face-2 ((t (:underline "#ffffff"))))
  '(ivy-minibuffer-match-face-3 ((t (:underline "#ffffff"))))
  '(ivy-minibuffer-match-face-4 ((t (:underline "#ffffff"))))
- '(ivy-minibuffer-match-highlight ((t (:background "purple" :foreground "black"))))
+ '(ivy-minibuffer-match-highlight ((t (:background "#535353"))))
  '(ivy-modified-buffer ((t (:underline "#ff7400"))))
  '(ivy-modified-outside-buffer ((t (:background "purple" :foreground "black"))))
  '(ivy-prompt-match ((t (:background "purple" :foreground "black"))))
