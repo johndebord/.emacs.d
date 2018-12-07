@@ -2,3 +2,5 @@ alias la ls -a $*
 alias lla ls -la $*
 alias up cd .. $*
 alias ll ls -l $*
+alias gr grep -rnw './' -e $*
+alias et /Users/johndebord/et $*

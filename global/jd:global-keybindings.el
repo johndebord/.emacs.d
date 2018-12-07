@@ -71,7 +71,6 @@
 (define-key global-map (kbd "<C-?>") 'uncomment-region)
 
 (define-key global-map (kbd "<jd:S-bks>") 'delete-backward-char)
-(define-key global-map (kbd "<jd:S-spc>") 'previous-buffer)
 
 (define-key global-map (kbd "<jd:C-S-bks>") 'zap-to-char)
 (define-key global-map (kbd "<C-S-n>") 'jd:backward-transpose-lines)
@@ -94,8 +93,8 @@
 (define-key global-map (kbd "<C-M-j>") 'backward-word)
 (define-key global-map (kbd "<C-M-l>") 'forward-word)
 (define-key global-map (kbd "<C-M-n>") 'transpose-words)
-(define-key global-map (kbd "<C-M-o>") 'next-buffer)
-(define-key global-map (kbd "<C-M-u>") 'previous-buffer)
+(define-key global-map (kbd "<C-M-o>") 'next-error)
+(define-key global-map (kbd "<C-M-u>") 'previous-error)
 
 (define-key global-map (kbd "<C-M-S-n>") 'jd:backward-transpose-words)
 
@@ -109,13 +108,11 @@
 (define-key global-map (kbd "<C-h> s") 'describe-symbol)
 
 (define-key global-map (kbd "<C-x> <jd:bks>") 'jd:delete-line)
-(define-key global-map (kbd "<C-x> <jd:ret>") 'next-error)
 (define-key global-map (kbd "<C-x> <jd:tab>") 'completion-at-point)
 (define-key global-map (kbd "<C-x> <f1>") 'eval-expression)
 (define-key global-map (kbd "<C-x> <f4>") 'kmacro-edit-macro)
 (define-key global-map (kbd "<C-x> r") 'point-to-register)
 
-(define-key global-map (kbd "<C-x> <jd:C-ret>") 'previous-error)
 (define-key global-map (kbd "<C-x> <jd:C-tab>") 'dabbrev-expand)
 (define-key global-map (kbd "<C-x> <C-b>") 'buffer-menu)
 (define-key global-map (kbd "<C-x> <C-c>") 'save-buffers-kill-terminal)
@@ -139,8 +136,8 @@
 (define-key global-map (kbd "<f12>") 'scroll-lock-mode)
 
 (define-key global-map (kbd "<mouse-1>") 'mouse-set-point)
-(define-key global-map (kbd "<mouse-4>") 'mwheel-scroll)
-(define-key global-map (kbd "<mouse-5>") 'mwheel-scroll)
+(define-key global-map (kbd "<wheel-up>") 'mwheel-scroll)
+(define-key global-map (kbd "<wheel-down>") 'mwheel-scroll)
 (define-key global-map (kbd "<down-mouse-1>") 'mouse-drag-region)
 (define-key global-map (kbd "<drag-mouse-1>") 'mouse-set-region)
 (define-key global-map (kbd "<vertical-line> <down-mouse-1>") 'mouse-drag-vertical-line)

@@ -2,4 +2,4 @@
 
 ;;;;;;;;;;;;;;;;;;
 ;;; `yasnippet.el'
-(yas-load-directory "/home/i/.emacs.d/snippets/")
+(yas-load-directory "/Users/johndebord/.emacs.d/snippets/")

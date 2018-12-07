@@ -1,0 +1,128 @@
+ls
+cat Info.plist 
+cd Resources/
+sl
+ls
+cd DWARF/
+ls
+cat a.out 
+cd
+ls
+rm -r a.out.dSYM/
+cd con/
+ls
+cat con.cpp 
+up
+rm -r cn
+rm -r con
+cd empty/
+ls
+up
+rm -r empty/
+cd forks/
+ls
+up
+rm -r forks/
+rm gud-lldb.el 
+cd keys/
+ls
+cat key0
+up
+rm -r keys/
+rm nohup.out 
+ls
+cat pass 
+rm pass
+./prog
+ff prog
+rm prog
+cd prog.dSYM/
+ls
+cd Contents/
+ls
+up
+up
+rm -r prog.dSYM/
+cd quick
+ls
+up
+ls
+cat test.wasm 
+rm test.wasm 
+cat test.cpp 
+rm test.cpp 
+ls
+cd work/
+ls
+ls
+up
+rm -r work/
+cd testeos/
+ls
+up
+rm -r test
+rm -r testeos/
+ls
+cd quicktest/
+ls
+up
+rm -r quicktest/
+cat tempo.el 
+cd my-eos-tools/
+ls
+up
+mv my-eos-tools/ eos-tools
+ls
+mv bc.sh bc-home.sh
+mv eos-home.sh
+mv eos eos-home.sh
+mv et et-home.sh
+mv *home.sh eos-tools/
+ls
+rm -r eosio-wallet/
+cd organized/
+ls
+up
+rm -r organized/
+ls
+cd organized/
+ls
+up
+sudo rm -r organized/
+cd personal/
+ls
+cd eos/
+ls
+up
+up
+rm -r person
+rm -r personal/
+sudo rm -r personal/
+ls
+cd playground/
+ls
+cat main.cpp 
+up
+rm -r playground/
+cd repos/
+ls
+up
+cd repos/
+cd temp/
+ls
+up
+up
+sudo rm -r repos/
+ls
+mv personsal-access-tokens GIT-ACCESS-TOKEN
+ls
+mv pull-request-description PULL-REQUEST-DESCRIPTION
+ls
+mv pull-request-description PULL-REQUEST-DESCRIPTION1
+ls
+mv PULL-REQUEST-DESCRIPTION1 PULL-REQUEST-DESCRIPTION
+ls
+ls
+cd temp
+ls
+cat test 

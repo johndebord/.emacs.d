@@ -8,6 +8,8 @@
 ;;; `reb-mode' regex builder mode
 ;;; `package-menu-mode'
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 (package-initialize)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")
@@ -25,7 +27,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "DAMA" :family "Ubuntu Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "nil" :family "Courier"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal))))
@@ -164,8 +166,8 @@
  '(flycheck-fringe-warning ((t (:background "#ff7400" :foreground "#000000"))))
  '(flycheck-info ((t (:underline (:color "#00cc00" :style wave)))))
  '(flycheck-warning ((t (:underline (:color "#ff7400" :style wave)))))
- '(flymake-errline ((t (:underline (:color "#ff0000" :style wave)))))
- '(flymake-warnline ((t (:underline (:color "#ff7400" :style wave)))))
+ '(flymake-error ((t (:underline (:color "#ff0000" :style wave)))))
+ '(flymake-warning ((t (:underline (:color "#ff7400" :style wave)))))
  '(font-lock-builtin-face ((t (:foreground "#569cd6"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "#424242"))))
  '(font-lock-comment-face ((t (:foreground "#424242"))))
@@ -552,12 +554,14 @@
  '(show-paren-match ((t (:background "#898888"))))
  '(show-paren-mismatch ((t (:foreground "#ff0000"))))
  '(smerge-base ((t (:background "purple" :foreground "black"))))
- '(smerge-markers ((t (:background "purple" :foreground "black"))))
- '(smerge-mine ((t (:background "purple" :foreground "black"))))
- '(smerge-other ((t (:background "purple" :foreground "black"))))
+ '(smerge-lower ((t (:underline "#00cc00"))))
+ '(smerge-markers ((t (:background "#222222"))))
+ '(smerge-mine ((t (:background "purple" :foreground "black"))) t)
+ '(smerge-other ((t (:background "purple" :foreground "black"))) t)
  '(smerge-refined-added ((t (:background "purple" :foreground "black"))))
  '(smerge-refined-changed ((t (:background "purple" :foreground "black"))))
  '(smerge-refined-removed ((t (:background "purple" :foreground "black"))))
+ '(smerge-upper ((t (:underline "#e6e6e6"))))
  '(speedbar-button-face ((t nil)))
  '(speedbar-directory-face ((t (:foreground "#569cd6"))))
  '(speedbar-file-face ((t nil)))
@@ -597,13 +601,14 @@
  '(underline ((t (:underline "#e6e6e6"))))
  '(variable-pitch ((t (:background "purple" :foreground "black"))))
  '(vc-conflict-state ((t (:background "purple" :foreground "black"))))
- '(vc-edited-state ((t (:background "purple" :foreground "black"))))
+ '(vc-edited-state ((t (:background "#e6e6e6" :foreground "#000000"))))
  '(vc-locally-added-state ((t (:background "purple" :foreground "black"))))
  '(vc-locked-state ((t (:background "purple" :foreground "black"))))
  '(vc-missing-state ((t (:background "purple" :foreground "black"))))
  '(vc-needs-update-state ((t (:background "purple" :foreground "black"))))
  '(vc-removed-state ((t (:background "purple" :foreground "black"))))
  '(vc-state-base ((t (:background "purple" :foreground "black"))))
+ '(vc-up-to-date-state ((t (:inherit greenvc-state-base))))
  '(vertical-border ((t (:background "purple" :foreground "black"))))
  '(vhdl-font-lock-attribute-face ((t (:background "purple" :foreground "black"))))
  '(vhdl-font-lock-directive-face ((t (:background "purple" :foreground "black"))))
@@ -644,4 +649,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(ansi-color-names-vector
+   ["#000000" "#ff0000" "#00cc00" "#ff7400" "#569cd6" "#d69d85" "#4ec9b0" "#e6e6e6"]))
+(put 'narrow-to-region 'disabled nil)

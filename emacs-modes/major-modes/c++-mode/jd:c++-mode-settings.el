@@ -20,8 +20,9 @@
 ;;; `cc-styles.el'
 (c-set-offset 'case-label '4)
 (c-set-offset 'inline-open '0)
+(c-set-offset 'namespace-close '0)
 
 ;;;;;;;;;;;;;;;;
 ;;; `cc-vars.el'
-(setq c-basic-offset 4)
+(setq c-basic-offset 3)
 (setq c-default-style "stroustrup")
