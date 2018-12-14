@@ -119,6 +119,8 @@
 (define-key global-map (kbd "<C-x> <C-s>") 'write-file)
 (define-key global-map (kbd "<C-x> <C-w>") 'kill-buffer)
 
+(define-key global-map (kbd "<C-x> <C-S-w>") 'delete-frame)
+
 (define-key global-map (kbd "<jd:bks>") 'delete-backward-char)
 (define-key global-map (kbd "<jd:ret>") 'newline)
 (define-key global-map (kbd "<jd:spc>") 'jd:self-insert-space)
