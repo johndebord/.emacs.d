@@ -225,8 +225,8 @@
  '(ivy-minibuffer-match-face-3 ((t (:underline "#ffffff"))))
  '(ivy-minibuffer-match-face-4 ((t (:underline "#ffffff"))))
  '(ivy-minibuffer-match-highlight ((t (:background "#535353"))))
- '(ivy-modified-buffer ((t (:underline "#ff7400"))))
- '(ivy-modified-outside-buffer ((t (:background "purple" :foreground "black"))))
+ '(ivy-modified-buffer ((t (:foreground "#ff7400"))))
+ '(ivy-modified-outside-buffer ((t (:foreground "#ff0000"))))
  '(ivy-prompt-match ((t (:background "purple" :foreground "black"))))
  '(ivy-remote ((t (:background "purple" :foreground "black"))))
  '(ivy-subdir ((t nil)))
@@ -536,6 +536,11 @@
  '(prolog-redo-face ((t (:background "purple" :foreground "black"))))
  '(prolog-warning-face ((t (:background "purple" :foreground "black"))))
  '(query-replace ((t (:background "#535353"))))
+ '(rcirc-my-nick ((t (:foreground "#569cd6"))))
+ '(rcirc-nick-in-message ((t (:foreground "#569cd6"))))
+ '(rcirc-nick-in-message-full-line ((t nil)))
+ '(rcirc-server ((t (:foreground "#424242"))))
+ '(rcirc-server-prefix ((t (:foreground "#424242"))))
  '(reb-match-0 ((t (:background "purple" :foreground "black"))))
  '(reb-match-1 ((t (:background "purple" :foreground "black"))))
  '(reb-match-2 ((t (:background "purple" :foreground "black"))))
@@ -645,3 +650,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'narrow-to-region 'disabled nil)

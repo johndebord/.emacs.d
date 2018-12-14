@@ -71,7 +71,6 @@
 (define-key global-map (kbd "<C-?>") 'uncomment-region)
 
 (define-key global-map (kbd "<jd:S-bks>") 'delete-backward-char)
-(define-key global-map (kbd "<jd:S-spc>") 'previous-buffer)
 
 (define-key global-map (kbd "<jd:C-S-bks>") 'zap-to-char)
 (define-key global-map (kbd "<C-S-n>") 'jd:backward-transpose-lines)
