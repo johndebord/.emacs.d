@@ -5,6 +5,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `ivy-minibuffer-map' --- `ivy.el'
 (setf (cdr ivy-minibuffer-map) nil)
+(define-key ivy-minibuffer-map (kbd "<up>") 'ivy-previous-line)
+(define-key ivy-minibuffer-map (kbd "<down>") 'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "<jd:ret>") 'ivy-done)
 (define-key ivy-minibuffer-map (kbd "<jd:tab>") 'ivy-partial)
 (define-key ivy-minibuffer-map (kbd "<mouse-1>") 'ivy-mouse-done)

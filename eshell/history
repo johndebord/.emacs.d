@@ -1,128 +1,128 @@
+git add .
+git commit -m "Add updated `eosio.system.abi` and `eosio.system.wasm`"
+git push origin master
+ll
+cd test
+cd tests
 ls
-cat Info.plist 
-cd Resources/
-sl
-ls
-cd DWARF/
-ls
-cat a.out 
-cd
-ls
-rm -r a.out.dSYM/
-cd con/
-ls
-cat con.cpp 
+ll
+ff Testing/
+ff main.cpp 
+ff chain_plugin_tests.cpp 
+ff get_table_tests.cpp 
 up
-rm -r cn
-rm -r con
-cd empty/
+cd build/
 ls
+ff CTestTestfile.cmake 
+ff CMakeCache.txt 
+cd CMakeFiles/
+ls
+ff feature_tests.c
 up
-rm -r empty/
-cd forks/
+s
 ls
-up
-rm -r forks/
-rm gud-lldb.el 
-cd keys/
-ls
-cat key0
-up
-rm -r keys/
-rm nohup.out 
-ls
-cat pass 
-rm pass
-./prog
-ff prog
-rm prog
-cd prog.dSYM/
-ls
-cd Contents/
+ff genesis.json 
+ff Makefile 
+cd bin
 ls
 up
+cd Testing/
+ls
+cd Temporary/
+ls
+ff CTestCostData.txt 
+ff LastTest.log 
+ff LastTestsFailed.log 
 up
-rm -r prog.dSYM/
-cd quick
 ls
 up
 ls
-cat test.wasm 
-rm test.wasm 
-cat test.cpp 
-rm test.cpp 
+ff last_run.json 
+cd test_wallet_0/
 ls
-cd work/
-ls
-ls
+ff keosd.sock 
+ff config.ini 
+ff ignition.wallet 
+ff test.wallet 
+ff wallet.lock 
 up
-rm -r work/
-cd testeos/
 ls
+cd staging/
+ls
+cd etc/
+ls
+cd eosio/
+ls
+cd node_bios/
+ls
+ff logging.json 
+ff genesis.json 
+ff config.ini 
 up
-rm -r test
-rm -r testeos/
 ls
-cd quicktest/
+cd node_00
 ls
-up
-rm -r quicktest/
-cat tempo.el 
-cd my-eos-tools/
-ls
-up
-mv my-eos-tools/ eos-tools
-ls
-mv bc.sh bc-home.sh
-mv eos-home.sh
-mv eos eos-home.sh
-mv et et-home.sh
-mv *home.sh eos-tools/
-ls
-rm -r eosio-wallet/
-cd organized/
-ls
-up
-rm -r organized/
-ls
-cd organized/
-ls
-up
-sudo rm -r organized/
-cd personal/
-ls
-cd eos/
-ls
+ff config.ini 
+ff genesis.json 
 up
 up
-rm -r person
-rm -r personal/
-sudo rm -r personal/
-ls
-cd playground/
-ls
-cat main.cpp 
-up
-rm -r playground/
-cd repos/
-ls
-up
-cd repos/
-cd temp/
-ls
 up
 up
-sudo rm -r repos/
 ls
-mv personsal-access-tokens GIT-ACCESS-TOKEN
+ff genesis.json 
+ls -la
+ll
+cd test
+cd tests
+ls -la
+ll
+gr '--clean-run'
+gr '--wallet-port'
+echo localhost
+echo $localhost
+echo $bioshost
+echo "$bioshost"
+$TEST_VAR = 1
+TEST_VAR = 1
+TEST_VAR = =2
+(setenv "TEST_VAR" "1")
+echo TEST_VAR
+echo &TEST_VAR
+echo $TEST_VAR
+echo $TEST_VAR
+echo $TEST_VAR
+echo $TEST_VAR
+echo $TEST_VAR
+echo $BIOS_HOSTNAME
+echo $HOME
+echo $localhost
+echo $BIOS_HTTP_PORT
 ls
-mv pull-request-description PULL-REQUEST-DESCRIPTION
+up
 ls
-mv pull-request-description PULL-REQUEST-DESCRIPTION1
+fnd eosio
+fnd boot
+fnd bootlog
+fnd bios
+fnd bios_boot.sh
+fnd bootlog.tct
+fnd bootlog.txt
+gr 'spawning child'
+up
+cd tests
+gr 'spawning child'
+gr '--max-transaction'
+gr 'system newaccount'
+gr 'processCleosCmd'
+up
+gr 'processCleosCmd'
+up
+cd eosio.contracts/
+gr 'newaccount'
+cd eosio.system/
+gr 'newaccount'
+cd include/
 ls
-mv PULL-REQUEST-DESCRIPTION1 PULL-REQUEST-DESCRIPTION
+cd eosio.system/
 ls
-ls
-cd temp
-ls
-cat test 
+ff native.hpp 
