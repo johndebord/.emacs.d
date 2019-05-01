@@ -20,6 +20,19 @@
 (require 'jd:emacs-modes.el
          "~/.emacs.d/emacs-modes/jd:emacs-modes.el")
 
+(setq
+   backup-by-copying t       ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.temp-saves/"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
+
+(add-to-list 'load-path "/path/to/repo")
+(require 'call-graph)
+(call-graph)
+
 ;;'(flycheck-info ((t (:underline (:color "#00cc00" :style wave)))))
 
 (custom-set-faces
@@ -107,22 +120,22 @@
  '(custom-variable-tag ((t (:foreground "#569cd6" :weight bold))))
  '(custom-visibility ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal :height 0.8))))
  '(diary ((t (:background "purple" :foreground "black"))))
- '(diff-added ((t (:background "purple" :foreground "black"))))
+ '(diff-added ((t (:foreground "#00cc00"))))
  '(diff-changed ((t (:background "purple" :foreground "black"))))
- '(diff-context ((t (:background "purple" :foreground "black"))))
- '(diff-file-header ((t (:background "purple" :foreground "black"))))
+ '(diff-context ((t nil)))
+ '(diff-file-header ((t (:foreground "#5c5c5c"))))
  '(diff-function ((t (:background "purple" :foreground "black"))))
- '(diff-header ((t (:background "purple" :foreground "black"))))
- '(diff-hunk-header ((t (:background "purple" :foreground "black"))))
+ '(diff-header ((t (:foreground "#5c5c5c"))))
+ '(diff-hunk-header ((t (:foreground "#5c5c5c"))))
  '(diff-index ((t (:background "purple" :foreground "black"))))
- '(diff-indicator-added ((t (:background "purple" :foreground "black"))))
- '(diff-indicator-changed ((t (:background "purple" :foreground "black"))))
- '(diff-indicator-removed ((t (:background "purple" :foreground "black"))))
+ '(diff-indicator-added ((t (:foreground "#5c5c5c"))))
+ '(diff-indicator-changed ((t (:foreground "#5c5c5c"))))
+ '(diff-indicator-removed ((t (:foreground "#5c5c5c"))))
  '(diff-nonexistent ((t (:background "purple" :foreground "black"))))
  '(diff-refine-added ((t (:background "purple" :foreground "black"))))
  '(diff-refine-changed ((t (:background "purple" :foreground "black"))))
  '(diff-refine-removed ((t (:background "purple" :foreground "black"))))
- '(diff-removed ((t (:background "purple" :foreground "black"))))
+ '(diff-removed ((t (:foreground "#ff0000"))))
  '(dired-directory ((t nil)))
  '(dired-flagged ((t (:background "purple" :foreground "black"))))
  '(dired-header ((t (:foreground "#569cd6"))))
@@ -335,9 +348,9 @@
  '(magit-signature-untrusted ((t (:background "purple" :foreground "black"))))
  '(magit-tag ((t (:background "purple" :foreground "black"))))
  '(makefile-makepp-perl ((t (:background "purple" :foreground "black"))))
- '(makefile-shell ((t (:background "purple" :foreground "black"))) t)
- '(makefile-space ((t (:background "purple" :foreground "black"))))
- '(makefile-targets ((t (:background "purple" :foreground "black"))))
+ '(makefile-shell ((t nil)) t)
+ '(makefile-space ((t nil)))
+ '(makefile-targets ((t (:foreground "#569cd6"))))
  '(markdown-blockquote-face ((t (:background "purple" :foreground "black"))))
  '(markdown-bold-face ((t (:background "purple" :foreground "black"))))
  '(markdown-code-face ((t (:background "purple" :foreground "black"))))
@@ -650,5 +663,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#000000" "#ff0000" "#00cc00" "#ff7400" "#569cd6" "#d69d85" "#4ec9b0" "#e6e6e6"]))
+   ["#000000" "#ff0000" "#00cc00" "#ff7400" "#569cd6" "#d69d85" "#4ec9b0" "#e6e6e6"])
+ '(package-selected-packages
+   (quote
+    (rmsbolt call-graph yasnippet modern-cpp-font-lock counsel-etags))))
 (put 'narrow-to-region 'disabled nil)

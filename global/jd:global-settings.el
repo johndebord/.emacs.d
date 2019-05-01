@@ -31,7 +31,7 @@
 ;;; `C source code'
 (defalias 'yes-or-no-p 'y-or-n-p)
 (put 'erase-buffer 'disabled nil)
-(setq debug-on-error t)
+;; (setq debug-on-error t)
 (setq echo-keystrokes 0.001)
 (setq enable-recursive-minibuffers t)
 (setq fill-column 80)
@@ -104,8 +104,8 @@
 ;;;;;;;;;;;;;;;
 ;;; `window.el'
 (setq pop-up-frames nil)
-(setq pop-up-windows nil)
-(add-to-list 'same-window-buffer-names "*Completions*")
+;; (setq pop-up-windows nil)
+;; (add-to-list 'same-window-buffer-names "*Completions*")
 (add-to-list 'same-window-buffer-names "*Help*")
 (add-to-list 'same-window-buffer-names "*Faces*")
 (add-to-list 'same-window-regexps ".+el.gz")

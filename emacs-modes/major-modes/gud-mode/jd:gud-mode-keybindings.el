@@ -7,23 +7,27 @@
 ;; right gud-next
 ;; up    gud-finish
 
+(defun jd:gud-clear-buffer ()
+  (interactive)
+  (erase-buffer))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Function to erase input/output upon start
 ;;; Fully comprehend it later on
 (defun jd:gud-start ()
   (interactive)
-  (save-excursion
-    (let ((b (loop for b in (buffer-list)
-		   if (string-match "*input/output of *"
-				    (buffer-name b)) return b)))
-      (when b (with-current-buffer b (erase-buffer)))))
-  (insert "start")
+  ;; (save-excursion
+  ;;   (let ((b (loop for b in (buffer-list)
+  ;; 		   if (string-match "*input/output of *"
+  ;; 				    (buffer-name b)) return b)))
+  ;;     (when b (with-current-buffer b (erase-buffer)))))
+  ;; (insert "start")
+  (insert "r")
+  (comint-send-input)
+  (insert "y")
+  (comint-send-input)
+  (jd:gud-clear-buffer)
   (comint-send-input))
-
-(defun jd:gud-clear-buffer ()
-  (interactive)
-  (erase-buffer)
-  (insert "(gdb) "))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `gud-mode-map' --- `gud.el'
