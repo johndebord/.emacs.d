@@ -34,6 +34,10 @@
          "~/.emacs.d/emacs-modes/major-modes/gdb-registers-mode/jd:gdb-registers-mode.el")
 (require 'jd:gdb-threads-mode.el
          "~/.emacs.d/emacs-modes/major-modes/gdb-threads-mode/jd:gdb-threads-mode.el")
+(require 'jd:grep-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/grep-mode/jd:grep-mode.el")
+(require 'jd:gud-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/gud-mode/jd:gud-mode.el")
 (require 'jd:gud-mode.el
          "~/.emacs.d/emacs-modes/major-modes/gud-mode/jd:gud-mode.el")
 (require 'jd:help-mode.el
