@@ -50,6 +50,21 @@
   (scroll-up-command)
   (move-to-window-line nil))
 
+(defun load&return (file &optional msgp)
+  "Load FILE.  Return the value of the last sexp read."
+  (interactive "fFile: \np")
+  (let* ((sexp  (with-current-buffer (find-file-noselect file)
+                  (goto-char (point-min))
+                  (read (current-buffer))))
+         (val   (ignore-errors (eval sexp))))
+    (prog1 val (when msgp (message "Value: %S" val)))))
+
+(defun jd:compile ()
+  (interactive)
+  ()
+  (write-region <STRING> nil u 'append)
+  (flymake-compile))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `global-map' --- `subr.el'
 (define-key global-map (kbd "<jd:C-bks>") 'jd:backward-delete-word)
@@ -192,8 +207,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-completion-map' --- `minibuffer.el'
 (setf (cdr minibuffer-local-completion-map) nil)
-(define-key minibuffer-local-completion-map (kbd "<jd:ret>") 'exit-minibuffer)
+(define-key minibuffer-local-completion-map (kbd "<jd:ret>") 'minibuffer-complete-and-exit)
+(define-key minibuffer-local-completion-map (kbd "<jd:spc>") 'minibuffer-complete-word)
+(define-key minibuffer-local-completion-map (kbd "<jd:tab>") 'minibuffer-complete)
 (define-key minibuffer-local-completion-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map (kbd "<C-M-i>") 'previous-history-element)
+(define-key minibuffer-local-completion-map (kbd "<C-M-k>") 'next-history-element)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-inactive-mode-map' --- `minibuffer.el'

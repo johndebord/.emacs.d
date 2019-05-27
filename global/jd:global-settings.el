@@ -95,7 +95,9 @@
 ;;; `startup.el'
 (defun display-startup-echo-area-message () (message ""))
 (setq inhibit-startup-screen 1)
+(setq initial-buffer-choice 'eshell)
 (setq initial-scratch-message "")
+
 
 ;;;;;;;;;;;;;;;;;
 ;;; `tool-bar.el'

@@ -335,7 +335,7 @@
  '(makefile-makepp-perl ((t (:background "purple" :foreground "black"))))
  '(makefile-shell ((t (:background "purple" :foreground "black"))) t)
  '(makefile-space ((t (:background "purple" :foreground "black"))))
- '(makefile-targets ((t (:background "purple" :foreground "black"))))
+ '(makefile-targets ((t (:foreground "#569cd6"))))
  '(markdown-blockquote-face ((t (:background "purple" :foreground "black"))))
  '(markdown-bold-face ((t (:background "purple" :foreground "black"))))
  '(markdown-code-face ((t (:background "purple" :foreground "black"))))

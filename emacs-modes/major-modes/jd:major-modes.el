@@ -6,6 +6,8 @@
          "~/.emacs.d/emacs-modes/major-modes/Custom-mode/jd:Custom-mode.el")
 (require 'jd:apropos-mode.el
          "~/.emacs.d/emacs-modes/major-modes/apropos-mode/jd:apropos-mode.el")
+(require 'jd:asm-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/asm-mode/jd:asm-mode.el")
 (require 'jd:c++-mode.el
          "~/.emacs.d/emacs-modes/major-modes/c++-mode/jd:c++-mode.el")
 (require 'jd:compilation-mode.el
