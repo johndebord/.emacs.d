@@ -1,5 +1,3 @@
-(provide 'jd:major-modes.el)
-
 (require 'jd:Buffer-menu-mode.el
          "~/.emacs.d/emacs-modes/major-modes/Buffer-menu-mode/jd:Buffer-menu-mode.el")
 (require 'jd:Custom-mode.el
@@ -46,5 +44,7 @@
          "~/.emacs.d/emacs-modes/major-modes/lisp-interaction-mode/jd:lisp-interaction-mode.el")
 (require 'jd:makefile-mode.el
          "~/.emacs.d/emacs-modes/major-modes/makefile-mode/jd:makefile-mode.el")
-;;(require 'jd:rcirc-mode.el
-;;         "~/.emacs.d/emacs-modes/major-modes/rcirc-mode/jd:rcirc-mode.el")
+(require 'jd:rcirc-mode.el
+        "~/.emacs.d/emacs-modes/major-modes/rcirc-mode/jd:rcirc-mode.el")
+
+(provide 'jd:major-modes.el)

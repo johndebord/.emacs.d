@@ -1,5 +1,5 @@
-(provide 'jd:third-party-packages.el)
-
+(require 'jd:cmake-mode.el
+         "~/.emacs.d/emacs-modes/third-party-packages/cmake-mode/jd:cmake-mode.el")
 (require 'jd:counsel.el
          "~/.emacs.d/emacs-modes/third-party-packages/counsel/jd:counsel.el")
 (require 'jd:counsel-etags.el
@@ -14,3 +14,5 @@
          "~/.emacs.d/emacs-modes/third-party-packages/swiper/jd:swiper.el")
 (require 'jd:yasnippet.el
          "~/.emacs.d/emacs-modes/third-party-packages/yasnippet/jd:yasnippet.el")
+
+(provide 'jd:third-party-packages.el)

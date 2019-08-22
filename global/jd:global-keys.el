@@ -1,20 +1,15 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; remove the union relationship of Meta and ESC
 (setq meta-prefix-char nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `key-translation-map' --- `C source code'
 (setf (cdr key-translation-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `function-key-map' --- `C source code'
 (setf (cdr function-key-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `local-function-key-map' --- `C source code'
 (setf (cdr local-function-key-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `global-map' --- `subr.el'
 (setq jd:temp-global-map (make-sparse-keymap))
 (substitute-key-definition
@@ -23,7 +18,6 @@
 (substitute-key-definition
  'self-insert-command 'self-insert-command global-map jd:temp-global-map)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `input-decode-map' --- `C source code'
 (define-key input-decode-map (kbd "C-a")  [\C-\a])
 (define-key input-decode-map (kbd "C-b")  [\C-\b])
@@ -439,54 +433,6 @@
 (define-key input-decode-map (kbd "C-M-S-_")  [\C-\M-\S-\_])
 (define-key input-decode-map (kbd "C-M-S-+")  [\C-\M-\S-\+])
 
-(define-key input-decode-map (kbd "<backspace>")       (kbd "<jd:bks>"))
-(define-key input-decode-map (kbd "S-<backspace>")     (kbd "<jd:S-bks>"))
-(define-key input-decode-map (kbd "C-<backspace>")     (kbd "<jd:C-bks>"))
-(define-key input-decode-map (kbd "C-S-<backspace>")   (kbd "<jd:C-S-bks>"))
-(define-key input-decode-map (kbd "M-<backspace>")     (kbd "<jd:M-bks>"))
-(define-key input-decode-map (kbd "M-S-<backspace>")   (kbd "<jd:M-S-bks>"))
-(define-key input-decode-map (kbd "C-M-<backspace>")   (kbd "<jd:C-M-bks>"))
-(define-key input-decode-map (kbd "C-M-S-<backspace>") (kbd "<jd:C-M-S-bks>"))
-
-(define-key input-decode-map (kbd "<escape>")       (kbd "<jd:esc>"))
-(define-key input-decode-map (kbd "S-<escape>")     (kbd "<jd:S-esc>"))
-(define-key input-decode-map (kbd "C-<escape>")     (kbd "<jd:C-esc>"))
-(define-key input-decode-map (kbd "C-S-<escape>")   (kbd "<jd:C-S-esc>"))
-(define-key input-decode-map (kbd "M-<escape>")     (kbd "<jd:M-esc>"))
-(define-key input-decode-map (kbd "M-S-<escape>")   (kbd "<jd:M-S-esc>"))
-(define-key input-decode-map (kbd "C-M-<escape>")   (kbd "<jd:C-M-esc>"))
-(define-key input-decode-map (kbd "C-M-S-<escape>") (kbd "<jd:C-M-S-esc>"))
-
-(define-key input-decode-map (kbd "<return>")       (kbd "<jd:ret>"))
-(define-key input-decode-map (kbd "S-<return>")     (kbd "<jd:S-ret>"))
-(define-key input-decode-map (kbd "C-<return>")     (kbd "<jd:C-ret>"))
-(define-key input-decode-map (kbd "C-S-<return>")   (kbd "<jd:C-S-ret>"))
-(define-key input-decode-map (kbd "M-<return>")     (kbd "<jd:M-ret>"))
-(define-key input-decode-map (kbd "M-S-<return>")   (kbd "<jd:M-S-ret>"))
-(define-key input-decode-map (kbd "C-M-<return>")   (kbd "<jd:C-M-ret>"))
-(define-key input-decode-map (kbd "C-M-S-<return>") (kbd "<jd:C-M-S-ret>"))
-
-(define-key input-decode-map (kbd "<SPC>")       (kbd "<jd:spc>"))
-(define-key input-decode-map (kbd "S-<SPC>")     (kbd "<jd:S-spc>"))
-(define-key input-decode-map (kbd "C-<SPC>")     (kbd "<jd:C-spc>"))
-(define-key input-decode-map (kbd "C-S-<SPC>")   (kbd "<jd:C-S-spc>"))
-(define-key input-decode-map (kbd "M-<SPC>")     (kbd "<jd:M-spc>"))
-(define-key input-decode-map (kbd "M-S-<SPC>")   (kbd "<jd:M-S-spc>"))
-(define-key input-decode-map (kbd "C-M-<SPC>")   (kbd "<jd:C-M-spc>"))
-(define-key input-decode-map (kbd "C-M-S-<SPC>") (kbd "<jd:C-M-S-spc>"))
-
-(define-key input-decode-map (kbd "<tab>")               (kbd "<jd:tab>"))
-(define-key input-decode-map (kbd "S-<iso-lefttab>")     (kbd "<jd:S-tab>"))
-(define-key input-decode-map (kbd "C-<tab>")             (kbd "<jd:C-tab>"))
-(define-key input-decode-map (kbd "C-S-<iso-lefttab>")   (kbd "<jd:C-S-tab>"))
-(define-key input-decode-map (kbd "M-<tab>")             (kbd "<jd:M-tab>"))
-(define-key input-decode-map (kbd "M-S-<iso-lefttab>")   (kbd "<jd:M-S-tab>"))
-(define-key input-decode-map (kbd "C-M-<tab>")           (kbd "<jd:C-M-tab>"))
-(define-key input-decode-map (kbd "C-M-S-<iso-lefttab>") (kbd "<jd:C-M-S-tab>"))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; `input-decode-map' --- `C source code'
-;;; Mac OS super key modification
 (define-key input-decode-map (kbd "s-a")  [\C-\a])
 (define-key input-decode-map (kbd "s-b")  [\C-\b])
 (define-key input-decode-map (kbd "s-c")  [\C-\c])
@@ -763,6 +709,51 @@
 (define-key input-decode-map (kbd "s-M-S-_")  [\C-\M-\S-\_])
 (define-key input-decode-map (kbd "s-M-S-+")  [\C-\M-\S-\+])
 
+(define-key input-decode-map (kbd "<backspace>")       (kbd "<jd:bks>"))
+(define-key input-decode-map (kbd "S-<backspace>")     (kbd "<jd:S-bks>"))
+(define-key input-decode-map (kbd "C-<backspace>")     (kbd "<jd:C-bks>"))
+(define-key input-decode-map (kbd "C-S-<backspace>")   (kbd "<jd:C-S-bks>"))
+(define-key input-decode-map (kbd "M-<backspace>")     (kbd "<jd:M-bks>"))
+(define-key input-decode-map (kbd "M-S-<backspace>")   (kbd "<jd:M-S-bks>"))
+(define-key input-decode-map (kbd "C-M-<backspace>")   (kbd "<jd:C-M-bks>"))
+(define-key input-decode-map (kbd "C-M-S-<backspace>") (kbd "<jd:C-M-S-bks>"))
+
+(define-key input-decode-map (kbd "<escape>")       (kbd "<jd:esc>"))
+(define-key input-decode-map (kbd "S-<escape>")     (kbd "<jd:S-esc>"))
+(define-key input-decode-map (kbd "C-<escape>")     (kbd "<jd:C-esc>"))
+(define-key input-decode-map (kbd "C-S-<escape>")   (kbd "<jd:C-S-esc>"))
+(define-key input-decode-map (kbd "M-<escape>")     (kbd "<jd:M-esc>"))
+(define-key input-decode-map (kbd "M-S-<escape>")   (kbd "<jd:M-S-esc>"))
+(define-key input-decode-map (kbd "C-M-<escape>")   (kbd "<jd:C-M-esc>"))
+(define-key input-decode-map (kbd "C-M-S-<escape>") (kbd "<jd:C-M-S-esc>"))
+
+(define-key input-decode-map (kbd "<return>")       (kbd "<jd:ret>"))
+(define-key input-decode-map (kbd "S-<return>")     (kbd "<jd:S-ret>"))
+(define-key input-decode-map (kbd "C-<return>")     (kbd "<jd:C-ret>"))
+(define-key input-decode-map (kbd "C-S-<return>")   (kbd "<jd:C-S-ret>"))
+(define-key input-decode-map (kbd "M-<return>")     (kbd "<jd:M-ret>"))
+(define-key input-decode-map (kbd "M-S-<return>")   (kbd "<jd:M-S-ret>"))
+(define-key input-decode-map (kbd "C-M-<return>")   (kbd "<jd:C-M-ret>"))
+(define-key input-decode-map (kbd "C-M-S-<return>") (kbd "<jd:C-M-S-ret>"))
+
+(define-key input-decode-map (kbd "<SPC>")       (kbd "<jd:spc>"))
+(define-key input-decode-map (kbd "S-<SPC>")     (kbd "<jd:S-spc>"))
+(define-key input-decode-map (kbd "C-<SPC>")     (kbd "<jd:C-spc>"))
+(define-key input-decode-map (kbd "C-S-<SPC>")   (kbd "<jd:C-S-spc>"))
+(define-key input-decode-map (kbd "M-<SPC>")     (kbd "<jd:M-spc>"))
+(define-key input-decode-map (kbd "M-S-<SPC>")   (kbd "<jd:M-S-spc>"))
+(define-key input-decode-map (kbd "C-M-<SPC>")   (kbd "<jd:C-M-spc>"))
+(define-key input-decode-map (kbd "C-M-S-<SPC>") (kbd "<jd:C-M-S-spc>"))
+
+(define-key input-decode-map (kbd "<tab>")               (kbd "<jd:tab>"))
+(define-key input-decode-map (kbd "S-<iso-lefttab>")     (kbd "<jd:S-tab>"))
+(define-key input-decode-map (kbd "C-<tab>")             (kbd "<jd:C-tab>"))
+(define-key input-decode-map (kbd "C-S-<iso-lefttab>")   (kbd "<jd:C-S-tab>"))
+(define-key input-decode-map (kbd "M-<tab>")             (kbd "<jd:M-tab>"))
+(define-key input-decode-map (kbd "M-S-<iso-lefttab>")   (kbd "<jd:M-S-tab>"))
+(define-key input-decode-map (kbd "C-M-<tab>")           (kbd "<jd:C-M-tab>"))
+(define-key input-decode-map (kbd "C-M-S-<iso-lefttab>") (kbd "<jd:C-M-S-tab>"))
+
 (define-key input-decode-map (kbd "s-<backspace>")     (kbd "<jd:C-bks>"))
 (define-key input-decode-map (kbd "s-S-<backspace>")   (kbd "<jd:C-S-bks>"))
 (define-key input-decode-map (kbd "s-M-<backspace>")   (kbd "<jd:C-M-bks>"))
@@ -787,14 +778,5 @@
 (define-key input-decode-map (kbd "s-S-<iso-lefttab>")   (kbd "<jd:C-S-tab>"))
 (define-key input-decode-map (kbd "s-M-<tab>")           (kbd "<jd:C-M-tab>"))
 (define-key input-decode-map (kbd "s-M-S-<iso-lefttab>") (kbd "<jd:C-M-S-tab>"))
-
-;; (for in the future when I get the hang of Elisp)
-;; (define-key input-decode-map (kbd "<mouse-1>")       (kbd "<jd:m1>"))
-;; (define-key input-decode-map (kbd "<mouse-4>")       (kbd "<jd:m4>"))
-;; (define-key input-decode-map (kbd "<mouse-5>")       (kbd "<jd:m5>"))
-;; (define-key input-decode-map (kbd "<down-mouse-1>")  (kbd "<jd:down-m1>"))
-;; (define-key input-decode-map (kbd "<drag-mouse-1>")  (kbd "<jd:drag-m1>"))
-;; (define-key input-decode-map (kbd "<mode-line>")     (kbd "<jd:ml>"))
-;; (define-key input-decode-map (kbd "<vertical-line>") (kbd "<jd:vl>"))
 
 (provide 'jd:global-keys.el)

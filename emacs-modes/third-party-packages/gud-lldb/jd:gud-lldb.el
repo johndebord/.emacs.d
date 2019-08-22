@@ -29,9 +29,8 @@
 
 ;;; Code:
 
-(provide 'jd:gud-lldb.el)
-
 (require 'cl)
+(require 'gdb-mi)
 (require 'gud)
 
 (require 'jd:gud-lldb-keybindings.el
@@ -205,3 +204,5 @@ and source-file directory for your debugger."
 (provide 'gud-lldb)
 
 ;;; gud-lldb.el ends here
+
+(provide 'jd:gud-lldb.el)

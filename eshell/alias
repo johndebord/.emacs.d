@@ -1,10 +1,11 @@
-alias up=cd ..
-alias nil $*
-alias et /Users/johndebord/et $*
-alias gr grep -rnw './' -e $*
-alias fnd find . -name $*
-alias ll ls -l $*
-alias up cd .. $*
-alias lla ls -la $*
-alias la ls -a $*
+alias s ls $*
 alias yarn $*
+alias la ls -a $*
+alias lla ls -la $*
+alias up cd .. $*
+alias ll ls -l $*
+alias fnd find . -name $*
+alias gr grep -rnw './' -e $*
+alias et /Users/johndebord/et $*
+alias nil $*
+alias up=cd ..
