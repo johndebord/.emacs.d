@@ -31,7 +31,9 @@
 ;;; `C source code'
 (defalias 'yes-or-no-p 'y-or-n-p)
 (put 'erase-buffer 'disabled nil)
+(setq-default truncate-lines t)
 ;; (setq debug-on-error t)
+(setq default-directory "/Users/john.debord/")
 (setq echo-keystrokes 0.001)
 (setq enable-recursive-minibuffers t)
 (setq fill-column 80)
@@ -75,6 +77,11 @@
 ;;; `menu-bar.el'
 (menu-bar-mode 0)
 
+;;;;;;;;;;;;;;;
+;;; `mwheel.el'
+(setq mouse-wheel-scroll-amount '(1))
+(setq mouse-wheel-tilt-scroll t)
+
 ;;;;;;;;;;;;;;
 ;;; `paren.el'
 (show-paren-mode 1)
@@ -85,7 +92,7 @@
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; `scroll-bar.el'
-(scroll-bar-mode 0)
+;;;(scroll-bar-mode 0)
 
 ;;;;;;;;;;;;;;;
 ;;; `simple.el'

@@ -10,6 +10,8 @@
          "~/.emacs.d/emacs-modes/minor-modes/flycheck-mode/jd:flycheck-mode.el")
 (require 'jd:flymake-mode.el
          "~/.emacs.d/emacs-modes/minor-modes/flymake-mode/jd:flymake-mode.el")
+(require 'jd:gud-minor-mode.el
+         "~/.emacs.d/emacs-modes/minor-modes/gud-minor-mode/jd:gud-minor-mode.el")
 (require 'jd:isearch-mode.el
          "~/.emacs.d/emacs-modes/minor-modes/isearch-mode/jd:isearch-mode.el")
 (require 'jd:view-mode.el

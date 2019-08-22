@@ -8,8 +8,21 @@
 ;; up    gud-finish
 
 (defun jd:gud-clear-buffer ()
+  "There is a bug where if I go up one line, the entire
+screen clears; fix this behavior later."
   (interactive)
-  (erase-buffer))
+  (if (not (equal (line-number-at-pos (end-of-buffer)) 1))
+      (progn
+	(end-of-buffer)
+	(beginning-of-buffer)
+	(set-mark-command nil)
+	(end-of-buffer)
+	(previous-line)
+	(end-of-line)
+	(delete-active-region)
+	(next-line)
+	(delete-active-region)
+	(end-of-line))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Function to erase input/output upon start
@@ -22,11 +35,11 @@
   ;; 				    (buffer-name b)) return b)))
   ;;     (when b (with-current-buffer b (erase-buffer)))))
   ;; (insert "start")
+  (jd:gud-clear-buffer)
   (insert "r")
   (comint-send-input)
   (insert "y")
   (comint-send-input)
-  (jd:gud-clear-buffer)
   (comint-send-input))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -46,12 +59,18 @@
   (define-key gud-mode-map (kbd "<C-c> <C-d>") 'comint-send-eof)
   (define-key gud-mode-map (kbd "<C-c> <C-l>") 'jd:gud-clear-buffer))
 (add-hook 'gdb-mode-hook 'jd:gud-mode-map)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Weird `lldb' bindings; fix later.
+(add-hook 'lldb-mode-hook 'jd:gud-mode-map)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `gud-menu-map' --- `gud.el'
 (defun jd:gud-menu-map ()
   (setf (cdr gud-menu-map) nil))
 (add-hook 'gud-mode-hook 'jd:gud-menu-map)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Weird `lldb' bindings; fix later.
+(add-hook 'lldb-mode-hook 'jd:gud-menu-map)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `gud-minibuffer-local-map' --- `gud.el'
@@ -79,9 +98,15 @@
   (define-key gud-minor-mode-map (kbd "<left-margin> <mouse-1>") 'gdb-mouse-set-clear-breakpoint)
   (define-key gud-minor-mode-map (kbd "<left-margin> <mouse-3>") 'gdb-mouse-until))
 (add-hook 'gud-mode-hook 'jd:gud-minor-mode-map)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Weird `lldb' bindings; fix later.
+(add-hook 'lldb-mode-hook 'jd:gud-minor-mode-map)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `gud-tool-bar-map' --- `gud.el'
 (defun jd:gud-tool-bar-map ()
   (setf (cdr gud-tool-bar-map) nil))
 (add-hook 'gud-mode-hook 'jd:gud-tool-bar-map)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Weird `lldb' bindings; fix later.
+(add-hook 'lldb-mode-hook 'jd:gud-tool-bar-map)

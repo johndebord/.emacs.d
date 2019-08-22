@@ -7,3 +7,4 @@
 - The application "Show Desktop" doesn't hide Telegram for some reason
 - There are a few mundane things that should be done for an optimal environment (scripts on start/wake, better organization of keybinds, alt-tabbing into windows that
   are minimized, etc.), but these will have to wait for another time.
+- Just to note I have a few helper programs: RedQuits (for termination on window exit), HyperSwitch (for sane alt-tabbing), and obviously Karabiner Elements

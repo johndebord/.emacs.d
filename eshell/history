@@ -1,128 +1,128 @@
-git add .
-git commit -m "Add updated `eosio.system.abi` and `eosio.system.wasm`"
-git push origin master
-ll
-cd test
-cd tests
 ls
-ll
-ff Testing/
-ff main.cpp 
-ff chain_plugin_tests.cpp 
-ff get_table_tests.cpp 
+gnuplot --persist -e "plot \"cpu_load_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"ram_usage_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"tps_rocksdb.csv\" with linespoints";
+ff 006/NOTES 
+ls
+mv *.csv 006/
+ls
+cd 000
+ls
+gnuplot --persist -e "plot \"cpu_load_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"ram_usage_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"tps_rocksdb.csv\" with linespoints";
+ls
+ff gp.gp
+ls
+ls
+gnuplot --persist -e "plot \"cpu_load_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"ram_usage_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"tps_rocksdb.csv\" with linespoints";
+gnuplot --persist -e "plot \"cpu_load_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"ram_usage_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"tps_rocksdb.csv\" with linespoints";
+gnuplot --persist -e "plot \"cpu_load_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"ram_usage_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"tps_rocksdb.csv\" with linespoints";
+cd ../001
 up
-cd build/
+ff gp.gp
 ls
-ff CTestTestfile.cmake 
-ff CMakeCache.txt 
-cd CMakeFiles/
+cd 006/
+l
 ls
-ff feature_tests.c
+gnuplot --persist -e "plot \"cpu_load_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"ram_usage_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"tps_rocksdb.csv\" with linespoints";
+gnuplot --persist -e "plot \"cpu_load_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"ram_usage_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"tps_rocksdb.csv\" with linespoints";
+up
+cd 005
+up
+cd 005
+gnuplot --persist -e "plot \"cpu_load_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"ram_usage_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"tps_rocksdb.csv\" with linespoints";
+up
+gnuplot --persist -e "plot \"cpu_load_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"ram_usage_rocksdb.csv\" with linespoints"; gnuplot --persist -e "plot \"tps_rocksdb.csv\" with linespoints";
+ls
+cd chain
+cd chainbase/
+ls
+cd measureplot/
+ls
+cd 000
+ls
+ff gp.gp 
+ls
+open 000.png 
+ff 000.png 
+ls
+ff gp.gp 
+ff gp.gp 
+open output.png 
+open output.png 
+ls
+open output.pdf 
+ls
+open test.pdf 
+ls
+open test0.png 
+rm test.pdf test0.png 000.png 
+ls
+rm output.png output.pdf 
+ls
+ls
+cd chainbase/
+ls
+cd measureplot/
+ls
+up
 up
 s
 ls
-ff genesis.json 
-ff Makefile 
-cd bin
+cd de
+cd devdocs/
 ls
-up
-cd Testing/
+git pull
+cp ../chainbase/measureplot/000/000.png ./images/
+cp ../chainbase/measureplot/001/001.png ./images/
+cp ../chainbase/measureplot/002/002.png ./images/
+cp ../chainbase/measureplot/003/003.png ./images/
+cp ../chainbase/measureplot/004/004.png ./images/
+cp ../chainbase/measureplot/005/005.png ./images/
+cp ../chainbase/measureplot/006/006.png ./images/
+git status
+git add .
+git status
+git commit -m "Add metrics"
+git push origin master
+cd chainbase/
 ls
-cd Temporary/
+cd measureplot/
 ls
-ff CTestCostData.txt 
-ff LastTest.log 
-ff LastTestsFailed.log 
-up
+cd 005
 ls
-up
+ff gp.gp 
+l
 ls
-ff last_run.json 
-cd test_wallet_0/
+cd chainbase/
 ls
-ff keosd.sock 
-ff config.ini 
-ff ignition.wallet 
-ff test.wallet 
-ff wallet.lock 
-up
 ls
-cd staging/
+cd measureplot/
 ls
-cd etc/
 ls
-cd eosio/
-ls
-cd node_bios/
-ls
-ff logging.json 
-ff genesis.json 
-ff config.ini 
-up
-ls
-cd node_00
-ls
-ff config.ini 
-ff genesis.json 
-up
-up
-up
-up
-ls
-ff genesis.json 
-ls -la
-ll
-cd test
-cd tests
-ls -la
-ll
-gr '--clean-run'
-gr '--wallet-port'
-echo localhost
-echo $localhost
-echo $bioshost
-echo "$bioshost"
-$TEST_VAR = 1
-TEST_VAR = 1
-TEST_VAR = =2
-(setenv "TEST_VAR" "1")
-echo TEST_VAR
-echo &TEST_VAR
-echo $TEST_VAR
-echo $TEST_VAR
-echo $TEST_VAR
-echo $TEST_VAR
-echo $TEST_VAR
-echo $BIOS_HOSTNAME
-echo $HOME
-echo $localhost
-echo $BIOS_HTTP_PORT
+cd 000
 ls
 up
 ls
-fnd eosio
-fnd boot
-fnd bootlog
-fnd bios
-fnd bios_boot.sh
-fnd bootlog.tct
-fnd bootlog.txt
-gr 'spawning child'
 up
-cd tests
-gr 'spawning child'
-gr '--max-transaction'
-gr 'system newaccount'
-gr 'processCleosCmd'
-up
-gr 'processCleosCmd'
-up
-cd eosio.contracts/
-gr 'newaccount'
-cd eosio.system/
-gr 'newaccount'
-cd include/
 ls
-cd eosio.system/
+cd measure
+cd measurements
 ls
-ff native.hpp 
+cd 000/
+ls
+ff NOTES 
+cd .e
+cd .emacs.d/
+ls
+cd karabiner/
+ls
+ff karabiner.json 
+la
+ls
+cd
+ls
+cd .config/karabiner/
+ls
+ff karabiner.json 
+ls
+cd scripts/
+ls
+ff open-calculator.sh 

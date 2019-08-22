@@ -1,0 +1,96 @@
+-*- mode: compilation; default-directory: "~/chainbase/build/" -*-
+Compilation started at Thu Jul 25 19:17:19
+
+cd /Users/john.debord/chainbase/build/ && make -j10 && /Users/john.debord/chainbase/build/test/token_transfer_emulation_test 
+[ 33%] Built target chainrocks
+[ 33%] Built target chainbase
+[ 46%] Built target token_transfer_emulation_test
+[ 60%] Built target chainrocks_index_type_test
+[ 73%] Built target chainrocks_database_type_rocksdb_test
+[ 86%] Built target chainrocks_database_type_test
+[100%] Built target chainbase_test
+Generating values...
+Done.
+Generating values...
+Done.
+Generating values...
+Done.
+Running 1 test case...
+_state:
+value.first: 0 value.second: 0
+value.first: 1 value.second: 8
+value.first: 2 value.second: 3
+value.first: 3 value.second: 4
+value.first: 4 value.second: 6
+value.first: 5 value.second: 1
+value.first: 6 value.second: 9
+value.first: 7 value.second: 7
+value.first: 8 value.second: 5
+value.first: 9 value.second: 2
+
+e:                           2
+e+1%10:                      3
+tmp:                         3
+database.get(e+1%10).second: 4
+
+e:                           1
+e+1%10:                      2
+tmp:                         8
+database.get(e+1%10).second: 4
+
+e:                           9
+e+1%10:                      0
+tmp:                         2
+database.get(e+1%10).second: 0
+
+e:                           7
+e+1%10:                      8
+tmp:                         7
+database.get(e+1%10).second: 5
+
+e:                           3
+e+1%10:                      4
+tmp:                         3
+database.get(e+1%10).second: 6
+
+e:                           8
+e+1%10:                      9
+tmp:                         7
+database.get(e+1%10).second: 0
+
+e:                           5
+e+1%10:                      6
+tmp:                         1
+database.get(e+1%10).second: 9
+
+e:                           4
+e+1%10:                      5
+tmp:                         3
+database.get(e+1%10).second: 9
+
+e:                           6
+e+1%10:                      7
+tmp:                         1
+database.get(e+1%10).second: 5
+
+e:                           0
+e+1%10:                      1
+tmp:                         2
+database.get(e+1%10).second: 4
+
+_state:
+value.first: 0 value.second: 4
+value.first: 1 value.second: 2
+value.first: 2 value.second: 8
+value.first: 3 value.second: 6
+value.first: 4 value.second: 9
+value.first: 5 value.second: 3
+value.first: 6 value.second: 5
+value.first: 7 value.second: 1
+value.first: 8 value.second: 0
+value.first: 9 value.second: 7
+
+
+*** No errors detected
+
+Compilation finished at Thu Jul 25 19:17:25
