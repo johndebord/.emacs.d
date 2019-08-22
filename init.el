@@ -20,6 +20,13 @@
 (require 'jd:emacs-modes.el
          "~/.emacs.d/emacs-modes/jd:emacs-modes.el")
 
+(setq default-frame-alist '((width . 184) (height . 44)))
+
+;; (add-to-list 'load-path
+;;               "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+
 (setq
    backup-by-copying t       ; don't clobber symlinks
    backup-directory-alist
@@ -31,10 +38,13 @@
 
 (require 'rtags) ;; optional, must have rtags installed
 ;; (cmake-ide-setup)
+(add-hook 'emacs-startup-hook '(lambda () (eshell)))
+
+(toggle-scroll-bar -1)
 
 (add-to-list 'load-path "/path/to/repo")
-(require 'call-graph)
-(call-graph)
+;;(require 'call-graph)
+;;(call-graph)
 
 ;;'(flycheck-info ((t (:underline (:color "#00cc00" :style wave)))))
 
@@ -611,7 +621,7 @@
  '(tmm-inactive ((t (:background "purple" :foreground "black"))))
  '(tool-bar ((t (:background "purple" :foreground "black"))))
  '(tooltip ((t (:background "purple" :foreground "black"))))
- '(trailing-whitespace ((t (:background "purple" :foreground "black"))))
+ '(trailing-whitespace ((t (:background "#ff0000"))))
  '(tty-menu-disabled-face ((t (:background "purple" :foreground "black"))))
  '(tty-menu-enabled-face ((t (:background "purple" :foreground "black"))))
  '(tty-menu-selected-face ((t (:background "purple" :foreground "black"))))
@@ -669,6 +679,11 @@
  '(ansi-color-names-vector
    ["#000000" "#ff0000" "#00cc00" "#ff7400" "#569cd6" "#d69d85" "#4ec9b0" "#e6e6e6"])
  '(package-selected-packages
+<<<<<<< HEAD
    (quote
     (rtags cmake-ide lsp-mode rmsbolt call-graph yasnippet modern-cpp-font-lock counsel-etags))))
+=======
+   '(gnuplot rmsbolt call-graph yasnippet modern-cpp-font-lock counsel-etags)))
+>>>>>>> 7baa5ded6010d67dbb6870a30ffb5a293d66ffb5
 (put 'narrow-to-region 'disabled nil)
+(put 'scroll-left 'disabled nil)

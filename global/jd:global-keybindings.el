@@ -55,7 +55,6 @@
 (define-key global-map (kbd "<jd:C-bks>") 'jd:backward-delete-word)
 (define-key global-map (kbd "<jd:C-spc>") 'cua-set-mark) 
 (define-key global-map (kbd "<C-a>") 'mark-whole-buffer)
-(define-key global-map (kbd "<C-b>") 'flymake-compile)
 (define-key global-map (kbd "<C-g>") 'keyboard-quit)
 (define-key global-map (kbd "<C-j>") 'jd:scroll-up)
 (define-key global-map (kbd "<C-l>") 'jd:scroll-down)
@@ -137,9 +136,19 @@
 (define-key global-map (kbd "<f4>") 'kmacro-end-or-call-macro)
 (define-key global-map (kbd "<f12>") 'scroll-lock-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Weird Mac Keybinds; fix later
+(define-key global-map (kbd "<C-tab>") 'jd:backward-window)
+(define-key input-decode-map (kbd "s-t")  [\s-\t])
+(define-key global-map (kbd "<s-t>") 'split-window-right)
+(define-key input-decode-map (kbd "C-t")  [\C-\t])
+(define-key global-map (kbd "<C-t>") 'split-window-below)
+
 (define-key global-map (kbd "<mouse-1>") 'mouse-set-point)
 (define-key global-map (kbd "<wheel-up>") 'mwheel-scroll)
 (define-key global-map (kbd "<wheel-down>") 'mwheel-scroll)
+(define-key global-map (kbd "<wheel-left>") '(lambda () (interactive) (scroll-right 1)))
+(define-key global-map (kbd "<wheel-right>") '(lambda () (interactive) (scroll-left 1)))
 (define-key global-map (kbd "<down-mouse-1>") 'mouse-drag-region)
 (define-key global-map (kbd "<drag-mouse-1>") 'mouse-set-region)
 (define-key global-map (kbd "<vertical-line> <down-mouse-1>") 'mouse-drag-vertical-line)

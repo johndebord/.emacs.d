@@ -8,11 +8,15 @@
   (interactive "^")
   (c-end-of-defun))
 
+(add-hook 'c++-mode-hook
+	  '(lambda () (setq compile-command "g++ -Wall -Wextra -std=c++11 -o prog main.cpp && ./prog")))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `c++-mode-map' --- `cc-mode.el'
 (defun jd:c++-mode-map ()
   (setf (cdr c++-mode-map) nil)
   (define-key c++-mode-map (kbd "<jd:tab>") 'c-indent-line-or-region)
+  (define-key c++-mode-map (kbd "<C-b>") 'flymake-compile)
   (define-key c++-mode-map (kbd "<C-i>") 'jd:c-beginning-of-defun-hl)
   (define-key c++-mode-map (kbd "<C-k>") 'jd:c-end-of-defun-hl)
   (define-key c++-mode-map (kbd "<C-;>") 'c-mark-function)
