@@ -1,0 +1,132 @@
+// g++ -std=c++11 -o prog main.cpp; ./prog
+
+#include <iostream>
+#include <type_traits>
+using namespace std;
+
+template<class T, std::size_t N>
+void func() {
+   typename std::aligned_storage<sizeof(T), alignof(T)>::type data[N];
+   
+}
+
+int main() {
+   //func();
+   return 0;
+}
+
+// #include <initializer_list>
+// #include <iostream>
+// #include <string>
+
+// using namespace std;
+
+// struct A {
+//    A () : s{"I'm in the data of Struct `A`"} {}
+   
+//    void print() const {
+//       cout << s << endl;
+//    }
+
+//    string s;
+// };
+
+// struct B : A {
+//    B() : s{"I'm in the data of Struct `B`"} {}
+
+//    void print() const {
+//       cout << s << endl;
+//    }
+
+//    string s;
+// };
+
+// initializer_list<A> use(B b) {
+//    b.print();
+   
+//    A a{b};
+//    a.print();
+   
+//    A& aref{b};
+//    aref.print();
+   
+//    const A& caref{b};
+//    caref.print();
+   
+//    return {b, a, aref, caref};
+// }
+
+// int main() {
+//    B b{};
+//    const initializer_list<A> il{use(b)};
+//    // for(auto x : il)
+//    //    cout << x.s << endl;
+
+//    for(auto& x : il) {
+//       // cout << "Addr: " << &x << endl;
+//       // cout << "typeid: " << typeid(x).name() << endl;
+//       cout << "s: " << x.s << endl;
+//    }
+      
+   
+//    return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+
+// using namespace std;
+
+// struct A {
+//    A(string s) : s{s} {}
+      
+//    string s{"I'm in the data of Struct `A`"};
+   
+//    void print() const {
+//       cout << s << endl;
+//    }
+// };
+
+// struct B : A {
+//    using A::A;
+//    string s{"I'm in the data of Struct `B`"};
+// };
+
+// int main() {
+//    B b{string("hii")};
+//    cout << b.A::s << endl;
+//    cout << b.B::s << endl;
+   
+//    return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+
+// using namespace std;
+
+// struct A {
+// public:
+//    virtual void print() {
+//       cout << "In `A`" << endl;
+//    }
+
+//    void print2() {
+//       cout << "In `A` again..." << endl;
+//    }
+// };
+
+// struct B : A {
+//    //using A::print2;
+//    void print() override {
+//       cout << "In `B`" << endl;
+//    }
+// };
+
+// int main() {
+//    B b;
+//    b.print2();
+   
+//    return 0;
+// }
+

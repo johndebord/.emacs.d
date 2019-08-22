@@ -3,9 +3,7 @@
 # key: contract
 # --
 // eosio-cpp -o con -fnative con.cpp; ./con
-#include <eosio/crypto.hpp>
-#include <eosio/contract.hpp>
-#include <eosio/print.hpp>
+#include <eosio/eosio.hpp>
 
 class [[eosio::contract]] ${1:con} : eosio::contract {
 public:
@@ -14,14 +12,12 @@ public:
    [[eosio::action]] void act() {
       $0eosio::print("ok\n");
    }
-    
-private:
 };
 
 int main() {
-   eosio::name                    self          {"account1"};
-   eosio::name                    first_receiver{"account2"};
-   eosio::datastream<const char*> datastream    {nullptr, 0};
+   eosio::name self{"account1"};
+   eosio::name first_receiver{"account2"};
+   eosio::datastream<const char*> datastream{nullptr, 0};
 
    con c{self, first_receiver, datastream};
 

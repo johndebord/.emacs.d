@@ -1,0 +1,18 @@
+#include <eosio/native/tester.hpp>
+#include <eosiolib/binary_extension.hpp>
+
+using namespace eosio::native;
+
+// Definitions in `eosio.cdt/libraries/eosiolib/binary_extension.hpp`
+EOSIO_TEST_BEGIN(binary_extension_test)
+   silence_output(false);
+
+   
+
+   silence_output(false);
+EOSIO_TEST_END
+
+int main(int argc, char* argv[]) {
+   EOSIO_TEST(binary_extension_test);
+   return has_failed();
+}

@@ -1,0 +1,25 @@
+#include <vector>
+
+#include <eosio/contract.hpp>
+#include <eosio/multi_index.hpp>
+
+using namespace eosio;
+
+struct [[eosio::contract]] con : eosio::contract {
+   using contract::contract;
+
+   struct [[eosio::table]] structure {
+      std::vector<int> vec;
+   };
+
+   [[eosio::action]] void act()
+   { }
+};
+
+/Users/john.debord/cdt-debug/release/bin/eosio-cpp -c -o con.o con.cpp
+
+/Users/john.debord/cdt-debug/release/bin/eosio-cpp -o con.out con.cpp
+
+/Users/john.debord/cdt-debug/release/bin/eosio-cpp -fno-abigen -o con.out con.cpp
+
+/Users/john.debord/cdt-debug/release/bin/eosio-ld -fno-abigen -o con.wasm con.o

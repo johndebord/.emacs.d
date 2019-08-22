@@ -29,6 +29,9 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
+(require 'rtags) ;; optional, must have rtags installed
+;; (cmake-ide-setup)
+
 (add-to-list 'load-path "/path/to/repo")
 (require 'call-graph)
 (call-graph)
@@ -215,6 +218,7 @@
  '(highlight ((t (:background "#535353"))))
  '(hl-line ((t (:background "#535353"))))
  '(holiday ((t (:background "purple" :foreground "black"))))
+ '(homoglyph ((t (:foreground "cyan"))))
  '(info-header-node ((t (:background "purple" :foreground "black"))))
  '(info-header-xref ((t (:background "purple" :foreground "black"))))
  '(info-index-match ((t (:background "purple" :foreground "black"))))
@@ -666,5 +670,5 @@
    ["#000000" "#ff0000" "#00cc00" "#ff7400" "#569cd6" "#d69d85" "#4ec9b0" "#e6e6e6"])
  '(package-selected-packages
    (quote
-    (rmsbolt call-graph yasnippet modern-cpp-font-lock counsel-etags))))
+    (rtags cmake-ide lsp-mode rmsbolt call-graph yasnippet modern-cpp-font-lock counsel-etags))))
 (put 'narrow-to-region 'disabled nil)

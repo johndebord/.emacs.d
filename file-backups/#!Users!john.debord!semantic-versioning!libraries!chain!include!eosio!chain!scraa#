@@ -1,0 +1,1 @@
+./cleos push action eosio.msig approve '{ "proposer":"eosioname1", "proposal_name":"", "level":{ "actor":"eosioname1","permission":"owner" }, "proposal_hash":"efbb5450f4528e0dd33ff1873f52a175e8f280eb591c6725a1227b9aec8eac0e" }' --json --skip-sign --dont-broadcast > approve.json; cat approve.json

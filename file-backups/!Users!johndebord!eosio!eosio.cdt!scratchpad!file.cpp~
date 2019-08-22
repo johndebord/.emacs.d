@@ -1,0 +1,13 @@
+#include <eosiolib/eosio.hpp>
+#include <eosio/native/testing.hpp>
+
+using namespace eosio;
+using namespace eosio::native;
+
+int main(int argc, char *argv[])
+{
+   name n{"john"};
+   print(n);
+   
+   return 0;
+}

@@ -1,4 +1,7 @@
-alias yarn  $*
+alias clanger /Users/john.debord/Downloads/clang+llvm-8.0.0-x86_64-apple-darwin/bin/clang
+alias rc /Users/john.debord/final-testing/ricardian-template-toolkit/bin/rc
+alias cleos /usr/local/bin/cleos $*
+alias yarn $*
 alias la ls -a $*
 alias lla ls -la $*
 alias up cd .. $*
@@ -7,3 +10,5 @@ alias fnd find . -name $*
 alias gr grep -rnw './' -e $*
 alias et /Users/johndebord/et $*
 alias nil $*
+alias prog /Users/john.debord/cdt-debug/debug/bin/eosio-cpp $*
+alias UP LS $*

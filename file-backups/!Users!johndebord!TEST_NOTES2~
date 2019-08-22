@@ -1,0 +1,12 @@
+[✓] asset.hpp
+[✓] binary_extension.hpp
+[*] datastream.hpp
+[✓] eosio.hpp
+[✓] fixed_bytes.hpp
+[✓] name.hpp
+[✓] public_key.hpp
+[*] serialize.hpp
+[✓] symbol.hpp
+[✓] system.hpp
+[✓] time.hpp
+[✓] varint.hpp

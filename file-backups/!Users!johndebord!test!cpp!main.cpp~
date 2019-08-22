@@ -1,0 +1,20 @@
+#pragma GCC diagnostic ignored "-W#pragma-messages"
+#pragma GCC diagnostic ignored "-Wunknown-pragmas"
+#pragma message "Now Compiling File " __FILE__ "..."
+#pragma diagnostic pop
+#pragma diagnostic pop
+
+#include <iostream>
+using namespace std;
+
+// int __foo() { return 1; }
+// int f() __attribute__((weak, alias("__f")));
+
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+int main(int argc, char *argv[]) {
+#pragma diagnostic pop
+
+   cout << "ok\n";
+   
+   return 0;
+}

@@ -486,6 +486,18 @@
 (define-key input-decode-map (kbd "C-M-<tab>")           (kbd "<jd:C-M-tab>"))
 (define-key input-decode-map (kbd "C-M-S-<iso-lefttab>") (kbd "<jd:C-M-S-tab>"))
 
+;;; Work-around for Block.one Mac Desktop due to key changes in Karabiner Elements
+(define-key input-decode-map (kbd "s-a") (kbd "<C-a>"))
+(define-key input-decode-map (kbd "s-c") (kbd "<C-c>"))
+(define-key input-decode-map (kbd "s-f") (kbd "<C-f>"))
+(define-key input-decode-map (kbd "s-r") (kbd "<C-r>"))
+(define-key input-decode-map (kbd "s-s") (kbd "<C-s>"))
+(define-key input-decode-map (kbd "s-t") (kbd "<C-t>"))
+(define-key input-decode-map (kbd "s-v") (kbd "<C-v>"))
+(define-key input-decode-map (kbd "s-w") (kbd "<C-w>"))
+(define-key input-decode-map (kbd "s-x") (kbd "<C-x>"))
+(define-key input-decode-map (kbd "s-z") (kbd "<C-z>"))
+
 ;; (for in the future when I get the hang of Elisp)
 ;; (define-key input-decode-map (kbd "<mouse-1>")       (kbd "<jd:m1>"))
 ;; (define-key input-decode-map (kbd "<mouse-4>")       (kbd "<jd:m4>"))

@@ -1,128 +1,128 @@
-git add .
-git commit -m "Add updated `eosio.system.abi` and `eosio.system.wasm`"
-git push origin master
-ll
-cd test
-cd tests
-ls
-ll
-ff Testing/
-ff main.cpp 
-ff chain_plugin_tests.cpp 
-ff get_table_tests.cpp 
-up
-cd build/
-ls
-ff CTestTestfile.cmake 
-ff CMakeCache.txt 
-cd CMakeFiles/
-ls
-ff feature_tests.c
-up
-s
-ls
-ff genesis.json 
-ff Makefile 
-cd bin
-ls
-up
-cd Testing/
-ls
-cd Temporary/
-ls
-ff CTestCostData.txt 
-ff LastTest.log 
-ff LastTestsFailed.log 
-up
-ls
-up
-ls
-ff last_run.json 
-cd test_wallet_0/
-ls
-ff keosd.sock 
-ff config.ini 
-ff ignition.wallet 
-ff test.wallet 
-ff wallet.lock 
-up
-ls
-cd staging/
-ls
-cd etc/
-ls
-cd eosio/
-ls
-cd node_bios/
-ls
-ff logging.json 
-ff genesis.json 
-ff config.ini 
-up
-ls
-cd node_00
-ls
-ff config.ini 
-ff genesis.json 
-up
-up
-up
-up
-ls
-ff genesis.json 
-ls -la
-ll
-cd test
-cd tests
-ls -la
-ll
-gr '--clean-run'
-gr '--wallet-port'
-echo localhost
-echo $localhost
-echo $bioshost
-echo "$bioshost"
-$TEST_VAR = 1
-TEST_VAR = 1
-TEST_VAR = =2
-(setenv "TEST_VAR" "1")
-echo TEST_VAR
-echo &TEST_VAR
-echo $TEST_VAR
-echo $TEST_VAR
-echo $TEST_VAR
-echo $TEST_VAR
-echo $TEST_VAR
-echo $BIOS_HOSTNAME
-echo $HOME
-echo $localhost
-echo $BIOS_HTTP_PORT
-ls
-up
-ls
-fnd eosio
-fnd boot
-fnd bootlog
-fnd bios
-fnd bios_boot.sh
-fnd bootlog.tct
-fnd bootlog.txt
-gr 'spawning child'
-up
-cd tests
-gr 'spawning child'
-gr '--max-transaction'
-gr 'system newaccount'
-gr 'processCleosCmd'
-up
-gr 'processCleosCmd'
-up
-cd eosio.contracts/
-gr 'newaccount'
-cd eosio.system/
-gr 'newaccount'
 cd include/
 ls
-cd eosio.system/
+cd chainbase/
 ls
-ff native.hpp 
+cd rocksdb-stuff/
+ls
+cd steem/pl
+cd steem/
+ls
+cd libraries/
+ls
+cd account_history_rocksdb/
+ls
+mv study study.cpp
+ff study.cpp 
+ls
+ll
+ls
+ls
+cd chain
+cd chainbase
+ls
+cd
+ff start.sh 
+cd chain
+cd chainbase
+ls
+cd include/
+;s
+ls
+cd chainbase/
+ls
+cd rocksdb-stuff/
+ls
+ls
+cd steem/
+ls
+cd lir
+cd libraries/
+ls
+cd account_history_rocksdb/
+ls
+ff account_history_rocksdb_plugin.cpp 
+cd chainrocks3/
+ls
+cd include/
+ls
+cd cha
+cd chainbase/
+ls
+up
+ls
+up
+ls
+up
+ls
+cd chainbase
+ls
+cd include/
+ls
+cd chainbase/
+ls
+cd rocksdb-stuff/
+ls
+ls
+cd steem/
+ls
+cd libraries/
+ls
+cd account_history_rocksdb/
+ls
+ff account_history_rocksdb_plugin.cpp 
+cd
+cd .em
+cd .emacs.d
+ls
+ls
+cd emacs-modes/
+ls
+cd third-party-packages/
+;s
+ls
+ff jd:third-party-packages.el 
+ls
+cd mkdir gnuplot-mode
+mkdir gnuplot-mode
+l
+ls
+ls
+cd gnuplot-mode/
+ls
+touch jd:gnuplot-mode-keybindings.el
+touch jd:gnuplot-mode-settings.el
+touch jd:gnuplot-mode.el
+ls
+cd chainbase
+ls
+cd build/
+ls
+cd te
+cd test/
+ls
+ls
+ls
+ff NOTES-BEFORE-VACATION 
+ls
+df
+ls
+pwd
+pwd
+ls
+ls
+up
+up
+ls
+cd home/emacs.d/
+ls
+cd karabiner/
+l
+ls
+ff karabiner.json 
+ls
+lls
+ls
+ff NOTES 
+ls
+ls
+ff ok
