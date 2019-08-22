@@ -53,9 +53,9 @@
 ;;;;;;;;;;;;;;
 ;;; `files.el'
 (defalias 'ff 'find-file)
-(setq auto-save-file-name-transforms `((".*" ,"~/.emacs.d/file-backups/" t)))
+(setq auto-save-file-name-transforms `(("*" ,"~/.emacs.d/file-backups/" t)))
 (setq backup-by-copying t)
-(setq backup-directory-alist `((".*" . ,"~/.emacs.d/file-backups/")))
+(setq backup-directory-alist `(("*" . ,"~/.emacs.d/file-backups/")))
 (setq large-file-warning-threshold nil)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
@@ -92,7 +92,7 @@
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; `scroll-bar.el'
-;;;(scroll-bar-mode 0)
+(scroll-bar-mode 0)
 
 ;;;;;;;;;;;;;;;
 ;;; `simple.el'

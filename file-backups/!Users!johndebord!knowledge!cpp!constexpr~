@@ -1,4 +1,0 @@
-applied to objects:
-const - defines an object as constant
-constexpr - defines an object as constant that must be evaluated at compile-time
-

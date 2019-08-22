@@ -1,8 +1,0 @@
-g++ \
-    -I/usr/local/ \
-    -I/usr/local/eosio/lib \
-    -o prog main.cpp \
-    -lboost_system \
-    -leosio_testing \
-    -leosio_chain;
-./prog

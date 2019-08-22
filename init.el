@@ -1,12 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Author: John DeBord
-
-;;;;;;;;
-;;; TODO
-;;; `process-list'? figure out major mode
-;;; `info-emacs-manual' figure out major mode
-;;; `reb-mode' regex builder mode
-;;; `package-menu-mode'
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -20,34 +12,7 @@
 (require 'jd:emacs-modes.el
          "~/.emacs.d/emacs-modes/jd:emacs-modes.el")
 
-(setq default-frame-alist '((width . 184) (height . 44)))
-
-;; (add-to-list 'load-path
-;;               "~/.emacs.d/plugins/yasnippet")
-(require 'yasnippet)
-(yas-global-mode 1)
-
-(setq
-   backup-by-copying t       ; don't clobber symlinks
-   backup-directory-alist
-    '(("." . "~/.temp-saves/"))    ; don't litter my fs tree
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)       ; use versioned backups
-
-(require 'rtags) ;; optional, must have rtags installed
-;; (cmake-ide-setup)
-(add-hook 'emacs-startup-hook '(lambda () (eshell)))
-
-(toggle-scroll-bar -1)
-
-(add-to-list 'load-path "/path/to/repo")
-;;(require 'call-graph)
-;;(call-graph)
-
-;;'(flycheck-info ((t (:underline (:color "#00cc00" :style wave)))))
-
+;;; Factor this out into a theme once all modes/color-combinations are established
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -671,19 +636,3 @@
  '(window-divider-last-pixel ((t (:background "purple" :foreground "black"))))
  '(yas--field-debug-face ((t (:background "#898888"))) t)
  '(yas-field-highlight-face ((t (:background "#535353")))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#000000" "#ff0000" "#00cc00" "#ff7400" "#569cd6" "#d69d85" "#4ec9b0" "#e6e6e6"])
- '(package-selected-packages
-<<<<<<< HEAD
-   (quote
-    (rtags cmake-ide lsp-mode rmsbolt call-graph yasnippet modern-cpp-font-lock counsel-etags))))
-=======
-   '(gnuplot rmsbolt call-graph yasnippet modern-cpp-font-lock counsel-etags)))
->>>>>>> 7baa5ded6010d67dbb6870a30ffb5a293d66ffb5
-(put 'narrow-to-region 'disabled nil)
-(put 'scroll-left 'disabled nil)

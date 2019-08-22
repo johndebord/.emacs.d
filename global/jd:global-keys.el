@@ -787,7 +787,6 @@
 (define-key input-decode-map (kbd "s-S-<iso-lefttab>")   (kbd "<jd:C-S-tab>"))
 (define-key input-decode-map (kbd "s-M-<tab>")           (kbd "<jd:C-M-tab>"))
 (define-key input-decode-map (kbd "s-M-S-<iso-lefttab>") (kbd "<jd:C-M-S-tab>"))
->>>>>>> 7baa5ded6010d67dbb6870a30ffb5a293d66ffb5
 
 ;; (for in the future when I get the hang of Elisp)
 ;; (define-key input-decode-map (kbd "<mouse-1>")       (kbd "<jd:m1>"))
