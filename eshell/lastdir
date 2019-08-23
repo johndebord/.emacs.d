@@ -1,6 +1,3 @@
-/Users/john.debord/chainrocks3/include/chainbase
-/Users/john.debord/chainrocks3/include
-/Users/john.debord/chainrocks3
 /Users/john.debord/chainbase/include/chainbase
 /Users/john.debord/chainbase/include/chainbase/rocksdb-stuff
 /Users/john.debord/chainbase/include/chainbase/rocksdb-stuff/steem
@@ -15,7 +12,6 @@
 /Users/john.debord/.config/configstore
 /Users/john.debord/.config/karabiner
 /Users/john.debord/.config
-/Users/john.debord
 /Users/john.debord/chainbase/include
 /Users/john.debord/chainbase/test
 /Users/john.debord/chainbase/src
@@ -23,10 +19,15 @@
 /Users/john.debord/chainbase/include/chainbase
 /Users/john.debord/.emacs.d/elpa
 /Users/john.debord/.emacs.d/emacs-modes/major-modes
-/Users/john.debord/.emacs.d/emacs-modes
 /Users/john.debord/.emacs.d/emacs-modes/third-party-packages/sr-speedbar-mode
-/Users/john.debord/.emacs.d/emacs-modes/third-party-packages
-/Users/john.debord/.emacs.d/emacs-modes/third-party-packages/sr-speedbar
 ~
-/Users/john.debord/.emacs.d
 /Users/john.debord/.emacs.d/global
+/Users/john.debord/eos/programs/nodeos
+/Users/john.debord/eos/programs
+/Users/john.debord/eos
+/Users/john.debord
+/Users/john.debord/.emacs.d
+/Users/john.debord/.emacs.d/emacs-modes/third-party-packages/sr-speedbar
+/Users/john.debord/.emacs.d/emacs-modes/third-party-packages
+/Users/john.debord/.emacs.d/emacs-modes
+/Users/john.debord/.emacs.d

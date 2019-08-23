@@ -1,22 +1,4 @@
 ls
-up
-ls
-cd karabiner/
-ls
-ff karabiner.json 
-ls
-cp karabiner.json karabiner-mac-desktop.jsona
-mv karabiner-mac-desktop.jsona karabiner-mac-desktop.json
-ls
-ls
-mv karabiner-mac-desktop.json ../../home/emacs.d/
-ls
-up
-up
-ls
-ls
-ls
-ls
 cd .em
 cd .emacs.d
 ls
@@ -126,3 +108,21 @@ cd global/
 ack scroll-left
 ack define key
 ack define-key
+up
+up
+up
+ls
+cd .em
+cd .emacs.d
+ls
+git status
+cd emacs-modes/third-party-packages/sr-speedbar/
+ls
+ls
+ls -la
+up
+up
+up
+git add .
+git commit -m "Continuation"
+git push origin mac-os
