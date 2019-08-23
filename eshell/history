@@ -1,128 +1,128 @@
 ls
-clang main.cpp
-clang -g main.cpp
-cd
-ls
-cd home/emacs.d/
-ls
-ls
-mv karabiner* ../../.emacs.d/karabiner/
-cd third-party-packages/
-ls
-ls
 up
 ls
-cd third-party-packages/
+cd karabiner/
 ls
-cd gud-lldb/
+ff karabiner.json 
 ls
-ff jd:gud-lldb.el 
-up
-ls
-ls
-cd cmake-mode/
-ls
-ff jd:cmake-mode.el 
-ls
-up
-ls
-cd counsel
-ls
-ff jd:counsel.el 
-up
-ls
-cd counsel-etags/
-ls
-ff jd:counsel-etags.el 
-up
-ls
-cd gnuplot-mode/
-ls
-ff jd:gnuplot-mode.el 
-ls
-up
-ls
-cd cmake-mode/
-ls
-up
-[ls]
-ls
-cd ivy/
+cp karabiner.json karabiner-mac-desktop.jsona
+mv karabiner-mac-desktop.jsona karabiner-mac-desktop.json
 ls
 ls
-ff jd:ivy.el 
+mv karabiner-mac-desktop.json ../../home/emacs.d/
 ls
-up
-ls
-cd swiper/
-ls
-ff jd:swiper.el 
-up
-ls
-cd yasnippet/
-ls
-ff jd:yasnippet
-ff jd:yasnippet.el 
-ls
-ff jd:yasnippet-keybindings.el 
-up
-ls
-ff jd:third-party-packages.el 
-ls
-cd gud-lldb/
-s
-ls
-ff jd:gud-lldb.el 
-ls
-up
-ls
-ff jd:third-party-packages.el 
-up
-ls
-ff jd:emacs-modes.el 
-cd minor-modes/
-ls
-ff jd:minor-modes.el 
-up
-ls
-cd major-modes/
-ls
-ff jd:major-modes.el 
 up
 up
 ls
 ls
-ff global/
-cd global/
 ls
-ff jd:global-keys.el 
 ls
-up
+cd .em
+cd .emacs.d
 ls
-ff init.el 
+ls
+git pull
+git branch
 ls
 git status
-ls
-cd auto-save-list/
-ls
-ls -la
-ff .saves-17025-jdebord~
-rm .saves-170*
-ls
-ls -la
-up
+git add .
+git commit -m "Pushing from desktop"
+git push origin master
+git pull
+git pull origin mac-os
+git pull origin mac-os
+git status
+git add init.el 
+git add .
+git commit -m "Update config"
+git push origin mac-os
+l
 ls
 git status
 git add .
 git commit -m "Continuation"
 git push origin mac-os
-ls
-ff .gitignore
-ls
-git status
-ls
-ls -la
-rm .lsp-session-v1 
+cd
 ls
 ls
-ff .gitignore 
+cd chainbase
+ls
+git branch
+git pull
+cd include/
+ls
+up
+ls
+cd test/
+ls
+ff token_transfer_emulation_rocksdb_batch_test.cpp 
+ls
+cd chainbase
+ls
+cd src/
+ls
+ff chainbase.cpp 
+cd chainbase
+ls
+cd src/
+ls
+up
+ls
+cd include/chainbase/
+ls
+ff chainbase.hpp 
+cd .em
+cd .emacs.d
+ls
+cd elpa/
+ls
+mv sr-speedbar-20161025.831/ sr-speedbar
+rm sr-speedbar-readme.txt 
+ls
+up
+ls
+cd emacs-modes/major-modes/
+ls
+mv speedbar-mode/ ../third-party-packages/sr-speedbar-mode
+up
+ls
+cd third-party-packages/
+ls
+cd sr-speedbar-mode/
+ls
+up
+ls
+mv sr-speedbar-mode/ sr-speedbar
+cd sr-speedbar/
+ls
+mv jd:speedbar-mode.el sr-speedbar.el 
+mv jd:speedbar-mode-settings.el sr-speedbar-settings.el 
+mv jd:speedbar-mode-keybindings.el sr-speedbar-keybindings.el 
+ls
+ff sr-speedbar.el 
+ff sr-speedbar-keybindings.el 
+ff sr-speedbar-settings.el 
+ls
+rm *~
+;s
+ls
+cat *
+ls
+mv sr-speedbar.el jd:sr-speedbar.el 
+mv sr-speedbar-keybindings.el jd:sr-speedbar-keybindings.el 
+mv sr-speedbar-settings.el jd:sr-speedbar-settings.el 
+ls
+ff jd:sr-speedbar-keybindings.el 
+ff jd:sr-speedbar.el 
+ff jd:sr-speedbar-keybindings.el 
+ls
+ff 1GDB-ON-MAC 
+brew install ack
+ack --help
+cd .em
+cd .emacs.d
+ls
+cd global/
+ack scroll-left
+ack define key
+ack define-key

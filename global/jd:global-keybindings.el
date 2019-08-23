@@ -131,6 +131,7 @@
 (define-key global-map (kbd "<f2>") 'eshell)
 (define-key global-map (kbd "<f3>") 'kmacro-start-macro)
 (define-key global-map (kbd "<f4>") 'kmacro-end-or-call-macro)
+(define-key global-map (kbd "<f10>") 'sr-speedbar-toggle)
 (define-key global-map (kbd "<f12>") 'scroll-lock-mode)
 
 ;;; Weird Mac keybind

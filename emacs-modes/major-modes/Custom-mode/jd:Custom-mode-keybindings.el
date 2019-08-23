@@ -27,6 +27,7 @@
   (define-key custom-mode-map (kbd "<jd:ret>") 'Custom-newline)
   (define-key custom-mode-map (kbd "<jd:tab>") 'widget-forward)
   (define-key custom-mode-map (kbd "<jd:S-tab>") 'widget-backward)
+  (define-key custom-mode-map (kbd "<tab>") 'widget-backward)
   (define-key custom-mode-map (kbd "q") 'quit-window))
 (add-hook 'Custom-mode-hook 'jd:custom-mode-map)
 

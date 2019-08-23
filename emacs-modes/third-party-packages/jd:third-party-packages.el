@@ -10,6 +10,8 @@
          "~/.emacs.d/emacs-modes/third-party-packages/gud-lldb/jd:gud-lldb.el")
 (require 'jd:ivy.el
          "~/.emacs.d/emacs-modes/third-party-packages/ivy/jd:ivy.el")
+(require 'jd:sr-speedbar.el
+         "~/.emacs.d/emacs-modes/third-party-packages/sr-speedbar/jd:sr-speedbar.el")
 (require 'jd:swiper.el
          "~/.emacs.d/emacs-modes/third-party-packages/swiper/jd:swiper.el")
 (require 'jd:yasnippet.el
