@@ -7,70 +7,122 @@ cd home/emacs.d/
 ls
 ls
 mv karabiner* ../../.emacs.d/karabiner/
+cd third-party-packages/
+ls
+ls
+up
+ls
+cd third-party-packages/
+ls
+cd gud-lldb/
+ls
+ff jd:gud-lldb.el 
+up
+ls
+ls
+cd cmake-mode/
+ls
+ff jd:cmake-mode.el 
+ls
+up
+ls
+cd counsel
+ls
+ff jd:counsel.el 
+up
+ls
+cd counsel-etags/
+ls
+ff jd:counsel-etags.el 
+up
+ls
+cd gnuplot-mode/
+ls
+ff jd:gnuplot-mode.el 
+ls
+up
+ls
+cd cmake-mode/
+ls
+up
+[ls]
+ls
+cd ivy/
+ls
+ls
+ff jd:ivy.el 
+ls
+up
+ls
+cd swiper/
+ls
+ff jd:swiper.el 
+up
+ls
+cd yasnippet/
+ls
+ff jd:yasnippet
+ff jd:yasnippet.el 
+ls
+ff jd:yasnippet-keybindings.el 
+up
+ls
+ff jd:third-party-packages.el 
+ls
+cd gud-lldb/
+s
+ls
+ff jd:gud-lldb.el 
+ls
+up
+ls
+ff jd:third-party-packages.el 
+up
+ls
+ff jd:emacs-modes.el 
 cd minor-modes/
 ls
-ls
+ff jd:minor-modes.el 
 up
 ls
 cd major-modes/
 ls
+ff jd:major-modes.el 
+up
 up
 ls
-cd minor-modes/
 ls
-cd abbrev-mode/
+ff global/
+cd global/
 ls
-ff jd:abbrev-mode.el 
-up
-ls
-cd cua-
-cd cua-mode/
-ls
-ff jd:cua-mode.el 
-up
-ls
-cd cua-rectangle-mark-mode/
-ls
-ff jd:cua-rectangle-mark-mode.el 
-up
-ls
-cd flycheck-mode/
-ls
-ff cl-generic.el 
-ls
-rm seq.el let-alist.el dash.el cl-generic.el 
-ls
-rm flycheck.el 
-ls
-ff jd:flycheck-mode.el 
-up
-ls
-rm -r flycheck-mode/
-ls
-cd flymake-mode/
-ls
-ff jd:flymake-mode.el 
-up
-rm -r flymake-mode/
-ls
-cd gud-minor-mode/
-ls
-ff jd:gud-minor-mode.el 
-up
-ls
-cd isearch-mode/
-ls
-ff jd:isearch-mode.el 
-up
-ls
-rm -r isearch-mode/
-ls
-cd view-mode/
-ls
-ff jd:view-mode
-ff jd:view-mode.el 
+ff jd:global-keys.el 
 ls
 up
 ls
-ff jd:minor-modes.el 
+ff init.el 
 ls
+git status
+ls
+cd auto-save-list/
+ls
+ls -la
+ff .saves-17025-jdebord~
+rm .saves-170*
+ls
+ls -la
+up
+ls
+git status
+git add .
+git commit -m "Continuation"
+git push origin mac-os
+ls
+ff .gitignore
+ls
+git status
+ls
+ls -la
+rm .lsp-session-v1 
+ls
+ls
+ff .gitignore 
