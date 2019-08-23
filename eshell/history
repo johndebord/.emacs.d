@@ -1,128 +1,76 @@
 ls
-cd libraries/
-ls
-cd account_history_rocksdb/
-ls
-mv study study.cpp
-ff study.cpp 
-ls
-ll
-ls
-ls
-cd chain
-cd chainbase
-ls
+clang main.cpp
+clang -g main.cpp
 cd
-ff start.sh 
-cd chain
-cd chainbase
-ls
-cd include/
-;s
-ls
-cd chainbase/
-ls
-cd rocksdb-stuff/
-ls
-ls
-cd steem/
-ls
-cd lir
-cd libraries/
-ls
-cd account_history_rocksdb/
-ls
-ff account_history_rocksdb_plugin.cpp 
-cd chainrocks3/
-ls
-cd include/
-ls
-cd cha
-cd chainbase/
-ls
-up
-ls
-up
-ls
-up
-ls
-cd chainbase
-ls
-cd include/
-ls
-cd chainbase/
-ls
-cd rocksdb-stuff/
-ls
-ls
-cd steem/
-ls
-cd libraries/
-ls
-cd account_history_rocksdb/
-ls
-ff account_history_rocksdb_plugin.cpp 
-cd
-cd .em
-cd .emacs.d
-ls
-ls
-cd emacs-modes/
-ls
-cd third-party-packages/
-;s
-ls
-ff jd:third-party-packages.el 
-ls
-cd mkdir gnuplot-mode
-mkdir gnuplot-mode
-l
-ls
-ls
-cd gnuplot-mode/
-ls
-touch jd:gnuplot-mode-keybindings.el
-touch jd:gnuplot-mode-settings.el
-touch jd:gnuplot-mode.el
-ls
-cd chainbase
-ls
-cd build/
-ls
-cd te
-cd test/
-ls
-ls
-ls
-ff NOTES-BEFORE-VACATION 
-ls
-df
-ls
-pwd
-pwd
-ls
-ls
-up
-up
 ls
 cd home/emacs.d/
 ls
-cd karabiner/
-l
 ls
-ff karabiner.json 
-ls
-lls
-ls
-ff NOTES 
+mv karabiner* ../../.emacs.d/karabiner/
+cd minor-modes/
 ls
 ls
-ff ok
-cd
+up
 ls
-ff t1
-mv t1 karabiner-mac-laptop.json
-mv karabiner-mac-laptop.json home/emacs.d/
-mv t2 NOTES
-mv NOTES home/emacs.d/
+cd major-modes/
+ls
+up
+ls
+cd minor-modes/
+ls
+cd abbrev-mode/
+ls
+ff jd:abbrev-mode.el 
+up
+ls
+cd cua-
+cd cua-mode/
+ls
+ff jd:cua-mode.el 
+up
+ls
+cd cua-rectangle-mark-mode/
+ls
+ff jd:cua-rectangle-mark-mode.el 
+up
+ls
+cd flycheck-mode/
+ls
+ff cl-generic.el 
+ls
+rm seq.el let-alist.el dash.el cl-generic.el 
+ls
+rm flycheck.el 
+ls
+ff jd:flycheck-mode.el 
+up
+ls
+rm -r flycheck-mode/
+ls
+cd flymake-mode/
+ls
+ff jd:flymake-mode.el 
+up
+rm -r flymake-mode/
+ls
+cd gud-minor-mode/
+ls
+ff jd:gud-minor-mode.el 
+up
+ls
+cd isearch-mode/
+ls
+ff jd:isearch-mode.el 
+up
+ls
+rm -r isearch-mode/
+ls
+cd view-mode/
+ls
+ff jd:view-mode
+ff jd:view-mode.el 
+ls
+up
+ls
+ff jd:minor-modes.el 
 ls

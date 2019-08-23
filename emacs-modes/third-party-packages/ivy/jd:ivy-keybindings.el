@@ -1,8 +1,5 @@
-(provide 'jd:ivy-keybindings.el)
-
 (define-key global-map (kbd "<C-x> b") 'ivy-switch-buffer)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `ivy-minibuffer-map' --- `ivy.el'
 (setf (cdr ivy-minibuffer-map) nil)
 (define-key ivy-minibuffer-map (kbd "<up>") 'ivy-previous-line)
@@ -21,18 +18,16 @@
 (define-key ivy-minibuffer-map (kbd "<C-M-i>") 'ivy-previous-history-element)
 (define-key ivy-minibuffer-map (kbd "<C-M-k>") 'ivy-next-history-element)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `ivy-mode-map' --- `ivy.el'
 (setf (cdr ivy-mode-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `ivy-occur-grep-mode-map' --- `ivy.el'
 (setf (cdr ivy-occur-grep-mode-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `ivy-occur-mode-map' --- `ivy.el'
 (setf (cdr ivy-occur-mode-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `ivy-switch-buffer-map' --- `ivy.el'
 (setf (cdr ivy-switch-buffer-map) nil)
+
+(provide 'jd:ivy-keybindings.el)

@@ -1,5 +1,3 @@
-(provide 'jd:counsel.el)
-
 (require 'counsel)
 (require 'counsel-etags)
 
@@ -7,3 +5,5 @@
          "~/.emacs.d/emacs-modes/third-party-packages/counsel/jd:counsel-keybindings.el")
 (require 'jd:counsel-settings.el
          "~/.emacs.d/emacs-modes/third-party-packages/counsel/jd:counsel-settings.el")
+
+(provide 'jd:counsel.el)

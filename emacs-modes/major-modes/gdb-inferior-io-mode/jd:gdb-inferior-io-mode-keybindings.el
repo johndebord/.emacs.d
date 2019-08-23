@@ -1,6 +1,3 @@
-(provide 'jd:gdb-inferior-io-mode-keybindings.el)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `gdb-inferior-io-mode-map' --- `gdb-mi.el'
 (defun jd:gdb-inferior-io-mode-map ()
   (setf (cdr gdb-inferior-io-mode-map) nil)
@@ -12,3 +9,5 @@
   (define-key gdb-inferior-io-mode-map (kbd "<C-c> <C-d>") 'gdb-io-eof)
   (define-key gdb-inferior-io-mode-map (kbd "<C-c> <C-z>") 'gdb-io-stop))
 (add-hook 'gdb-inferior-io-mode-hook 'jd:gdb-inferior-io-mode-map)
+
+(provide 'jd:gdb-inferior-io-mode-keybindings.el)

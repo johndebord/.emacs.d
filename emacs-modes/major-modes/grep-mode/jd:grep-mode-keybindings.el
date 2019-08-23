@@ -1,6 +1,3 @@
-(provide 'jd:grep-mode-keybindings.el)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `grep-mode-map' --- `grep.el'
 (defun jd:grep-mode-map ()
   (setf (cdr grep-mode-map) nil)
@@ -12,3 +9,5 @@
   (define-key grep-mode-map (kbd "<C-c> <jd:S-tab>") 'compilation-previous-file)
   (define-key grep-mode-map (kbd "<C-c> <C-c>") 'kill-compilation))
 (add-hook 'grep-mode-hook 'jd:grep-mode-map)
+
+(provide 'jd:grep-mode-keybindings.el)
