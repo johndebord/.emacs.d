@@ -1,0 +1,264 @@
+// TODO:
+// Consider: explicit, inline, noexcept
+
+#include <cstring>   // memcpy, strlen, strcpy
+#include <stdexcept> // std::out_of_range
+#include <iostream>
+
+#include "eostring.hpp"
+
+using uint8_t = unsigned char;
+
+// namespace eostring_impl
+// {
+//     char* strcpy(char* d, const char* s)
+//     {
+//         while(*d++ = *s++);
+//         return d;
+//     }
+    
+//     size_t strlen(const char* s)
+//     {
+//         size_t len{};
+//         while(*s++, ++len);
+//         return len;
+//     }
+
+//     void* memcpy(void* d, const void* s, size_t n )
+//     {
+//         while (n--) *cp++ = static_cast<uint8_t>(*s)++;
+//         return d;
+//     }
+// };
+
+class eostring;
+
+static constexpr size_t npos(-1);
+static const eostring empty_str{""};
+
+eostring::eostring()
+{
+    _size = 0;
+    _capacity = 0;
+    _begin = nullptr;
+}
+
+eostring::eostring(const eostring& s)
+{
+    _size = s.size();
+    _capacity = _size; // Change once allocator implemented
+    _begin = new char[_size];
+    strcpy(_begin, s.data());
+}
+
+eostring::eostring(const eostring& s, size_t pos, size_t len = npos)
+{
+    _size = len - pos;
+    _capacity = _size; // Change once allocator implemented
+    _begin = new char[_size];
+    strcpy(_begin, s.data());
+}
+
+eostring::eostring(const char* s)
+{
+}
+
+eostring::eostring(const char* s, size_t n)
+{
+}
+
+eostring::eostring(size_t n, char c)
+{
+}
+
+template <class InputIterator>
+eostring::eostring(InputIterator first, InputIterator last)
+{
+}
+
+eostring::eostring(std::initializer_list<char> il)
+{
+}
+
+eostring::eostring(eostring&& s)
+{
+}
+
+eostring& eostring::operator=(const eostring& s)
+{
+}
+
+eostring& eostring::operator=(const char* s)
+{
+}
+
+eostring& eostring::operator=(char c)
+{
+}
+
+eostring& eostring::operator=(std::initializer_list<char> il)
+{
+}
+
+eostring& eostring::operator=(eostring&& s)
+{
+}
+
+// assign
+
+// get_allocator
+
+char& eostring::at(size_t n)
+{
+    if (n >= _size)
+        throw std::out_of_range{"Invalid index"};
+    return _begin[n];
+}
+
+const char& eostring::at(size_t n) const
+{
+    if (n >= _size)
+        throw std::out_of_range{"Invalid index"};
+    return _begin[n];
+}
+
+char& eostring::operator[](size_t n)
+{
+    return _begin[n];
+}
+
+const char& eostring::operator[](size_t n) const
+{
+    return _begin[n];
+}
+
+char& eostring::front()
+{
+    return _begin[0];
+}
+
+const char& eostring::front() const
+{
+    return _begin[0];
+}
+
+char& eostring::back()
+{
+    return _begin[_size-1];
+}
+
+const char& eostring::back() const
+{
+    return _begin[_size-1];
+}
+
+char* eostring::data()
+{
+    return _begin;
+}
+
+const char* eostring::data() const
+{
+    return _begin;
+}
+
+const char* eostring::c_str() const
+{ 
+    return _begin;
+}
+
+char* eostring::begin()
+{
+    return &_begin[0];
+}
+
+const char* eostring::cbegin() const
+{
+    return &_begin[0];
+}
+
+char* eostring::end()
+{
+    return &_begin[_size];
+}
+
+const char* eostring::cend() const
+{
+    return &_begin[_size];
+}
+
+// char* eostring::rbegin()
+// {
+//     return &_begin[0];
+// }
+
+// const char* eostring::crbegin() const
+// {
+//     return &_begin[0];
+// }
+
+// char* eostring::rend()
+// {
+//     return &_begin[_size];
+// }
+
+// const char* eostring::crend() const
+// {
+//     return &_begin[_size];
+// }
+
+bool eostring::empty() const
+{
+    return !!_size;
+}
+
+size_t eostring::size() const
+{
+    return _size;
+}
+
+size_t eostring::length() const
+{
+    return _size;
+}
+
+size_t eostring::max_size() const
+{
+    return size_t(-1);
+}
+
+// reserve
+
+// shrink_to_fit
+
+// clear
+// insert
+// erase
+// push_back
+// pop_back
+// append
+// operator+=
+// compare
+// starts_with
+// ends_with
+// replace
+// substr
+// copy
+// resize
+// resize
+// swap
+
+size_t eostring::capacity() const
+{
+    return _capacity;
+}
+
+eostring::~eostring()
+{
+}
+
+int main()
+{
+    
+    return 0;
+}

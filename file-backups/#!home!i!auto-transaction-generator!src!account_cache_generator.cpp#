@@ -1,0 +1,134 @@
+#include "account_cache_generator.hpp"
+
+AccountCacheGenerator::AccountCacheGenerator(const std::string& url, const std::string& contract_name,
+                                             const std::string& token_name, const std::string& raw_pk,
+                                             const int num_accounts) :
+    url(url),
+    transfer_amount(eosio::asset::from_string( "0.0001 " + token_name )),
+    contract_name(contract_name),
+    token_name(token_name),
+    private_key(eosio::chain::private_key_type(raw_pk)) {
+
+  std::string count = "11111111111";
+  for(int i = 0; i < num_accounts; ++i) {
+    accounts.emplace_back(eosio::name("u" + count));
+    int index = count.length() - 1;
+    while(++count.at(index) > '5' && index >= 0) {
+      count.at(index) = '1';
+      index--;
+    }
+  }
+
+  token_action.account = eosio::chain::string_to_name(contract_name.c_str());
+  token_action.name = eosio::chain::string_to_name("transfer");
+
+  token_transfer.quantity = transfer_amount;
+}
+
+std::vector<eosio::chain::packed_transaction> AccountCacheGenerator::generate_transactions(const int batch_size) {
+  const auto info = Utils::Instance(url).get_info();
+  const fc::optional<eosio::chain::chain_id_type> chain_id = info.chain_id;
+  const auto ref_block_id = info.last_irreversible_block_id;
+
+  std::random_device rd;
+  std::mt19937_64 gen(rd());
+  std::uniform_int_distribution<uint64_t> distribution;
+  std::uniform_int_distribution<> account_dis (0, accounts.size() - 2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  std::vector<eosio::chain::packed_transaction> trxs;
+  for(int i = 0; i < batch_size; ++i) {
+    eosio::chain::signed_transaction trx;
+
+    uint64_t us = fc::time_point::now().time_since_epoch().count();
+
+    auto tmp_accounts = accounts;
+    int user1Index = account_dis(gen);
+    eosio::account_name user1 = tmp_accounts[user1Index];
+    tmp_accounts.erase(tmp_accounts.begin() + user1Index);
+    eosio::account_name user2 = tmp_accounts[account_dis(gen)];
+
+    transfer tmp_transfer = token_transfer;
+    tmp_transfer.from = user1;
+    tmp_transfer.to = user2;
+    tmp_transfer.memo = std::to_string(distribution(gen)) + "/" + std::to_string(us);
+
+    eosio::chain::action tmp_action = token_action;
+    tmp_action.authorization = std::vector<eosio::chain::permission_level>{{
+      user1, eosio::chain::config::active_name}};
+    tmp_action.data = fc::raw::pack(tmp_transfer);
+    
+    trx.actions.emplace_back(std::move(tmp_action));
+
+    trx.set_reference_block(ref_block_id);
+    trx.expiration = fc::time_point_sec(fc::time_point::now() + fc::hours(1));
+    trx.sign(private_key, *chain_id);
+
+    auto packed = eosio::chain::packed_transaction(std::move(trx));
+    trxs.emplace_back(std::move(packed));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  return trxs;
+}

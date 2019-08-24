@@ -1,6 +1,7 @@
-alias l ls $*
-alias la ls -a $*
-alias lla ls -la $*
-alias up cd .. $*
-alias ll ls -l $*
+alias comp++ /home/i/Downloads/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04/bin/clang++ $*
 alias eosio-cpp /home/i/eosio/eosio.cdt/build/bin/eosio-cpp $*
+alias ll ls -l $*
+alias up cd .. $*
+alias lla ls -la $*
+alias la ls -a $*
+alias l ls $*

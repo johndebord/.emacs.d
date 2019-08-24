@@ -1,0 +1,15 @@
+#include <iostream>
+#include "chainbase.hpp"
+
+int main() {
+   // Creates a random directory to store files `shared_memory.bin` and `shared_memory.meta`.
+   const boost::filesystem::path         dir             {boost::filesystem::unique_path()};
+   const chainbase::database::open_flags write           {chainbase::database::open_flags::read_only}; // Two options: `read_only` or `read_write`.
+   const uint64_t                        shared_file_size{1048576};                                      // Don't know what this means.
+   const bool                            allow_dirty     {false};                                       // Don't know what this means.
+   
+   chainbase::database db{dir, write, shared_file_size, allow_dirty};
+   
+   std::cout << "ok\n";
+   return 0;
+}

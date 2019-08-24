@@ -1,0 +1,377 @@
+// TODO:
+// Consider: explicit, inline, noexcept
+// Note:
+// Must find a way to calculate if a string is a long or a short
+
+#include <cstring>   // memcpy, memset, strlen, strcpy
+#include <stdexcept> // std::out_of_range
+#include <iostream>
+#include <cassert>
+using namespace std;
+
+#include "eostring.hpp"
+
+static constexpr size_t npos{0xFFFFFFFFFFFFFFFF};
+
+// namespace eostring_impl
+// {
+   // bool is_short(const char* s);
+   // void init_short(char* sso_buffer, const char* s, const size_t len);
+   // void init_short(char* sso_buffer, const char c, const size_t n);
+   // void init_long(eostring* str, const char* s, const size_t len);
+   // void init_long(eostring* str, const char c, const size_t n);
+// }
+
+eostring::eostring()
+    : _size{0}, _begin{_sso_str}
+{
+        _sso_str[0] = 0;
+}
+
+eostring::eostring(const char* s)
+    : _size{strlen(s)}, _begin{(_size <= _sso_max) ? _sso_str : new char[_size + 1]}
+{
+    strcpy(_begin, s);
+}
+
+// eostring::eostring(size_t n, char c)
+// {
+//    if (n <= 30)
+//       eostring_impl::init_short(_sso_str, c, n);
+//    else
+//       eostring_impl::init_long(this, c, n);
+// }
+
+eostring::eostring(const eostring& s)
+{
+    copy_from(s);
+}
+
+// eostring::eostring(const eostring& s, size_t pos, size_t len = npos)
+// {
+//     _size = len - pos;
+//     _capacity = _size; // Change once allocator implemented
+//     _begin = new char[_size];
+//     strcpy(_begin, s.data());
+// }
+
+// eostring::eostring(const char* s, size_t n)
+// {
+// }
+
+eostring::eostring(eostring&& s)
+{
+    move_from(s);
+}
+
+eostring& eostring::operator=(const eostring& s)
+{
+    if(this == &s)
+        return *this;
+    char* begin{(_sso_max < _size) ? _begin : 0};
+    copy_from(s);
+    delete[] begin;
+    return *this;
+}
+
+// eostring& eostring::operator=(const char* s)
+// {
+// }
+
+// eostring& eostring::operator=(char c)
+// {
+// }
+
+eostring& eostring::operator=(eostring&& s)
+{
+    if(this == &s)
+        return *this;
+    if(_sso_max < _size)
+        delete[] _begin;
+    move_from(s);
+    return *this;
+}
+
+// assign
+
+// get_allocator
+
+// char& eostring::at(size_t n)
+// {
+//    check(n);
+//    return _begin[n];
+// }
+
+// const char& eostring::at(size_t n) const
+// {
+//    check(n);
+//    return _begin[n];
+// }
+
+// char& eostring::operator[](size_t n)
+// {
+//    return _begin[n];
+// }
+
+// const char& eostring::operator[](size_t n) const
+// {
+//    return _begin[n];
+// }
+
+// char& eostring::front()
+// {
+//    return _begin[0];
+// }
+
+// const char& eostring::front() const
+// {
+//    return _begin[0];
+// }
+
+// char& eostring::back()
+// {
+//    return _begin[_size-1];
+// }
+
+// const char& eostring::back() const
+// {
+//    return _begin[_size-1];
+// }
+
+// char* eostring::data()
+// {
+//    return _begin;
+// }
+
+// const char* eostring::data() const
+// {
+//    return _begin;
+// }
+
+// const char* eostring::c_str() const
+// {
+//    return _begin;
+// }
+
+// char* eostring::begin()
+// {
+//    return &_begin[0];
+// }
+
+// const char* eostring::cbegin() const
+// {
+//    return &_begin[0];
+// }
+
+// char* eostring::end()
+// {
+//    // return &_begin[_size];
+//    return _begin+_sso_str[31];
+// }
+
+// const char* eostring::cend() const
+// {
+//    // return &_begin[_size];
+//    return _begin+_sso_str[31];
+// }
+
+// char* eostring::rbegin()
+// {
+//     return &_begin[0];
+// }
+
+// const char* eostring::crbegin() const
+// {
+//     return &_begin[0];
+// }
+
+// char* eostring::rend()
+// {
+//     return &_begin[_size];
+// }
+
+// const char* eostring::crend() const
+// {
+//     return &_begin[_size];
+// }
+
+// bool eostring::empty() const
+// {
+//    return !!_size;
+// }
+
+// size_t eostring::size() const
+// {
+//    return _size;
+// }
+
+// size_t eostring::length() const
+// {
+//    return _size;
+// }
+
+// // size_t eostring::capacity() const
+// // {
+// //    return (_size <= sso_max) > sso_max : _size + _space;
+// // }
+
+// size_t eostring::max_size() const
+// {
+//    return npos;
+// }
+
+// reserve
+
+// shrink_to_fit
+
+// clear
+// insert
+// erase
+// push_back
+// pop_back
+// append
+// operator+=
+// compare
+// starts_with
+// ends_with
+// replace
+// substr
+// copy
+// resize
+// resize
+// swap
+
+eostring::~eostring()
+{
+    if(_sso_max < _size) delete[] _begin;
+}
+
+// bool operator+ (const eostring& lhs, const eostring& rhs)
+// {
+// }
+
+// bool operator==(const eostring& lhs, const eostring& rhs)
+// {
+// }
+
+// bool operator!=(const eostring& lhs, const eostring& rhs)
+// {
+// }
+
+// bool operator< (const eostring& lhs, const eostring& rhs)
+// {
+//    const char* iter_lhs{lhs.cbegin()};
+//    const char* iter_rhs{rhs.cbegin()};
+//    for (; iter_lhs != lhs.cend() && iter_rhs != rhs.cend(); ++iter_lhs, ++iter_rhs) {
+//       if (*iter_lhs < *iter_rhs)
+//          return true;
+//       if (*iter_rhs < *iter_lhs)
+//          return false;
+//    }
+//    return iter_lhs == lhs.cend() && iter_rhs != rhs.cend();
+// }
+
+// bool operator> (const eostring& lhs, const eostring& rhs)
+// {
+// }
+
+// bool operator<=(const eostring& lhs, const eostring& rhs)
+// {
+// }
+
+// bool operator>=(const eostring& lhs, const eostring& rhs)
+// {
+// }
+
+// namespace eostring_impl
+// {
+//    bool is_short(const eostring s)
+//    {
+//       size_t len = strlen(s);
+//       if(len <= 30)
+//          return true;
+//       return false;
+//    }
+
+//    void init_short(char* sso_buffer, const char* s, const size_t len)
+//    {
+//       sso_buffer[31] = len; // size
+//       sso_buffer[30] = 32 - len; // capacity
+//       memcpy(sso_buffer, s, sso_buffer[31]);
+//    }
+
+//    void init_short(char* sso_buffer, const char c, const size_t n)
+//    {
+//       sso_buffer[31] = n; // size
+//       sso_buffer[30] = 32 - n; // capacity
+//       memset(sso_buffer, c, n);
+//    }
+
+//    void init_long(eostring* str, const char* s, const size_t len)
+//    {
+//       str->_size = len;
+//       str->_capacity = len;
+//       str->_begin = new char[str->_capacity];
+//       memcpy(str->_begin, s, str->_size);
+//    }
+
+//    void init_long(eostring* str, const char c, const size_t n)
+//    {
+//       str->_size = n;
+//       str->_capacity = n;
+//       str->_begin = new char[str->_capacity];
+//       memset(str->_begin, c, n);
+//    }
+// }
+
+void eostring::check(size_t n) const
+{
+    if(n < 0 || _size <= n)
+        throw std::out_of_range("eostring::at()");
+}
+
+char* eostring::expand(const char* s, size_t n)
+{
+    char* begin{new char[n]};
+    strcpy(begin, s);
+    return begin;
+}
+
+void eostring::copy_from(const eostring& s)
+{
+    if(s._size <= _sso_max)
+    {
+        memcpy(this, &s, sizeof(s));
+        _begin = _sso_str;
+    }
+    else
+    {
+        _begin = expand(s._begin, s._size + 1);
+        _size = s._size;
+        _space = 0;
+    }
+}
+
+void eostring::move_from(eostring& s)
+{
+    if(s._size <= _sso_max)
+    {
+        memcpy(this, &s, sizeof(s));
+        _begin = _sso_str;
+    }
+    else
+    {
+        _begin = s._begin;
+        _size = s._size;
+        _space = s._space;
+        s._begin = s._sso_str;
+        s._size = 0;
+        s._sso_str[0] = 0;
+    }
+}
+
+int main()
+{
+
+   return 0;
+}

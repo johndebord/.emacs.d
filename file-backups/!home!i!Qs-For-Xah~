@@ -1,0 +1,18 @@
+Manual Reading Questions for Xah:
+1) Why should I not read reference manuals cover to cover?
+2) How to effectively skim a reference manual?
+   Just read the first paragraph?
+   Read the function forms but skip over their details, or just read the first paragraph describing
+   the implementation of the function?
+3) What lessons have you learned over the years from reading reference manuals?
+   Do you have any tips/tricks?
+4) When you say, "Just get the general idea", what exactly would you constitute as the general idea?
+5) For example, I'm currently reading the Emacs Lisp reference manual. Would you recommend diving
+   into the C source code?
+6) What exactly do you mean in your article when you say, "When you have time to read the reference manual
+   cover-to-cover then you can". But isn't that contradicting what you're saying in that you shouldn't
+   read reference manuals cover-to-cover? Can you elaborate on that?
+7) Can you give a quick example on how to skim a chapter in a reference manaul?
+8) After skimming the Emacs Lisp reference manual, should I also skim all of the standard stock
+   Emacs Lisp files that come with Emacs in directory `/usr/share/emacs/25.2/lisp`?
+Thank you.

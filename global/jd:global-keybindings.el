@@ -131,7 +131,6 @@
 
 (define-key global-map (kbd "<C-x> <jd:C-ret>") 'previous-error)
 (define-key global-map (kbd "<C-x> <jd:C-tab>") 'dabbrev-expand)
-(define-key global-map (kbd "<C-x> <C-b>") 'buffer-menu)
 (define-key global-map (kbd "<C-x> <C-c>") 'save-buffers-kill-terminal)
 (define-key global-map (kbd "<C-x> <C-s>") 'write-file)
 (define-key global-map (kbd "<C-x> <C-w>") 'kill-buffer)

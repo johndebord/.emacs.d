@@ -1,0 +1,23 @@
+The Intel 64/IA-32 processors are little-endian.
+*What does the "IA" mean here?
+
+There are reserved bits; be mindful of them; their behavior is undefined.
+*What is an example of one of these reserved bits?
+
+LABEL    MNEMONIC ARG1,ARG2,ARG3
+--------------------------------
+LOADREG: MOV      EAX,SUBTOTAL
+
+There are only up to three arguments.
+Intel 64/IA-32 processors follow the convention: `LABEL: MNEMONIC DEST,SRC`
+
+Note the postfix character for hex representaion:    `FFFFH`
+Note the postfix character for binary representaion: `1010B`
+
+Memory can be split in segments of the given address space.
+Identifies byte `0xFF79` in the data segment:                                                      `DS:FF79H`
+Identifies an instruction in the code segment; `EIP` register contains the address of instruction: `CS:EIP`
+
+Page fault exceptions example: `#PF(fault-code)`
+
+CONTINUE ON 3.2 "OVERVIEW OF THE BASIC EXECUTION ENVIRONMENT"

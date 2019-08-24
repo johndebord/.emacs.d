@@ -1,0 +1,192 @@
+02/05/2019
+----------
+- When creating unit tests, note what is an implementation detail and what is the end-game.
+- Auto-generated code is not making a program to make a C++ program for which to compile.
+  Auto-generated code is referring to templates and how code is generated through that mechanism.
+- You will be rewarded when fully understanding and having complete control over a system.
+  Sure, it is quicker and easier to grab all sorts of libraries and mix them together, but in the
+  long run --- if you discipline yourself --- you will come out ahead if you work to comprehend.
+- Returning a type by this `{}` is equivalent to calling `T`s default constructor and returning.
+
+02/06/2019
+----------
+- One way to exponentially scale a company is to grow the ecosystem of the service.
+  Make people want to build on top of/create/utilize your platform.
+- Mass adoption means that the user experiencing the application shouldn't even know that the
+  application is built on a blockchain; while the application need be built on a bockchain to even
+  be able to exist.
+
+02/07/2019
+----------
+- You can't force generic templates to instantiate because the compiler can only generate code
+  if the type is completely known.
+- If you have similar tests, but aren't sure if you're repeating variable names (and if you don't
+  use a linter), flip the tests and see if you get any errors.
+- You CAN put angle brackets on a template function to explicitly give the template parameter; but
+  can be left off as a conveniance.
+- You will not come up with the perfect end-game solution that will be.
+
+02/08/2019
+----------
+- Use a more specific self-documenting `const`, such as: `static const` or `static constexpr`.
+- A static variable is actually outside the memory structure of the class it is defined within.
+- Use hex values when specifically dealing with bytes. Otherwise use whichever self-documents
+  or when numbers get incredibly large.
+
+02/11/2019
+----------
+- All `extern "C" {}` really does is not mangle the name of whatever is defined in there.
+  Any C++ code is completely valid in an `extern "C" {}` block.
+- Don't try to predict the perfomance of the CPU because as it is far too complex, think of a
+  trying to sip a soda through a tiny straw.
+
+02/14/2019
+----------
+- falloc for dealing with files and allocations.
+
+Questions:
+- How do you const_cast a template? Or am I not understanding this correctly?
+
+03/04/2019
+----------
+- Use the phrase "seems as if" instead of "is" when facts aren't concretely true.
+- Memory pools are useful.
+- The high-byte of all memory addresses seems as if always zero.
+- The low-bit of all memory addresses seems as if always even.
+
+03/05/2019
+----------
+- Use mmap to map virtual memory.
+- Use a file descriptor for mmap if you want to write to disk
+- ALSR stands for Address Space Layout Randomization; used for security.
+- Any hex number that ends with `000` is divisibile by 4096 (a page).
+  000  = 12 bits.
+  2^12 = 4096
+  
+- 32bit processes:
+  0x00000000_30000000 - 0x00000000_CFFFFFFF :: available for mapping & *
+  0x00000000_E0000000 - 0x00000000_EFFFFFFF :: available for mapping files  & *
+
+  *all available ranges within the 32-bit process address space are available
+   for both fixed-location and variable-location mappings.
+  
+- 64bit processes:
+  0x07000000_00000000 - 0x07FFFFFF_FFFFFFFF :: fixed-location & variable-location
+  0x00000010_00000000 - 0X06FFFFFF_FFFFFFFF :: fixed-location & *
+  0x00000000_30000000 - 0x00000000_CFFFFFFF :: fixed-location
+  0x00000000_E0000000 - 0x00000000_EFFFFFFF :: fixed-location
+  
+  *also made available to system loader to hold program text, data and heap; thus only un-
+   used portions of the range are available for fixed-location mappings.
+
+03/05/2019
+----------
+- Each file takes up a block of memory (but symlinks are a different story).
+
+03/08/2019
+----------
+- Don't pass a value by reference if it is <= the size of a pointer.
+
+03/12/2019
+----------
+- You better make sure you allocate that extra byte for the null terminator.
+  It was just pure coincidence that I happend to have a null byte when I was
+  testing it out.
+
+03/13/2019
+----------
+- From my understanding, move semantics are basically only useful when a copious amount
+  of data is being moved around; instead of allocaing a whole new block of memory,
+  the logic is to just steal the pointer to which it points to, along with its
+  describing data, and then to put the data that has been stolen from to null.
+- Number one question to ask: "How would you do this?"
+  *Ask what the minimum viable product is.
+  *Must get concrete response.
+  *Take a picture of the whiteboard session.
+  *When I give a timeline. Deliver.
+
+03/14/2019
+----------
+- If in doubt about what memory is doing on the heap. `memset` immediately after the
+  memory is allocated to a certain degree.
+- A byzantine node is a malicious node.
+
+03/15/2019
+----------
+- Never double delete memory.
+- Note the contrasting differences between constructors and assignments when designing
+  classes.
+- Turning a pointer to a `nullptr` after deleting is defensive progamming.
+  But this leads me to think: coudl this lead to concurrency problems if you deleted
+  a pointer and the nullified it?
+
+03/18/2019
+----------
+- What happens when you have two static variables of the same name in the same compilation unit?
+- What's the difference between `nullptr` and `NULL` or `\0` or `0`?
+- The `const char (&str)[N]` constructor in my string implementation is curious.
+- I'm able to `std::move` a `static const string`
+  static const string eostr{"abcdef"};
+  static const string eostr_mv{std::move(eostr)};
+- Write down what you know at the start of the loop
+- Write down what I know on each function call
+- Go through each iteration of the loop
+
+- Make sure to satisfy all interface functions; the onus is on me.
+- I'm not quite fully comprehending constexpr and objects that can be evluated at compile time.
+  If a constructor is defined as constexpr, can't objects get dynamically constructed?
+
+03/25/2019
+----------
+difference between char[] and char*
+constexpr does not mean that it has to be avaluated at compile time
+constexpr requires initialization
+
+03/26/2019
+----------
+- If I have a `const char*` and a `char[]` in a variant, does accessing them act the same?
+- When making a data structure:
+  - Practice TDD; know your invariants/inputs/outputs.
+    This makes developing algorithms far easier and faster.
+  - Always have a logger available in the data structure
+
+- Put space after ifs
+- How can constructors be `constexpr` when I thought in order for a function to qualify
+  as `constexpr`, said function must JUST return a value.
+
+- Why does making this `constexpr` not work?
+```
+const char at(const size_t n) const {
+  eosio::check(0 <= n && n < _size, "eostring::at const");
+  return operator[](n);
+}
+```
+
+- Change is_sso
+- Use append
+use fundamental memcmp and memcpy vs loops becasue the compiler can optimize
+- ALWAYS aim to factor things out
+
+- The purpose of `static` is to cache memory in between function calls
+
+- More fully comprehend move semantics
+
+- Watch out for old history_plugin; failure causes other plugins to not receive data.
+
+- When testing; place time as greater than the actaul tests themselves, unless it is
+  a very critical component of the system.
+
+- Have a large TV screen in front of all developers; if a developer needs some help,
+  connect to the TV; better work-flow.
+
+--------------------------------------------------------------------------------
+Tester
+------
+`nodeos_run_test` is located in file `eosio/eos/tests/nodeos_run_test` line 54
+
+--------------------------------------------------------------------------------
+nodeos -e -p eosio --plugin eosio::chain_api_plugin --plugin eosio::history_api_plugin --contracts-console --delete-all-blocks
+
+--config-dir = ~/Library/Application Support/eosio/nodeos/config
+
+producer_plugin.cpp lin 1500

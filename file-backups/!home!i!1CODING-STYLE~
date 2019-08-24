@@ -1,0 +1,32 @@
+/// std headers
+#include <iostream> // std::cout
+#include <fstream>  // std::ifstream
+
+/// top level boost headers
+#include <boost/filesystem.hpp> // bfs::path
+
+/// top level-1  boost headers
+#include <boost/interprocess/file_mapping.hpp>  // bip::file_mapping
+#include <boost/interprocess/mapped_region.hpp> // bip::mapped_region
+
+namespace bfs = boost::filesystem;
+namespace bip = boost::interprocess;
+
+int main() {
+    std::ofstream        ofs    {"test.bin"
+                                ,std::ofstream::trunc          };
+    bfs::resize_file            ("test"
+                                ,1024                          );
+    bfs::path            pth    {bfs::current_path()/"test.bin"};
+    bip::file_mapping    fmp    {pth.string().c_str()
+                                ,bip::read_write               };
+    bip::mapped_region   mpr    {fmp
+                                ,bip::read_write               };
+    
+    return 0;
+}
+
+****************************************************************************************************
+Idea for coding style:
+Have a program that parses source files and renames variables in such a way to keep this aesthetic.
+****************************************************************************************************

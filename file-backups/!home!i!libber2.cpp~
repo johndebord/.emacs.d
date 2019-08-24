@@ -1,0 +1,5 @@
+extern "C" {
+    int doubler(int i) {
+        return i*2;
+    }
+}

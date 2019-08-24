@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# ubuntu
+wget --no-cookies \
+--no-check-certificate \
+--header "Cookie: oraclelicense=accept-securebackup-cookie" \
+"http://download.oracle.com/otn-pub/java/jdk/jdk-8u211/jdk-8u211-linux-x64.tar.gz" \
+-O jdk-8u211-linux-x64.tar.gz
+# then
+tar -xzvf jdk-8u211-linux-x64.tar.gz
+
+
+wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.rpm"
+
+wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "https://download.oracle.com/otn-pub/java/jdk/8u192-b12/750e1c8617c5452694857ad95c3ee230/jre-8u192-linux-x64.tar.gz" -O jre-8-linux.tar.gz

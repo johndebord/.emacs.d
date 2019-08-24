@@ -1,0 +1,19 @@
+#include <eosio/native/tester.hpp>
+
+#include <eosiolib/datastream.hpp>
+
+using namespace eosio::native;
+
+// Definitions in `eosio.cdt/libraries/eosiolib/system.hpp`
+EOSIO_TEST_BEGIN(datastream_test)
+   silence_output(false);
+
+   
+
+   silence_output(false);
+EOSIO_TEST_END
+
+int main(int argc, char** argv) {
+   EOSIO_TEST(datastream_test);
+   return has_failed();
+}

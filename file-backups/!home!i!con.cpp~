@@ -1,0 +1,10 @@
+#include <eosiolib/eosio.hpp>
+
+class [[eosio::contract]] con : public eosio::contract {
+public:
+    [[eosio::action]] void act()
+    {
+    }
+};
+
+EOSIO_DISPATCH(con, (act))

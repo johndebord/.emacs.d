@@ -1,0 +1,4 @@
+./etags ./ntlib.h ./emacsclient.c ./pop.h ./ntlib.c ./make-fingerprint.c ./etags.c ./pop.c ./movemail.c ./ctags.c ./make-docfile.c ./hexl.c ./update-game-score.c ./ebrowse.c
+/bin/bash: ./etags: Permission denied
+Makefile:359: recipe for target 'TAGS' failed
+make: *** [TAGS] Error 126

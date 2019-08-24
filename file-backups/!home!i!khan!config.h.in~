@@ -1,0 +1,8 @@
+
+@CONFIG_NOTE@
+
+#pragma once
+
+#define VERSION_HEAD "@BRANCH@"
+#define VERSION_DEV "@DEV@"
+#define VERSION_MASTER "@MASTER@"

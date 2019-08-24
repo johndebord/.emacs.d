@@ -1,0 +1,138 @@
+#!/usr/bin/python
+
+import getopt
+import os
+import sys
+import time
+from selenium                          import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by      import By
+from selenium.webdriver.support.ui     import WebDriverWait
+from selenium.webdriver.support        import expected_conditions as EC
+
+def init_google_chrome():
+    print "starting up"
+    os.system(R'google-chrome -remote-debugging-port=1993 --user-data-dir="/home/i/gc-dir" &')
+    time.sleep(5)
+
+def login():
+    print "logging in"
+    chrome_options = Options()
+    chrome_options.add_experimental_option('debuggerAddress', 'localhost:1993')
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.get('https://www.khanacademy.org/')
+    
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="login-or-signup"]')))
+    element = driver.find_element_by_xpath('//*[@id="login-or-signup"]')
+    element.click()
+    
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="uid-identity-text-field-2-email-or-username"]')))
+    element = driver.find_element_by_xpath('//*[@id="uid-identity-text-field-2-email-or-username"]')
+    element.send_keys("john.maynard.debord@gmail.com")
+    
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="uid-identity-text-field-3-password"]')))
+    element = driver.find_element_by_xpath('//*[@id="uid-identity-text-field-3-password"]')
+    element.send_keys("iloveGod03")
+    
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="uid-dialog-1-children"]/div/section[2]/div/div/div[2]/button')))
+    element = driver.find_element_by_xpath('//*[@id="uid-dialog-1-children"]/div/section[2]/div/div/div[2]/button')
+    element.click()
+    
+    driver.quit()
+    print "quitting driver"
+
+def start():
+    init_google_chrome()
+    login()
+
+def skip_quiz():
+    print "skipping quiz"
+    chrome_options = Options()
+    chrome_options.add_experimental_option('debuggerAddress', 'localhost:1993')
+    driver = webdriver.Chrome(options=chrome_options)
+
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'app-shell-root')))
+    element = driver.find_element_by_id('app-shell-root')
+    print element.text
+
+    # //*[@id="app-shell-root"]/div/div[3]/div/div[2]/span/span/div/div/div[1]/div/div[2]
+
+    # # For text boxes to fill in
+    # WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[4]/div/div/div/span/div[1]/input')))
+    # element = driver.find_element_by_xpath('//*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[4]/div/div/div/span/div[1]/input')
+    # element.send_keys("10")
+    
+    # WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="uid-dialog-2-children"]/div/div/div/div[2]/div/div[2]/button')))
+    # element = driver.find_element_by_xpath('//*[@id="uid-dialog-2-children"]/div/div/div/div[2]/div/div[2]/button')
+    # element.click()
+
+    # WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="uid-dialog-2-children"]/div/div/div/div[2]/div/div[2]/div[5]/div/div/div[1]/div[2]/a[2]')))
+    # element = driver.find_element_by_xpath('//*[@id="uid-dialog-2-children"]/div/div/div/div[2]/div/div[2]/div[5]/div/div/div[1]/div[2]/a[2]')
+    # element.click()
+
+    # # For A B C answers to choose with only one selection needed
+    # WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[4]/div/div/div/fieldset/ul/li[1]/div/div/div/div/label/div/div/span[1]/div/span/div')))
+    # element = driver.find_element_by_xpath('//*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[4]/div/div/div/fieldset/ul/li[1]/div/div/div/div/label/div/div/span[1]/div/span/div')
+    # element.click()
+
+    # WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="uid-dialog-2-children"]/div/div/div/div[2]/div/div[2]/button')))
+    # element = driver.find_element_by_xpath('//*[@id="uid-dialog-2-children"]/div/div/div/div[2]/div/div[2]/button')
+    # element.click()
+
+    # WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="uid-dialog-2-children"]/div/div/div/div[2]/div/div[2]/div[5]/div/div/div[1]/div[2]/a[2]')))
+    # element = driver.find_element_by_xpath('//*[@id="uid-dialog-2-children"]/div/div/div/div[2]/div/div[2]/div[5]/div/div/div[1]/div[2]/a[2]')
+    # element.click()
+
+    # # # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[4]/div/div/div/fieldset/ul/li[1]/div/div/div/div/label/div/div/span[1]/div/span/div
+    # # # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[3]/div/div/div/fieldset/ul/li[1]/div/div/div/div/label/div/div/span[1]/div/span/div
+    # # # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[4]/div/div/div/fieldset/ul/li[1]/div/div/div/div/label/div/div/span[1]/div/span/div
+    # # # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[4]/div/div/div/fieldset/ul/li[1]/div/div/div/div/label/div/div/span[1]/div/span/div
+    # # # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[4]/div/div/div/fieldset/ul/li[3]/div/div/div/div/label/div/div/span[1]/div/span/div/div[2]
+    # # # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[4]/div/div/div/fieldset/ul/li[4]/div/div/div/div/label/div/div/span[1]/div/span/div/div[2]
+
+    # # # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[3]/div/div/div/fieldset/ul/li[1]/div/div/div/div/label/div/div/span[1]/div/span/div/div[2]
+    # # # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[3]/div/div/div/fieldset/ul/li[5]/div/div/div/div/label/div/div/span[1]/div/span/div
+
+    # # # If I get the answer correct this may show up
+    # # # //*[@id="uid-dialog-2-children"]/div/div/div/div[2]/div/div[2]/div[5]/div/div/div[1]/div[1]
+    # # # Then I must click this button
+    # # # //*[@id="uid-dialog-2-children"]/div/div/div/div[2]/div/div[2]/button/div
+
+    driver.quit()
+    print "quitting driver"
+
+    # Quiz title ("Quiz 1")
+    # //*[@id="uid-dialog-2-title"]
+    # //*[@id="uid-dialog-10-title"]
+    
+    # <h1 class="_ndcvki" data-test-id="modal-title" id="uid-dialog-10-title">Quiz 2</h1>
+
+    # Instructions ("Choose 1 answer:")
+    # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[3]/div/div/div/fieldset/div
+
+    # Choice A
+    # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[3]/div/div/div/fieldset/ul/li[1]/div/div/div/div/label/div/div/span[1]/div/span/div
+
+    # Choice B
+    # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[3]/div/div/div/fieldset/ul/li[2]/div/div/div/div/label/div/div/span[1]/div/span/div/div[2]
+
+    # Choice C
+    # //*[@id="uid-dialog-2-children"]/div/div/div/div[1]/div/div/div[2]/div/form/div/div[1]/div/div[3]/div/div/div/fieldset/ul/li[3]/div/div/div/div/label/div/div/span[1]/div/span/div/div[2]
+
+# login()
+
+# # skip_quiz()
+# subprocess.call(['C:\\Temp\\a b c\\Notepad.exe', 'C:\\test.txt'])
+
+
+# First the loop must go one until "Quiz title does not exist"
+
+def main():
+    skip()
+    # if sys.argv[1] == "start":
+    #     start()
+    # elif sys.argv[1] == "skip":
+    #     skip()
+
+if __name__ == '__main__':
+    main()

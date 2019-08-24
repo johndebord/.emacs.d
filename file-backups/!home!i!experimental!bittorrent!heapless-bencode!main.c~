@@ -1,0 +1,117 @@
+
+
+/* This is auto-generated code. Edit at your own peril. */
+#include <stdio.h>
+#include "CuTest.h"
+
+
+extern void TestBencodeWontDoShortExpectedLength(CuTest*);
+extern void TestBencodeWontDoShortExpectedLength2(CuTest*);
+extern void TestBencodeIsInt(CuTest*);
+extern void TestBencodeIntValue(CuTest*);
+extern void TestBencodeIntValue2(CuTest*);
+extern void TestBencodeIntValueLarge(CuTest*);
+extern void TestBencodeIntValueVeryLarge(CuTest*);
+extern void TestBencodeIntValueLargest(CuTest*);
+extern void TestBencodeIsIntEmpty(CuTest*);
+extern void TestBencodeIsString(CuTest*);
+extern void TestBencodeStringValue(CuTest*);
+extern void TestBencodeStringValue2(CuTest*);
+extern void TestBencodeStringInvalid(CuTest*);
+extern void TestBencodeIsStringEmpty(CuTest*);
+extern void TestBencodeStringHandlesNonAscii0(CuTest*);
+extern void TestBencodeIsList(CuTest*);
+extern void TestBencodeIsListEmpty(CuTest*);
+extern void TestBencodeListHasNext(CuTest*);
+extern void TestBencodeListGetNext(CuTest*);
+extern void TestBencodeListInListWithValue(CuTest*);
+extern void TestBencodeListDoesntHasNextWhenEmpty(CuTest*);
+extern void TestBencodeListWontGetNextIfEmpty(CuTest*);
+extern void TestBencodeEmptyListInListWontGetNextIfEmpty(CuTest*);
+extern void TestBencodeEmptyListInListWontGetNextTwiceIfEmpty(CuTest*);
+extern void TestBencodeListGetNextTwiceWhereOnlyOneAvailable(CuTest*);
+extern void TestBencodeListGetNextTwice(CuTest*);
+extern void TestBencodeListGetNextAtInvalidEnd(CuTest*);
+extern void TestBencodeIsDict(CuTest*);
+extern void TestBencodeIsDictEmpty(CuTest*);
+extern void TestBencodeListWithEmptyDict(CuTest*);
+extern void TestBencodeDictWithNestedEmptyDict(CuTest*);
+extern void TestBencodeDictHasNext(CuTest*);
+extern void TestBencodeDictEmptyHasNoNext(CuTest*);
+extern void TestBencodeDictGetNext(CuTest*);
+extern void TestBencodeDictWontGetNextIfEmpty(CuTest*);
+extern void TestBencodeDictGetNextTwice(CuTest*);
+extern void TestBencodeDictGetNextTwiceOnlyIfSecondKeyValid(CuTest*);
+extern void TestBencodeDictGetNextInnerList(CuTest*);
+extern void TestBencodeDictInnerList(CuTest*);
+extern void TestBencodeCloneClones(CuTest*);
+extern void TestBencodeDictValueAsString(CuTest*);
+extern void TestBencodeDictValueAsString2(CuTest*);
+extern void TestBencodeDictGetStartAndLen(CuTest*);
+extern void TestBencodeDictGetStartAndLen2(CuTest*);
+extern void TestBencodeStringValueIsZeroLength(CuTest*);
+
+
+void RunAllTests(void) 
+{
+    CuString *output = CuStringNew();
+    CuSuite* suite = CuSuiteNew();
+
+
+    SUITE_ADD_TEST(suite, TestBencodeWontDoShortExpectedLength);
+    SUITE_ADD_TEST(suite, TestBencodeWontDoShortExpectedLength2);
+    SUITE_ADD_TEST(suite, TestBencodeIsInt);
+    SUITE_ADD_TEST(suite, TestBencodeIntValue);
+    SUITE_ADD_TEST(suite, TestBencodeIntValue2);
+    SUITE_ADD_TEST(suite, TestBencodeIntValueLarge);
+    SUITE_ADD_TEST(suite, TestBencodeIntValueVeryLarge);
+    SUITE_ADD_TEST(suite, TestBencodeIntValueLargest);
+    SUITE_ADD_TEST(suite, TestBencodeIsIntEmpty);
+    SUITE_ADD_TEST(suite, TestBencodeIsString);
+    SUITE_ADD_TEST(suite, TestBencodeStringValue);
+    SUITE_ADD_TEST(suite, TestBencodeStringValue2);
+    SUITE_ADD_TEST(suite, TestBencodeStringInvalid);
+    SUITE_ADD_TEST(suite, TestBencodeIsStringEmpty);
+    SUITE_ADD_TEST(suite, TestBencodeStringHandlesNonAscii0);
+    SUITE_ADD_TEST(suite, TestBencodeIsList);
+    SUITE_ADD_TEST(suite, TestBencodeIsListEmpty);
+    SUITE_ADD_TEST(suite, TestBencodeListHasNext);
+    SUITE_ADD_TEST(suite, TestBencodeListGetNext);
+    SUITE_ADD_TEST(suite, TestBencodeListInListWithValue);
+    SUITE_ADD_TEST(suite, TestBencodeListDoesntHasNextWhenEmpty);
+    SUITE_ADD_TEST(suite, TestBencodeListWontGetNextIfEmpty);
+    SUITE_ADD_TEST(suite, TestBencodeEmptyListInListWontGetNextIfEmpty);
+    SUITE_ADD_TEST(suite, TestBencodeEmptyListInListWontGetNextTwiceIfEmpty);
+    SUITE_ADD_TEST(suite, TestBencodeListGetNextTwiceWhereOnlyOneAvailable);
+    SUITE_ADD_TEST(suite, TestBencodeListGetNextTwice);
+    SUITE_ADD_TEST(suite, TestBencodeListGetNextAtInvalidEnd);
+    SUITE_ADD_TEST(suite, TestBencodeIsDict);
+    SUITE_ADD_TEST(suite, TestBencodeIsDictEmpty);
+    SUITE_ADD_TEST(suite, TestBencodeListWithEmptyDict);
+    SUITE_ADD_TEST(suite, TestBencodeDictWithNestedEmptyDict);
+    SUITE_ADD_TEST(suite, TestBencodeDictHasNext);
+    SUITE_ADD_TEST(suite, TestBencodeDictEmptyHasNoNext);
+    SUITE_ADD_TEST(suite, TestBencodeDictGetNext);
+    SUITE_ADD_TEST(suite, TestBencodeDictWontGetNextIfEmpty);
+    SUITE_ADD_TEST(suite, TestBencodeDictGetNextTwice);
+    SUITE_ADD_TEST(suite, TestBencodeDictGetNextTwiceOnlyIfSecondKeyValid);
+    SUITE_ADD_TEST(suite, TestBencodeDictGetNextInnerList);
+    SUITE_ADD_TEST(suite, TestBencodeDictInnerList);
+    SUITE_ADD_TEST(suite, TestBencodeCloneClones);
+    SUITE_ADD_TEST(suite, TestBencodeDictValueAsString);
+    SUITE_ADD_TEST(suite, TestBencodeDictValueAsString2);
+    SUITE_ADD_TEST(suite, TestBencodeDictGetStartAndLen);
+    SUITE_ADD_TEST(suite, TestBencodeDictGetStartAndLen2);
+    SUITE_ADD_TEST(suite, TestBencodeStringValueIsZeroLength);
+
+    CuSuiteRun(suite);
+    CuSuiteDetails(suite, output);
+    printf("%s\n", output->buffer);
+}
+
+int main()
+{
+    RunAllTests();
+    return 0;
+}
+

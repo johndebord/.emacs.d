@@ -1,0 +1,30 @@
+
+
+class pausable : public eosio::contract {
+public:
+    using eosio::contract::contract;
+        
+    ownable(bool p) : _paused{p}
+    { }
+
+    [[eosio::action]]
+    void pause() {
+        assert(_paused == false);
+        require_auth( _self );
+        _paused = true;
+    }
+
+    [[eosio::action]]
+    void unpause() {
+        assert(_paused == true);
+        require_auth( _self );
+        _paused = false;
+    }
+
+    bool paused() {
+        return _paused;
+    }
+
+private:
+    bool  _paused = false;
+}

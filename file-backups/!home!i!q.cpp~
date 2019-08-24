@@ -1,0 +1,53 @@
+class database {
+public:
+    database(const balances& initial_balances) : accounts{ balances_to_map(initial_balances) }
+    { }
+    
+    void push_transaction(const transactions& t) {
+        for (const auto& transfer : t) {
+            accounts[transfer.from] -= transfer.amount;
+            accounts[transfer.to]   += transfer.amount;
+            
+            if(accounts[transfer.from] < 0 || accounts[transfer.to] < 0)
+                transfer_history.push_back(transfer);
+        }
+    }
+    
+    void settle() {
+        for (const auto& transfer : transfer_history) {
+            if(accounts[transfer.from] < 0 || accounts[transfer.to] < 0) {
+                accounts[transfer.from] += transfer.amount;
+                accounts[transfer.to]   -= transfer.amount;
+            } else
+                continue;
+        }
+    }
+    
+    balances get_balances() const {
+        return map_to_balances(accounts);
+    }
+    
+    // std::vector<size_t> get_applied_transactions() const {
+    //     return applied_transactions;
+    // }
+
+public:
+    std::map<int, int>    accounts;         ///< Mapping of all accounts `{ account_id, balance }`.
+    std::vector<transfer> transfer_history; ///< Vector of all successful transfers since last `settle()`.
+
+    // Perfect mirror function of `map_to_balances`.
+    std::map<int, int> balances_to_map(const balances& b) const {
+        std::map<int, int> ret{};
+        for (const auto& balance : b)
+            ret.insert( {balance.account_id, balance.balance} );
+        return ret;
+    }
+
+    // Perfect mirror function of `balances_to_map`.
+    balances map_to_balances(const std::map<int, int>& m) const {
+        balances ret{};
+        for (const auto& pair : m)
+            ret.push_back( {pair.first, pair.second} );
+        return ret;
+    }
+};

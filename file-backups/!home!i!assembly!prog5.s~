@@ -1,0 +1,14 @@
+	# A sample program of the max byte size
+	.section .data
+	output:
+	.asciz "Value is %d.\n"
+	.section .text
+	.global  main
+	main:
+	movl  $0, %eax
+	movb  0x7f, %al
+	pushb %eax
+	pushl $output
+	call  printf
+	pushl $0
+	call  exit

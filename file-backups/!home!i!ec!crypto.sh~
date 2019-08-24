@@ -1,0 +1,17 @@
+
+#!/bin/bash
+
+encrypt() {
+  tar --create --gzip --file "$1" | \
+  openssl aes-256-cbc -salt -out out.enc
+}
+
+decrypt() {
+  openssl aes-256-cbc -d -salt -in "$1" | \
+  tar --extract --gzip --file "$1"
+}
+
+if [ $1 = encrypt ]
+then
+    encrypt $2
+fi

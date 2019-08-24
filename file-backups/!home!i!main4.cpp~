@@ -1,0 +1,199 @@
+#include <cassert>     // assert
+#include <cstdint>     // unt128_t
+#include <array>       // std::array
+#include <algorithm>   // std::copy
+#include <functional>
+#include <type_traits>
+
+using uint128_t = __uint128_t;
+
+namespace eosio {
+    template<size_t N>
+    class fixed_bytes;
+
+    template<size_t N>
+    bool operator< (const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+    template<size_t N>
+    bool operator> (const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+    template<size_t N>
+    bool operator<=(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+    template<size_t N>
+    bool operator>=(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+    template<size_t N>
+    bool operator==(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+    template<size_t N>
+    bool operator!=(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+
+    template<size_t N>
+    class fixed_bytes {
+    private:
+        template<bool...> struct bool_pack;
+        template<bool... bs>
+        using all_true = std::is_same<bool_pack<bs..., true>, bool_pack<true, bs...>>;
+        
+        template<typename T>
+        using ValidWord  = typename std::enable_if<std::is_integral_v<T>   &&
+                                                   std::is_unsigned_v<T>   &&
+                                                  !std::is_same_v<T, bool> &&
+                                                   std::less<size_t>{}(sizeof(T), sizeof(uint128_t))>::type;
+
+        template<typename T, typename... Rest>
+        using ValidWords = typename std::enable_if<std::is_integral_v<T>          &&
+                                                   std::is_unsigned_v<T>          &&
+                                                  !std::is_same_v<T, bool>        &&
+                                                   sizeof(T) <= sizeof(uint128_t) &&
+                                                   all_true<(std::is_same_v<T, Rest>)...>::value, T>::type;
+
+        template<typename T, size_t NumWords>
+        static void set_from_word_sequence(const T* begin, const T* end, fixed_bytes<N>& fb)
+        {
+            auto         iter      {fb.get_array().begin()};
+            const size_t word_shift{8*sizeof(T)};
+            const size_t num_words {sizeof(uint128_t)/sizeof(T)};
+            size_t       words_left{num_words};
+            uint128_t    temp_word {};
+            
+            for (auto word_iter{begin}; word_iter != end; ++word_iter) {
+                if (words_left > 1) {
+                    temp_word  |= static_cast<uint128_t>(*word_iter);
+                    temp_word <<= word_shift;
+                    --words_left;
+                    continue;
+                }
+
+                assert(words_left == 1);
+                temp_word |= static_cast<uint128_t>(*word_iter);
+                *iter      = temp_word;
+                temp_word  = 0;
+                words_left = num_words;
+                ++iter;
+            }
+            if (words_left != num_words) {
+                if (words_left > 1) {
+                    temp_word <<= (8 * (words_left-1));
+                }
+                *iter = temp_word;
+            }
+        }
+        
+    public:
+        static constexpr size_t num_words()    { return (N + sizeof(uint128_t) - 1) / sizeof(uint128_t); }
+        static constexpr size_t padded_bytes() { return num_words() * sizeof(uint128_t) - N;             }
+
+        constexpr fixed_bytes()
+        : _data{}
+        { }
+        
+        constexpr fixed_bytes(const std::array<uint128_t, num_words()>& array)
+        : _data{array.begin(), array.end()}
+        { }
+
+        template<typename T, size_t NumWords, typename Enable = ValidWord<T>>
+        fixed_bytes(const std::array<T, NumWords>& array) {
+            assert(sizeof(uint128_t) == (sizeof(uint128_t) / sizeof(T)) * sizeof(T));
+            assert(sizeof(T) * NumWords <= N);
+            
+            set_from_word_sequence<T, NumWords>(array.data(), array.data()+array.size(), *this);
+        }
+        
+        template<typename T, size_t NumWords, typename Enable = ValidWord<T>>
+        fixed_bytes(const T(&array)[NumWords]) {
+            assert(sizeof(uint128_t) == (sizeof(uint128_t) / sizeof(T)) * sizeof(T));
+            assert(sizeof(T) * NumWords <= N);
+            
+            set_from_word_sequence<T, NumWords>(array, array+NumWords, *this);
+        }
+
+        template<typename T, typename... Rest>
+        static fixed_bytes<N> make_from_word_sequence(ValidWords<T> first_word, Rest... rest) {
+            assert(sizeof(uint128_t) == (sizeof(uint128_t) / sizeof(T)) * sizeof(T));
+            assert(sizeof(T) * (1+sizeof...(Rest)) <= N);
+
+            std::array<T, sizeof...(Rest)+1> array{ {first_word, rest...} };
+            fixed_bytes<N>                   key;
+            
+            set_from_word_sequence<T, sizeof...(Rest)+1>(array.data(), array.data() + array.size(), key);
+            return key;
+        }
+
+        std::array<uint8_t, N> extract_as_byte_array() const {
+            std::array<uint8_t, N> arr       {};
+            const size_t           num_words {sizeof(uint128_t)};
+            size_t                 words_left{num_words};
+            auto                   array_iter{arr.begin()};
+            auto                   data_iter {_data.begin()};
+            auto                   temp_word {*data_iter};
+
+            for (size_t counter{_data.size()}; counter > 0; --counter, ++data_iter) {
+                if (counter == 1) { // If last word in _data array...
+                    temp_word  >>= 8*padded_bytes();
+                    words_left  -= padded_bytes();
+                    
+                }
+                for (; words_left > 0; --words_left) {
+                    *(array_iter+words_left-1) = static_cast<uint8_t>(temp_word & 0xFF);
+                    temp_word >>= 8;
+                }
+                array_iter += num_words;
+            }
+            return arr;
+        }
+        
+        inline void print()const {
+            auto arr{extract_as_byte_array()};
+            printhex(static_cast<const void*>(arr.data()), arr.size());
+        }
+
+        const auto& get_array() const { return _data;        }
+        auto data()                   { return _data.data(); }
+        auto data() const             { return _data.data(); }
+        auto size() const             { return _data.size(); }
+
+        friend bool operator<  <>(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+        friend bool operator>  <>(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+        friend bool operator<= <>(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+        friend bool operator>= <>(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+        friend bool operator== <>(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+        friend bool operator!= <>(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2);
+
+    private:
+        std::array<uint128_t, num_words()> _data;
+    };
+
+    template<size_t N>
+    bool operator< (const fixed_bytes<N> &c1, const fixed_bytes<N> &c2) { return c1._data <  c2._data; }
+    template<size_t N>
+    bool operator> (const fixed_bytes<N>& c1, const fixed_bytes<N>& c2) { return c1._data >  c2._data; }
+    template<size_t N>
+    bool operator<=(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2) { return c1._data <= c2._data; }
+    template<size_t N>
+    bool operator>=(const fixed_bytes<N>& c1, const fixed_bytes<N>& c2) { return c1._data >= c2._data; }
+    template<size_t N>
+    bool operator==(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2) { return c1._data == c2._data; }
+    template<size_t N>
+    bool operator!=(const fixed_bytes<N> &c1, const fixed_bytes<N> &c2) { return c1._data != c2._data; }
+    
+    using checksum160 = fixed_bytes<20>;
+    using checksum256 = fixed_bytes<32>;
+    using checksum512 = fixed_bytes<64>;
+
+    template<typename DataStream, size_t N>
+    inline DataStream& operator<<(DataStream& ds, const fixed_bytes<N>& fb) {
+        std::array<uint8_t, N> array{ fb.extract_as_byte_array() };
+        ds.write( static_cast<const char*>(array.data()), array.size() );
+        return ds;
+    }
+
+    template<typename DataStream, size_t N>
+    inline DataStream& operator>>(DataStream& ds, fixed_bytes<N>& fb) {
+        std::array<uint8_t, N> array;
+        ds.read( static_cast<char*>(array.data()), array.size() );
+        fb = fixed_bytes<N>(array);
+        return ds;
+    }
+}
+
+int main() {
+    
+    return 0;
+}

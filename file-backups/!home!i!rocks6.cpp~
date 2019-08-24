@@ -1,0 +1,303 @@
+// g++ -g -Wall -Wextra -std=c++17 -o prog rocks5.cpp -lboost_system; ./prog
+
+// TODO: Make sure to review the logic again once more.
+
+// Moving away from this file now, because I am going to start making changes to the uniqueness violation rules.
+
+// I discontinued this editing session because my plan is to now take out everything needed in session
+// to get this prototype to work.
+
+// TODO: review comments.
+
+#include <boost/core/demangle.hpp>
+#include <boost/throw_exception.hpp>
+
+#include <deque>
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <string>
+
+static const uint64_t keys1[10]{ 0ULL, 1ULL, 2ULL, 3ULL, 4ULL, 5ULL, 6ULL, 7ULL, 8ULL, 9ULL};
+static const uint64_t keys2[10]{10ULL,11ULL,12ULL,13ULL,14ULL,15ULL,16ULL,17ULL,18ULL,19ULL};
+static const std::string values1[10]{"a","b","c","d","e","f","g","h","i","j",};
+static const std::string values2[10]{"k","l","m","n","o","p","q","r","s","t",};
+
+/// There are a few things to keep in mind when reviewing the
+/// implementation of the undo functionality in chainbase. There
+/// are a myriad of terms thrown around that might seem arbitrary,
+/// but in fact they are vital to understand. The first of which
+/// is the idea of `undo`. This is the core idea around chainbase.
+///
+/// |---------------------The Undo Deque--------------------|
+///
+/// |-------------------------------------------------------|
+/// |       |       |       |       |       |       |       |
+/// |       |       |       |       |       |       |       |
+/// |-------------------------------------------------------|
+
+/// Holds the current undo state of a particular session.
+/// For exmple: whenever `start_undo_session` gets called
+/// and set to true, a new `undo_state` object is created
+/// for that particular session. In turn, whenever the
+/// current `_state` is modified, these changes get recorded
+/// in the `undo_state` object. Then if a user chooses to undo
+/// whatever changes they've made, the information is readily
+/// available to revert back safely.
+struct undo_state {
+    undo_state()
+    {
+    }
+
+    /// Mapping to hold any modifications made to `_state`.
+    std::map<uint64_t, std::string> modified_values{};
+
+    /// Mapping to hold any removed values from `_state`.
+    std::map<uint64_t, std::string> removed_values{};
+
+    /// Set representing new keys that have been edded to `_state`.
+    std::set<uint64_t>              new_keys{};
+
+    /// Mapping to hold the current revision height of the session.
+    /// You can have multiple _undo sessions_ within a given context.
+    /// Where you are allowed to _push_ these sessions if you aren't
+    /// quite sure if you want to undo them just yet. Therefore, this
+    /// variable is here to help determine where at in the revision
+    /// _stack_ we are currently at.
+    int64_t revision_height{}; // Just use it for now.
+
+    // Check all nine test cases of merge.
+};
+
+/// Holds multiple `undo_state` objects to keep track of the undo
+/// sessions in the given program.
+std::deque<undo_state> _stack{};
+
+/// The current state of the system. This is where the real meat
+/// of the program lies.
+std::map<uint64_t, std::string> _state{};
+
+/// Variable to keep track of the highest revision height. Keep in
+/// mind that the `undo_state` object has a `revision_height`
+/// variable that keeps track of its own internal revision height,
+/// While this particuluar variable keeps track of how high we are
+/// currently at in the revision _stack_.
+int64_t _revision_height{};
+
+/// Stuff.
+bool _enabled{false};
+
+/// Stuff.
+void start_undo_session() {
+    _stack.emplace_back(undo_state{});
+    ++_stack.back().revision_height;
+    _enabled = true;
+}
+
+/// Stuff.
+void on_put(const uint64_t& key) {
+    if (!_enabled) {
+        return;
+    }
+
+    auto& head = _stack.back();
+
+    // head.modified_values.emplace(std::pair<uint64_t, std::string>(key, value));
+    head.modified_values[key] = _state[key];
+}
+
+/// Stuff.
+void on_remove(const uint64_t& key, const std::string& value) {
+    if (!_enabled) {
+        return;
+    }
+
+    auto& head = _stack.back();
+   
+    head.removed_values.emplace(std::pair<uint64_t, std::string>(key, value));
+}
+
+/// Stuff.
+void put(const uint64_t& key, const std::string& value) {
+    on_put(key);
+    _state[key] = value;
+    // on create (notify the user)
+    // uniqueness (might want to return notifying the user)
+}
+
+/// Stuff.
+void remove(const uint64_t& key, const std::string& value) {
+    on_remove(key, value);
+    _state.erase(key);
+}
+
+/// Stuff.
+auto find(const uint64_t& key) -> decltype(&*_state.find(key)) {
+    auto itr = _state.find(key);
+    if (itr != _state.end()) {
+        return &*itr;
+    }
+    return nullptr;
+}
+
+/// Stuff.
+auto get(const uint64_t& key) -> decltype(*find(key)) {
+    auto ptr = find(key);
+    if(!ptr) {
+        std::stringstream ss;
+        ss << "key not found (" << boost::core::demangle(typeid(key).name()) << "): " << key;
+        BOOST_THROW_EXCEPTION(std::out_of_range(ss.str().c_str()));
+    }
+    return *ptr;
+}
+
+/// Stuff.
+const std::map<uint64_t, std::string>& state() {
+    return _state;
+}
+
+/// Stuff.
+void undo() {
+    if(!_enabled) {
+        std::cout << "undo::if0" << "\n";
+        return;
+    }
+    std::cout << "undo::0" << "\n";
+
+    /// Take note that this is taking the back of the undo deque,
+    /// this is because if it were to take the front, we would be
+    /// grabbing the oldest `undo_state` object, and this would
+    /// defeat the purpose of having an undo history.
+    const auto& head{_stack.back()};
+
+    for (auto& modified_value : head.modified_values) {
+        std::cout << "undo::for0" << "\n";
+        // auto ok{ _indices.modify(_indices.find(item.second.id), [&](value_type& value) { value = std::move(item.second); }); }
+
+        // Remember to clear the `head.old_values`; actually might not need to since it gets popped off anyway.
+        // _indices.find(item.second).swap(std::move(item.second));
+        // _indices.find(item.second).swap(item.second);
+        // _indices.find(item.first);
+
+        // _state.find(modified_value.first)->swap(modified_value.);
+
+        std::cout << modified_value.first << "\n";
+        std::cout << modified_value.second << "\n";
+        _state[modified_value.first] = modified_value.second;
+    }
+
+    // for(auto& item : head.removed_values) {
+    //    bool ok{ _indices.emplace(std::move(item.second)).second };
+    //    if(!ok) {
+    //       std::abort(); // Uniqueness violation.
+    //    }
+    // }
+
+    // _stack.pop_back();
+    // --_revision;
+}
+
+void undo_all() {
+    while (_enabled)
+        undo();
+}
+
+// void squash() {
+//     if( !enabled() ) return;
+//     if( _stack.size() == 1 ) {
+//         _stack.pop_front();
+//         --_revision;
+//         return;
+//     }
+
+//     auto& state = _stack.back();
+//     auto& prev_state = _stack[_stack.size()-2];
+
+//     for( const auto& item : state.old_values )
+//     {
+//         if( prev_state.new_ids.find( item.second.id ) != prev_state.new_ids.end() )
+//         {
+//             // new+upd -> new, type A
+//             continue;
+//         }
+//         if( prev_state.old_values.find( item.second.id ) != prev_state.old_values.end() )
+//         {
+//             // upd(was=X) + upd(was=Y) -> upd(was=X), type A
+//             continue;
+//         }
+//         // del+upd -> N/A
+//         assert( prev_state.removed_values.find(item.second.id) == prev_state.removed_values.end() );
+//         // nop+upd(was=Y) -> upd(was=Y), type B
+//         prev_state.old_values.emplace( std::move(item) );
+//     }
+
+//     // *+new, but we assume the N/A cases don't happen, leaving type B nop+new -> new
+//     for( auto id : state.new_ids )
+//         prev_state.new_ids.insert(id);
+
+//     // *+del
+//     for( auto& obj : state.removed_values )
+//     {
+//         if( prev_state.new_ids.find(obj.second.id) != prev_state.new_ids.end() )
+//         {
+//             // new + del -> nop (type C)
+//             prev_state.new_ids.erase(obj.second.id);
+//             continue;
+//         }
+//         auto it = prev_state.old_values.find(obj.second.id);
+//         if( it != prev_state.old_values.end() )
+//         {
+//             // upd(was=X) + del(was=Y) -> del(was=X)
+//             prev_state.removed_values.emplace( std::move(*it) );
+//             prev_state.old_values.erase(obj.second.id);
+//             continue;
+//         }
+//         // del + del -> N/A
+//         assert( prev_state.removed_values.find( obj.second.id ) == prev_state.removed_values.end() );
+//         // nop + del(was=Y) -> del(was=Y)
+//         prev_state.removed_values.emplace( std::move(obj) ); //[obj.second->id] = std::move(obj.second);
+//     }
+
+//     _stack.pop_back();
+//     --_revision;
+// }
+
+// void commit(int64_t revision) {
+//     while( _stack.size() && _stack[0].revision <= revision ) {
+//         _stack.pop_front();
+//     }
+// }
+
+int main() {
+    // undo_state us;
+   
+    for (size_t i{}; i < 10; ++i) { _state[keys1[i]] = values1[i]; }
+    // for (size_t i{}; i < 10; ++i) { us.modified_values[keys2[i]] = values2[i]; }
+
+    for (const auto& value : _state) {
+        std::cout << value.first << ' ' << value.second << "\n";
+    }
+    // std::cout << "\n";
+    // for (const auto& value : us.modified_values) { std::cout << value.first << ' ' << value.second << "\n"; }
+
+    std::cout << "START OF UNDO STUFF\n";
+    start_undo_session();
+   
+    for (size_t i{}; i < 10; ++i) {
+        put(keys1[i], values2[i]);
+    }
+   
+    for (const auto& value : _state) {
+        std::cout << value.first << ' ' << value.second << "\n";
+    }
+   
+    undo();
+    std::cout << "END OF UNDO STUFF\n";
+
+    for (const auto& value : _state) {
+        std::cout << value.first << ' ' << value.second << "\n";
+    }
+   
+    return 0;
+}

@@ -1,0 +1,8 @@
+extern char*      char_pointer;
+extern int        int_array[10];
+extern int        (&int_array_ref)[10];
+extern char*      pointer_to_array_char_strings[];
+extern char**     char_pointer_to_pointer;
+extern const int  const_int;
+extern const int* pointer_to_const_int;
+extern int* const const_pointer_to_int;
