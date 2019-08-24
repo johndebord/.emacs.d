@@ -1,0 +1,104 @@
+#!/bin/bash
+start_path=`pwd`
+
+simplename="${0##*/}"
+if [ "${simplename}" = "$0" ]
+then
+  realpath="${PWD}/$0"
+else
+  realpath=$(cd "${0%/*}" && echo "$PWD")
+fi
+
+# set IDE path
+IDE_PATH=${realpath}
+
+## set no_proxy environment
+if [ "x${no_proxy}" = "x" ]
+then
+    export no_proxy="127.0.0.1"
+else
+    export no_proxy="${no_proxy},127.0.0.1"
+fi
+
+## Execute IDE
+eclipse_options="-Dorg.eclipse.swt.browser.DefaultType=MOZILLA"
+
+eclipse_options="${eclipse_options} $@"
+
+cd "${IDE_PATH}"
+
+if [ -e "${IDE_PATH}/init" ]
+then
+    eclipse_options="-clean ${eclipse_options}"
+fi
+
+if [ -e /etc/os-release ]
+then
+    id=`cat /etc/os-release | grep "^ID=" | sed "s/^ID=//g"`
+    version=`cat /etc/os-release | grep "^VERSION_ID=" | sed "s/^VERSION_ID=//g" | sed "s/\"//g"`
+elif [ -e /etc/issue ]
+then
+    id=`cat /etc/issue | awk '{print $1}' | tr [A-Z] [a-z]`
+    ubuntu_version=`cat /etc/issue | awk '{print $2}'`
+    version=`expr substr $ubuntu_version 1 5`
+fi
+
+# find JRE_HOME
+UNAME=$(uname)
+case "$UNAME" in
+Linux)
+    JRE_HOME="$(dirname $(dirname $(readlink -f $(which java))))"
+    ;;
+Darwin)
+    JAVA_DIR=$(dirname $(readlink $(which java)))
+    if [ -f "$JAVA_DIR/java_home" ]
+    then
+        JRE_HOME=$($JAVA_DIR/java_home)
+    else
+        JRE_HOME="$(readlink $JAVA_DIR)"/../
+    fi
+    ;;
+MINGW*)
+    echo "Please execute \"eclipse.exe\""
+    exit
+    ;;
+esac
+
+if [ -d "$JRE_HOME/jre" ]
+then
+        JRE_HOME="$JRE_HOME/jre"
+fi
+
+if [ -f "$JRE_HOME/bin/java" ]
+then
+    JAVA=$JRE_HOME/bin/java
+else
+    JAVA=java
+fi
+
+OLDIFS=$IFS
+version=$("$JAVA" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+IFS='.' tokens=( $version )
+majorVer=${tokens[0]}
+IFS=$OLDIFS
+JRE_OPT=""
+if [ $majorVer -ge 9 ]; then
+  if [[ $(java -version 2>&1) == *"OpenJDK"* ]];then
+    JRE_OPT="--launcher.appendVmargs -vmargs --module-path $JRE_HOME/lib/javafx.graphics.jar:$JRE_HOME/lib/javafx.controls.jar:$JRE_HOME/lib/javafx.fxml.jar:$JRE_HOME/lib/javafx.base.jar --add-modules=javafx.controls --add-modules=javafx.fxml"
+  fi
+fi
+
+if [ "${id}" = "ubuntu" ]
+then
+    case "${version}" in
+        11.04|11.10|12.04|12.10|13.04|13.10|14.04|16.04)
+            UBUNTU_MENUPROXY=0 LIBOVERLAY_SCROLLBAR=0 "${IDE_PATH}/eclipse" ${eclipse_options} $JRE_OPT
+            ;;
+        *)
+            "${IDE_PATH}/eclipse" ${eclipse_options} $JRE_OPT
+    esac
+else
+    "${IDE_PATH}/eclipse" ${eclipse_options} $JRE_OPT
+fi
+
+cd "${start_path}"

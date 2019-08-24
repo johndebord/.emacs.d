@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name : clock (...) { ... }
+# key: clock
+# --
+ std::clock_t c_start = std::clock(); // START CLOCK
+std::clock_t c_end = std::clock(); // END CLOCK
+double time_elapsed_ms = 1000.0 * (c_end-c_start) / CLOCKS_PER_SEC; // CALC CLOCK
+std::cout << "CPU time used: " << time_elapsed_ms << " ms\n"; // PRINT CLOCK

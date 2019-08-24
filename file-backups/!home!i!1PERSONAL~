@@ -1,0 +1,202 @@
+I think I work/learn best when a clear objective is given to me.
+This is a reflection of the strategy I used back in late 2017, when I strived to make a program per chapter in `tcpppl`.
+I don't think this was a very good approach. Although it does require creativity to solve the problem, it almost begs for a weaker form of creativity
+because of its redundancy. Instead, I should save my creative prowess for when it matters, and learn with clear forethought objectives from the author;
+deciding for myself and forming an opinion if the problem is worth the time investment. The weakness to this approach is that I might forego a problem where
+I could have learnt something, but if this almost seems negligible in the grand scheme of things; and I've come to realize that this approach is probably
+more time-effective.
+
+I think I make my "TODO"s too massive. In the future, I should make them smaller; or segment them up a bit. I think by having them too large/taking a big
+time investment, that I don't retain as much as I could. I think I should scope the "TODO"s into chuncks that should take around a week to finish; after which
+I move on to another segment (and eventually coming back around to continue on where I left off on the previous segment).
+I think this will not only help me retain the knowledge better, but make it more enjoyable/will get my brain more involved.
+I should start this as soon as I'm done with the exercises in TCPPPL.
+
+I posters of:
+- All undefined/implementation-defined behavior in C++.
+- All CPU opcodes for x86.
+- ASCII table.
+- Common design pattersn.
+- Commong STL stuff.
+- Operator precedence.
+- Others I have written down somewhere.
+
+I need to get real good and real fast at profiling code.
+That way, if I come across certain snippets of code no matter where they are, I can just whip up emacs and profile the speed and/or profile the snippet
+against any other snippet of my choosing.
+
+If code doesn't change the state of the class, make said function const.
+
+`=` operators change the state of the class; thus they shall not be made const and return a reference; `*this`.
+
+It'd be cool to make a program that completely elliminates header files for med/large-
+sized codebases, so that it would make source code navigation easier for me by a large
+margin.
+
+A cool exercise program would be to implement a sort of piano, where the keys, `a`, `s`, `d`, and `f` representing notes.
+And then your right hand could operate the `up`, `down`, `left`, and `right` could operate and said notes (tones/pitches/etc.).
+
+My first VR program should be implementing "real" vision, where the outline of the nose/hair/field-of-view is considered.
+
+Things To Learn How To Develop/Data Formats:
+- Movies
+- Music
+- Video Game Modding
+
+As a programming exercise, make a super fast/simple text editor that simply opens a file for a quick edit and save. Name is `g-dolla`. There will only be a few commands: <all basic cursor movement and text editing> and `save`. Make it so it has my "custom home-row navigation binds". This program should be literally so small and dumb that it's cool.
+
+Personal Weakness That I Must Confront:
+Double-Dispatch
+
+Implement the concept of "virtual time"
+
+goodvariablenames
+
+Cryptos come and go, but we're here to stay.
+
+A good exercise would be to make an ascii GUI using xlib to show case different sorting algorithms
+
+Don't add too many "TODO"s. Keep them at a minimal; then when there is a sufficient amount, get them all done; repeat the process.
+
+Thoughts that came out of discussing compression strategies:
+Information theory.
+Hash table is the best way to compress data.
+A blockchain that can store data like so.
+Something about zlib for compression.
+A blockchain that spins up blockchains dynamically.
+
+To get a good high-level overview of new features; visit the file `version` and look at the new
+macros that have been defined; a general idea can be drawn from said macro names.
+
+What are all the register conventions?
+Caller/Callee conventions?
+
+Interweving markets of deciding yes/no/sharing in the rewards.
+
+I have a new philosophy:
+Rather than taking notes, I shall only try to fully comprehend the text;
+The only "note-taking" that shall take place is if I'm trying to work out a problem.
+For the purpose of taking notes is to retain information;
+but if the information is really meant to be retaint, it shall be worthy of automation from within my text editor.
+This shall save myself the time (definitely sunk-time from focusing more on the note than the idea), and be more practical.
+One of the reasons that I'm doing this is because how many time have I actually gone back to my notes to look something up?
+And if I truly need to remember something I should remember it without taking notes, or better yet, automate the task.
+Also, notes truly worth writing down should be questions in the margins and debatebly new terms.
+
+VCs need a liquidity event.
+
+Email Juan about distributed systems
+
+Just thought of something:
+To prove it's efficiencty, users are allowed a sandboxed environment
+
+PUBLICATIONS!!!!!!!
+
+---------------------------------------
+
+A very interesting thought experiment:
+
+Imagine a version of yourself that is absolutely terrible;
+a version that has terrible manurisms, a bad attitude, lazy, a non-existent work-ethic.
+REALLY try to imagine yourself like this.
+
+Now step back and think to yourself, "What would it take for you to literally become like that?"
+Would you have to do certain things for an extended period of time to develop those certain manurisms/habits?
+REALLY, WHAT would it actually take?
+
+Now step back again and think to yourself, "What would a better version of me be thinking about me and my manurisms?"
+And then think to yourself what you would have to achieve/get rid of to attain that better version of yourself.
+
+In Jesus name,
+Amen
+
+NOTE:
+Take all notes as my own subjective understanding; which is probably accurate a great degree on the highest level,
+but obviously I can't know everything, and there could be discrepancies.
+
+Empty `throw` statement.
+If `throw` an active exception being handled, `terminate` is supposed to be called.
+Use `throw std::exception{};`.
+
+CMake | cmake | CMakeLists.txt | CMAKE_*
+-DCMAKE_BUILD_TYPE=Debug|Release
+
+Firmware is basically low-level software.
+You can receieve a firmware upgrade for the improvements in routers and such things.
+Firmware must be "flashed", that is written to ROM in a certain way, or else firmware can get corrupted,
+thus rendered an unusable product.
+
+https://lwn.net/Articles/604287/
+https://lwn.net/Articles/604515/
+https://lwn.net/Articles/604406/
+
+https://lwn.net/Articles/507794/
+
+make system-calls.available | grep brk # => brk
+
+---------------------------------------------------------
+
+It seems as if making big money using ecommerce goes like this:
+- Make a solid website with a with an elegant and intuitive UI (perhaps experiment to find which ones are popular and template it)
+- Find a niche product
+- Purchase a marketable domain name
+- SEO your site in creative ways (trying to get in other people's shoes to find out what they would probably search for)
+- Then when they place an order on your site
+- Simply reroute their order from Alibaba to them where you keep the difference
+
+It seems as if a big key to these kinds of things is to find products where you have large margins
+
+I could probably write a script to find the most niche/up-in-coming products via Twitter and other social media,
+and then pick the top ones; automatically do some research on the margins/plausability of the product, and then execute it well.
+
+Another key takeaway from this is to analyze the tools given (in this case Alibaba/Amazon) and come up with a creative idea that can leverage said tool.
+
+My next question is: what will be the next evolution of this to be one of the first to get in?
+Will Alibaba/Amazon someone prevent this from happening?
+Something like: Walmart offers grocery pickup; make site to advertise delivering groceries; make a few round trips based off of that in time-slots; good to go.
+
+-----------------------------------------------------------------------------------------
+
+Could ********************************* bussiness model have you pay just 1% more per purchase so that *
+
+-----------------------------------------------------------------------------------------
+
+Blockchain indexer
+
+-----------------------------------------------------------------------------------------
+
+Sample Randomizer
+
+*****************************************************************************************
+**********************************Contact Ciro Santilli**********************************
+*****************************************************************************************
+
+*****************************************************************************************
+Company that ensures decentralized integrity of BitCoin with an altruistic business plan
+*****************************************************************************************
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&
+`collect2` is a wraps `ld`.
+According to the docs, it looks for constructors;
+and executes them in label `__main`.
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+*****************************************************************************************
+A Website that has a bunch of ad-lib responses to generic responses.
+Should be categorized as: casual, professional, with repoire metrics, etc.
+*****************************************************************************************
+
+*****************************************************************************************
+It would be an interesting program/project/idea if I could give a program a set of invariants,
+and then have that program run for an extended amount of time until it successfully creates a program
+that runs said invariants correctly (with tests).
+The program would debug itself and modify itself and then test itself again.
+*****************************************************************************************
+
+Look at Elon Musks's slides for inspiration on well designed slides.
+
+Chaikin Money Flow (CMF)
+
+*****************************************************************************************
+Market as the new economy
+*****************************************************************************************

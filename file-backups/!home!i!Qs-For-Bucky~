@@ -1,0 +1,35 @@
+// #include <iostream> // std::cout
+// #include <string>   // std::string
+
+// size_t count_occurances(const std::string& pair, const std::string& str) {
+    
+//     std::string tmp    {str};
+//     size_t      count  {};
+//     size_t      finder {tmp.find(pair)};
+
+//     while(finder != std::string::npos) {
+//         ++count;
+
+//         tmp = std::string(tmp, finder);
+//         tmp.erase(0, pair.length());
+
+//         finder = tmp.find(pair);
+//     }
+
+//     return count;
+// }
+    
+// }
+
+// int main() {
+//     const std::string s_pair{"ab"};
+//     const std::string s_str {"xabaacbaxabb"};
+
+//     const char c_pair[]{"ab"};
+//     const char c_str []{"xabaacbaxabbab"};
+
+//     std::cout << count_occurances(s_pair, s_str) << '\n';
+//     std::cout << count_occurances(c_pair, c_str) << '\n';
+
+//     return 0;
+// }

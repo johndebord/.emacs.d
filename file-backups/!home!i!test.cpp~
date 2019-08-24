@@ -1,0 +1,59 @@
+class ownable : public eosio::contract {
+public:
+    using eosio::contract::contract;
+        
+    ownable(name nm) : _owner{nm}
+    { }
+
+    [[eosio::action]]
+    void transfer_ownership(name nm) {
+        require_auth( _self );
+        _owner = nm;
+    }
+
+    [[eosio::action]]
+    void renounce_ownership() {
+        require_auth( _self );
+        _owner = 0;
+    }
+
+    bool is_owner(name n) {
+        return n == _owner;
+    }
+
+    name get_owner() {
+        return _owner;
+    }
+    
+private:
+    name _owner;      
+};
+
+class pausable : public eosio::contract {
+public:
+    using eosio::contract::contract;
+        
+    ownable(bool p) : _paused{p}
+    { }
+
+    [[eosio::action]]
+    void pause() {
+        assert(_paused == false);
+        require_auth( _self );
+        _paused = true;
+    }
+
+    [[eosio::action]]
+    void unpause() {
+        assert(_paused == true);
+        require_auth( _self );
+        _paused = false;
+    }
+
+    bool paused() {
+        return _paused;
+    }
+
+private:
+    bool  _paused = false;
+}

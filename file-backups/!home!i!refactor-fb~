@@ -1,0 +1,15 @@
+template<typename DataStream, size_t N>
+inline DataStream& operator<<(DataStream& ds, const fixed_bytes<N>& fb) {
+    std::array<uint8_t, N> array{ fb.extract_as_byte_array() };
+    ds.write( static_cast<const char*>(array.data()), array.size() );
+    return ds;
+}
+
+template<typename DataStream, size_t N>
+inline DataStream& operator>>(DataStream& ds, fixed_bytes<N>& fb) {
+    std::array<uint8_t, N> array;
+    ds.read( static_cast<char*>(array.data()), array.size() );
+    fb{ fixed_bytes<N>(array) };
+    return ds;
+}
+

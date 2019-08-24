@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: template
+# key: tempclass
+# --
+template<typename T>
+class ${1:name} {
+public:
+    ${1:$(yas/substr yas-text "[^: ]*")}()
+    { }
+
+    
+
+private:
+    $0
+};

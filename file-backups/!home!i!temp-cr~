@@ -1,0 +1,75 @@
+Defining a class that behaves exactly like an `int`
+
+What am I missing?<br>
+Am I going about this about this the wrong way?<br>
+I'm not sure which constructors to have and to not have.<br>And it seems, because of the variety of constructors, that ambiguity ensues.
+
+```
+#include <iostream> // std::cout
+#include <utility>  // std::move
+
+class jd_int {
+public:
+    jd_int(const int i)      : _i{i}                { }
+    jd_int(const int& i)     : _i{i}                { }
+    jd_int(int& i)           : _i{i}                { }
+    jd_int(int&& i)          : _i{std::move(i)}     { }
+    jd_int(const jd_int& ji) : _i{ji._i}            { }
+    jd_int(jd_int& ji)       : _i{ji._i}            { }
+    jd_int(jd_int&& ji)      : _i{std::move(ji._i)} { }
+    
+    jd_int operator=(const jd_int ji)  { _i = ji._i;            return *this; }
+    jd_int operator=(const jd_int& ji) { _i = ji._i;            return *this; }
+    jd_int operator=(jd_int& ji)       { _i = ji._i;            return *this; }
+    jd_int operator=(jd_int&& ji)      { _i = std::move(ji._i); return *this; }
+
+    operator bool()               { return !!_i;                                }
+    operator signed char()        { return static_cast<signed char>(_i);        }
+    operator unsigned char()      { return static_cast<unsigned char>(_i);      }
+    operator signed short()       { return static_cast<signed short>(_i);       }
+    operator unsigned short()     { return static_cast<unsigned short>(_i);     }
+    operator signed long()        { return static_cast<signed long>(_i);        }
+    operator unsigned int()       { return static_cast<unsigned short>(_i);     }
+    operator signed int()         { return static_cast<signed long>(_i);        }
+    operator unsigned long()      { return static_cast<unsigned long>(_i);      }
+    operator signed long long()   { return static_cast<signed long long>(_i);   }
+    operator unsigned long long() { return static_cast<unsigned long long>(_i); }
+    operator float()              { return static_cast<float>(_i);              }
+    operator double()             { return static_cast<double>(_i);             }
+
+    jd_int operator+ (jd_int jdi) { return jdi._i + _i;    }
+    // jd_int operator- (jd_int jdi) { return jdi._i - _i;            }
+    // jd_int operator* (jd_int jdi) { return jdi._i * _i;            }
+    // jd_int operator/ (jd_int jdi) { return jdi._i / _i;            }
+    // jd_int operator% (jd_int jdi) { return jdi._i % _i;            }
+    // jd_int operator++()           { return jdi._i ++_i;            }
+    // jd_int operator++(int)        { int tmp{_i}; ++_i; return tmp; }
+    // jd_int operator--()           { return jdi._i --_i;            }
+    // jd_int operator--(int)        { int tmp{_i}; --_i; return tmp; }
+private:
+    int _i;
+};
+
+int main() {
+    return 0;
+}
+```
+<hr>
+
+**Compiler error:**
+```
+clang++ -Wall -Wextra -std=c++17 -o a.out main.cpp;
+main.cpp:33:44: error: conversion from 'int' to 'jd_int' is ambiguous
+    jd_int operator+ (jd_int jdi) { return jdi._i + _i;    }
+                                           ^~~~~~~~~~~
+main.cpp:6:5: note: candidate constructor
+    jd_int(const int i)      : _i{i}                { }
+    ^
+main.cpp:9:5: note: candidate constructor
+    jd_int(int&& i)          : _i{std::move(i)}     { }
+    ^
+main.cpp:7:5: note: candidate constructor
+    jd_int(const int& i)     : _i{i}                { }
+    ^
+1 error generated.
+```

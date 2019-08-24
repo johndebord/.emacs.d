@@ -6,6 +6,8 @@
          "~/.emacs.d/emacs-modes/major-modes/Custom-mode/jd:Custom-mode.el")
 (require 'jd:apropos-mode.el
          "~/.emacs.d/emacs-modes/major-modes/apropos-mode/jd:apropos-mode.el")
+(require 'jd:asm-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/asm-mode/jd:asm-mode.el")
 (require 'jd:c++-mode.el
          "~/.emacs.d/emacs-modes/major-modes/c++-mode/jd:c++-mode.el")
 (require 'jd:compilation-mode.el
@@ -38,6 +40,8 @@
          "~/.emacs.d/emacs-modes/major-modes/gud-mode/jd:gud-mode.el")
 (require 'jd:help-mode.el
          "~/.emacs.d/emacs-modes/major-modes/help-mode/jd:help-mode.el")
+(require 'jd:lisp-interaction-mode.el
+         "~/.emacs.d/emacs-modes/major-modes/lisp-interaction-mode/jd:lisp-interaction-mode.el")
 (require 'jd:makefile-mode.el
          "~/.emacs.d/emacs-modes/major-modes/makefile-mode/jd:makefile-mode.el")
 (require 'jd:rcirc-mode.el

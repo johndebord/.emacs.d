@@ -1,0 +1,31 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <curl/curl.h>
+
+static const std::string url{"https://www.khanacademy.org/math/pre-algebra/pre-algebra-ratios-rates/quiz/pre-algebra-ratio-word-problems-quiz?"};
+static const std::string url0{"https://www.khanacademy.org/math/pre-algebra/pre-algebra-ratios-rates"};
+
+void get() {
+    FILE* wfd{fopen("/home/i/khan/build/ooo", "w")};
+    CURL* curl{curl_easy_init()};
+    CURLcode res;
+    
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, wfd);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, NULL);
+ 
+        res = curl_easy_perform(curl);
+        
+        if(res != CURLE_OK) {
+            curl_easy_cleanup(curl);
+        }
+    }
+}
+
+int main() {
+    get();
+    return 0;
+}

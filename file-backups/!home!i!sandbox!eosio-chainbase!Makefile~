@@ -1,0 +1,18 @@
+CXX        = clang++
+CFLAGS     = -I./include -g -c -Wall -Wextra -Wno-unused-parameter -std=c++17
+LDFLAGS    = -lboost_system -lboost_filesystem -lpthread
+SOURCES    = main.cpp ./src/chainbase.cpp
+OBJECTS    = $(SOURCES:.cpp=.o)
+EXECUTABLE = prog
+
+all: $(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CXX) $(LDFLAGS) $(OBJECTS) -o $@
+
+.cpp.o:
+	$(CXX) $(CFLAGS) $< -o $@
+
+.PHONY : clean
+clean :
+	-rm prog *.o ./src/*.o $(objects)

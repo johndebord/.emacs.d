@@ -1,0 +1,15 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+static const std::vector<int> net_worth{12000,16000,
+                                        20000,24000,
+                                        28000,32000,
+                                        36000,40000};
+
+static const std::vector<int> btc_price{};
+
+int main() {
+    
+    return 0;
+}

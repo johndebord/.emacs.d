@@ -1,0 +1,11 @@
+#include <eosiolib/eosio.hpp>
+
+class [[eosio::contract]] con : public eosio::contract {
+public:
+    using contract::contract;
+    [[eosio::action]] void act(const std::string& s)
+    {
+    }
+};
+
+EOSIO_DISPATCH(con, (act))

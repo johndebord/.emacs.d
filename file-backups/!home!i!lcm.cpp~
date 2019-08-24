@@ -1,0 +1,87 @@
+#include <algorithm>
+#include <iostream>
+#include <optional>
+#include <vector>
+
+using std::begin;
+using std::cout;
+using std::end;
+using std::find;
+using std::optional;
+using std::vector;
+
+optional<int> lcm_single_threaded_cpp(int n, int m) {
+    int         n_factor {n};
+    int         m_factor {m};
+    vector<int> n_factors{ };
+    vector<int> m_factors{ };
+    
+    n_factors.push_back(n_factor);
+    m_factors.push_back(m_factor);
+    
+    while (true) {
+        auto res0{find(begin(n_factors), end(n_factors), m_factor)};
+        auto res1{find(begin(m_factors), end(m_factors), n_factor)};
+        
+        if (res0 != n_factors.end()) {
+            return *res0;
+        }
+            
+        if (res1 != m_factors.end()) {
+            return *res1;
+        }
+        
+        if ((n_factor+n) <= 0 || (m_factor+m) <= 0) {
+            return {};
+        }
+        
+        n_factors.push_back(n_factor+=n);
+        m_factors.push_back(m_factor+=m);
+    }
+}
+
+int lcm_multi_threaded_cpp(int n, int m)  {
+    int         n_factor {n};
+    int         m_factor {m};
+    vector<int> n_factors{ };
+    vector<int> m_factors{ };
+    
+    n_factors.push_back(n_factor);
+    m_factors.push_back(m_factor);
+    
+    while (true) {
+        auto res0{find(begin(n_factors), end(n_factors), m_factor)};
+        auto res1{find(begin(m_factors), end(m_factors), n_factor)};
+        
+        if (res0 != n_factors.end()) {
+            return *res0;
+        }
+            
+        if (res1 != m_factors.end()) {
+            return *res1;
+        }
+        
+        if ((n_factor+n) < 0 || (m_factor+m) < 0) {
+            return {};
+        }
+        
+        n_factors.push_back(n_factor+=n);
+        m_factors.push_back(m_factor+=m);
+    }
+}
+
+
+
+// int lcm_single_threaded_c(int n, int m) {
+    
+// }
+
+// int lcm_multi_threaded_c(int n, int m)  {
+    
+// }
+
+int main() {
+    optional i{lcm_single_threaded_cpp(4,10)};
+    cout << i.value() << '\n';
+    return 0;
+}

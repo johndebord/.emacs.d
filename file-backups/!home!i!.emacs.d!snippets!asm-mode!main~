@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: main
+# key: main
+# --
+.section .data
+.section .bss
+.section .text
+.global  main
+    main:
+    $0

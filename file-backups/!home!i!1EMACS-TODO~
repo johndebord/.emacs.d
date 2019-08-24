@@ -1,0 +1,113 @@
+[ ] Have the bottom bar be color-coded to the GitHub color standard of what the current language mode is
+
+[ ] Write a function or mode to browse the system-specific syscalls on your machine
+
+[ ] Customize the modeline/or elsewhere to show what context I'm in when looking at the file e.g., `[class <class-name> -> <class-name> -> <function-name>]`
+
+[ ] Emacs numbers its windows; therefore customize the control-tab functionality to not follow that logic; so that it behaves more consistently
+
+[ ] Write a function that times a given program (or particular function) to give the metrics down to very CPU cycle that was used during that run
+
+[ ] Create a custom theme with the colors of my choosing
+
+[ ] Get my theme colors to be mathematically in sync with eachother (same hue/shade/etc.) along with a scroll mechanism to adjust it
+
+[ ] When in `eshell` make it so when I click on a file I open it (as well as be able to close it)
+
+[ ] In `artist-mode` make a side panel for selection
+
+[ ] Write a function program that extracts every single tweet of a person and place it in a buffer (images and all): Notable people etc.
+
+[ ] Make a cool graphic to highlight my marker whenever I switch buffers
+
+[ ] Make an Emacs Mode that is specifically just for conveniant code browsing (minimal hand-usage)
+
+[ ] Write a function for instead of constantly Googling information, save the entire data of a website (for example cpp-ref or man pages) to a file,
+    and just open the file and grep (ripgrep) what I'm looking for. There could perhaps be some added functionality where I can eliminate pools of text
+    based off of the search results or certain topics.
+
+[ ] Create a minor mode where it's just purely keeping track of activity/productivity
+
+[ ] Modify `ispell-buffer' where upon completion, edits show up in a buffer
+
+[ ] Modify c++-mode so that when a certain macro is not defined it is greyed out
+
+[ ] Modify the modeline so that all modes are in alphabetical order and are capitalized like so: "EMACS-LISP | COMPANY | FLYC | IVY | YAS"
+    (Possibly have the major mode highlighted)
+    
+[ ] Modify the modeline so that the bottem left indicator is more intuitive
+
+[ ] Modify automatic indentation/star/space when using multiline comments: `/* */` (note: indent-new-comment-line might have something to do with this)
+
+[ ] Modify "Box around text" -> "Width" in `widget-field` length. It expands the entire length of the screen in the *Custom* buffer and looks incredibly ugly
+
+[ ] Modify underline to prevent bleeding into the linum face
+
+[ ] Modify "Box around text" in `button`; it expands into the linum in the *Faces* buffer and is incredibly annoying looking
+
+[ ] Modify those graphics that appear at the beginning of a line indicating and error, debugging breakpoint, etc.
+
+[ ] Figure out how to get all command line aliases in `eshell` as well
+
+[ ] Prevent linum from getting highlighted when I'm highlighting lines of text
+
+[ ] Modify the format the output of the `describe-bindings` *Help* buffer into a more readable and objectively better format
+
+[ ] Figure out how to get multiple cursors in one buffer; to do multiple edits of the same thing at the same time; effectively keybind them as well
+
+[ ] Come up with a way to do: Paragraph (comments, documentation, random writings, etc.) Arbitrary 80 Column Filling by highlighting the region of
+    non-formatted/unfilled-text and pressing a key like <tab> or something and then the block of text gets automatically filled with the correct columns
+
+[ ] Figure out how make it so that when I open a new window, Emacs automatically puts my cursor there, so I don't have to tab around the windows
+    to close that particular window; and also make is so that when I don't want my cursor to end up in the newly created window, that it is easy to do so
+
+[ ] Modify the output of the function `describe-bindings' to be more organized and succinct
+
+[ ] Figure out why my function `jd:describe-keymap` doesn't pick up certain keymap variables when I'm in certain buffers. e.g., (in eshell buffer)
+    `eshell-command-map` found; (not in eshell buffer) `eshell-command-map` not found
+
+[ ] Create the functionality of having word fill (limiting length of lines to ~80 columns) whenever I'm writing a descriptive comment
+    (or have it parse the syntax and do it automatically)
+
+[ ] In my custom function `jd:describe-bindings', if I follow a particular file, I cannot go back to the *keybindings: <mode>* buffer;
+    there always seems to be an error; fix this behavior
+
+[ ] `Completions List' buffer has a one second delay when focus is taken away from doing anything with it; fix this behavior so that's it's more instantaneous
+
+[ ] When creating a newline at the end of a file `linum' won't pick it up and display the extra line number; fix this behavior
+
+[ ] Write a function to "lock" a window; meaning that once I lock the window I can't resize the window;
+    nor tab into it until I explictly unlock that particular window
+
+[ ] Within `erc-mode' deleting any part of the buffer as well as various other commands work as expected; but this is not the case with `eshell';
+    get `eshell' to be more like `erc-mode'
+
+[ ] The `Completions' buffer is really annoying to me how it doesn't auto-close sometimes; it just sits there for a second; fix this behavior
+
+[ ] Modify line-by-line scrolling in `rcirc-mode' just like it is in `eshell-mode'
+
+[ ] Write a function to expand/contract a function implementation into a new temporary buffer
+
+[ ] Disable the way when you start typing "std::..." the text indents backward
+
+[ ] Find a way to tab over the autocomplete of '""', '{}', '()', etc.
+
+[ ] Find a way to autocomplete the single quote as the double quote does.
+
+[ ] Make whichever window I'm in appear more obvious.
+
+[ ] Make a mode that shows the evolution of a project based off of git commits; so that a general idea of the flow of the person's mind can be made
+    manifest, thus increasing the likelihood of understanding the codebase.
+
+[ ] Customize gnuplot-mode
+
+[ ] Customize wolfram-alpha-mode
+
+[ ] Customize godbolt-mode
+
+[ ] Create a tooling mode where when I come across a new tool, a GUI-type mode is opened at the top in a buffer where I can choose the settings that I
+    wish to execute with that tool
+
+[ ] Comprehend `etags` and customize/modify (minimalist; only C++).
+
+[ ] Comprehend `company` and customize/modify (minimalist; only C++).

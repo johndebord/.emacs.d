@@ -1,0 +1,178 @@
+WARNING: terminal is not fully functional
+-  (press RETURN)commit 2b11ce5c5aaf00f54ce9a301f8c103148d00abdc (HEAD -> master, origin/master, origin/HEAD)[m
+Merge: 71e958064 6367bcf3a[m
+Author: Andrei Maiboroda <andrei@ethereum.org>[m
+Date:   Fri Jul 12 13:47:54 2019 +0200[m
+[m
+    Add changelog item for BlockChainTests split (#5668)[m
+    [m
+    Add changelog item for BlockChainTests split[m
+[m
+commit 71e9580645bb94acd6ab23fd39b95433a98bb703[m
+Merge: 089e7ddaa e9fa38e97[m
+Author: Andrei Maiboroda <andrei@ethereum.org>[m
+Date:   Fri Jul 12 13:20:11 2019 +0200[m
+[m
+    fix suggestion output on failing tests (#5667)[m
+    [m
+    fix suggestion output on failing tests[m
+[m
+commit 6367bcf3abd2152cd817a769e0605c08d6fc2d55[m
+Author: Andrei Maiboroda <andrei@ethereum.org>[m
+Date:   Fri Jul 12 13:18:47 2019 +0200[m
+[m
+    Add changelog item for BlockChainTests split[m
+[m
+commit e9fa38e97e47104b1d64275ee7871f3ce585b5f4[m
+Author: Andrei Maiboroda <andrei@ethereum.org>[m
+Date:   Fri Jul 12 12:56:05 2019 +0200[m
+[m
+    Return non-zero in case test suite is not found[m
+[m
+commit 3b40aecad040856f42b44e8f67e2976ac3f2e3ea[m
+Author: Dimitry <dimitry@ethereum.org>[m
+Date:   Thu Jul 11 21:34:14 2019 +0300[m
+[m
+    fix suggestion output on failing tests[m
+[m
+commit 089e7ddaa741825fdf62974ad66b077c715b8f25[m
+Merge: 1ef578545 cffcffe85[m
+Author: winsvega <winsvega@mail.ru>[m
+::Date:   Thu Jul 11 20:07:44 2019 +0300[m
+[m
+    Merge pull request #5648 from ethereum/splitBlockchain[m
+    [m
+    split BlockchainTests into Valid and Invalid[m
+[m
+commit cffcffe85981700d610c143e7654db8d521bcdc2 (origin/splitBlockchain)[m
+Author: Dimitry <dimitry@ethereum.org>[m
+Date:   Thu Jul 11 18:29:54 2019 +0300[m
+[m
+    add path constant to GasPricer unit tests[m
+[m
+commit 82f0bfd250e4c76be83c071ad55120917747ca63[m
+Author: Dimitry <dimitry@ethereum.org>[m
+Date:   Thu Jul 11 14:59:19 2019 +0300[m
+[m
+    update tests[m
+[m
+commit 8f7e7ac183300cc595ab5eeb00a93d98e8e384f6[m
+Author: Dimitry <dimitry@ethereum.org>[m
+:::Date:   Wed Jul 3 23:19:35 2019 +0300[m
+[m
+    fix gasPricer tests[m
+[m
+commit 13732601cdc9acbcf43d5013944dbfa869762cef[m
+Author: Dimitry <dimitry@ethereum.org>[m
+Date:   Wed Jul 3 22:36:24 2019 +0300[m
+[m
+    split BlockchainTests into Valid and Invalid[m
+[m
+commit 1ef5785454c9597a724a9d77b2f9ced563c0f387[m
+Merge: 9cf12dd4f fcda8d2a1[m
+Author: Andrei Maiboroda <andrei@ethereum.org>[m
+Date:   Thu Jul 11 12:32:45 2019 +0200[m
+[m
+    Coming to agreement with geth on RIPEMD touch revert - another… (#5664)[m
+    [m
+    Coming to agreement with geth on RIPEMD touch revert - another alternative solution[m
+[m
+commit fcda8d2a144166c6e3a24a032a62a556c9a4e777[m
+:Author: Andrei Maiboroda <andrei@ethereum.org>[m
+Date:   Wed Jul 10 12:38:42 2019 +0200[m
+[m
+    Change the logic around reverting touched Precompiled contracts to agree with geth.[m
+    [m
+    Now precompile stays touched even after revert in the calling frame, but only for one RIPEMD precompile.[m
+[m
+commit 9cf12dd4f070ae034910821365569a226a7e2a4f[m
+Merge: db35d5f7e baa4627f1[m
+Author: winsvega <winsvega@mail.ru>[m
+Date:   Wed Jul 10 18:00:37 2019 +0300[m
+[m
+    Merge pull request #5661 from ethereum/testsfix[m
+    [m
+    detect folders with no tests when subfolders depth is more then 1[m
+[m
+commit db35d5f7ec942fb6fdbe24f66bbeb83f0a427f3c[m
+Merge: d169557f3 95ab8e2ab[m
+Author: Paweł Bylica <chfast@gmail.com>[m
+Date:   Wed Jul 10 16:19:29 2019 +0200[m
+:::
+
+|^[m
+    fix gasPricer tests[m
+[m
+commit 13732601cdc9acbcf43d5013944dbfa869762cef[m
+Author: Dimitry <dimitry@ethereum.org>[m
+Date:   Wed Jul 3 22:36:24 2019 +0300[m
+[m
+    split BlockchainTests into Valid and Invalid[m
+[m
+commit 1ef5785454c9597a724a9d77b2f9ced563c0f387[m
+Merge: 9cf12dd4f fcda8d2a1[m
+Author: Andrei Maiboroda <andrei@ethereum.org>[m
+Date:   Thu Jul 11 12:32:45 2019 +0200[m
+[m
+    Coming to agreement with geth on RIPEMD touch revert - another… (#5664)[m
+    [m
+    Coming to agreement with geth on RIPEMD touch revert - another alternative solution[m
+[m
+commit fcda8d2a144166c6e3a24a032a62a556c9a4e777[m
+Author: Andrei Maiboroda <andrei@ethereum.org>[m
+Date:   Wed Jul 10 12:38:42 2019 +0200[m
+[m
+    Change the logic around reverting touched Precompiled contracts to agree with geth.[m
+    [m
+    Now precompile stays touched even after revert in the calling frame, but only for one RIPEMD precompile.[m
+[m
+commit 9cf12dd4f070ae034910821365569a226a7e2a4f[m
+Merge: db35d5f7e baa4627f1[m
+Author: winsvega <winsvega@mail.ru>[m
+Date:   Wed Jul 10 18:00:37 2019 +0300[m
+[m
+    Merge pull request #5661 from ethereum/testsfix[m
+    [m
+    detect folders with no tests when subfolders depth is more then 1[m
+[m
+commit db35d5f7ec942fb6fdbe24f66bbeb83f0a427f3c[m
+Merge: d169557f3 95ab8e2ab[m
+Author: Paweł Bylica <chfast@gmail.com>[m
+:
+
+|^[m
+    fix gasPricer tests[m
+[m
+commit 13732601cdc9acbcf43d5013944dbfa869762cef[m
+Author: Dimitry <dimitry@ethereum.org>[m
+Date:   Wed Jul 3 22:36:24 2019 +0300[m
+[m
+    split BlockchainTests into Valid and Invalid[m
+[m
+commit 1ef5785454c9597a724a9d77b2f9ced563c0f387[m
+Merge: 9cf12dd4f fcda8d2a1[m
+Author: Andrei Maiboroda <andrei@ethereum.org>[m
+Date:   Thu Jul 11 12:32:45 2019 +0200[m
+[m
+    Coming to agreement with geth on RIPEMD touch revert - another… (#5664)[m
+    [m
+    Coming to agreement with geth on RIPEMD touch revert - another alternative so[mlution[m
+[m
+commit fcda8d2a144166c6e3a24a032a62a556c9a4e777[m
+Author: Andrei Maiboroda <andrei@ethereum.org>[m
+Date:   Wed Jul 10 12:38:42 2019 +0200[m
+[m
+    Change the logic around reverting touched Precompiled contracts to agree with[m geth.[m
+    [m
+    Now precompile stays touched even after revert in the calling frame, but only[m for one RIPEMD precompile.[m
+[m
+commit 9cf12dd4f070ae034910821365569a226a7e2a4f[m
+Merge: db35d5f7e baa4627f1[m
+Author: winsvega <winsvega@mail.ru>[m
+Date:   Wed Jul 10 18:00:37 2019 +0300[m
+[m
+    Merge pull request #5661 from ethereum/testsfix[m
+    [m
+    detect folders with no tests when subfolders depth is more then 1[m
+[m
+:

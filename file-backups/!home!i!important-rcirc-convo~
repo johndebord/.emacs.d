@@ -1,0 +1,187 @@
+20:51 <CaffeineVaccine> So I'm in a bit of a conundrum.
+20:51 <CaffeineVaccine> Given a `void*` that points to a specific
+       address:
+20:51 <CaffeineVaccine> `void* p = (void*)0x68656C6C6F00;` //
+       "hello"
+20:51 <CaffeineVaccine> How could I go about translating said
+       address to a string?
+20:51 <CaffeineVaccine> If I try this:
+20:51 <CaffeineVaccine> `cout << (const char*)p << endl;`
+20:52 <CaffeineVaccine> I get a segmentation fault.
+20:52 <CaffeineVaccine> Please don't mind the C-style casts for
+       now.
+20:53 *** Brainium JOIN
+20:54 <shachaf> I mean, that's undefined behavior.
+20:54 *** purnifire QUIT Remote host closed the connection
+20:54 <shachaf> What are you expecting it to be doing?
+20:54 <Stanley00> CaffeineVaccine: because cout has overloading to
+       print "char *", so it will try do dereference p, which
+       points to invalid memory => segfault
+20:56 *** medium_cool QUIT Quit: My Mac Mini has gone to
+       sleep. ZZZzzz…
+20:56 *** Xuefer JOIN
+20:58 <Stanley00> CaffeineVaccine: you can try with (const
+       char*)(&)
+20:59 <CaffeineVaccine> Yes, I'm aware it's undefined.
+20:59 *** alldayevery JOIN
+20:59 <CaffeineVaccine> I'll give your suggestion a go
+20:59 <InPhase> CaffeineVaccine: void* p = (void*)0x006F6C6C6568;
+       cout << (const char*)(&p) << endl;  // If you are lil-endian
+       like most current processors, your hex needs to be that way.
+20:59 <shachaf> CaffeineVaccine: I mean, even given that it's
+       undefined, do you happen to know that there's something at
+       that constant address in memory?
+21:00 <shachaf> It sounds like there isn't.
+21:00 <InPhase> shachaf: That's not undefined.  The void* is
+       containing ascii text.
+21:00 <InPhase> shachaf: Not POINTING to it, but containing it.
+21:01 <shachaf> Oh, it's not an address at all. I see now.
+21:01 <InPhase> shachaf: Although it is probably unwise.  :)
+21:01 <shachaf> InPhase: I think it's still undefined, though?
+21:01 <CaffeineVaccine> Still re-reading responses to wrap my head
+       around this.
+21:02 <InPhase> shachaf: I think the broad category allowing
+       recasting as char* to read out a value applies here.
+21:02 <shachaf> InPhase: I don't think it's valid to put an
+       arbitrary integer value in a pointer in the first place.
+21:02 <InPhase> shachaf: Well it will be implementation defined as
+       to whether or not it even fits.
+21:03 <CaffeineVaccine> InPhase: Heck yeah, it worked.
+21:04 <CaffeineVaccine> InPhase: Now, I'm not understanding the
+       `(const char*)(&p)`. How is this working by getting the
+       address of the said pointer?
+21:05 <CaffeineVaccine> Wait..
+21:05 <shachaf> What about, for example, uint64_t x = 0x6F6C6C6568;
+       printf("%s\n", (const char *)&x);
+21:05 <shachaf> No need to get void * involved.
+21:06 *** TC|busy JOIN
+21:06 *** alyawn JOIN
+21:06 <InPhase> shachaf: There we go.  It's explicitly allowed in
+       N4713's 8.5.1.10.4.
+21:06 <InPhase> It's been a while since I got the chance to pull a
+       rules-lawyering here.  :)
+21:07 <CaffeineVaccine> Ok cool. I'm starting to wrap my head
+       around it.
+21:07 <RandomReader> (C++, not C)
+21:07 <Stanley00> hmm, geordi is down again?
+21:07 <shachaf> InPhase: "A pointer can be explicitly converted to
+       any integral type large enough to hold it."?
+21:07 <shachaf> InPhase: That's the opposite direction of what's
+       happening here.
+21:07 <InPhase> shachaf: Sorry, 8.5.1.10.5
+21:07 <InPhase> Off by 1.
+21:09 <shachaf> Hmm. But it's not a "safely-derived pointer
+       object".
+21:09 <shachaf> Uh, "safely-derived pointer"
+21:09 *** Timotheus_Canens QUIT Ping timeout: 264 seconds
+21:11 <InPhase> Right.  Although as with much of C++, the unsafe
+       thing is formally allowed, as long as you don't shoot your
+       foot off with it.
+21:12 <shachaf> So the thing I remembered is that there's some
+       architecture that has a "pointer register" which does
+       prefetching or something, and can only hold valid pointers.
+21:12 <shachaf> Which is why things like "free(p); if (p) { ... }"
+       are UB.
+21:12 *** xekz JOIN
+21:12 <shachaf> I figured it would hold here, but maybe p is used
+       in a way that makes it only implementation-defined?
+21:14 *** d3x0r QUIT Read error: Connection reset by peer
+21:14 <CaffeineVaccine> Ok before you guys dig any deeper into any
+       more, could you please explain to me why cout << `(const
+       char*)(&p) << endl;` works, while `cout << (const char*)(p)
+       << endl;` does not. When I test out `cout << hex <<
+       (uint64_t)p << endl;` the output is as I expect
+       `6f6c6c6568`. But when testing out `cout << hex <<
+       (uint64_t)&p << endl;` I get a completely different address,
+       `7ffcf7610790` but yet that is the address we'r
+21:14 <CaffeineVaccine> e casting? I'm not quite fully
+       comprehending this..
+21:14 <InPhase> shachaf: Simply evaluating the value of p after a
+       free should not be undefined.  It would be undefined to make
+       some use of what p points to.
+21:14 *** d3x0r JOIN
+21:15 <shachaf> InPhase: I've explicitly seen that called out as an
+       unexpected example of UB.
+21:15 <InPhase> shachaf: I would love to see a declaration of this
+       somewhere if it is true.
+21:16 *** SombreroSteve1 QUIT Ping timeout: 268 seconds
+21:16 <CaffeineVaccine> InPhase: My plan isn't to change the value
+       of what the pointer (ASCII text) points to, but to just
+       utilize said address. Is that UB? And could someone please
+       explain to me how this is working by casting `&p` rather
+       than `p`?
+21:16 <shachaf> Hmm, this is C, not C++, but maybe
+       https://kristerw.blogspot.com/2016/04/dangling-pointers-and-undefined-behavior.html
+       ?
+21:17 *** nix8n82 JOIN
+21:17 *** nix8n82 QUIT Max SendQ exceeded
+21:17 *** nix8n82 JOIN
+21:17 *** charims20 JOIN
+21:18 *** lh_ideapad JOIN
+21:18 *** cheakoirccloud QUIT Quit: Connection closed for
+       inactivity
+21:19 *** orbiter QUIT
+21:19 <InPhase> CaffeineVaccine: If you're just using the pointer
+       as an unwisely chosen storage structure, that is not UB, it
+       is just confusing.
+21:19 *** orbiter JOIN
+21:19 <InPhase> CaffeineVaccine: A better choice would be packing
+       your ascii into uint64_t, which is the same size
+21:20 <shachaf> Another option would be char p[6] =
+       {'h','e','l','l','o','\0'};
+21:21 *** alyptik QUIT Ping timeout: 240 seconds
+21:21 *** orbiter QUIT Client Quit
+21:21 *** orbiter JOIN
+21:21 <RandomReader> http://eel.is/c++draft/basic.compound#3.sentence-8
+       http://eel.is/c++draft/basic.compound#3.sentence-13  and
+       http://eel.is/c++draft/basic.stc#4.sentence-3  seem to apply
+       here
+21:22 *** edlinde JOIN
+21:22 *** nomn QUIT Ping timeout: 255 seconds
+21:22 <CaffeineVaccine> InPhase: shachaf: Ok that's neat that it
+       isn't undefined. This leads me to ponder how I could get
+       this to work within webassembly addresses. But I'm still not
+       quite getting that you guys casted the `&p` instead of `p`
+       in: `cout << (const char*)(&p) << endl;`...
+21:22 *** charims20 QUIT Ping timeout: 258 seconds
+21:22 <RandomReader> CaffeineVaccine - you're getting mixed up by
+       levels of indirection is all
+21:22 <CustersRevenge> also don't use C casts
+21:23 <RandomReader> the expression "p", what value does it hold?
+       as in, what does it represent?
+21:23 <CustersRevenge> they don't tell you what is actually
+       happening
+21:23 <CaffeineVaccine> I'm almost certain that is where my
+       confusion is at.
+21:23 <shachaf> CaffeineVaccine: The string data is 68 65 6c 6c 6f
+       00
+21:23 <shachaf> The address of the string data is (presumably)
+       somewhere on the stack.
+21:24 <shachaf> You decided to make p a pointer for some reason,
+       but it's not the address of a string, or of anything.
+21:24 <shachaf> It's the contents of a string. So the address of
+       the string is address of p.
+21:24 *** butterthebuddha JOIN
+21:24 <CaffeineVaccine> Ok, this is how I'm comprehending it (I'll
+       use boxes):
+21:25 <shachaf> twenty seven eight-by-ten color glossy photographs
+       with circles and arrows and a paragraph on the back of each
+       one
+21:25 <RandomReader> hehe
+21:25 *** AfroThundr|main QUIT Remote host closed the connection
+21:26 <CaffeineVaccine> `void* p = (void*)0x006F6C6C6568;` p:
+       [address:arbitrary] [value:0x006F6C6C6568]
+21:26 <CaffeineVaccine> p == 0x006F6C6C6568
+21:26 <CaffeineVaccine> &p == arbitrary
+21:26 <CaffeineVaccine> Is that correct?
+21:26 *** jmg_20080970 JOIN
+21:26 <InPhase> RandomReader: A good selection of quotes.  That
+       makes free(p); if(p){} implementation-defined in C++, while
+       undefined in C.
+21:28 <RandomReader> CaffeineVaccine - yes, where "arbitrary" is
+       "location/address of the variable p"
+21:28 *** nix8n82 QUIT Ping timeout: 245 seconds
+21:28 <InPhase> Although since most implementations barely even
+       notice when you DO use *p after free, it seems most will
+       permit if(p){}
+> 

@@ -1,0 +1,12 @@
+#include <iostream>
+#include <limits>
+
+using namespace std;
+
+int main()
+{
+    int i = 0xffff;
+    cout << i << endl;
+
+    return 0;
+}

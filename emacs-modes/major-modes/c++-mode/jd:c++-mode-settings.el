@@ -1,16 +1,17 @@
 (provide 'jd:c++-mode-settings.el)
 
-(defun jd:enable-modern-c++-font-lock-mode ()
+(defun jd:c++-mode-enable-modern-c++-font-lock-mode ()
   (modern-c++-font-lock-mode t))
-(add-hook 'c++-mode-hook 'jd:enable-modern-c++-font-lock-mode)
+(add-hook 'c++-mode-hook 'jd:c++-mode-enable-modern-c++-font-lock-mode)
 
-(defun jd:enable-yasnippet-mode ()
-  (yas-minor-mode t))
-(add-hook 'c++-mode-hook 'jd:enable-yasnippet-mode)
+(defun jd:c++-mode-enable-yasnippet-mode ()
+  (yas-minor-mode t)
+  (setq yas/indent-line nil))
+(add-hook 'c++-mode-hook 'jd:c++-mode-enable-yasnippet-mode)
 
-(defun jd:disable-abbrev-mode ()
+(defun jd:c++-mode-disable-abbrev-mode ()
   (abbrev-mode -1))
-(add-hook 'c++-mode-hook 'jd:disable-abbrev-mode)
+(add-hook 'c++-mode-hook 'jd:c++-mode-disable-abbrev-mode)
 
 (defun jd:c++-mode-disable-indent-tabs-mode ()
   (setq indent-tabs-mode nil))
@@ -21,6 +22,11 @@
 (c-set-offset 'case-label '4)
 (c-set-offset 'inlambda '0)
 (c-set-offset 'inline-open '0)
+;; (c-set-offset 'inlambda 0)
+
+
+(c-set-offset 'c-lineup-template-args '0)
+(c-set-offset 'template-args-cont '0)
 
 ;;;;;;;;;;;;;;;;
 ;;; `cc-vars.el'

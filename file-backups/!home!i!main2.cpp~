@@ -1,0 +1,18 @@
+#include <iostream> // std::cout
+
+class arb_precision {
+public:
+    arb_precision()
+    { }
+
+    
+
+private:
+    
+};
+
+
+int main() {
+    
+    return 0;
+}

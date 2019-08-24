@@ -1,0 +1,59 @@
+------------------
+Updated 06/21/2019
+------------------
+
+-------------------
+Confidence Mapping:
+0 => Not started
+1 => Very unfamiliar
+2 => Unfamiliar
+3 => Familiar
+4 => Very familiar
+5 => Full comprehension
+-----------------------
+
+----------
+Game Plan:
+SOURCES
+include/
+└── chainbase
+    ├── [ ] chainbase.hpp
+    |       [ ] boost::interprocess::managed_mapped_file
+    |           [ ] boost::interprocess::ipcdetail::basic_managed_memory_impl
+    |               [ ] boost::interprocess::segment_manager
+    |       [ ] boost::interprocess::allocator
+    |       [ ] boost::interprocess::interprocess_shareable_mutex
+    |           [ ] boost::interprocess::interprocess::mutex
+    ├── [5] environment.hpp
+    └── [ ] pinnable_mapped_file.hpp
+            [ ] boost::interprocess::managed_mapped_file
+            [ ] boost::interprocess::file_lock
+src/
+├── [ ] chainbase.cpp
+└── [ ] pinnable_mapped_file.cpp
+        [ ] boost::interprocess::managed_external_buffer
+        [ ] boost::interprocess::anonymous_shared_memory
+	
+RESOURCES/THEORY/KEY-POINTS
+[0] Mapping memory -> Mapping region within said memory -> Mapping segment manager to address within region
+[0] Locking memory to RAM; preventing it from entering swap space with `mlock`
+[0] Transactional Information Systems: Theory, Algorithms, and the Practice of Concurrency Control and Recovery 1st Edition
+[0] Concurrency Control and Recovery in Database Systems 1st Edition
+[0] Principles of Transaction Processing 2nd Edition
+
+WEEKEND-AMBITIONS
+[0] Read System V ABI document
+[0] Read ELF document
+[0] More chainbase studying
+
+ENDGAME
+[0] RocksDB
+[0] Testing (but not limited to) RocksDB within `chainbase`
+-----------------------------------------------------------
+
+Among other things, I've been going hard studying the foundation EOSIO (let
+along blockchain tech in general) ---  the database.
+This weekend I'll be trying to finish the book ...
+Also, if you know of any resources that could cut the learning curve or
+would give me any "AHA" or insight that you found really helpful, please let
+me know. If not, then that's ok. I feel like I'm progressing at a good pace.
