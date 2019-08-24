@@ -1,5 +1,0 @@
-#include <eosiolib/contract>
-
-struct con : public eosio::contract {
-    
-};

@@ -1,7 +1,0 @@
-fstream
-operator>>()
-  extracts the next character; apparently doesn't recognize '\n'
-get()
-  extracts the next character; recognizes '\n'
-peek()
-  looks at the next character; doesn't extract it; if in loop, is infinite

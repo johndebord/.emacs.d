@@ -1,8 +1,0 @@
-char*      char_pointer;
-int        int_array[10];
-int        (&int_array_ref)[10];
-char*      pointer_to_array_char_strings[];
-char**     char_pointer_to_pointer;
-const int  const_int;
-const int* pointer_to_const_int;
-int* const const_pointer_to_int;

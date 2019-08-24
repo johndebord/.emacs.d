@@ -1,2 +1,0 @@
-openssl ecparam -name secp256k1 -genkey -noout -out PRIVATE-KEY
-openssl ec -in PRIVATE-KEY1 -pubout -noout -out PUBLIC-KEY

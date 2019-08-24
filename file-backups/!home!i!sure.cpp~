@@ -1,8 +1,0 @@
-#include <iostream>
-
-int main() {
-    int i = 20;
-    int j = 21;
-    int k = i+j;
-    return 0;
-}

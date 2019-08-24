@@ -1,6 +1,0 @@
-// This is a one line comment.
-int main() {
-    // This is another one liner.
-    return 0;
-    /*this is a multi-linie*/
-}

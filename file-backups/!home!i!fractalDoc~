@@ -1,6 +1,0 @@
-Empty `throw` statement.
-If `throw` an active exception being handled, `terminate` is supposed to be called.
-Use `throw std::exception{};`.
-
-CMake | cmake | CMakeLists.txt | CMAKE_*
--DCMAKE_BUILD_TYPE=Debug|Release
