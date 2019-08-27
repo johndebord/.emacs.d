@@ -1,5 +1,7 @@
 (require 'jd:abbrev-mode.el
          (concat jd:path-prefix "emacs-modes/minor-modes/abbrev-mode/jd:abbrev-mode.el"))
+(require 'jd:auto-complete-mode.el
+         (concat jd:path-prefix "emacs-modes/minor-modes/auto-complete-mode/jd:auto-complete-mode.el"))
 (require 'jd:cua-mode.el
          (concat jd:path-prefix "emacs-modes/minor-modes/cua-mode/jd:cua-mode.el"))
 (require 'jd:cua-rectangle-mark-mode.el
