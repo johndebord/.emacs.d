@@ -1,6 +1,21 @@
 ;;; Author: John DeBord
 
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(defconst jd:path-prefix nil
+  "Determine which operating system Emacs is currently being used in.
+If `darwin' the path prefix shall be 'Users/johndebord/.emacs.d/'.
+If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
+
+;;; System specific settings
+(cond
+ ((string-equal system-type "darwin")
+  (progn
+    (add-to-list 'default-frame-alist '(fullscreen . maximized))
+    (setq jd:path-prefix "/Users/johndebord/.emacs.d/")
+    (setq default-directory "/Users/johndebord/")))
+ ((string-equal system-type "gnu/linux")
+  (progn
+    (setq jd:path-prefix "/home/johndebord/.emacs.d/")
+    (setq default-directory "/home/johndebord/"))))
 
 (package-initialize)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -8,9 +23,9 @@
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 (require 'jd:global.el
-         "~/.emacs.d/global/jd:global.el")
+         (concat jd:path-prefix "global/jd:global.el"))
 (require 'jd:emacs-modes.el
-         "~/.emacs.d/emacs-modes/jd:emacs-modes.el")
+         (concat jd:path-prefix "emacs-modes/jd:emacs-modes.el"))
 
 ;;; Factor this out into a theme once all modes/color-combinations are established
 (custom-set-faces
@@ -384,7 +399,7 @@
  '(mode-line-emphasis ((t (:background "#535353"))))
  '(mode-line-highlight ((t (:background "#535353"))))
  '(mode-line-inactive ((t (:background "#323232" :foreground "#dcdcdc"))))
- '(mouse ((t (:background "purple" :foreground "black"))))
+ '(mouse ((t nil)))
  '(next-error ((t (:background "#535353"))))
  '(nobreak-space ((t (:background "purple" :foreground "black"))))
  '(nxml-attribute-colon ((t (:background "purple" :foreground "black"))))

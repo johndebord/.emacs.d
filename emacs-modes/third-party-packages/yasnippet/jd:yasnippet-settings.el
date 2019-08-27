@@ -1,4 +1,4 @@
 ;;; `yasnippet.el'
-(yas-load-directory "/Users/johndebord/.emacs.d/snippets/")
+(yas-load-directory (concat jd:path-prefix "snippets/"))
 
 (provide 'jd:yasnippet-settings.el)

@@ -48,9 +48,13 @@
   (scroll-up-command)
   (move-to-window-line nil))
 
+(defun jd:swap-buffers ()
+  (interactive)
+  (switch-to-buffer nil))
+
 ;;; `global-map' --- `subr.el'
 (define-key global-map (kbd "<jd:C-bks>") 'jd:backward-delete-word)
-(define-key global-map (kbd "<jd:C-spc>") 'cua-set-mark) 
+(define-key global-map (kbd "<jd:C-spc>") 'jd:swap-buffers)
 (define-key global-map (kbd "<C-a>") 'mark-whole-buffer)
 (define-key global-map (kbd "<C-g>") 'keyboard-quit)
 (define-key global-map (kbd "<C-j>") 'jd:scroll-up)
@@ -105,8 +109,8 @@
 
 (define-key global-map (kbd "<C-x> <jd:bks>") 'jd:delete-line)
 (define-key global-map (kbd "<C-x> <jd:tab>") 'completion-at-point)
-(define-key global-map (kbd "<C-x> <f1>") 'eval-expression)
 (define-key global-map (kbd "<C-x> <f4>") 'kmacro-edit-macro)
+(define-key global-map (kbd "<C-x> <M-x>") 'eval-expression)
 (define-key global-map (kbd "<C-x> r") 'point-to-register)
 
 (define-key global-map (kbd "<C-x> <jd:C-tab>") 'dabbrev-expand)
@@ -137,9 +141,17 @@
 ;;; Weird Mac keybind
 (define-key global-map (kbd "<C-tab>") 'jd:backward-window)
 
+;;; Seperate OS specific configurations in a cleaner way
+(cond
+ ((string-equal system-type "darwin")
+  (progn
+    (define-key global-map (kbd "<wheel-up>") 'mwheel-scroll)
+    (define-key global-map (kbd "<wheel-down>") 'mwheel-scroll)))
+ ((string-equal system-type "gnu/linux")
+  (progn
+    (define-key global-map (kbd "<mouse-4>") 'mwheel-scroll)
+    (define-key global-map (kbd "<mouse-5>") 'mwheel-scroll))))
 (define-key global-map (kbd "<mouse-1>") 'mouse-set-point)
-(define-key global-map (kbd "<wheel-up>") 'mwheel-scroll)
-(define-key global-map (kbd "<wheel-down>") 'mwheel-scroll)
 (define-key global-map (kbd "<wheel-left>") '(lambda () (interactive) (scroll-right 1)))
 (define-key global-map (kbd "<wheel-right>") '(lambda () (interactive) (scroll-left 1)))
 (define-key global-map (kbd "<down-mouse-1>") 'mouse-drag-region)
