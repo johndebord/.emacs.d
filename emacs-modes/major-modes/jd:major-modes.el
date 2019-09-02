@@ -46,5 +46,7 @@
          (concat jd:path-prefix "emacs-modes/major-modes/makefile-mode/jd:makefile-mode.el"))
 (require 'jd:rcirc-mode.el
          (concat jd:path-prefix "emacs-modes/major-modes/rcirc-mode/jd:rcirc-mode.el"))
+(require 'jd:xref--xref-buffer-mode.el
+         (concat jd:path-prefix "emacs-modes/major-modes/xref--xref-buffer-mode/jd:xref--xref-buffer-mode.el"))
 
 (provide 'jd:major-modes.el)

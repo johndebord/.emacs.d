@@ -1,0 +1,6 @@
+;;; `popup.el'
+(setq popup-use-optimized-column-computation nil)
+ac-use-comphist
+ac-candidate-limit
+
+(provide 'jd:auto-complete-mode-settings.el)

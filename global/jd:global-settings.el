@@ -21,18 +21,19 @@
         (line-number-mode (" %l" (column-number-mode ":%c")))))
 
 ;;; `C source code'
-(defalias 'yes-or-no-p 'y-or-n-p)
 (put 'erase-buffer 'disabled nil)
+(defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default truncate-lines t)
 (setq default-directory (substring jd:path-prefix 0 -9))
 (setq echo-keystrokes 0.001)
 (setq enable-recursive-minibuffers t)
 (setq fill-column 80)
+(setq gc-cons-threshold 64000000)
 (setq hscroll-margin 2)
 (setq hscroll-step 1)
 (setq indent-tabs-mode nil)
-(setq gc-cons-threshold 64000000)
 (setq make-pointer-invisible nil)
+(setq show-help-function nil)
 (setq x-stretch-cursor 1)
 
 ;;; `elec-pair.el'
@@ -85,7 +86,8 @@
 (setq initial-scratch-message "")
 
 ;;; `tool-bar.el'
-(tool-bar-mode 0)
+(setq tool-bar-mode 0)
+(setq tooltip-mode nil)
 
 ;;; `window.el'
 (setq pop-up-frames nil)

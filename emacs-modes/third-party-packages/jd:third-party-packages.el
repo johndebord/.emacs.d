@@ -2,8 +2,6 @@
          (concat jd:path-prefix "emacs-modes/third-party-packages/cmake-mode/jd:cmake-mode.el"))
 (require 'jd:counsel.el
          (concat jd:path-prefix "emacs-modes/third-party-packages/counsel/jd:counsel.el"))
-(require 'jd:counsel-etags.el
-         (concat jd:path-prefix "emacs-modes/third-party-packages/counsel-etags/jd:counsel-etags.el"))
 (require 'jd:gnuplot-mode.el
          (concat jd:path-prefix "emacs-modes/third-party-packages/gnuplot-mode/jd:gnuplot-mode.el"))
 (require 'jd:gud-lldb.el

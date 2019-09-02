@@ -67,6 +67,7 @@
 (define-key global-map (kbd "<C-t>") 'split-window-right)
 (define-key global-map (kbd "<C-u>") 'beginning-of-buffer)
 (define-key global-map (kbd "<C-w>") 'delete-window)
+(define-key global-map (kbd "<C-y>") 'xref-find-references)
 (define-key global-map (kbd "<C-/>") 'comment-region)
 (define-key global-map (kbd "<C-?>") 'uncomment-region)
 

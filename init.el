@@ -138,7 +138,7 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
  '(dired-perm-write ((t nil)))
  '(dired-symlink ((t nil)))
  '(dired-warning ((t (:background "purple" :foreground "black"))))
- '(eldoc-highlight-function-argument ((t (:background "purple" :foreground "black"))))
+ '(eldoc-highlight-function-argument ((t (:weight bold))))
  '(error ((t (:foreground "#ff0000" :weight bold))))
  '(escape-glyph ((t (:foreground "#00ffff"))))
  '(eshell-ls-archive ((t (:foreground "#bd63c5"))))
@@ -600,7 +600,7 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
  '(tex-verbatim ((t (:background "purple" :foreground "black"))))
  '(tmm-inactive ((t (:background "purple" :foreground "black"))))
  '(tool-bar ((t (:background "purple" :foreground "black"))))
- '(tooltip ((t (:background "purple" :foreground "black"))))
+ '(tooltip ((t (:background "#e6e6e6" :foreground "#000000"))))
  '(trailing-whitespace ((t (:background "#ff0000"))))
  '(tty-menu-disabled-face ((t (:background "purple" :foreground "black"))))
  '(tty-menu-enabled-face ((t (:background "purple" :foreground "black"))))
@@ -651,3 +651,9 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
  '(window-divider-last-pixel ((t (:background "purple" :foreground "black"))))
  '(yas--field-debug-face ((t (:background "#898888"))) t)
  '(yas-field-highlight-face ((t (:background "#535353")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
