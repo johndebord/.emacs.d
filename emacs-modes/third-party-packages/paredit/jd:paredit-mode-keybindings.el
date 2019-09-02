@@ -1,0 +1,16 @@
+`paredit-mode-map' --- `paredit.el'
+(defun jd:paredit-mode-map ()
+ (setf (cdr paredit-mode-map) nil)
+ (define-key paredit-mode-map (kbd "<C-k>") 'paredit-kill)
+ (define-key paredit-mode-map (kbd "") 'paredit-backward-slurp-sexp)
+ (define-key paredit-mode-map (kbd "") 'paredit-forward-slurp-sexp)
+ (define-key paredit-mode-map (kbd "") 'paredit-backward-barf-sexp)
+ (define-key paredit-mode-map (kbd "") 'paredit-forward-barf-sexp)
+ (define-key paredit-mode-map (kbd "") 'paredit-splice-sexp-killing-forward)
+ (define-key paredit-mode-map (kbd "") 'paredit-splice-sexp-killing-backward)
+ (define-key paredit-mode-map (kbd "") 'paredit-wrap-round)
+ (define-key paredit-mode-map (kbd "") 'paredit-join-sexps)
+ (define-key paredit-mode-map (kbd "") 'paredit-split-sexp))
+(add-hook 'paredit-mode-hook 'jd:paredit-mode-map)
+
+(provide 'jd:paredit-mode-keybindings.el)

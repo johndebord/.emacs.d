@@ -28,6 +28,10 @@
   (interactive "p")
   (jd:delete-word (- argument)))
 
+(defun jd:forward-delete-word (argument)
+  (interactive "p")
+  (jd:delete-word (+ argument)))
+
 (defun jd:forward-window ()
   (interactive)
   (other-window  1))
@@ -73,7 +77,7 @@
 
 (define-key global-map (kbd "<jd:S-bks>") 'delete-backward-char)
 
-(define-key global-map (kbd "<jd:C-S-bks>") 'zap-to-char)
+(define-key global-map (kbd "<jd:C-S-bks>") 'jd:forward-delete-word)
 (define-key global-map (kbd "<C-S-n>") 'jd:backward-transpose-lines)
 (define-key global-map (kbd "<C-S-t>") 'split-window-below)
 

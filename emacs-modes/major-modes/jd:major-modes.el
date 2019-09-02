@@ -42,6 +42,8 @@
          (concat jd:path-prefix "emacs-modes/major-modes/help-mode/jd:help-mode.el"))
 (require 'jd:lisp-interaction-mode.el
          (concat jd:path-prefix "emacs-modes/major-modes/lisp-interaction-mode/jd:lisp-interaction-mode.el"))
+(require 'jd:lisp-mode.el
+         (concat jd:path-prefix "emacs-modes/major-modes/lisp-mode/jd:lisp-mode.el"))
 (require 'jd:makefile-mode.el
          (concat jd:path-prefix "emacs-modes/major-modes/makefile-mode/jd:makefile-mode.el"))
 (require 'jd:rcirc-mode.el

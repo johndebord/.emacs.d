@@ -10,8 +10,6 @@
          (concat jd:path-prefix "emacs-modes/minor-modes/eldoc-mode/jd:eldoc-mode.el"))
 (require 'jd:gud-minor-mode.el
          (concat jd:path-prefix "emacs-modes/minor-modes/gud-minor-mode/jd:gud-minor-mode.el"))
-(require 'jd:paredit-mode.el
-         (concat jd:path-prefix "emacs-modes/minor-modes/paredit-mode/jd:paredit-mode.el"))
 (require 'jd:view-mode.el
          (concat jd:path-prefix "emacs-modes/minor-modes/view-mode/jd:view-mode.el"))
 

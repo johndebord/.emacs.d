@@ -30,7 +30,7 @@
 (setq fill-column 80)
 (setq gc-cons-threshold 64000000)
 (setq hscroll-margin 2)
-(setq hscroll-step 1)
+(setq hscroll-step 14)
 (setq indent-tabs-mode nil)
 (setq make-pointer-invisible nil)
 (setq show-help-function nil)
