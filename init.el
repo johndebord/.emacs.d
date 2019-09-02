@@ -651,9 +651,3 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
  '(window-divider-last-pixel ((t (:background "purple" :foreground "black"))))
  '(yas--field-debug-face ((t (:background "#898888"))) t)
  '(yas-field-highlight-face ((t (:background "#535353")))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
