@@ -1,5 +1,15 @@
 ;;; Author: John DeBord
 
+;;; This is how I should do it
+;; (add-hook 'texinfo-mode-hook
+;; 	  (lambda ()
+;; 	    (define-key texinfo-mode-map "\C-cp"
+;; 	      'backward-paragraph)
+;; 	    (define-key texinfo-mode-map "\C-cn"
+;; 	      'forward-paragraph)))
+
+;;; TODO make this file oriented or call a shell command to determine
+;;; the directory
 (defconst jd:path-prefix nil
   "Determine which operating system Emacs is currently being used in.
 If `darwin' the path prefix shall be 'Users/johndebord/.emacs.d/'.
@@ -14,8 +24,8 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
     (setq default-directory "/Users/johndebord/")))
  ((string-equal system-type "gnu/linux")
   (progn
-    (setq jd:path-prefix "/home/johndebord/.emacs.d/")
-    (setq default-directory "/home/johndebord/"))))
+    (setq jd:path-prefix "/home/i/.emacs.d/")
+    (setq default-directory "/home/i/"))))
 
 (package-initialize)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -33,7 +43,7 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "nil" :family "Courier"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal))))
@@ -651,3 +661,9 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
  '(window-divider-last-pixel ((t (:background "purple" :foreground "black"))))
  '(yas--field-debug-face ((t (:background "#898888"))) t)
  '(yas-field-highlight-face ((t (:background "#535353")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

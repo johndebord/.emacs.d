@@ -1,3 +1,17 @@
+(defun jd:copy-line-and-goto-beg ()
+  (interactive)
+  (back-to-indentation)
+  (copy-region-as-kill (point) (point-at-eol))
+  (back-to-indentation)
+  (message "Line copied"))
+
+(defun jd:copy-line-and-goto-end ()
+  (interactive)
+  (back-to-indentation)
+  (copy-region-as-kill (point) (point-at-eol))
+  (end-of-line)
+  (message "Line copied"))
+
 (defun jd:self-insert-space ()
   (interactive)
   (insert " "))
@@ -116,6 +130,8 @@
 (define-key global-map (kbd "<C-x> <jd:tab>") 'completion-at-point)
 (define-key global-map (kbd "<C-x> <f4>") 'kmacro-edit-macro)
 (define-key global-map (kbd "<C-x> <M-x>") 'eval-expression)
+(define-key global-map (kbd "<C-x> o") 'jd:copy-line-and-goto-end)
+(define-key global-map (kbd "<C-x> u") 'jd:copy-line-and-goto-beg)
 (define-key global-map (kbd "<C-x> r") 'point-to-register)
 
 (define-key global-map (kbd "<C-x> <jd:C-tab>") 'dabbrev-expand)
