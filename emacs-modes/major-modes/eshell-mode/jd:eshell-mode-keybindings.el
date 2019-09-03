@@ -1,5 +1,3 @@
-(provide 'jd:eshell-mode-keybindings.el)
-
 (defun jd:eshell-clear-buffer ()
   (interactive)
   (let ((inhibit-read-only t))
@@ -9,11 +7,29 @@
   (backward-delete-char 1)
   (end-of-line))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun jd:eshell-ack-or-send-input ()
+  (interactive)
+  (if (get-char-property (point) 'face)
+      (progn
+	(let ((value (get-char-property (point) 'face)))
+	  (cond ((equal (cdr (car value)) "green3")
+		 (let ((file (thing-at-point 'filename 'no-properties)))
+		   (find-file file)
+		   (goto-line 0)))
+		((equal (cdr (car value)) "yellow3")
+		 (let ((line (thing-at-point 'word 'no-properties)))
+		   (beginning-of-line)
+		   (while (not (equal (cdr (car (get-char-property (point) 'face))) "green3"))
+		     (previous-line))
+		   (let ((file (thing-at-point 'filename 'no-properties)))
+		     (find-file file)
+		     (goto-line (string-to-number line))))))))
+    (eshell-send-input)))
+
 ;;; `eshell-mode-map' --- `esh-mode.el'
 (defun jd:eshell-mode-map ()
   (setf (cdr eshell-mode-map) nil)
-  (define-key eshell-mode-map (kbd "<jd:ret>") 'eshell-send-input)
+  (define-key eshell-mode-map (kbd "<jd:ret>") 'jd:eshell-ack-or-send-input)
   (define-key eshell-mode-map (kbd "<jd:tab>") 'pcomplete-expand-and-complete)
   (define-key eshell-mode-map (kbd "<C-i>") 'eshell-previous-prompt)
   (define-key eshell-mode-map (kbd "<C-k>") 'eshell-next-prompt)
@@ -25,14 +41,14 @@
   (define-key eshell-mode-map (kbd "<C-x> u") 'eshell-bol))
 (add-hook 'eshell-mode-hook 'jd:eshell-mode-map)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `eshell-command-map' --- `esh-mode.el'
 (defun jd:eshell-command-map ()
   (setf (cdr eshell-command-map) nil))
 (add-hook 'eshell-mode-hook 'jd:eshell-command-map)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `eshell-isearch-map' --- `em-hist.el'
 (defun jd:eshell-isearch-map ()
   (setf (cdr eshell-isearch-map) nil))
 (add-hook 'eshell-mode-hook 'jd:eshell-isearch-map)
+
+(provide 'jd:eshell-mode-keybindings.el)

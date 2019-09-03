@@ -1,0 +1,4 @@
+speedbar-buffers-key-map
+k		speedbar-buffer-kill-buffer
+
+r		speedbar-buffer-revert-buffer

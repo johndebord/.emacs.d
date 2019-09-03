@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: contract
+# key: contract
+# --
+// eosio-cpp -o con -fnative con.cpp; ./con
+#include <eosio/eosio.hpp>
+
+class [[eosio::contract]] ${1:con} : eosio::contract {
+public:
+   using contract::contract;
+
+   [[eosio::action]] void act() {
+      $0eosio::print("ok\n");
+   }
+};
+
+int main() {
+   eosio::name self{"account1"};
+   eosio::name first_receiver{"account2"};
+   eosio::datastream<const char*> datastream{nullptr, 0};
+
+   con c{self, first_receiver, datastream};
+
+   c.act();
+}

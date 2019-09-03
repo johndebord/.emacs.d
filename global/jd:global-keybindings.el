@@ -1,4 +1,16 @@
-(provide 'jd:global-keybindings.el)
+(defun jd:copy-line-and-goto-beg ()
+  (interactive)
+  (back-to-indentation)
+  (copy-region-as-kill (point) (point-at-eol))
+  (back-to-indentation)
+  (message "Line copied"))
+
+(defun jd:copy-line-and-goto-end ()
+  (interactive)
+  (back-to-indentation)
+  (copy-region-as-kill (point) (point-at-eol))
+  (end-of-line)
+  (message "Line copied"))
 
 (defun jd:self-insert-space ()
   (interactive)
@@ -30,6 +42,10 @@
   (interactive "p")
   (jd:delete-word (- argument)))
 
+(defun jd:forward-delete-word (argument)
+  (interactive "p")
+  (jd:delete-word (+ argument)))
+
 (defun jd:forward-window ()
   (interactive)
   (other-window  1))
@@ -50,27 +66,14 @@
   (scroll-up-command)
   (move-to-window-line nil))
 
-(defun load&return (file &optional msgp)
-  "Load FILE.  Return the value of the last sexp read."
-  (interactive "fFile: \np")
-  (let* ((sexp  (with-current-buffer (find-file-noselect file)
-                  (goto-char (point-min))
-                  (read (current-buffer))))
-         (val   (ignore-errors (eval sexp))))
-    (prog1 val (when msgp (message "Value: %S" val)))))
-
-(defun jd:compile ()
+(defun jd:swap-buffers ()
   (interactive)
-  ()
-  (write-region <STRING> nil u 'append)
-  (flymake-compile))
+  (switch-to-buffer nil))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `global-map' --- `subr.el'
 (define-key global-map (kbd "<jd:C-bks>") 'jd:backward-delete-word)
-(define-key global-map (kbd "<jd:C-spc>") 'cua-set-mark) 
+(define-key global-map (kbd "<jd:C-spc>") 'jd:swap-buffers)
 (define-key global-map (kbd "<C-a>") 'mark-whole-buffer)
-(define-key global-map (kbd "<C-b>") 'flymake-compile)
 (define-key global-map (kbd "<C-g>") 'keyboard-quit)
 (define-key global-map (kbd "<C-j>") 'jd:scroll-up)
 (define-key global-map (kbd "<C-l>") 'jd:scroll-down)
@@ -82,12 +85,13 @@
 (define-key global-map (kbd "<C-t>") 'split-window-right)
 (define-key global-map (kbd "<C-u>") 'beginning-of-buffer)
 (define-key global-map (kbd "<C-w>") 'delete-window)
+(define-key global-map (kbd "<C-y>") 'xref-find-references)
 (define-key global-map (kbd "<C-/>") 'comment-region)
 (define-key global-map (kbd "<C-?>") 'uncomment-region)
 
 (define-key global-map (kbd "<jd:S-bks>") 'delete-backward-char)
 
-(define-key global-map (kbd "<jd:C-S-bks>") 'zap-to-char)
+(define-key global-map (kbd "<jd:C-S-bks>") 'jd:forward-delete-word)
 (define-key global-map (kbd "<C-S-n>") 'jd:backward-transpose-lines)
 (define-key global-map (kbd "<C-S-t>") 'split-window-below)
 
@@ -108,8 +112,8 @@
 (define-key global-map (kbd "<C-M-j>") 'backward-word)
 (define-key global-map (kbd "<C-M-l>") 'forward-word)
 (define-key global-map (kbd "<C-M-n>") 'transpose-words)
-(define-key global-map (kbd "<C-M-o>") 'next-buffer)
-(define-key global-map (kbd "<C-M-u>") 'previous-buffer)
+(define-key global-map (kbd "<C-M-o>") 'next-error)
+(define-key global-map (kbd "<C-M-u>") 'previous-error)
 
 (define-key global-map (kbd "<C-M-S-n>") 'jd:backward-transpose-words)
 
@@ -123,17 +127,19 @@
 (define-key global-map (kbd "<C-h> s") 'describe-symbol)
 
 (define-key global-map (kbd "<C-x> <jd:bks>") 'jd:delete-line)
-(define-key global-map (kbd "<C-x> <jd:ret>") 'next-error)
 (define-key global-map (kbd "<C-x> <jd:tab>") 'completion-at-point)
-(define-key global-map (kbd "<C-x> <f1>") 'eval-expression)
 (define-key global-map (kbd "<C-x> <f4>") 'kmacro-edit-macro)
+(define-key global-map (kbd "<C-x> <M-x>") 'eval-expression)
+(define-key global-map (kbd "<C-x> o") 'jd:copy-line-and-goto-end)
+(define-key global-map (kbd "<C-x> u") 'jd:copy-line-and-goto-beg)
 (define-key global-map (kbd "<C-x> r") 'point-to-register)
 
-(define-key global-map (kbd "<C-x> <jd:C-ret>") 'previous-error)
 (define-key global-map (kbd "<C-x> <jd:C-tab>") 'dabbrev-expand)
 (define-key global-map (kbd "<C-x> <C-c>") 'save-buffers-kill-terminal)
 (define-key global-map (kbd "<C-x> <C-s>") 'write-file)
 (define-key global-map (kbd "<C-x> <C-w>") 'kill-buffer)
+
+(define-key global-map (kbd "<C-x> <C-S-w>") 'delete-frame)
 
 (define-key global-map (kbd "<jd:bks>") 'delete-backward-char)
 (define-key global-map (kbd "<jd:ret>") 'newline)
@@ -149,38 +155,31 @@
 (define-key global-map (kbd "<f2>") 'eshell)
 (define-key global-map (kbd "<f3>") 'kmacro-start-macro)
 (define-key global-map (kbd "<f4>") 'kmacro-end-or-call-macro)
+(define-key global-map (kbd "<f10>") 'sr-speedbar-toggle)
 (define-key global-map (kbd "<f12>") 'scroll-lock-mode)
 
+;;; Weird Mac keybind
+(define-key global-map (kbd "<C-tab>") 'jd:backward-window)
+
+;;; Seperate OS specific configurations in a cleaner way
+(cond
+ ((string-equal system-type "darwin")
+  (progn
+    (define-key global-map (kbd "<wheel-up>") 'mwheel-scroll)
+    (define-key global-map (kbd "<wheel-down>") 'mwheel-scroll)))
+ ((string-equal system-type "gnu/linux")
+  (progn
+    (define-key global-map (kbd "<mouse-4>") 'mwheel-scroll)
+    (define-key global-map (kbd "<mouse-5>") 'mwheel-scroll))))
 (define-key global-map (kbd "<mouse-1>") 'mouse-set-point)
-(define-key global-map (kbd "<mouse-4>") 'mwheel-scroll)
-(define-key global-map (kbd "<mouse-5>") 'mwheel-scroll)
+(define-key global-map (kbd "<wheel-left>") '(lambda () (interactive) (scroll-right 1)))
+(define-key global-map (kbd "<wheel-right>") '(lambda () (interactive) (scroll-left 1)))
 (define-key global-map (kbd "<down-mouse-1>") 'mouse-drag-region)
 (define-key global-map (kbd "<drag-mouse-1>") 'mouse-set-region)
 (define-key global-map (kbd "<vertical-line> <down-mouse-1>") 'mouse-drag-vertical-line)
 (define-key global-map (kbd "<mode-line> <down-mouse-1>") 'mouse-drag-mode-line)
 (define-key global-map (kbd "<mode-line> <mouse-1>") 'mouse-select-window)
 
-;; <MOUSE-FUNCTIONALITY>
-;; Will probably need these in the future for setting breakpoints in debugging
-;; <right-fringe> <mouse-1> mouse--strip-first-event
-;; <right-fringe> <mouse-2> mouse--strip-first-event
-;; <right-fringe> <mouse-3> mouse--strip-first-event
-;; <left-fringe>  <mouse-1> mouse--strip-first-event
-;; <left-fringe>  <mouse-2> mouse--strip-first-event
-;; <left-fringe>  <mouse-3> mouse--strip-first-event
-
-;; <MOUSE-FUNCTION-KEY>
-;; (for in the future when I get the hang of Elisp)
-;; (define-key global-map (kbd "<jd:m1>")              'mouse-set-point)
-;; (define-key global-map (kbd "<jd:m4>")              'mwheel-scroll)
-;; (define-key global-map (kbd "<jd:m5>")              'mwheel-scroll)
-;; (define-key global-map (kbd "<jd:down-m1>")         'mouse-drag-region)
-;; (define-key global-map (kbd "<jd:drag-m1>")         'mouse-set-region)
-;; (define-key global-map (kbd "<jd:vl> <jd:down-m1>") 'mouse-drag-vertical-line)
-;; (define-key global-map (kbd "<jd:ml> <jd:down-m1>") 'mouse-drag-mode-line)
-;; (define-key global-map (kbd "<jd:ml> <jd:m1>")      'mouse-select-window)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-map' --- `C source code'
 (setf (cdr minibuffer-local-map) nil)
 (define-key minibuffer-local-map (kbd "<jd:ret>") 'exit-minibuffer)
@@ -189,11 +188,9 @@
 (define-key minibuffer-local-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-map (kbd "<C-M-k>") 'next-history-element)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-ns-map' --- `C source code'
 (setf (cdr minibuffer-local-ns-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-must-match-map' --- `minibuffer.el'
 (setf (cdr minibuffer-local-must-match-map) nil)
 (define-key minibuffer-local-must-match-map (kbd "<jd:ret>") 'minibuffer-complete-and-exit)
@@ -203,7 +200,6 @@
 (define-key minibuffer-local-must-match-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-must-match-map (kbd "<C-M-k>") 'next-history-element)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-completion-map' --- `minibuffer.el'
 (setf (cdr minibuffer-local-completion-map) nil)
 (define-key minibuffer-local-completion-map (kbd "<jd:ret>") 'minibuffer-complete-and-exit)
@@ -213,24 +209,19 @@
 (define-key minibuffer-local-completion-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-completion-map (kbd "<C-M-k>") 'next-history-element)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-inactive-mode-map' --- `minibuffer.el'
 (setf (cdr minibuffer-inactive-mode-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-filename-completion-map' --- `minibuffer.el'
 (setf (cdr minibuffer-local-filename-completion-map) nil)
 (define-key minibuffer-local-filename-completion-map (kbd "<jd:tab>") 'minibuffer-complete)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-filename-must-match-map' --- `minibuffer.el'
 (setf (cdr minibuffer-local-filename-must-match-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-isearch-map' --- `isearch.el'
 (setf (cdr minibuffer-local-isearch-map) nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `minibuffer-local-shell-command-map' --- `simple.el'
 (setf (cdr minibuffer-local-shell-command-map) nil)
 (define-key minibuffer-local-shell-command-map (kbd "<jd:ret>") 'exit-minibuffer)
@@ -239,14 +230,12 @@
 (define-key minibuffer-local-shell-command-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-shell-command-map (kbd "<C-M-k>") 'next-history-element)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `query-replace-map' --- `replace.el'
 (setf (cdr query-replace-map) nil)
 (define-key query-replace-map (kbd "a") 'automatic)
 (define-key query-replace-map (kbd "n") 'skip)
 (define-key query-replace-map (kbd "y") 'act)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `read-expression-map' --- `simple.el'
 (setf (cdr read-expression-map) nil)
 (define-key read-expression-map (kbd "<jd:ret>") 'exit-minibuffer)
@@ -254,3 +243,5 @@
 (define-key read-expression-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
 (define-key read-expression-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key read-expression-map (kbd "<C-M-k>") 'next-history-element)
+
+(provide 'jd:global-keybindings.el)

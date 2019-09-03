@@ -1,3 +1,5 @@
-# eshell/
-history
+auto-save-list/*
+eshell/*
+file-backups/*
 lastdir
+history

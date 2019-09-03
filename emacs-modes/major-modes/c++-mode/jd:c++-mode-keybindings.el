@@ -1,5 +1,3 @@
-(provide 'jd:c++-mode-keybindings.el)
-
 (defun jd:c-beginning-of-defun-hl ()
   (interactive "^")
   (c-beginning-of-defun))
@@ -8,11 +6,14 @@
   (interactive "^")
   (c-end-of-defun))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'c++-mode-hook
+	  '(lambda () (setq compile-command "g++ -Wall -Wextra -std=c++17 -o prog main.cpp && ./prog")))
+
 ;;; `c++-mode-map' --- `cc-mode.el'
 (defun jd:c++-mode-map ()
   (setf (cdr c++-mode-map) nil)
   (define-key c++-mode-map (kbd "<jd:tab>") 'c-indent-line-or-region)
+  (define-key c++-mode-map (kbd "<C-b>") 'compile)
   (define-key c++-mode-map (kbd "<C-i>") 'jd:c-beginning-of-defun-hl)
   (define-key c++-mode-map (kbd "<C-k>") 'jd:c-end-of-defun-hl)
   (define-key c++-mode-map (kbd "<C-;>") 'c-mark-function)
@@ -30,14 +31,14 @@
   (define-key c++-mode-map (kbd "*") 'c-electric-star))
 (add-hook 'c++-mode-hook 'jd:c++-mode-map)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `c-mode-base-map' --- `cc-mode.el'
 (defun jd:c-mode-base-map ()
   (setf (cdr c-mode-base-map) nil))
 (add-hook 'c++-mode-hook 'jd:c-mode-base-map)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `c-c++-menu' --- `cc-mode.el'
 (defun jd:c-c++-menu ()
   (setf (cdr c-c++-menu) nil))
 (add-hook 'c++-mode-hook 'jd:c-c++-menu)
+
+(provide 'jd:c++-mode-keybindings.el)
