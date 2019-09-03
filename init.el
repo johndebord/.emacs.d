@@ -32,6 +32,8 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 
+(require 'jd:tings.el
+         (concat jd:path-prefix "jd:tings.el"))
 (require 'jd:global.el
          (concat jd:path-prefix "global/jd:global.el"))
 (require 'jd:emacs-modes.el
@@ -42,7 +44,7 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "nil" :family "Courier"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal))))

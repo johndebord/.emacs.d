@@ -82,3 +82,13 @@ the references are found."
 	      (with-temp-file (concat jd:path-prefix "emacs-modes/" jd:mode-type "/" "jd:" jd:mode-type ".el")
 		(insert new-buffer-string)))))
       (error "You weren't confident with the `jd:mode-name' you gave"))))
+
+(defun jd:generate-tags ()
+  (interactive)
+  (let ((path nil))
+    (setq path (read-from-minibuffer "Please enter the root directory: "))
+    (if (not (file-directory-p path))
+	(error)
+      (shell-command (concat "cd " path " && /usr/local/opt/findutils/bin/gfind . -type f -regex \".*\\.\\(c\\|h\\|cpp\\|hpp\\|cpp.in\\|hpp.in\\)\" | etags -")))))
+
+(provide 'jd:tings.el)
