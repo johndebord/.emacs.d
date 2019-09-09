@@ -8,6 +8,21 @@
 ;; 	    (define-key texinfo-mode-map "\C-cn"
 ;; 	      'forward-paragraph)))
 
+;; TODO I should make a program that counts the number of time I press
+;; certain bindings to determine which ones are of the most importance
+
+;; TODO: There should be a smart tab function that does this
+;; functionality, plus smart auto completion when using auto complete
+;; <C-x> <jd:tab> (translated from C-x <tab>) runs the command
+;; completion-at-point (found in global-map), which is an interactive
+;; compiled Lisp function in ‘minibuffer.el’.
+;; AND
+;; <C-x> <jd:C-tab> (translated from C-x <C-tab>) runs the command
+;; dabbrev-expand (found in global-map), which is an interactive
+;; autoloaded compiled Lisp function in ‘dabbrev.el’.
+;;
+;; This is so that I can use <C-x> <jd:tab> for indenting region
+
 ;;; TODO make this file oriented or call a shell command to determine
 ;;; the directory
 (defconst jd:path-prefix nil
@@ -44,7 +59,7 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "nil" :family "Courier"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal))))
@@ -669,15 +684,3 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
  '(wolfram-query ((t (:foreground "#569cd6"))))
  '(yas--field-debug-face ((t (:background "#898888"))) t)
  '(yas-field-highlight-face ((t (:background "#535353")))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (gnuplot dash cmake-ide yasnippet modern-cpp-font-lock counsel-etags)))
- '(safe-local-variable-values
-   (quote
-    ((c-font-lock-extra-types "FILE" "bool" "language" "linebuffer" "fdesc" "node" "regexp")))))
-(put 'narrow-to-region 'disabled nil)

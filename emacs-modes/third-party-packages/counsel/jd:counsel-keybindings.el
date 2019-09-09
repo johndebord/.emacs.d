@@ -1,9 +1,3 @@
-(define-key global-map (kbd "<M-f>") 'counsel-find-file)
-(define-key global-map (kbd "<M-x>") 'counsel-M-x)
-(define-key global-map (kbd "<C-h> v") 'counsel-describe-variable)
-(define-key global-map (kbd "<C-h> f") 'counsel-describe-function)
-(define-key global-map (kbd "<C-h> a") 'counsel-apropos)
-
 ;;; `counsel-ag-map' --- `counsel.el'
 (setf (cdr counsel-ag-map) nil)
 

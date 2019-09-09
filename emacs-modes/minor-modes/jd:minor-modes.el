@@ -6,6 +6,8 @@
          (concat jd:path-prefix "emacs-modes/minor-modes/cua-mode/jd:cua-mode.el"))
 (require 'jd:cua-rectangle-mark-mode.el
          (concat jd:path-prefix "emacs-modes/minor-modes/cua-rectangle-mark-mode/jd:cua-rectangle-mark-mode.el"))
+(require 'jd:edebug.el
+         (concat jd:path-prefix "emacs-modes/minor-modes/edebug/jd:edebug.el"))
 (require 'jd:eldoc-mode.el
          (concat jd:path-prefix "emacs-modes/minor-modes/eldoc-mode/jd:eldoc-mode.el"))
 (require 'jd:gud-minor-mode.el

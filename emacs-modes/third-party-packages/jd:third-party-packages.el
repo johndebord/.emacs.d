@@ -8,8 +8,6 @@
          (concat jd:path-prefix "emacs-modes/third-party-packages/gud-lldb/jd:gud-lldb.el"))
 (require 'jd:ivy.el
          (concat jd:path-prefix "emacs-modes/third-party-packages/ivy/jd:ivy.el"))
-;; (require 'jd:paredit-mode.el
-;;          (concat jd:path-prefix "emacs-modes/third-party-packages/paredit/jd:paredit-mode.el"))
 (require 'jd:sr-speedbar.el
          (concat jd:path-prefix "emacs-modes/third-party-packages/sr-speedbar/jd:sr-speedbar.el"))
 (require 'jd:swiper.el

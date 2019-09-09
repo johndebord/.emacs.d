@@ -23,8 +23,7 @@
 ;;; `C source code'
 (put 'erase-buffer 'disabled nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
-(push "/usr/local/opt/findutils/bin" exec-path)
-(setq-default truncate-lines t)
+(setq-default truncate-lines nil)
 (setq default-directory (substring jd:path-prefix 0 -9))
 (setq echo-keystrokes 0.001)
 (setq enable-recursive-minibuffers t)

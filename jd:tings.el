@@ -17,7 +17,9 @@ the references are found."
 
 ;;; REFACTORME
 (defun jd:tings-construct-new-mode-folder ()
-  "Automates the construction of a mode directory for customization."
+  "Automates the construction of a mode directory for customization.
+[ ] Add feature to insert templates for rebinding all keymaps and
+their respective keybinds."
   (interactive)
   (let ((jd:mode-type nil)
 	(jd:mode-name nil))
@@ -83,12 +85,15 @@ the references are found."
 		(insert new-buffer-string)))))
       (error "You weren't confident with the `jd:mode-name' you gave"))))
 
+;; You can make a tags table include another tags table, by passing
+;; the ‘--include=file’ option to etags. It then covers all the files
+;; covered by the included tags file, as well as its own.
 (defun jd:generate-tags ()
   (interactive)
   (let ((path nil))
     (setq path (read-from-minibuffer "Please enter the root directory: "))
     (if (not (file-directory-p path))
 	(error)
-      (shell-command (concat "cd " path " && /usr/local/opt/findutils/bin/gfind . -type f -regex \".*\\.\\(c\\|h\\|cpp\\|hpp\\|cpp.in\\|hpp.in\\)\" | etags -")))))
+      (shell-command (concat "cd " path " && find . -type f -regex \".*\\.\\(c\\|h\\|cpp\\|hpp\\|cpp.in\\|hpp.in\\)\" | etags -")))))
 
 (provide 'jd:tings.el)

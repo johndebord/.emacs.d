@@ -16,17 +16,37 @@
   (interactive)
   (insert " "))
 
-(defun jd:backward-transpose-chars ()
+(defun jd:backward-transpose-char-right ()
   (interactive)
   (transpose-chars -1))
 
-(defun jd:backward-transpose-words ()
+(defun jd:transpose-char-right ()
   (interactive)
-  (transpose-words -1))
+  (save-excursion
+    (forward-char)
+    (transpose-chars 1))
+  (forward-char))
 
-(defun jd:backward-transpose-lines ()
+(defun jd:transpose-char-left ()
   (interactive)
-  (transpose-lines -1))
+  (save-excursion
+    (forward-char)
+    (transpose-chars -1))
+  (backward-char))
+
+(defun jd:transpose-line-up ()
+  (interactive)
+  (save-excursion
+    (next-line)
+    (transpose-lines -1))
+  (previous-line))
+
+(defun jd:transpose-line-down ()
+  (interactive)
+  (save-excursion
+    (next-line)
+    (transpose-lines 1))
+  (next-line))
 
 (defun jd:delete-line (argument)
   (interactive "p")
@@ -70,14 +90,29 @@
   (interactive)
   (switch-to-buffer nil))
 
+(defun jd:indent-region ()
+  "[ ] Check if the cursor jumps out of the current function; if it
+    does, let the user know and don't execute the function.
+   [ ] Get this to work in other modes as well; in particuluar,
+   `fundamental-mode'.
+   [ ] Currently, this is a little buggy when in `c++-mode'; fix this
+    behavior."
+  (interactive)
+  (save-excursion
+    (beginning-of-defun)
+    (set-mark (point))
+    (end-of-defun)
+    (indent-for-tab-command)))
+
 ;;; `global-map' --- `subr.el'
 (define-key global-map (kbd "<jd:C-bks>") 'jd:backward-delete-word)
-(define-key global-map (kbd "<jd:C-spc>") 'jd:swap-buffers)
 (define-key global-map (kbd "<C-a>") 'mark-whole-buffer)
 (define-key global-map (kbd "<C-g>") 'keyboard-quit)
-(define-key global-map (kbd "<C-j>") 'jd:scroll-up)
-(define-key global-map (kbd "<C-l>") 'jd:scroll-down)
-(define-key global-map (kbd "<C-n>") 'transpose-lines)
+(define-key global-map (kbd "<C-i>") 'jd:scroll-up)
+(define-key global-map (kbd "<C-k>") 'jd:scroll-down)
+(define-key global-map (kbd "<C-j>") 'backward-sexp)
+(define-key global-map (kbd "<C-l>") 'forward-sexp)
+(define-key global-map (kbd "<C-n>") 'jd:transpose-line-down)
 (define-key global-map (kbd "<C-o>") 'end-of-buffer)
 (define-key global-map (kbd "<C-q>") 'quoted-insert)
 (define-key global-map (kbd "<C-r>") 'jump-to-register)
@@ -85,56 +120,62 @@
 (define-key global-map (kbd "<C-t>") 'split-window-right)
 (define-key global-map (kbd "<C-u>") 'beginning-of-buffer)
 (define-key global-map (kbd "<C-w>") 'delete-window)
-(define-key global-map (kbd "<C-y>") 'xref-find-references)
 (define-key global-map (kbd "<C-/>") 'comment-region)
 (define-key global-map (kbd "<C-?>") 'uncomment-region)
 
 (define-key global-map (kbd "<jd:S-bks>") 'delete-backward-char)
 
 (define-key global-map (kbd "<jd:C-S-bks>") 'jd:forward-delete-word)
-(define-key global-map (kbd "<C-S-n>") 'jd:backward-transpose-lines)
+(define-key global-map (kbd "<C-S-n>") 'jd:transpose-line-up)
 (define-key global-map (kbd "<C-S-t>") 'split-window-below)
 
 (define-key global-map (kbd "<jd:M-bks>") 'delete-char)
 (define-key global-map (kbd "<jd:M-ret>") 'open-line)
+(define-key global-map (kbd "<jd:M-spc>") 'jd:swap-buffers)
+(define-key global-map (kbd "<M-f>") 'counsel-find-file)
+(define-key global-map (kbd "<M-h>") 'xref-find-definitions-other-window)
 (define-key global-map (kbd "<M-i>") 'previous-line)
 (define-key global-map (kbd "<M-j>") 'backward-char)
 (define-key global-map (kbd "<M-k>") 'next-line)
 (define-key global-map (kbd "<M-l>") 'forward-char)
-(define-key global-map (kbd "<M-n>") 'transpose-chars)
+(define-key global-map (kbd "<M-n>") 'jd:transpose-char-right)
 (define-key global-map (kbd "<M-o>") 'end-of-line)
 (define-key global-map (kbd "<M-u>") 'back-to-indentation)
 (define-key global-map (kbd "<M-w>") 'delete-other-windows)
+(define-key global-map (kbd "<M-x>") 'counsel-M-x)
 (define-key global-map (kbd "<M-;>") 'recenter)
 
-(define-key global-map (kbd "<M-S-n>") 'jd:backward-transpose-chars)
+(define-key global-map (kbd "<M-S-n>") 'jd:transpose-char-left)
 
+(define-key global-map (kbd "<C-M-f>") 'ivy-switch-buffer)
+(define-key global-map (kbd "<C-M-h>") 'xref-find-references)
 (define-key global-map (kbd "<C-M-j>") 'backward-word)
 (define-key global-map (kbd "<C-M-l>") 'forward-word)
 (define-key global-map (kbd "<C-M-n>") 'transpose-words)
 (define-key global-map (kbd "<C-M-o>") 'next-error)
 (define-key global-map (kbd "<C-M-u>") 'previous-error)
 
-(define-key global-map (kbd "<C-M-S-n>") 'jd:backward-transpose-words)
-
+(define-key global-map (kbd "<C-h> a") 'counsel-apropos)
 (define-key global-map (kbd "<C-h> b") 'describe-bindings)
 (define-key global-map (kbd "<C-h> c") 'apropos-command)
 (define-key global-map (kbd "<C-h> d") 'apropos-documentation)
+(define-key global-map (kbd "<C-h> f") 'counsel-describe-function)
 (define-key global-map (kbd "<C-h> k") 'describe-key)
 (define-key global-map (kbd "<C-h> l") 'view-lossage)
 (define-key global-map (kbd "<C-h> m") 'describe-mode)
 (define-key global-map (kbd "<C-h> p") 'describe-package)
 (define-key global-map (kbd "<C-h> s") 'describe-symbol)
+(define-key global-map (kbd "<C-h> v") 'counsel-describe-variable)
+(define-key global-map (kbd "<C-h> y") 'jd:describe-keymap)
 
 (define-key global-map (kbd "<C-x> <jd:bks>") 'jd:delete-line)
-(define-key global-map (kbd "<C-x> <jd:tab>") 'completion-at-point)
+(define-key global-map (kbd "<C-x> <jd:tab>") 'jd:indent-region)
 (define-key global-map (kbd "<C-x> <f4>") 'kmacro-edit-macro)
 (define-key global-map (kbd "<C-x> <M-x>") 'eval-expression)
 (define-key global-map (kbd "<C-x> o") 'jd:copy-line-and-goto-end)
 (define-key global-map (kbd "<C-x> u") 'jd:copy-line-and-goto-beg)
 (define-key global-map (kbd "<C-x> r") 'point-to-register)
 
-(define-key global-map (kbd "<C-x> <jd:C-tab>") 'dabbrev-expand)
 (define-key global-map (kbd "<C-x> <C-c>") 'save-buffers-kill-terminal)
 (define-key global-map (kbd "<C-x> <C-s>") 'write-file)
 (define-key global-map (kbd "<C-x> <C-w>") 'kill-buffer)
@@ -151,7 +192,6 @@
 (define-key global-map (kbd "<left>") 'backward-char)
 (define-key global-map (kbd "<right>") 'forward-char)
 (define-key global-map (kbd "<up>") 'previous-line)
-(define-key global-map (kbd "<f1>") 'eval-last-sexp)
 (define-key global-map (kbd "<f2>") 'eshell)
 (define-key global-map (kbd "<f3>") 'kmacro-start-macro)
 (define-key global-map (kbd "<f4>") 'kmacro-end-or-call-macro)

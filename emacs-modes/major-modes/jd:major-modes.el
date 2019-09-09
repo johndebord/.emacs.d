@@ -20,6 +20,8 @@
          (concat jd:path-prefix "emacs-modes/major-modes/edit-abbrevs-mode/jd:edit-abbrevs-mode.el"))
 (require 'jd:edmacro-mode.el
          (concat jd:path-prefix "emacs-modes/major-modes/edmacro-mode/jd:edmacro-mode.el"))
+(require 'jd:emacs-lisp-mode.el
+         (concat jd:path-prefix "emacs-modes/major-modes/emacs-lisp-mode/jd:emacs-lisp-mode.el"))
 (require 'jd:eshell-mode.el
          (concat jd:path-prefix "emacs-modes/major-modes/eshell-mode/jd:eshell-mode.el"))
 (require 'jd:gdb-breakpoints-mode.el

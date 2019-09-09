@@ -1,5 +1,3 @@
-(define-key global-map (kbd "<C-x> b") 'ivy-switch-buffer)
-
 (defun jd:goto-dir-or-file ()
   (interactive)
   (ivy-alt-done))

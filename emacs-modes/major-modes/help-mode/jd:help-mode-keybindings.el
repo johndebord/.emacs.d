@@ -13,6 +13,7 @@
 ;;; `help-mode-map' --- `help-mode.el'
 (defun jd:help-mode-map ()
   (setf (cdr help-mode-map) nil)
+  (define-key help-mode-map (kbd "<jd:ret>") 'push-button)
   (define-key help-mode-map (kbd "<mouse-1>") 'push-button)
   (define-key help-mode-map (kbd "i") 'jd:help-mode-scroll-up)
   (define-key help-mode-map (kbd "k") 'jd:help-mode-scroll-down)
