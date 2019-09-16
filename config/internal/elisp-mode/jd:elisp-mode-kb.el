@@ -1,0 +1,15 @@
+(defun jd:emacs-lisp-mode-map ()
+  (setf (cdr emacs-lisp-mode-map) nil)
+  (define-key emacs-lisp-mode-map (kbd "<f1>") 'eval-last-sexp)
+  (define-key emacs-lisp-mode-map (kbd "<C-b>") 'eval-defun)
+  (define-key emacs-lisp-mode-map (kbd "<C-x> b") 'edebug-eval-top-level-form))
+(add-hook 'emacs-lisp-mode-hook 'jd:emacs-lisp-mode-map)
+
+(defun jd:lisp-interaction-mode-map ()
+  (setf (cdr lisp-interaction-mode-map) nil)
+  (define-key lisp-interaction-mode-map (kbd "<f1>") 'eval-last-sexp)
+  (define-key lisp-interaction-mode-map (kbd "<C-b>") 'eval-defun)
+  (define-key lisp-interaction-mode-map (kbd "<C-x> b") 'edebug-eval-top-level-form))
+(add-hook 'lisp-interaction-mode-hook 'jd:lisp-interaction-mode-map)
+
+(provide 'jd:elisp-mode-kb.el)

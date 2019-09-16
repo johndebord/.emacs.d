@@ -1,0 +1,10 @@
+(require 'jd:auto-complete.el (concat jd:path-prefix jd:external-prefix "auto-complete/jd:auto-complete.el"))
+(require 'jd:counsel.el (concat jd:path-prefix jd:external-prefix "counsel/jd:counsel.el"))
+(require 'jd:cpp-font-lock.el (concat jd:path-prefix jd:external-prefix "cpp-font-lock/jd:cpp-font-lock.el"))
+(require 'jd:gnuplot-mode.el (concat jd:path-prefix jd:external-prefix "gnuplot-mode/jd:gnuplot-mode.el"))
+(require 'jd:ivy.el (concat jd:path-prefix jd:external-prefix "ivy/jd:ivy.el"))
+(require 'jd:sr-speedbar.el (concat jd:path-prefix jd:external-prefix "sr-speedbar/jd:sr-speedbar.el"))
+(require 'jd:swiper.el (concat jd:path-prefix jd:external-prefix "swiper/jd:swiper.el"))
+(require 'jd:yasnippet.el (concat jd:path-prefix jd:external-prefix "yasnippet/jd:yasnippet.el"))
+
+(provide 'jd:external-config.el)

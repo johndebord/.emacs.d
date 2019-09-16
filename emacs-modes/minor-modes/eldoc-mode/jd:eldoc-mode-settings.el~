@@ -1,4 +1,0 @@
-;;; `eldoc.el.el'
-(setq eldoc-idle-delay 0)
-
-(provide 'jd:eldoc-mode-settings.el)

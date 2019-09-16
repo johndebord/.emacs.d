@@ -23,36 +23,54 @@
 ;;
 ;; This is so that I can use <C-x> <jd:tab> for indenting region
 
-;;; TODO make this file oriented or call a shell command to determine
-;;; the directory
 (defconst jd:path-prefix nil
   "Determine which operating system Emacs is currently being used in.
 If `darwin' the path prefix shall be 'Users/johndebord/.emacs.d/'.
-If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
+If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
 
-;;; System specific settings
+(defconst jd:lisp-prefix nil
+  "Path to which the stock/default emacs lisp files are.")
+
+(defconst jd:global-prefix nil
+  "Path to which the global file configurations are.")
+
+(defconst jd:external-prefix nil
+  "Path to which the external file configurations are.")
+
+(defconst jd:internal-prefix nil
+  "Path to which the stock/builtin file configurations are.")
+
+(defconst jd:elpa-prefix nil
+  "Path to which the exteranl elpa files are.")
+
 (cond
  ((string-equal system-type "darwin")
   (progn
-    (add-to-list 'default-frame-alist '(fullscreen . maximized))
-    (setq jd:path-prefix "/Users/johndebord/.emacs.d/")
-    (setq default-directory "/Users/johndebord/")))
+    (setq jd:path-prefix "/Users/john.debord/.emacs.d/")
+    (setq default-directory jd:path-prefix)))
  ((string-equal system-type "gnu/linux")
   (progn
     (setq jd:path-prefix "/home/i/.emacs.d/")
-    (setq default-directory "/home/i/"))))
+    (setq default-directory jd:path-prefix))))
 
+(setq-default jd:lisp-prefix "/usr/local/share/emacs/27.0.50/lisp/")
+(setq-default jd:global-prefix "config/global/")
+(setq-default jd:external-prefix "config/external/")
+(setq-default jd:internal-prefix "config/internal/")
+(setq-default jd:elpa-prefix (concat jd:path-prefix jd:external-prefix "elpa/"))
+
+(setq-default package-user-dir jd:elpa-prefix)
 (package-initialize)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+(setq-default package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                                 ("melpa" . "http://melpa.milkbox.net/packages/")
+                                 ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-(require 'jd:tings.el
-         (concat jd:path-prefix "jd:tings.el"))
-(require 'jd:global.el
-         (concat jd:path-prefix "global/jd:global.el"))
-(require 'jd:emacs-modes.el
-         (concat jd:path-prefix "emacs-modes/jd:emacs-modes.el"))
+(require 'jd:global-config.el
+         (concat jd:path-prefix jd:global-prefix "jd:global-config.el"))
+(require 'jd:external-config.el
+         (concat jd:path-prefix jd:external-prefix "jd:external-config.el"))
+(require 'jd:builtin-config.el
+         (concat jd:path-prefix jd:internal-prefix "jd:internal-config.el"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -684,3 +702,10 @@ If `linux/gnu' the path prefix shall be '/home/johndebord/.emacs.d/'.")
  '(wolfram-query ((t (:foreground "#569cd6"))))
  '(yas--field-debug-face ((t (:background "#898888"))) t)
  '(yas-field-highlight-face ((t (:background "#535353")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(gnuplot-mode cmake-mode yasnippet sr-speedbar rtags rmsbolt paredit modern-cpp-font-lock lsp-mode gnuplot counsel cmake-ide call-graph auto-complete)))

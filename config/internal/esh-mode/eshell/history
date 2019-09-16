@@ -1,0 +1,128 @@
+pwd
+pdw
+pwd
+pwd
+pwd
+pwd
+ls
+pwd
+ls
+cd .emacs.d/
+ls
+ff README.md 
+ls
+cd global/
+ls
+ff jd:global-settings.el 
+alias
+push
+alias push
+push
+push pushd
+push
+alias
+set alias
+set push pushd ./
+set "push" "pushd ./"
+defalias
+ff ../eshell/alias 
+push
+ls
+push
+l
+ls
+push
+cd
+pop
+ls
+cd
+pop
+cd .emacs.d/
+ls
+ls
+cd global/
+ls
+ff jd:global-settings.el 
+ls
+cd global/
+s
+ls
+s
+s
+l
+ls
+ff jd:global-settings.el 
+ls
+ff jd:c-src-variables.el
+ls
+mv jd:c-src-variables.el jd:global-c-src-variables.el
+ff jd:global-c-src-variables.el 
+ls
+ls
+ff jd:global-elsip-src-variables.el
+ls
+up
+ls
+ff global/
+cd global/
+ls
+ff jd:global.el 
+ls
+ls
+rm *.el~
+ls
+ls
+u
+up
+ls
+rm init.el~
+ls
+ls
+cd global/
+ls
+up
+ls
+cd global/
+ls
+mv jd:global-elsip-src-variables.el jd:global-elisp-src-variables.el
+ls
+ls
+ff jd:global-settings.el 
+ls
+ff jd:global-c-src-variables.el 
+ls
+mv jd:global-settings.el jd:global-functions.el 
+ls
+ff jd:global-functions.el 
+ls
+up
+ls
+ff init.el 
+cd global/
+ls
+ff jd:global.el 
+ls
+up
+ls
+rm jd:tings.el 
+ls
+cd global/
+ls
+ff jd:global-c-src-variables.el 
+ff jd:global-elisp-src-variables.el 
+ff jd:global-functions.el 
+ls
+cd global/
+ls
+ff jd:global-functions.el
+u
+u
+u
+up
+up
+up
+ack gdb-show-main
+up
+up
+up
+cp -r .emacs.d/ emacs-backup-whoa

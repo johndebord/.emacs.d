@@ -1,0 +1,13 @@
+alias up cd .. $*
+alias push pushd ./ $*
+alias pop popd $*
+alias nil $*
+alias et /Users/johndebord/et $*
+alias gr grep -rnw './' -e $*
+alias fnd find . -name $*
+alias ll ls -l $*
+alias up cd .. $*
+alias lla ls -la $*
+alias la ls -a $*
+alias yarn $*
+alias s ls $*
