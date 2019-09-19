@@ -13,6 +13,7 @@
 
 ;;; `keyboard.c'
 (setq-default echo-keystrokes 0.001)
+(setq-default meta-prefix-char nil)
 (setq-default show-help-function nil)
 
 ;;; `minibuf.c'

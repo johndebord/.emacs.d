@@ -1,26 +1,24 @@
-;; Plan:
-;; [ ] create a function to return a list of all currently active keymaps
-;; [ ] use a consistent naming convention for all keybinds (e.g., "jd:C-a" or something like that).
-;;     this also means figuring out all of the exact bindings I should declaring/defining
-;;     this might mean that research will have to be done for figure out vector definitions etc..
-;; [ ] make the keybindings file a perfect mirror of this file for binding all of the globals
-;; [ ] figure out what/how to use the minibuffer maps
-;; [ ] make sure to move out all global map definitions into the global keybindings file for consistency
-;; [ ] create the macro for completely obliterating a keymap and starting fresh.
+;;; remove the union relationship of Meta and ESC
+(setq meta-prefix-char nil)
 
-;; NOTE: there are some bindings that are defined in some keymaps that I just don't know where they're at.
-;; e.x. beginning-of-buffer has a few different binds bound to it.
-              ;; widget-global-map
-;; (setq-default widget-global-map nil)
+;;; `key-translation-map' --- `C source code'
+(setf (cdr key-translation-map) nil)
 
-;; (setq-default function-key-map nil)
-;; (setq-default key-translation-map nil)
-;; (setq-default keyboard-translate-table nil)
-;; (setq-default local-function-key-map nil)
-;; (setq-default overriding-local-map nil)
-;; (setq-default overriding-terminal-local-map nil)
-;; (setq-default special-event-map nil)
+;;; `function-key-map' --- `C source code'
+(setf (cdr function-key-map) nil)
 
+;;; `local-function-key-map' --- `C source code'
+(setf (cdr local-function-key-map) nil)
+
+;;; `global-map' --- `subr.el'
+(setq jd:temp-global-map (make-sparse-keymap))
+(substitute-key-definition
+ 'self-insert-command 'self-insert-command jd:temp-global-map global-map)
+(setf (cdr global-map) nil)
+(substitute-key-definition
+ 'self-insert-command 'self-insert-command global-map jd:temp-global-map)
+
+;;; `input-decode-map' --- `C source code'
 (define-key input-decode-map (kbd "C-a")  [\C-\a])
 (define-key input-decode-map (kbd "C-b")  [\C-\b])
 (define-key input-decode-map (kbd "C-c")  [\C-\c])
