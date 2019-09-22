@@ -1,5 +1,3 @@
-(defun jd:asm-mode-map ()
-  (setf (cdr asm-mode-map) nil))
-(add-hook 'asm-mode-hook 'jd:asm-mode-map)
+(setq-default asm-mode-map (make-sparse-keymap))
 
 (provide 'jd:asm-mode-kb.el)

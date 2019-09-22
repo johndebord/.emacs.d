@@ -965,4 +965,11 @@
 (define-key global-map (kbd "<wheel-left>")  '(lambda () (interactive) (scroll-right 1)))
 (define-key global-map (kbd "<wheel-right>") '(lambda () (interactive) (scroll-left  1)))
 
+(setq minibuffer-local-map (make-sparse-keymap))
+(define-key minibuffer-local-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-map (kbd "<C-M-i>") 'previous-history-element)
+(define-key minibuffer-local-map (kbd "<C-M-k>") 'next-history-element)
+(define-key minibuffer-local-map (kbd "<jd:ret>") 'exit-minibuffer)
+(define-key minibuffer-local-map (kbd "<jd:tab>") 'minibuffer-complete)
+
 (provide 'jd:global-keybindings.el)

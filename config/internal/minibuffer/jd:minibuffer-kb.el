@@ -21,7 +21,7 @@
 (define-key minibuffer-local-completion-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-completion-map (kbd "<C-M-k>") 'next-history-element)
 
-;;; `minibuffer-inactive-mode-map' --- `minibuffer.el'
+;; ;;; `minibuffer-inactive-mode-map' --- `minibuffer.el'
 (setf (cdr minibuffer-inactive-mode-map) nil)
 
 ;;; `minibuffer-local-filename-completion-map' --- `minibuffer.el'

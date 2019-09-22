@@ -36,7 +36,6 @@
 (require 'jd:help.el (concat jd:path-prefix jd:internal-prefix "help/jd:help.el"))
 (require 'jd:help-mode.el (concat jd:path-prefix jd:internal-prefix "help-mode/jd:help-mode.el"))
 (require 'jd:isearch.el (concat jd:path-prefix jd:internal-prefix "isearch/jd:isearch.el"))
-(require 'jd:keymap.el (concat jd:path-prefix jd:internal-prefix "keymap/jd:keymap.el"))
 (require 'jd:linum.el (concat jd:path-prefix jd:internal-prefix "linum/jd:linum.el"))
 (require 'jd:lisp-mode.el (concat jd:path-prefix jd:internal-prefix "lisp-mode/jd:lisp-mode.el"))
 (require 'jd:make-mode.el (concat jd:path-prefix jd:internal-prefix "make-mode/jd:make-mode.el"))

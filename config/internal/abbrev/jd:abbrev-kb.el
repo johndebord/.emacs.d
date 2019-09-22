@@ -1,6 +1,4 @@
-(defun jd:edit-abbrevs-mode-map ()
-  (setf (cdr edit-abbrevs-mode-map) nil)
-  (define-key edit-abbrevs-mode-map (kbd "<C-s>") 'abbrev-edit-save-buffer))
-(add-hook 'edit-abbrevs-mode-hook 'jd:edit-abbrevs-mode-map)
+(setq-default edit-abbrevs-map (make-sparse-keymap))
+(setq-default edit-abbrevs-mode-map (make-sparse-keymap))
 
 (provide 'jd:abbrev-kb.el)
