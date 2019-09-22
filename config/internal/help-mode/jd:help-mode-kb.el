@@ -1,13 +1,13 @@
 (defun jd:help-mode-scroll-down ()
   (interactive)
   (beginning-of-line)
-  (next-line)
+  (forward-line)
   (recenter))
 
 (defun jd:help-mode-scroll-up ()
   (interactive)
   (beginning-of-line)
-  (previous-line)
+  (forward-line -1)
   (recenter))
 
 (defun jd:help-mode-map ()

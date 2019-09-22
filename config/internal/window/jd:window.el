@@ -1,6 +1,6 @@
 (require 'window (concat jd:lisp-prefix "window.elc"))
 
-(require 'jd:window-kb.el (concat jd:path-prefix jd:internal-prefix "window/jd:window-kb.el"))
-(require 'jd:window-st.el (concat jd:path-prefix jd:internal-prefix "window/jd:window-st.el"))
+(require 'jd:window-kb.el (concat jd:path-prefix jd:internal-prefix "window/jd:window-kb.elc"))
+(require 'jd:window-st.el (concat jd:path-prefix jd:internal-prefix "window/jd:window-st.elc"))
 
 (provide 'jd:window.el)

@@ -55,7 +55,7 @@
 ;; (define-key global-map (kbd "<C-9>")  'undefined)
 ;; (define-key global-map (kbd "<C-0>")  'undefined)
 ;; (define-key global-map (kbd "<C-->")  'undefined)
-;; (define-key global-map (kbd "<C-=>")  'undefined)
+(define-key global-map (kbd "<C-=>")  'universal-argument)
 ;; (define-key global-map (kbd "<C-~>")  'undefined)
 ;; (define-key global-map (kbd "<C-!>")  'undefined)
 ;; (define-key global-map (kbd "<C-@>")  'undefined)

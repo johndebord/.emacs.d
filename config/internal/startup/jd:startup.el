@@ -1,4 +1,4 @@
-(require 'jd:startup-kb.el (concat jd:path-prefix jd:internal-prefix "startup/jd:startup-kb.el"))
-(require 'jd:startup-st.el (concat jd:path-prefix jd:internal-prefix "startup/jd:startup-st.el"))
+(require 'jd:startup-kb.el (concat jd:path-prefix jd:internal-prefix "startup/jd:startup-kb.elc"))
+(require 'jd:startup-st.el (concat jd:path-prefix jd:internal-prefix "startup/jd:startup-st.elc"))
 
 (provide 'jd:startup.el)

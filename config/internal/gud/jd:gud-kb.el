@@ -2,16 +2,16 @@
   "There is a bug where if I go up one line, the entire
 screen clears; fix this behavior later."
   (interactive)
-  (if (not (equal (line-number-at-pos (end-of-buffer)) 1))
+  (if (not (equal (line-number-at-pos (goto-char (point-max))) 1))
       (progn
-	(end-of-buffer)
-	(beginning-of-buffer)
+	(goto-char (point-max))
+	(goto-char (point-min))
 	(set-mark-command nil)
-	(end-of-buffer)
-	(previous-line)
+	(goto-char (point-max))
+	(forward-line -1)
 	(end-of-line)
 	(delete-active-region)
-	(next-line)
+	(forward-line)
 	(delete-active-region)
 	(end-of-line))))
 
@@ -24,10 +24,6 @@ screen clears; fix this behavior later."
   (insert "y")
   (comint-send-input)
   (comint-send-input))
-
-(defun jd:gud-minor-mode-map ()
-  (setf (cdr gud-minor-mode-map) nil))
-(add-hook 'gud-minor-mode-hook 'jd:gud-minor-mode-map)
 
 (defun jd:gud-mode-map ()
   (setf (cdr gud-mode-map) nil)

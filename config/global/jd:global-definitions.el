@@ -71,7 +71,7 @@ pst = package settings"
                     (progn
 		      (goto-char 1)
                       (newline)
-                      (previous-line))
+                      (forward-line -1))
 		  (progn
 		    (goto-char (cdr (car jd:matches)))
 		    (end-of-line)
@@ -101,7 +101,7 @@ pst = package settings"
   (interactive)
   (beginning-of-line)
   (delete-region (point) (progn (end-of-line) (point)))
-  (delete-backward-char 1))
+  (delete-char -1))
 
 (defun jd:delete-word-backward ()
   (interactive)
@@ -143,9 +143,7 @@ pst = package settings"
         (princ (format "File: %s\n\n" jd:file-name))
         (seq-do (lambda (jd:keymap)
                   (princ (format "%s\n\n" jd:keymap))
-                  (princ (substitute-command-keys (format "\\{%s}" jd:keymap)))
-                  (with-current-buffer standard-output
-                    (setq help-xref-stack-item (list #'my-describe-keymap jd:keymap))))
+                  (princ (substitute-command-keys (format "\\{%s}" jd:keymap))))
                 jd:keymap-symbols)))))
 
 (defun jd:describe-stock-file-keymaps ()
@@ -169,9 +167,7 @@ pst = package settings"
         (princ (format "File: %s\n\n" jd:file-name))
         (seq-do (lambda (jd:keymap)
                   (princ (format "%s\n\n" jd:keymap))
-                  (princ (substitute-command-keys (format "\\{%s}" jd:keymap)))
-                  (with-current-buffer standard-output
-                    (setq help-xref-stack-item (list #'my-describe-keymap jd:keymap))))
+                  (princ (substitute-command-keys (format "\\{%s}" jd:keymap))))
                 jd:keymap-symbols)))))
 
 (defun jd:indent-region ()
@@ -225,26 +221,26 @@ function; if it does, let the user know and don't execute the function.
 (defun jd:transpose-line-down ()
   (interactive)
   (save-excursion
-    (next-line)
+    (forward-line)
     (transpose-lines 1))
-  (next-line))
+  (forward-line))
 
 (defun jd:transpose-line-up ()
   (interactive)
   (save-excursion
-    (next-line)
+    (forward-line)
     (transpose-lines -1))
-  (previous-line))
+  (forward-line -1))
 
 (defun jd:truncate-xref-references ()
   "Organizes output of `xref-find-references'; narrowing it down to
 just the file names where the references are found."
   (interactive)
-  (next-line)
+  (forward-line)
   (set-mark (point))
   (let ((jd:b 0))
     (while (equal jd:b 0)
-      (next-line)
+      (forward-line)
       (if (or (equal (string (char-after (point))) "/")
 	      ;;; FIXME
 	      (equal (point) (point-max)))

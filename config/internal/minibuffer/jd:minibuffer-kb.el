@@ -28,7 +28,4 @@
 (setf (cdr minibuffer-local-filename-completion-map) nil)
 (define-key minibuffer-local-filename-completion-map (kbd "<jd:tab>") 'minibuffer-complete)
 
-;;; `minibuffer-local-filename-must-match-map' --- `minibuffer.el'
-(setf (cdr minibuffer-local-filename-must-match-map) nil)
-
 (provide 'jd:minibuffer-kb.el)
