@@ -1,5 +1,3 @@
-(defun jd:lisp-interaction-mode-enable-yasnippet-mode ()
-  (yas-minor-mode t))
-(add-hook 'lisp-interaction-mode-hook 'jd:lisp-interaction-mode-enable-yasnippet-mode)
+(add-hook 'lisp-interaction-mode-hook '(lambda () (yas-minor-mode t)))
 
 (provide 'jd:elisp-mode-st.el)

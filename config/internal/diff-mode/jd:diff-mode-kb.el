@@ -1,6 +1,6 @@
-;; (defun jd:-mode-map ()
-;;   (setf (cdr -mode-map) nil)
-;;   (define-key -mode-map (kbd "") '))
-;; (add-hook 'diff-mode-hook 'jd:-mode-map)
+(setq-default diff-minor-mode-map (make-sparse-keymap))
+(setq-default diff-mode-map (make-sparse-keymap))
+(setq-default diff-mode-menu (make-sparse-keymap))
+(setq-default diff-mode-shared-map (make-sparse-keymap))
 
 (provide 'jd:diff-mode-kb.el)

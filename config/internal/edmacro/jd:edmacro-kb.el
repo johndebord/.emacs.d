@@ -1,5 +1,3 @@
-(setf (cdr edmacro-mode-map) nil)
-(define-key edmacro-mode-map (kbd "<C-c> <C-c>") 'edmacro-finish-edit)
-(define-key edmacro-mode-map (kbd "<C-c> <C-q>") 'edmacro-insert-key)
+(setq-default edmacro-mode-map (make-sparse-keymap))
 
 (provide 'jd:edmacro-kb.el)

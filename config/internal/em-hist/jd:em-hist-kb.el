@@ -1,9 +1,4 @@
-(defun jd:eshell-hist-mode-map ()
-  (setf (cdr eshell-hist-mode-map) nil))
-(add-hook 'eshell-mode-hook 'jd:eshell-hist-mode-map)
-
-(defun jd:eshell-isearch-map ()
-  (setf (cdr eshell-isearch-map) nil))
-(add-hook 'eshell-mode-hook 'jd:eshell-isearch-map)
+(setq-default eshell-hist-mode-map (make-sparse-keymap))
+(setq-default eshell-isearch-map (make-sparse-keymap))
 
 (provide 'jd:em-hist-kb.el)

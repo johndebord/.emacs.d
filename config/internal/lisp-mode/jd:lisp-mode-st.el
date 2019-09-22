@@ -1,5 +1,3 @@
-(defun jd:lisp-mode-enable-yasnippet-mode ()
-  (yas-minor-mode t))
-(add-hook 'lisp-mode-hook 'jd:lisp-mode-enable-yasnippet-mode)
+(add-hook 'lisp-mode-hook '(lambda () (yas-minor-mode t)))
 
 (provide 'jd:lisp-mode-st.el)

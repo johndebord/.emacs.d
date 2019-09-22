@@ -1,5 +1,3 @@
-(defun jd:eshell-prompt-mode-map ()
-  (setf (cdr eshell-prompt-mode-map) nil))
-(add-hook 'eshell-mode-hook 'jd:eshell-prompt-mode-map)
+(setq-default eshell-prompt-mode-map (make-sparse-keymap))
 
 (provide 'jd:em-prompt-kb.el)

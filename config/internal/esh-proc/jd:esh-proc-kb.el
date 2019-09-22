@@ -1,5 +1,3 @@
-(defun jd:eshell-proc-mode-map ()
-  (setf (cdr eshell-proc-mode-map) nil))
-(add-hook 'eshell-mode-hook 'jd:eshell-proc-mode-map)
+(setq-default eshell-proc-mode-map (make-sparse-keymap))
 
 (provide 'jd:esh-proc-kb.el)

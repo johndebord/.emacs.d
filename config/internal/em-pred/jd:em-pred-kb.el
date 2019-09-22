@@ -1,5 +1,3 @@
-(defun jd:eshell-pred-mode-map ()
-  (setf (cdr eshell-pred-mode-map) nil))
-(add-hook 'eshell-mode-hook 'jd:eshell-pred-mode-map)
+(setq-default eshell-pred-mode-map (make-sparse-keymap))
 
 (provide 'jd:em-pred-kb.el)

@@ -11,3 +11,5 @@ alias lla ls -la $*
 alias la ls -a $*
 alias yarn $*
 alias s ls $*
+alias up cd .. $*
+alias ff 'find-file $1'
