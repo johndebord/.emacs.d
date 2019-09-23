@@ -49,6 +49,7 @@
 (require 'jd:replace.el (concat jd:path-prefix jd:internal-prefix "replace/jd:replace.elc"))
 (require 'jd:scroll-bar.el (concat jd:path-prefix jd:internal-prefix "scroll-bar/jd:scroll-bar.elc"))
 (require 'jd:simple.el (concat jd:path-prefix jd:internal-prefix "simple/jd:simple.elc"))
+(require 'jd:speedbar.el (concat jd:path-prefix jd:internal-prefix "speedbar/jd:speedbar.elc"))
 (require 'jd:startup.el (concat jd:path-prefix jd:internal-prefix "startup/jd:startup.elc"))
 (require 'jd:tool-bar.el (concat jd:path-prefix jd:internal-prefix "tool-bar/jd:tool-bar.elc"))
 (require 'jd:view.el (concat jd:path-prefix jd:internal-prefix "view/jd:view.elc"))

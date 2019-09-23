@@ -1,6 +1,8 @@
-(setq-default auto-save-file-name-transforms `(("*" ,(concat jd:path-prefix "file-backups/") t)))
+(setq-default auto-save-default t)
+(setq-default auto-save-file-name-transforms `((".*" ,(concat jd:path-prefix "autosaves/") t)))
+(setq-default auto-save-list-file-prefix (concat jd:path-prefix "autosaves/.saves-"))
 (setq-default backup-by-copying t)
-(setq-default backup-directory-alist `(("*" . ,(concat jd:path-prefix "file-backups/"))))
+(setq-default backup-directory-alist `((".*" . ,(concat jd:path-prefix "backups/"))))
 (setq-default large-file-warning-threshold nil)
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))

@@ -1,3 +1,5 @@
+(require 'mb-depth (concat jd:lisp-prefix "mb-depth.elc"))
+
 (require 'jd:mb-depth-kb.el (concat jd:path-prefix jd:internal-prefix "mb-depth/jd:mb-depth-kb.elc"))
 (require 'jd:mb-depth-st.el (concat jd:path-prefix jd:internal-prefix "mb-depth/jd:mb-depth-st.elc"))
 

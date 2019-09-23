@@ -1,4 +1,5 @@
 (setq-default pop-up-frames nil)
+
 (add-to-list 'same-window-buffer-names "*Apropos*")
 (add-to-list 'same-window-buffer-names "*Faces*")
 (add-to-list 'same-window-buffer-names "*Help*")

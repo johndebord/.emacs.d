@@ -1,6 +1,6 @@
-(defun jd:get-string-from-file (filePath beg end)
+(defun jd:get-string-from-file (jd:path jd:beg jd:end)
   (with-temp-buffer
-    (insert-file-contents filePath nil beg end)
+    (insert-file-contents jd:path nil jd:beg jd:end)
     (buffer-string)))
 
 (defvar jd:irc-nickname (jd:get-string-from-file "~/.authinfo" 0 15))

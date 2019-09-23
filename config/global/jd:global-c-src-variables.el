@@ -5,6 +5,9 @@
 (setq-default truncate-lines nil)
 (setq-default fill-column 80)
 
+;;; `fns.c'
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;;; `frame.c'
 (setq-default make-pointer-invisible nil)
 
