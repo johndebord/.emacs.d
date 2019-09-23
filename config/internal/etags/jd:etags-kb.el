@@ -1,4 +1,4 @@
-(setq-default select-tags-table-mode-map (make-sparse-keymap))
-(setq-default tags-table-mode-map (make-sparse-keymap))
+(setf (cdr select-tags-table-mode-map) nil)
+(setf (cdr tags-table-mode-map) nil)
 
 (provide 'jd:etags-kb.el)

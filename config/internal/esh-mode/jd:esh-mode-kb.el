@@ -1,6 +1,4 @@
-(setq-default eshell-command-map (make-sparse-keymap))
-
-(setq-default eshell-mode-ma (make-sparse-keymap))
+(setf (cdr eshell-mode-map) nil)
 (define-key eshell-mode-map (kbd "<jd:ret>") 'jd:eshell-ack-or-send-input)
 (define-key eshell-mode-map (kbd "<jd:tab>") 'pcomplete-expand-and-complete)
 (define-key eshell-mode-map (kbd "<C-M-i>") 'eshell-previous-input)

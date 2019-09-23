@@ -1,8 +1,8 @@
-(setq-default edebug-eval-mode-map (make-sparse-keymap))
-(setq-default edebug-menu (make-sparse-keymap))
-(setq-default global-edebug-map (make-sparse-keymap))
+(setf (cdr edebug-eval-mode-map) nil)
+(setf (cdr edebug-menu) nil)
+(setf (cdr global-edebug-map) nil)
 
-(setq-default edebug-mode-map (make-sparse-keymap))
+(setf (cdr edebug-mode-map) nil)
 (define-key edebug-mode-map (kbd "B") 'edebug-backtrace)
 (define-key edebug-mode-map (kbd "C") 'edebug-Continue-fast-mode)
 (define-key edebug-mode-map (kbd "S") 'edebug-stop)

@@ -1,3 +1,3 @@
-(setq-default edmacro-mode-map (make-sparse-keymap))
+(setf (cdr edmacro-mode-map) nil)
 
 (provide 'jd:edmacro-kb.el)

@@ -1,3 +1,8 @@
+(defalias 'ff 'find-file)
+
+(setq-default eshell-command-map nil)
+(setq-default eshell-directory-name (concat jd:path-prefix jd:internal-prefix "esh-mode/eshell"))
+
 (defun jd:eshell-clear-buffer ()
   (interactive)
   (let ((inhibit-read-only t))

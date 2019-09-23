@@ -1,6 +1,6 @@
-(setq-default diff-minor-mode-map (make-sparse-keymap))
-(setq-default diff-mode-map (make-sparse-keymap))
-(setq-default diff-mode-menu (make-sparse-keymap))
-(setq-default diff-mode-shared-map (make-sparse-keymap))
+(setf (cdr diff-minor-mode-map) nil)
+(setf (cdr diff-mode-map) nil)
+(setf (cdr diff-mode-menu) nil)
+(setf (cdr diff-mode-shared-map) nil)
 
 (provide 'jd:diff-mode-kb.el)

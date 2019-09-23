@@ -1,3 +1,3 @@
-(setq-default asm-mode-map (make-sparse-keymap))
+(setf (cdr asm-mode-map) nil)
 
 (provide 'jd:asm-mode-kb.el)

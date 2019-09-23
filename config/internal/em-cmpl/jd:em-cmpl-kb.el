@@ -1,3 +1,3 @@
-(setq-default eshell-cmpl-mode-map (make-sparse-keymap))
+(setf (cdr eshell-cmpl-mode-map) nil)
 
 (provide 'jd:em-cmpl-kb.el)

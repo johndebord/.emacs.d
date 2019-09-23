@@ -1,45 +1,20 @@
-;; (defun jd:cua-stuff ()
-;; (setq-default cua--global-mark-keymap (make-sparse-keymap))
-;; (setq-default cua--rectangle-keymap (make-sparse-keymap))
-;; (setq-default cua--region-keymap (make-sparse-keymap))
-;; (setq-default cua-global-keymap (make-sparse-keymap))
-;; (setq-default cua--cua-keys-keymap (make-sparse-keymap))
 (setf (cdr cua--global-mark-keymap) nil)
 (setf (cdr cua--rectangle-keymap) nil)
 (setf (cdr cua--region-keymap) nil)
 (setf (cdr cua-global-keymap) nil)
+
 (setf (cdr cua--cua-keys-keymap) nil)
 (define-key cua--cua-keys-keymap (kbd "<C-v>") 'yank)
 (define-key cua--cua-keys-keymap (kbd "<C-z>") 'undo)
 (define-key cua--cua-keys-keymap (kbd "<C-c> <timeout>") 'copy-region-as-kill)
 (define-key cua--cua-keys-keymap (kbd "<C-x> <timeout>") 'kill-region)
-;; (setq-default cua--prefix-override-keymap (make-sparse-keymap))
+
 (setf (cdr cua--prefix-override-keymap) nil)
 (define-key cua--prefix-override-keymap (kbd "<C-c>") 'cua--prefix-override-handler)
 (define-key cua--prefix-override-keymap (kbd "<C-x>") 'cua--prefix-override-handler)
-;; (setq-default cua--prefix-repeat-keymap (make-sparse-keymap))
+
 (setf (cdr cua--prefix-repeat-keymap) nil)
 (define-key cua--prefix-repeat-keymap (kbd "<C-c> <C-c>") 'cua--prefix-repeat-handler)
 (define-key cua--prefix-repeat-keymap (kbd "<C-x> <C-x>") 'cua--prefix-repeat-handler)
 
-;; (add-hook 'cua-mode-hook 'jd:cua-stuff)
-
 (provide 'jd:cua-base-kb.el)
-
-;; (add-hook 'cua-mode-hook '(lambda () (progn
-;;                                        (setq-default cua--global-mark-keymap (make-sparse-keymap))
-;;                                        (setq-default cua--rectangle-keymap (make-sparse-keymap))
-;;                                        (setq-default cua--region-keymap (make-sparse-keymap))
-;;                                        (setq-default cua-global-keymap (make-sparse-keymap))
-;;                                        (setq-default cua--cua-keys-keymap (make-sparse-keymap))
-;;                                        (define-key cua--cua-keys-keymap (kbd "<C-v>") 'yank)
-;;                                        (define-key cua--cua-keys-keymap (kbd "<C-z>") 'undo)
-;;                                        (define-key cua--cua-keys-keymap (kbd "<C-c> <timeout>") 'copy-region-as-kill)
-;;                                        (define-key cua--cua-keys-keymap (kbd "<C-x> <timeout>") 'kill-region)
-;;                                        (setq-default cua--prefix-override-keymap (make-sparse-keymap))
-;;                                        (define-key cua--prefix-override-keymap (kbd "<C-c>") 'cua--prefix-override-handler)
-;;                                        (define-key cua--prefix-override-keymap (kbd "<C-x>") 'cua--prefix-override-handler)
-;;                                        (setq-default cua--prefix-repeat-keymap (make-sparse-keymap))
-;;                                        (define-key cua--prefix-repeat-keymap (kbd "<C-c> <C-c>") 'cua--prefix-repeat-handler)
-;;                                        (define-key cua--prefix-repeat-keymap (kbd "<C-x> <C-x>") 'cua--prefix-repeat-handler))))
-

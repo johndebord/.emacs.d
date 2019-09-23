@@ -1,3 +1,3 @@
-(setq-default dired-mode-map (make-sparse-keymap))
-                
+(setf (cdr dired-mode-map) nil)
+
 (provide 'jd:dired-kb.el)

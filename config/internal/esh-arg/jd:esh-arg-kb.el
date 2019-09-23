@@ -1,3 +1,3 @@
-(setq-default eshell-arg-mode-map (make-sparse-keymap))
+(setf (cdr eshell-arg-mode-map) nil)
 
 (provide 'jd:esh-arg-kb.el)

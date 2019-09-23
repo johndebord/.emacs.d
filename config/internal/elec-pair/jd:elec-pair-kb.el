@@ -1,3 +1,3 @@
-(setq-default electric-pair-mode-map (make-sparse-keymap))
+(setf (cdr electric-pair-mode-map) nil)
 
 (provide 'jd:elec-pair-kb.el)

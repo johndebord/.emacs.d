@@ -1,3 +1,3 @@
-(setq-default eshell-pred-mode-map (make-sparse-keymap))
+(setf (cdr eshell-pred-mode-map) nil)
 
 (provide 'jd:em-pred-kb.el)

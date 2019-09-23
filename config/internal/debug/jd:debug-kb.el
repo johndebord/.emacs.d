@@ -1,3 +1,3 @@
-(setq-default debugger-mode-map (make-sparse-keymap))
+(setf (cdr debugger-mode-map) nil)
 
 (provide 'jd:debug-kb.el)

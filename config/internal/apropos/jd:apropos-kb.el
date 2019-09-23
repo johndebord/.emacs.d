@@ -1,4 +1,4 @@
-(setq-default apropos-mode-map (make-sparse-keymap))
+(setf (cdr apropos-mode-map) nil)
 (define-key apropos-mode-map (kbd "<jd:ret>") 'push-button)
 (define-key apropos-mode-map (kbd "<jd:tab>") 'forward-button)
 (define-key apropos-mode-map (kbd "<jd:S-tab>") 'backward-button)

@@ -1,4 +1,3 @@
-(setq-default edit-abbrevs-map (make-sparse-keymap))
-(setq-default edit-abbrevs-mode-map (make-sparse-keymap))
+(setf (cdr edit-abbrevs-mode-map) nil)
 
 (provide 'jd:abbrev-kb.el)

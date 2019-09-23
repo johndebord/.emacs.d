@@ -1,10 +1,10 @@
-(setq-default compilation-button-map (make-sparse-keymap))
-(setq-default compilation-menu-map (make-sparse-keymap))
-(setq-default compilation-minor-mode-map (make-sparse-keymap))
-(setq-default compilation-mode-tool-bar-map (make-sparse-keymap))
-(setq-default compilation-shell-minor-mode-map (make-sparse-keymap))
+(setf (cdr compilation-button-map) nil)
+(setf (cdr compilation-menu-map) nil)
+(setf (cdr compilation-minor-mode-map) nil)
+(setf (cdr compilation-mode-tool-bar-map) nil)
+(setf (cdr compilation-shell-minor-mode-map) nil)
 
-(setq-default compilation-mode-map (make-sparse-keymap))
+(setf (cdr compilation-mode-map) nil)
 (define-key compilation-mode-map (kbd "<C-c> <C-c>") 'kill-compilation)
 (define-key compilation-mode-map (kbd "<jd:ret>") 'compile-goto-error)
 
