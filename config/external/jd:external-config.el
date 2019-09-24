@@ -5,6 +5,7 @@
 (require 'jd:ivy.el (concat jd:path-prefix jd:external-prefix "ivy/jd:ivy.elc"))
 (require 'jd:sr-speedbar.el (concat jd:path-prefix jd:external-prefix "sr-speedbar/jd:sr-speedbar.elc"))
 (require 'jd:swiper.el (concat jd:path-prefix jd:external-prefix "swiper/jd:swiper.elc"))
+(require 'jd:xterm-color.el (concat jd:path-prefix jd:external-prefix "xterm-color/jd:xterm-color.elc"))
 (require 'jd:yasnippet.el (concat jd:path-prefix jd:external-prefix "yasnippet/jd:yasnippet.elc"))
 
 (provide 'jd:external-config.el)

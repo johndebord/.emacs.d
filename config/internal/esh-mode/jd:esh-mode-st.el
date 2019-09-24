@@ -2,6 +2,7 @@
 
 (setq-default eshell-command-map nil)
 (setq-default eshell-directory-name (concat jd:path-prefix jd:internal-prefix "esh-mode/eshell"))
+(setq-default eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
 
 (defun jd:eshell-clear-buffer ()
   (interactive)
@@ -17,18 +18,20 @@
   (if (get-char-property (point) 'face)
       (progn
 	(let ((value (get-char-property (point) 'face)))
-	  (cond ((equal (cdr (car value)) "green3")
+	  (cond ((equal (nth 0 (cdr value)) "#ADCF44")
 		 (let ((file (thing-at-point 'filename 'no-properties)))
 		   (find-file file)
 		   (forward-line (- (line-number-at-pos)))))
-		((equal (cdr (car value)) "yellow3")
+		((equal (nth 0 (cdr value)) "#F0C649")
 		 (let ((line (thing-at-point 'word 'no-properties)))
 		   (beginning-of-line)
-		   (while (not (equal (cdr (car (get-char-property (point) 'face))) "green3"))
+		   (while (not (equal (nth 0 (cdr (get-char-property (point) 'face))) "#ADCF44"))
 		     (forward-line -1))
 		   (let ((file (thing-at-point 'filename 'no-properties)))
 		     (find-file file)
 		     (forward-line (string-to-number line))))))))
     (eshell-send-input)))
+
+(add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
 
 (provide 'jd:esh-mode-st.el)
