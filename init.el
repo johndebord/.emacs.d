@@ -23,41 +23,39 @@
 ;;
 ;; This is so that I can use <C-x> <jd:tab> for indenting region
 
-(defconst jd:path-prefix nil
+(defconst jd:path-prefix
+  (cond
+   ((string-equal system-type "darwin")
+    (progn
+      (setq jd:path-prefix "/Users/john.debord/.emacs.d/")
+      (setq default-directory jd:path-prefix)))
+   ((string-equal system-type "gnu/linux")
+    (progn
+      (setq jd:path-prefix "/home/i/.emacs.d/")
+      (setq default-directory jd:path-prefix))))
   "Determine which operating system Emacs is currently being used in.
 If `darwin' the path prefix shall be 'Users/johndebord/.emacs.d/'.
 If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
 
-(defconst jd:lisp-prefix nil
+(defconst jd:lisp-prefix  
+  "/usr/local/share/emacs/27.0.50/lisp/"
   "Path to which the stock/default emacs lisp files are.")
 
-(defconst jd:global-prefix nil
+(defconst jd:global-prefix  
+  "config/global/"
   "Path to which the global file configurations are.")
 
-(defconst jd:external-prefix nil
+(defconst jd:external-prefix
+  "config/external/"
   "Path to which the external file configurations are.")
 
-(defconst jd:internal-prefix nil
+(defconst jd:internal-prefix  
+  "config/internal/"
   "Path to which the stock/builtin file configurations are.")
 
-(defconst jd:elpa-prefix nil
+(defconst jd:elpa-prefix  
+  (concat jd:path-prefix jd:external-prefix "elpa/")
   "Path to which the exteranl elpa files are.")
-
-(cond
- ((string-equal system-type "darwin")
-  (progn
-    (setq jd:path-prefix "/Users/john.debord/.emacs.d/")
-    (setq default-directory jd:path-prefix)))
- ((string-equal system-type "gnu/linux")
-  (progn
-    (setq jd:path-prefix "/home/i/.emacs.d/")
-    (setq default-directory jd:path-prefix))))
-
-(setq-default jd:lisp-prefix "/usr/local/share/emacs/27.0.50/lisp/")
-(setq-default jd:global-prefix "config/global/")
-(setq-default jd:external-prefix "config/external/")
-(setq-default jd:internal-prefix "config/internal/")
-(setq-default jd:elpa-prefix (concat jd:path-prefix jd:external-prefix "elpa/"))
 
 (setq-default package-user-dir jd:elpa-prefix)
 (package-initialize)
@@ -66,11 +64,11 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
                                  ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 (require 'jd:global-config.el
-         (concat jd:path-prefix jd:global-prefix "jd:global-config.el"))
+         (concat jd:path-prefix jd:global-prefix "jd:global-config.elc"))
 (require 'jd:external-config.el
-         (concat jd:path-prefix jd:external-prefix "jd:external-config.el"))
+         (concat jd:path-prefix jd:external-prefix "jd:external-config.elc"))
 (require 'jd:builtin-config.el
-         (concat jd:path-prefix jd:internal-prefix "jd:internal-config.el"))
+         (concat jd:path-prefix jd:internal-prefix "jd:internal-config.elc"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -708,4 +706,4 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(gnuplot-mode cmake-mode yasnippet sr-speedbar rtags rmsbolt paredit modern-cpp-font-lock lsp-mode gnuplot counsel cmake-ide call-graph auto-complete)))
+   '(xterm-color yasnippet sr-speedbar rtags rmsbolt paredit modern-cpp-font-lock lsp-mode gnuplot-mode counsel cmake-mode cmake-ide call-graph auto-complete)))

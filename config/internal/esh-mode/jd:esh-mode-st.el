@@ -4,6 +4,15 @@
 (setq-default eshell-directory-name (concat jd:path-prefix jd:internal-prefix "esh-mode/eshell"))
 (setq-default eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
 
+(defun jd:eshell-beginning-of-line-or-prompt ()
+  (interactive "^")
+  (if (or
+       (equal (get-text-property (line-beginning-position) 'read-only) nil)
+       (and (equal (get-text-property (line-beginning-position) 'read-only) t)
+            (equal (char-before) #x24)))
+      (beginning-of-line)
+    (eshell-bol)))
+
 (defun jd:eshell-clear-buffer ()
   (interactive)
   (let ((inhibit-read-only t))
