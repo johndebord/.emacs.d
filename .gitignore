@@ -4,5 +4,6 @@
 ./auto-save-list/
 ./autosaves/
 ./backups/
-./config/esh-mode/eshell/
+./config/internal/esh-mode/eshell/lastdir
+./config/internal/esh-mode/eshell/history
 network-security.data

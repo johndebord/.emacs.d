@@ -1,0 +1,8 @@
+alias up cd .. $*
+alias push pushd ./ $*
+alias pop popd $*
+alias lla ls -la $*
+alias ll ls -l $*
+alias la ls -a $*
+alias gr grep -rnw './' -e $*
+alias fnd find . -name $*
