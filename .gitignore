@@ -1,0 +1,8 @@
+*~
+*#
+*.elc
+./auto-save-list/
+./autosaves/
+./backups/
+./config/esh-mode/eshell/
+network-security.data
