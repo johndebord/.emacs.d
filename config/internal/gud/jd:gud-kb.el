@@ -1,6 +1,5 @@
 (setf (cdr gud-menu-map) nil)
 (setf (cdr gdb-script-mode-map) nil)
-(setf (cdr gud-speedbar-key-map) nil)
 (setf (cdr gud-tool-bar-map) nil)
 
 (setf (cdr gud-mode-map) nil)

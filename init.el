@@ -65,10 +65,10 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
 
 (require 'jd:global-config.el
          (concat jd:path-prefix jd:global-prefix "jd:global-config.elc"))
-(require 'jd:external-config.el
-         (concat jd:path-prefix jd:external-prefix "jd:external-config.elc"))
 (require 'jd:builtin-config.el
          (concat jd:path-prefix jd:internal-prefix "jd:internal-config.elc"))
+(require 'jd:external-config.el
+         (concat jd:path-prefix jd:external-prefix "jd:external-config.elc"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
