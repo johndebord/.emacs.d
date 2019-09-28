@@ -1,4 +1,4 @@
-(setf (cdr select-tags-table-mode-map) nil)
-(setf (cdr tags-table-mode-map) nil)
-
 (provide 'jd:etags-kb.el)
+
+;; select-tags-table-mode-map
+;; tags-table-mode-map

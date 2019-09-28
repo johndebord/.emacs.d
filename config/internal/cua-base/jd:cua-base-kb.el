@@ -1,8 +1,3 @@
-(setf (cdr cua--global-mark-keymap) nil)
-(setf (cdr cua--rectangle-keymap) nil)
-(setf (cdr cua--region-keymap) nil)
-(setf (cdr cua-global-keymap) nil)
-
 (setf (cdr cua--cua-keys-keymap) nil)
 (define-key cua--cua-keys-keymap (kbd "<C-v>") 'yank)
 (define-key cua--cua-keys-keymap (kbd "<C-z>") 'undo)
@@ -18,3 +13,8 @@
 (define-key cua--prefix-repeat-keymap (kbd "<C-x> <C-x>") 'cua--prefix-repeat-handler)
 
 (provide 'jd:cua-base-kb.el)
+
+;; cua--global-mark-keymap
+;; cua--rectangle-keymap
+;; cua-global-keymap
+;; cua--region-keymap

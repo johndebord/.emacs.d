@@ -1,5 +1,3 @@
-(setf (cdr xref--transient-buffer-mode-map) nil)
-
 (setf (cdr xref--button-map) nil)
 (define-key xref--button-map (kbd "<mouse-1>") 'xref-show-location-at-point)
 
@@ -12,3 +10,5 @@
 (define-key xref--xref-buffer-mode-map (kbd "<C-S-x>>") 'xref-query-replace-in-results)
 
 (provide 'jd:xref-kb.el)
+
+;; xref--transient-buffer-mode-map

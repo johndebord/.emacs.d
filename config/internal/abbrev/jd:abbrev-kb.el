@@ -1,3 +1,4 @@
-(setf (cdr edit-abbrevs-mode-map) nil)
-
 (provide 'jd:abbrev-kb.el)
+
+;; edit-abbrevs-mode-map
+;; edit-abbrevs-map

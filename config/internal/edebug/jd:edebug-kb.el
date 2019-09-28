@@ -1,7 +1,3 @@
-(setf (cdr edebug-eval-mode-map) nil)
-(setf (cdr edebug-menu) nil)
-(setf (cdr global-edebug-map) nil)
-
 (setf (cdr edebug-mode-map) nil)
 (define-key edebug-mode-map (kbd "B") 'edebug-backtrace)
 (define-key edebug-mode-map (kbd "C") 'edebug-Continue-fast-mode)
@@ -20,3 +16,7 @@
 (define-key edebug-mode-map (kbd "x") 'edebug-set-conditional-breakpoint)
 
 (provide 'jd:edebug-kb.el)
+
+;; global-edebug-map
+;; edebug-menu
+;; edebug-eval-mode-map

@@ -42,19 +42,19 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
   "Path to which the stock/default emacs lisp files are.")
 
 (defconst jd:global-prefix  
-  "config/global/"
+  (concat jd:path-prefix "config/global/")
   "Path to which the global file configurations are.")
 
 (defconst jd:external-prefix
-  "config/external/"
+  (concat jd:path-prefix "config/external/")
   "Path to which the external file configurations are.")
 
 (defconst jd:internal-prefix  
-  "config/internal/"
+  (concat jd:path-prefix "config/internal/")
   "Path to which the stock/builtin file configurations are.")
 
 (defconst jd:elpa-prefix  
-  (concat jd:path-prefix jd:external-prefix "elpa/")
+  (concat jd:external-prefix "elpa/")
   "Path to which the exteranl elpa files are.")
 
 (setq-default package-user-dir jd:elpa-prefix)
@@ -64,11 +64,11 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
                                  ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 (require 'jd:global-config.el
-         (concat jd:path-prefix jd:global-prefix "jd:global-config.elc"))
+         (concat jd:global-prefix "jd:global-config.elc"))
 (require 'jd:builtin-config.el
-         (concat jd:path-prefix jd:internal-prefix "jd:internal-config.elc"))
+         (concat jd:internal-prefix "jd:internal-config.elc"))
 (require 'jd:external-config.el
-         (concat jd:path-prefix jd:external-prefix "jd:external-config.elc"))
+         (concat jd:external-prefix "jd:external-config.elc"))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

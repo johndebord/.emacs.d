@@ -1,9 +1,7 @@
-(setf (cdr Custom-mode-menu) nil)
-(setf (cdr Custom-mode-map) nil)
-(setf (cdr custom-field-keymap) nil)
-(setf (cdr custom-mode-link-map) nil)
-(setf (cdr custom-mode-map) nil)
-
 (provide 'jd:cus-edit-kb.el)
 
-
+;; custom-mode-link-map
+;; custom-field-keymap
+;; custom-mode-map
+;; Custom-mode-menu
+;; Custom-mode-map

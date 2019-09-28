@@ -1,9 +1,3 @@
-(setf (cdr messages-buffer-mode-map) nil)
-(setf (cdr process-menu-mode-map) nil)
-(setf (cdr special-mode-map) nil)
-(setf (cdr universal-argument-map) nil)
-(setf (cdr visual-line-mode-map) nil)
-
 (setf (cdr completion-list-mode-map) nil)
 (define-key completion-list-mode-map (kbd "q") 'quit-window)
 (define-key completion-list-mode-map (kbd "<jd:ret>") 'choose-completion)
@@ -25,3 +19,9 @@
 (define-key read-expression-map (kbd "<jd:tab>") 'completion-at-point)
 
 (provide 'jd:simple-kb.el)
+
+;; messages-buffer-mode-map
+;; process-menu-mode-map
+;; special-mode-map
+;; universal-argument-map
+;; visual-line-mode-map

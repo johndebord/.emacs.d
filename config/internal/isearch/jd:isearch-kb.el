@@ -1,10 +1,8 @@
-(setf (cdr isearch-menu-bar-map) nil)
-(setf (cdr isearch-menu-bar-yank-map) nil)
-(setf (cdr isearch-mode-map) nil)
-(setf (cdr isearch-help-map) nil)
-(setf (cdr isearch-tool-bar-map) nil)
-(setf (cdr minibuffer-local-isearch-map) nil)
-
 (provide 'jd:isearch-kb.el)
 
-
+;; isearch-menu-bar-map
+;; isearch-tool-bar-map
+;; isearch-help-map
+;; minibuffer-local-isearch-map
+;; isearch-mode-map
+;; isearch-menu-bar-yank-map

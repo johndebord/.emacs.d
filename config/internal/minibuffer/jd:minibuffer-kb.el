@@ -1,7 +1,3 @@
-(setf (cdr completion-in-region-mode-map) nil)
-(setf (cdr minibuffer-inactive-mode-map) nil)
-(setf (cdr minibuffer-local-must-match-map) nil)
-
 (setf (cdr minibuffer-local-filename-completion-map) nil)
 (define-key minibuffer-local-filename-completion-map (kbd "<jd:tab>") 'minibuffer-complete)
 
@@ -22,3 +18,8 @@
 (define-key minibuffer-local-must-match-map (kbd "<jd:tab>") 'minibuffer-complete)
 
 (provide 'jd:minibuffer-kb.el)
+
+;; minibuffer-local-must-match-filename-map
+;; minibuffer-local-filename-must-match-map
+;; minibuffer-inactive-mode-map
+;; completion-in-region-mode-map

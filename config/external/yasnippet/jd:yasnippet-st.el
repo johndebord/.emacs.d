@@ -1,4 +1,4 @@
-(yas-load-directory (concat jd:path-prefix jd:external-prefix "yasnippet/snippets/"))
+(yas-load-directory (concat jd:external-prefix "yasnippet/snippets/"))
 
 (add-hook 'c++-mode-hook '(lambda () (yas-minor-mode t)))
 

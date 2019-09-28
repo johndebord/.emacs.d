@@ -1,3 +1,3 @@
-(setf (cdr edmacro-mode-map) nil)
-
 (provide 'jd:edmacro-kb.el)
+
+;; edmacro-mode-map

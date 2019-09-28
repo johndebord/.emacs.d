@@ -1,3 +1,3 @@
-(setf (cdr eshell-var-mode-map) nil)
-
 (provide 'jd:esh-var-kb.el)
+
+;; eshell-var-mode-map

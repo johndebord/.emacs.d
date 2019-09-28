@@ -1,26 +1,8 @@
 (defalias 'ff 'find-file)
 
 (setq-default eshell-command-map nil)
-(setq-default eshell-directory-name (concat jd:path-prefix jd:internal-prefix "esh-mode/eshell"))
+(setq-default eshell-directory-name (concat jd:internal-prefix "esh-mode/eshell"))
 (setq-default eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-
-(defun jd:eshell-beginning-of-line-or-prompt ()
-  (interactive "^")
-  (if (or
-       (equal (get-text-property (line-beginning-position) 'read-only) nil)
-       (and (equal (get-text-property (line-beginning-position) 'read-only) t)
-            (equal (char-before) #x24)))
-      (beginning-of-line)
-    (eshell-bol)))
-
-(defun jd:eshell-clear-buffer ()
-  (interactive)
-  (let ((inhibit-read-only t))
-    (erase-buffer)
-    (eshell-send-input))
-  (beginning-of-line)
-  (backward-delete-char 1)
-  (end-of-line))
 
 (defun jd:eshell-ack-or-send-input ()
   (interactive)
@@ -40,6 +22,24 @@
 		     (find-file file)
 		     (forward-line (string-to-number line))))))))
     (eshell-send-input)))
+
+(defun jd:eshell-beginning-of-line-or-prompt ()
+  (interactive "^")
+  (if (or
+       (equal (get-text-property (line-beginning-position) 'read-only) nil)
+       (and (equal (get-text-property (line-beginning-position) 'read-only) t)
+            (equal (char-before) #x24)))
+      (beginning-of-line)
+    (eshell-bol)))
+
+(defun jd:eshell-clear-buffer ()
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (eshell-send-input))
+  (beginning-of-line)
+  (backward-delete-char 1)
+  (end-of-line))
 
 (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
 

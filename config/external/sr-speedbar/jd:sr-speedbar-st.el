@@ -1,4 +1,3 @@
-(setq-default speedbar-directory-unshown-regexp "^\\(CVS\\|RCS\\|SCCS\\|\\.\\.*$\\)\\'")
-(setq-default speedbar-use-tool-tips-flag nil)
+(setq-default sr-speedbar-auto-refresh nil)
 
 (provide 'jd:sr-speedbar-st.el)

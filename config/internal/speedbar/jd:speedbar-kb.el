@@ -1,5 +1,3 @@
-(setf (cdr speedbar-mode-map) nil)
-
 (setf (cdr speedbar-buffers-key-map) nil)
 (define-key speedbar-buffers-key-map (kbd "d") 'speedbar-buffer-kill-buffer)
 (define-key speedbar-buffers-key-map (kbd "r") 'speedbar-buffer-revert-buffer)
@@ -24,3 +22,6 @@
 (define-key speedbar-file-key-map (kbd "<C-mouse-3>") 'dframe-popup-kludge)
 
 (provide 'jd:speedbar-kb.el)
+
+;; speedbar-mode-map
+;; speedbar-key-map

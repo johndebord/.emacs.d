@@ -1,12 +1,3 @@
-(setf (cdr gdb-disassembly-mode-map) nil)
-(setf (cdr gdb-edit-locals-map-1) nil)
-(setf (cdr gdb-locals-watch-map) nil)
-(setf (cdr gdb-memory-format-map) nil)
-(setf (cdr gdb-memory-format-menu) nil)
-(setf (cdr gdb-memory-mode-map) nil)
-(setf (cdr gdb-memory-unit-map) nil)
-(setf (cdr gdb-memory-unit-menu) nil)
-
 (setf (cdr gdb-breakpoints-mode-map) nil)
 (define-key gdb-breakpoints-mode-map (kbd "<jd:bks>") 'gdb-delete-breakpoint)
 (define-key gdb-breakpoints-mode-map (kbd "<jd:ret>") 'gdb-goto-breakpoint)
@@ -34,3 +25,12 @@
 (define-key gdb-threads-mode-map (kbd "<jd:ret>") 'gdb-select-thread)
 
 (provide 'jd:gdb-mi-kb.el)
+
+;; gdb-memory-unit-menu
+;; gdb-memory-mode-map
+;; gdb-edit-locals-map-1
+;; gdb-locals-watch-map
+;; gdb-memory-format-menu
+;; gdb-memory-unit-map
+;; gdb-disassembly-mode-map
+;; gdb-memory-format-map

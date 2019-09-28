@@ -1,11 +1,9 @@
-/home/i/.emacs.d/elpa
+~/.emacs.d
+/home/i/.emacs.d/config/global
 /home/i/.emacs.d
 /home/i/.emacs.d/config
-/home/i/.emacs.d/config/external/counsel
-~/.emacs.d
-/home/i/.emacs.d/config/external/elpa/counsel-20190830.1557
-/home/i/.emacs.d/config/external/elpa
+/home/i/.emacs.d/config/external/popup
+/home/i/.emacs.d/config/external/elpa/popup-20160709.1429
 /home/i/.emacs.d/config/external
-/home/i/.emacs.d/config/external/counsel
-~/.emacs.d
-~/.emacs.d
+/home/i/.emacs.d/config/external/elpa
+/home/i/.emacs.d/config/external/elpa/popup-20160709.1429

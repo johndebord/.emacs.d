@@ -1,7 +1,3 @@
-(setf (cdr gud-menu-map) nil)
-(setf (cdr gdb-script-mode-map) nil)
-(setf (cdr gud-tool-bar-map) nil)
-
 (setf (cdr gud-mode-map) nil)
 (define-key gud-mode-map (kbd "<C-M-i>") 'comint-previous-input)
 (define-key gud-mode-map (kbd "<C-M-k>") 'comint-next-input)
@@ -38,3 +34,8 @@
 (define-key gud-minor-mode-map (kbd "<left-margin> <C-drag-mouse-1>") 'gdb-mouse-jump)
 
 (provide 'jd:gud-kb.el)
+
+;; gud-menu-map
+;; gud-tool-bar-map
+;; gdb-script-mode-map
+;; gud-speedbar-key-map

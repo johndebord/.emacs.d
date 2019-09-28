@@ -1,15 +1,15 @@
-(setf (cdr abbrev-map) nil)
-(setf (cdr ctl-x-r-map) nil)
-(setf (cdr goto-map) nil)
-(setf (cdr mode-line-buffer-identification-keymap) nil)
-(setf (cdr mode-line-coding-system-map) nil)
-(setf (cdr mode-line-column-line-number-mode-map) nil)
-(setf (cdr mode-line-input-method-map) nil)
-(setf (cdr mode-line-major-mode-keymap) nil)
-(setf (cdr mode-line-minor-mode-keymap) nil)
-(setf (cdr mode-line-mode-menu) nil)
-(setf (cdr mode-specific-map) nil)
-(setf (cdr narrow-map) nil)
-(setf (cdr search-map) nil)
-
 (provide 'jd:bindings-kb.el)
+
+;; mode-line-column-line-number-mode-map
+;; goto-map
+;; mode-line-minor-mode-keymap
+;; ctl-x-r-map
+;; search-map
+;; mode-line-coding-system-map
+;; narrow-map
+;; mode-line-major-mode-keymap
+;; mode-specific-map
+;; mode-line-input-method-map
+;; mode-line-buffer-identification-keymap
+;; abbrev-map
+;; mode-line-mode-menu
