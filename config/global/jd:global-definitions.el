@@ -211,10 +211,6 @@ function; if it does, let the user know and don't execute the function.
   (interactive)
   (insert ?\s))
 
-(defun jd:swap-buffers ()
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer))))
-
 (defun jd:transpose-char-left ()
   (interactive)
   (save-excursion

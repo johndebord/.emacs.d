@@ -734,7 +734,7 @@
 (define-key global-map (kbd "<jd:S-spc>")     'jd:self-insert-space)
 ;; (define-key global-map (kbd "<jd:C-spc>")     'undefined)
 ;; (define-key global-map (kbd "<jd:C-S-spc>")   'undefined)
-(define-key global-map (kbd "<jd:M-spc>")     'jd:swap-buffers)
+(define-key global-map (kbd "<jd:M-spc>")     'jd:macro-swap-buffers)
 ;; (define-key global-map (kbd "<jd:M-S-spc>")   'undefined)
 ;; (define-key global-map (kbd "<jd:C-M-spc>")   'undefined)
 ;; (define-key global-map (kbd "<jd:C-M-S-spc>") 'undefined)
