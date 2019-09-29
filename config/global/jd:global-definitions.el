@@ -1,7 +1,3 @@
-(defun jd:reset-registers ()
-  (interactive)
-  (setq register-alist (append '((1)(2)(3)(4)(5)(6)(7)(8)(9)) register-alist)))
-
 (defun jd:construct-mode-folder ()
   "Automates the construction of a mode directory for customization.
 [ ] TODO: Add feature to insert templates for rebinding all keymaps and
@@ -195,6 +191,10 @@ function; if it does, let the user know and don't execute the function.
   (shell-command (concat "cd " jd:path-prefix "&& find . -name \"*~\" -type f -delete"))
   (shell-command (concat "cd " jd:path-prefix "&& find . -name \"*#\" -type f -delete")))
 
+(defun jd:reset-registers ()
+  (interactive)
+  (setq register-alist (append '((1)(2)(3)(4)(5)(6)(7)(8)(9)) register-alist)))
+
 (defun jd:scroll-down ()
   (interactive "^")
   (recenter)
@@ -213,7 +213,7 @@ function; if it does, let the user know and don't execute the function.
 
 (defun jd:swap-buffers ()
   (interactive)
-  (switch-to-buffer nil))
+  (switch-to-buffer (other-buffer (current-buffer))))
 
 (defun jd:transpose-char-left ()
   (interactive)
