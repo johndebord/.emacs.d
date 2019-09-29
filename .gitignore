@@ -1,9 +1,9 @@
 *~
 *#
 *.elc
+network-security.data
 ./auto-save-list/
 ./autosaves/
 ./backups/
 ./config/internal/esh-mode/eshell/lastdir
 ./config/internal/esh-mode/eshell/history
-network-security.data

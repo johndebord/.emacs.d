@@ -7,6 +7,10 @@
 (define-key ivy-minibuffer-map (kbd "<M-;>") 'swiper-recenter-top-bottom)
 (define-key ivy-minibuffer-map (kbd "<M-i>") 'ivy-previous-line)
 (define-key ivy-minibuffer-map (kbd "<M-k>") 'ivy-next-line)
+
+(define-key ivy-minibuffer-map (kbd "<M-u>") 'beginning-of-line)
+(define-key ivy-minibuffer-map (kbd "<M-o>") 'end-of-line)
+
 (define-key ivy-minibuffer-map (kbd "<C-M-i>") 'ivy-previous-history-element)
 (define-key ivy-minibuffer-map (kbd "<C-M-k>") 'ivy-next-history-element)
 (define-key ivy-minibuffer-map (kbd "<down>") 'ivy-next-line)

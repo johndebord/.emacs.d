@@ -1,3 +1,7 @@
+(defun jd:reset-registers ()
+  (interactive)
+  (setq register-alist (append '((1)(2)(3)(4)(5)(6)(7)(8)(9)) register-alist)))
+
 (defun jd:construct-mode-folder ()
   "Automates the construction of a mode directory for customization.
 [ ] TODO: Add feature to insert templates for rebinding all keymaps and
@@ -183,6 +187,13 @@ function; if it does, let the user know and don't execute the function.
     (set-mark (point))
     (end-of-defun)
     (indent-for-tab-command)))
+
+(defun jd:remove-unneeded-files ()
+  "[ ] TODO: Conglomerate."
+  (interactive)
+  (shell-command (concat "cd " jd:path-prefix "&& find . -name \"*.elc\" -type f -delete"))
+  (shell-command (concat "cd " jd:path-prefix "&& find . -name \"*~\" -type f -delete"))
+  (shell-command (concat "cd " jd:path-prefix "&& find . -name \"*#\" -type f -delete")))
 
 (defun jd:scroll-down ()
   (interactive "^")
