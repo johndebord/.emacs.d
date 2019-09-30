@@ -4,6 +4,7 @@
 their respective keybinds by parsing through their respective files.
 As a reminder:
 v   = variable
+b   = base lisp file
 pt  = package type
 pn  = package name
 pfp = package folder path
@@ -13,15 +14,17 @@ pst = package settings"
   (interactive)
   (let ((jd:pt nil)
 	(jd:pn nil))
-    (setq jd:pt (read-from-minibuffer "Please enter the mode-type: "))
+    (setq jd:pt (read-from-minibuffer "Please enter the folder type: "))
     (if (not (or (equal jd:pt "external")
                  (equal jd:pt "internal")))
-	(error "Please enter a valied mode-type"))
-    (setq jd:pn (read-from-minibuffer "Please enter the mode-name: "))
+	(error "Please enter a valid folder type"))
+    (setq jd:pn (read-from-minibuffer "Please enter the folder name: "))
     (if (y-or-n-p (format "Is \"%s\" and \"%s\" correct?" jd:pt jd:pn))
 	(progn
 	  (let* ((jd:v-str
                   (if (equal jd:pt "external") "jd:external-prefix" "jd:internal-prefix"))
+                 (jd:b-str
+                  (if (equal jd:pt "external") "jd:elpa-prefix" "jd:lisp-prefix"))
                  (jd:pfp
                   (if (equal jd:pt "external") jd:external-prefix jd:internal-prefix))
 		 (jd:ps
@@ -31,34 +34,30 @@ pst = package settings"
 		 (jd:pst-str
                   (concat "jd:" jd:pn "-st.el"))
                  (jd:x.el-str
-                  (concat ";; (require ' (concat jd:lisp-prefix \".elc\"))\n\n"
-                          "(require '" jd:pkb-str " (concat jd:path-prefix " jd:v-str " \"" jd:pn "/" jd:pkb-str"\"))\n"
-                          "(require '" jd:pst-str " (concat jd:path-prefix " jd:v-str " \"" jd:pn "/" jd:pst-str"\"))\n\n"
+                  (concat ";; (require '" jd:pn " (concat " jd:b-str " \".elc\"))\n\n"
+                          "(require '" jd:pkb-str " (concat " jd:v-str " \"" jd:pn "/" jd:pkb-str "c\"))\n"
+                          "(require '" jd:pst-str " (concat " jd:v-str " \"" jd:pn "/" jd:pst-str "c\"))\n\n"
                           "(provide '" jd:ps ")\n"))
                  (jd:x-kb.el-str
-                  (concat ";; (defun jd:-map ()\n"
-	                  ";;   (setf (cdr -map) nil)\n"
-	                  ";;   (define-key -map (kbd "") '))\n"
-	                  ";; (add-hook '-mode-hook 'jd:-map)\n\n"
-	                  "(provide '" jd:pkb-str ")\n"))
+                  (concat "(provide '" jd:pkb-str ")\n"))
                  (jd:x-st.el-str
                   (concat "(provide '" jd:pst-str ")\n")))
-	    (shell-command (concat "mkdir " jd:path-prefix jd:pfp "/" jd:pn))
-	    (shell-command (concat "touch " jd:path-prefix jd:pfp "/" jd:pn "/" jd:ps))
-	    (shell-command (concat "touch " jd:path-prefix jd:pfp "/" jd:pn "/" jd:pkb-str))
-	    (shell-command (concat "touch " jd:path-prefix jd:pfp "/" jd:pn "/" jd:pst-str))
-            (with-temp-file (concat jd:path-prefix jd:pfp "/" jd:pn "/" jd:ps)
+	    (shell-command (concat "mkdir " jd:pfp "/" jd:pn))
+	    (shell-command (concat "touch " jd:pfp "/" jd:pn "/" jd:ps))
+	    (shell-command (concat "touch " jd:pfp "/" jd:pn "/" jd:pkb-str))
+	    (shell-command (concat "touch " jd:pfp "/" jd:pn "/" jd:pst-str))
+            (with-temp-file (concat jd:pfp "/" jd:pn "/" jd:ps)
 	      (insert jd:x.el-str))
-            (with-temp-file (concat jd:path-prefix jd:pfp "/" jd:pn "/" jd:pkb-str)
+            (with-temp-file (concat jd:pfp "/" jd:pn "/" jd:pkb-str)
 	      (insert jd:x-kb.el-str))
-            (with-temp-file (concat jd:path-prefix jd:pfp "/" jd:pn "/" jd:pst-str)
+            (with-temp-file (concat jd:pfp "/" jd:pn "/" jd:pst-str)
 	      (insert jd:x-st.el-str))
 	    (let ((jd:match nil)
 		  (jd:matches nil)
 		  (jd:match-pos nil)
 		  (jd:new-buffer-string nil))
 	      (with-temp-buffer
-		(insert-file-contents (concat jd:path-prefix jd:pfp "jd:" jd:pt "-config.el"))
+		(insert-file-contents (concat jd:pfp "jd:" jd:pt "-config.el"))
 		(goto-char 1)
 		(while (search-forward-regexp "jd:.*.el\s" nil t 1)
 		  (setq jd:match (match-string-no-properties 0))
@@ -77,10 +76,13 @@ pst = package settings"
 		    (end-of-line)
                     (newline)))
 		(insert
-		 (concat "(require '" jd:ps " (concat jd:path-prefix " jd:v-str " \"" jd:pn "/" jd:ps "\"))"))
+		 (concat "(require '" jd:ps " (concat " jd:v-str " \"" jd:pn "/" jd:ps "c\"))"))
 		(setq jd:new-buffer-string (buffer-string)))
-	      (with-temp-file (concat jd:path-prefix jd:pfp "/" "jd:" jd:pt "-config.el")
-		(insert jd:new-buffer-string)))))
+	      (with-temp-file (concat jd:pfp "/" "jd:" jd:pt "-config.el")
+		(insert jd:new-buffer-string)))
+            (byte-compile-file (concat jd:pfp "/" jd:pn "/" jd:pkb-str))
+            (byte-compile-file (concat jd:pfp "/" jd:pn "/" jd:pst-str))
+            (byte-compile-file (concat jd:pfp "/" jd:pn "/" jd:ps))))
       (error "Please give valid arguments"))))
 
 (defun jd:copy-line-and-goto-beg ()
