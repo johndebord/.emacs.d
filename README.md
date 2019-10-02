@@ -4,6 +4,7 @@ Modularized Emacs Configuration.
 Top-level files hold the logic to initialize the lower-level files.
 - `README.md`: what you're currently reading.
 - `init.el`: the initialization module.
+- `jd:muses.el`: code I've determined not useful for the time being.
 - `jd:theme.el`: customized theme.
 
 The `config` folder contains all custom configurations.
@@ -18,6 +19,7 @@ The `config` folder contains all custom configurations.
 │   ├── global/
 │   └── internal/
 ├── init.el
+├── jd:muses.el
 ├── jd:theme.el
 └── README.md
 ```

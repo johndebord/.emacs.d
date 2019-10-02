@@ -1,4 +1,5 @@
 (setq-default pop-up-frames nil)
+(setq-default pop-up-windows nil)
 
 (add-to-list 'same-window-buffer-names "*Apropos*")
 (add-to-list 'same-window-buffer-names "*Completions*")

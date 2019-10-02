@@ -1,8 +1,3 @@
-/home/i/.emacs.d/config/external/elpa/popup-20160709.1429
-/home/i/emacs-test2/config/internal/abbrev
-/home/i/emacs-test2/config/internal
-/home/i/emacs-test2/config
-/home/i/emacs-test2
 /usr/local/share/emacs/27.0.50/lisp
 /home/i/emacs
 /usr/local/share/emacs/27.0.50/lisp
@@ -11,7 +6,6 @@
 /home/i/.emacs.d/config/global
 /home/i/.emacs.d/config/internal/window
 ~/.emacs.d
-/home/i/.emacs.d/config
 /home/i/.emacs.d/config/global
 ~/.emacs.d
 ~/.emacs.d
@@ -24,8 +18,16 @@
 /home/i/emacs/lisp
 /home/i/.emacs.d
 /home/i/.emacs.d/config/internal/help
-/home/i/.emacs.d/config/internal
 /home/i/.emacs.d/config/internal/help-mode
 /home/i
 /home/i/emacs/lisp
+~/.emacs.d
+/home/i/.emacs.d/config/internal
+/home/i/.emacs.d/config
+~/.emacs.d
+~/.emacs.d
+~/.emacs.d
+~/.emacs.d
+~/.emacs.d
+~/.emacs.d
 ~/.emacs.d
