@@ -973,6 +973,14 @@
 ;; (define-key global-map (kbd "<mode-line>     <down-mouse-5>") 'undefined)
 ;; (define-key global-map (kbd "<mode-line>     <drag-mouse-5>") 'undefined)
 
+(define-key global-map (kbd "<C-x> <mouse-1>")
+  (lambda (jd:event)
+    (interactive "e")
+    (let ((jd:buffer-i (window-buffer (car (elt jd:event 1))))
+          (jd:buffer-ii (window-buffer (get-buffer-window))))
+      (set-window-buffer (get-buffer-window) jd:buffer-i)
+      (set-window-buffer (car (elt jd:event 1)) jd:buffer-ii))))
+
 (define-key global-map (kbd "<wheel-left>")  '(lambda () (interactive) (scroll-right 1)))
 (define-key global-map (kbd "<wheel-right>") '(lambda () (interactive) (scroll-left  1)))
 
