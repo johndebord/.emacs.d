@@ -1,4 +1,4 @@
-;; (require 'jd:counsel.el (concat jd:external-prefix "company/jd:company.elc"))
+(require 'jd:company.el (concat jd:external-prefix "company/jd:company.elc"))
 (require 'jd:counsel.el (concat jd:external-prefix "counsel/jd:counsel.elc"))
 (require 'jd:modern-cpp-font-lock.el (concat jd:external-prefix "modern-cpp-font-lock/jd:modern-cpp-font-lock.elc"))
 (require 'jd:gnuplot-mode.el (concat jd:external-prefix "gnuplot-mode/jd:gnuplot-mode.elc"))

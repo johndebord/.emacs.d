@@ -4,6 +4,11 @@
 (setq-default eshell-directory-name (concat jd:internal-prefix "esh-mode/eshell"))
 (setq-default eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
 
+(defun jd:counsel-esh-history ()
+  (interactive)
+  (company-abort)
+  (counsel-esh-history))
+
 (defun jd:eshell-ack-or-send-input ()
   (interactive)
   (if (get-char-property (point) 'face)
@@ -56,6 +61,10 @@
     (yank)
     (if (not (equal jd:saved-column-number nil))
         (move-to-column jd:saved-column-number))))
+
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (company-mode 1)))
 
 (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
 

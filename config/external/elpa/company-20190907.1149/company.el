@@ -1931,16 +1931,22 @@ each one wraps a part of the input string."
       (cl-incf i))
     (dotimes (i 10)
       (define-key keymap (read (format "[kp-%s]" i)) 'company-search-keypad))
-    (let ((meta-map (make-sparse-keymap)))
-      (define-key keymap (char-to-string meta-prefix-char) meta-map)
-      (define-key keymap [escape] meta-map))
-    (define-key keymap (vector meta-prefix-char t) 'company-search-other-char)
+    ;; HACK
+    ;; Oct. 5th, 2019
+    ;; Commenting out the following four lines to get `company' working.
+    ;; (let ((meta-map (make-sparse-keymap)))
+    ;;   (define-key keymap (char-to-string meta-prefix-char) meta-map)
+    ;;   (define-key keymap [escape] meta-map))
+    ;; (define-key keymap (vector meta-prefix-char t) 'company-search-other-char)
     (define-key keymap (kbd "M-n") 'company-select-next)
     (define-key keymap (kbd "M-p") 'company-select-previous)
     (define-key keymap (kbd "<down>") 'company-select-next-or-abort)
     (define-key keymap (kbd "<up>") 'company-select-previous-or-abort)
-    (define-key keymap "\e\e\e" 'company-search-other-char)
-    (define-key keymap [escape escape escape] 'company-search-other-char)
+    ;; HACK
+    ;; Oct. 5th, 2019
+    ;; Commenting out the following two lines to get `company' working.
+    ;; (define-key keymap "\e\e\e" 'company-search-other-char)
+    ;; (define-key keymap [escape escape escape] 'company-search-other-char)
     (define-key keymap (kbd "DEL") 'company-search-delete-char)
     (define-key keymap [backspace] 'company-search-delete-char)
     (define-key keymap "\C-g" 'company-search-abort)

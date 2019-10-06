@@ -15,6 +15,8 @@ Highlight eshell pwd and prompt separately."
      (,(if (zerop (user-uid)) " # " " $ ") :foreground "#569cd6"))
    ""))
 
-(add-hook 'eshell-before-prompt-hook (lambda () (setq xterm-color-preserve-properties t)))
+(add-hook 'eshell-before-prompt-hook
+          (lambda ()
+            (setq xterm-color-preserve-properties t)))
 
 (provide 'jd:em-prompt-st.el)
