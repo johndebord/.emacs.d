@@ -743,7 +743,7 @@
 ;; (define-key global-map (kbd "<jd:H-spc>")     'undefined)
 ;; (define-key global-map (kbd "<jd:H-S-spc>")   'undefined)
 
-(define-key global-map (kbd "<jd:tab>")       'indent-for-tab-command)
+(define-key global-map (kbd "<jd:tab>") 'jd:incredibly-smart-tab)
 ;; (define-key global-map (kbd "<jd:S-tab>")     'undefined)
 (define-key global-map (kbd "<jd:C-tab>")     'jd:window-forward)
 (define-key global-map (kbd "<jd:C-S-tab>")   'jd:window-backward)

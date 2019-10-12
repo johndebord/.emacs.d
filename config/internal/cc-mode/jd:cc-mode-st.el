@@ -1,5 +1,9 @@
 (add-hook 'c++-mode-hook
           (lambda ()
+            (abbrev-mode -1)))
+
+(add-hook 'c++-mode-hook
+          (lambda ()
             (company-mode 1)))
 
 (add-hook 'c++-mode-hook
