@@ -219,7 +219,7 @@
 ;; (define-key global-map (kbd "<M-S-e>")  'undefined)
 ;; (define-key global-map (kbd "<M-S-f>")  'undefined)
 ;; (define-key global-map (kbd "<M-S-g>")  'undefined)
-;; (define-key global-map (kbd "<M-S-h>")  'undefined)
+(define-key global-map (kbd "<M-S-h>")  'xref-pop-marker-stack)
 ;; (define-key global-map (kbd "<M-S-i>")  'undefined)
 ;; (define-key global-map (kbd "<M-S-j>")  'undefined)
 ;; (define-key global-map (kbd "<M-S-k>")  'undefined)
