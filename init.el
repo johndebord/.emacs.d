@@ -27,12 +27,16 @@
   (cond
    ((string-equal system-type "darwin")
     (progn
-      (setq jd:path-prefix "/Users/john.debord/.emacs.d/")
-      (setq default-directory jd:path-prefix)))
+      (setq-default jd:path-prefix "/Users/john.debord/.emacs.d/")
+      (setq-default default-directory jd:path-prefix)))
    ((string-equal system-type "gnu/linux")
-    (progn
-      (setq jd:path-prefix "/home/i/.emacs.d/")
-      (setq default-directory jd:path-prefix))))
+    (if (string-match-p "Windows" (getenv "PATH"))
+        (progn
+          (setq-default jd:path-prefix "/home/johndebord/.emacs.d/")
+          (setq-default default-directory jd:path-prefix))
+      (progn
+        (setq-default jd:path-prefix "/home/i/.emacs.d/")
+        (setq-default default-directory jd:path-prefix)))))
   "Determine which operating system Emacs is currently being used in.
 If `darwin' the path prefix shall be 'Users/johndebord/.emacs.d/'.
 If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
