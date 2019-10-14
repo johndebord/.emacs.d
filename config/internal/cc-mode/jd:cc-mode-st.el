@@ -7,6 +7,15 @@
             (company-mode 1)))
 
 (add-hook 'c++-mode-hook
+            (lambda ()
+              (set (make-local-variable 'company-backends)
+                   '((company-dabbrev company-yasnippet)))))
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (flycheck-mode 1)))
+
+(add-hook 'c++-mode-hook
           (lambda ()
             (set (make-local-variable 'compile-command)
                  "g++ -Wall -Wextra -std=c++17 -o prog main.cpp && ./prog")))

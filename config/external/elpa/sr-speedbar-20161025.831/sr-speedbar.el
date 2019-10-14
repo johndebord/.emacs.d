@@ -266,7 +266,7 @@
 (require 'advice)
 (require 'cl-lib)
 (eval-when-compile
-  (require 'cl))
+  (require 'cl-lib))
 
 ;;; Code:
 
@@ -579,9 +579,9 @@ If WINDOW is nil, get current window."
     (walk-windows
      (lambda (w)
        (with-selected-window w
-         (incf window-number)
+         (cl-incf window-number)
          (if (window-dedicated-p w)
-             (incf dedicated-window-number)))))
+             (cl-incf dedicated-window-number)))))
     (if (and (> dedicated-window-number 0)
              (= (- window-number dedicated-window-number) 1))
         t nil)))

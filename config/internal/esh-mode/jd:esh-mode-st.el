@@ -62,10 +62,6 @@
     (if (not (equal jd:saved-column-number nil))
         (move-to-column jd:saved-column-number))))
 
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (company-mode 1)))
-
 (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
 
 (provide 'jd:esh-mode-st.el)

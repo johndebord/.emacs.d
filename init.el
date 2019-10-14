@@ -75,7 +75,7 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box (:line-width 1 :color "#131313") :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal))))
@@ -103,12 +103,12 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
  '(company-scrollbar-bg ((t (:background "#232323"))))
  '(company-scrollbar-fg ((t (:background "#e6e6e6"))))
  '(company-template-field ((t (:background "purple" :foreground "black"))))
- '(company-tooltip ((t (:background "#232323" :box (:line-width 1 :color "#131313")))))
- '(company-tooltip-annotation ((t (:background "purple" :foreground "black"))))
- '(company-tooltip-annotation-selection ((t (:background "purple" :foreground "black"))))
- '(company-tooltip-common ((t (:background "purple" :foreground "black"))))
- '(company-tooltip-common-selection ((t (:background "purple" :foreground "black"))))
- '(company-tooltip-mouse ((t (:background "purple" :foreground "black"))))
+ '(company-tooltip ((t (:background "#232323"))))
+ '(company-tooltip-annotation ((t (:background "#232323"))))
+ '(company-tooltip-annotation-selection ((t (:background "#535353"))))
+ '(company-tooltip-common ((t (:background "#232323" :underline "#FFFFFF"))))
+ '(company-tooltip-common-selection ((t (:background "#535353" :underline "#FFFFFF"))))
+ '(company-tooltip-mouse ((t (:background "#535353"))))
  '(company-tooltip-search ((t (:background "purple" :foreground "black"))))
  '(company-tooltip-search-selection ((t (:background "purple" :foreground "black"))))
  '(company-tooltip-selection ((t (:background "#535353"))))
@@ -705,4 +705,5 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages
+   '(ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet xterm-color sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company)))

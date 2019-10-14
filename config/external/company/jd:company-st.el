@@ -1,4 +1,5 @@
-(defvar jd:company-select nil)
+(defvar-local jd:company-select nil
+  "Determines whether to complete common or complete the selection.")
 
 (defun jd:company-show-doc-buffer ()
   "Temporarily show the documentation buffer for the selection."
@@ -58,18 +59,30 @@
        (jd:nothing-before-or-after-cursor-p
         ()
         (and
-         (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) 0)
-         (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) 0)))
+         (or
+          (equal (char-before) nil)
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) 0))
+         (or
+          (equal (char-after) nil)
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) 0))))
        (jd:nothing-before-but-something-after-cursor-p
         ()
         (and
-         (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) 0)
-         (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) nil)))
+         (or
+          (equal (char-before) nil)
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) 0))
+         (and
+          (not (equal (char-after) nil))
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) nil))))
        (jd:something-before-and-after-cursor-p
         ()
         (and
-         (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) nil)
-         (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) nil))))
+         (and
+          (not (equal (char-after) nil))
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) nil))
+         (and
+          (not (equal (char-after) nil))
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) nil)))))
     (cond
      ((equal (jd:skippable-char-p) t)
       (forward-char 1))
@@ -99,26 +112,6 @@
 (add-hook 'company-completion-cancelled-hook
           (lambda (_)
             (setq jd:company-select nil)))
-
-
-
-;; (setq jd:company-select nil)
-;; (message (format "%s" jd:company-select))
-;; (setq company-after-completion-hook nil)
-;; (setq company-completion-cancelled-hook nil)
-
-; move or del should reset variable?
-
-;; [ ] Make sure to adjust the variable so that company only initiates manually
-;; [ ] Always enable drop-down
-;; [ ] Get appropriat backends
-
-;; test: make sure mouse completion sets `jd:company-selection to nil'
-;; test: 
-;; test: 
-;; test: 
-;; test: 
-;; test:
 
 (advice-add 'company-show-doc-buffer :override #'jd:company-show-doc-buffer)
 (advice-add 'company-show-location :override #'jd:company-show-location)

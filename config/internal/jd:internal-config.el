@@ -55,6 +55,7 @@
 (require 'jd:simple.el (concat jd:internal-prefix "simple/jd:simple.elc"))
 (require 'jd:speedbar.el (concat jd:internal-prefix "speedbar/jd:speedbar.elc"))
 (require 'jd:startup.el (concat jd:internal-prefix "startup/jd:startup.elc"))
+(require 'jd:subr.el (concat jd:internal-prefix "subr/jd:subr.elc"))
 (require 'jd:tool-bar.el (concat jd:internal-prefix "tool-bar/jd:tool-bar.elc"))
 (require 'jd:view.el (concat jd:internal-prefix "view/jd:view.elc"))
 (require 'jd:window.el (concat jd:internal-prefix "window/jd:window.elc"))

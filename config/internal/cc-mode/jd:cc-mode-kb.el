@@ -13,7 +13,6 @@
 (define-key c++-mode-map (kbd "}") 'c-electric-brace)
 (define-key c++-mode-map (kbd "<C-b>") 'compile)
 (define-key c++-mode-map (kbd "<C-;>") 'c-mark-function)
-(define-key c++-mode-map (kbd "<jd:tab>") 'c-indent-line-or-region)
 
 (provide 'jd:cc-mode-kb.el)
 
