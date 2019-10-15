@@ -45,8 +45,7 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
   (cond
    ((string-equal system-type "darwin")
     (progn
-      (setq-default jd:lisp-prefix "/Users/john.debord/emacs/lisp/")
-      (add-to-list 'load-path "/Users/john.debord/emacs/lisp/")))
+      (setq-default jd:lisp-prefix "/Users/john.debord/emacs/lisp/")))
    ((string-equal system-type "gnu/linux")
     (if (string-match-p "Windows" (getenv "PATH"))
         (progn
