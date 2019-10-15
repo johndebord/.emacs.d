@@ -1,4 +1,5 @@
 (setq-default counsel-grep-base-command "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
+(setq-default counsel-preselect-current-file t)
 (setq-default counsel-rg-base-command "rg -i -M 120 --no-heading --line-number --color never %s .")
 
 (defun jd:counsel-M-x-transformer (cmd)

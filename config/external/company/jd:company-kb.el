@@ -1,8 +1,3 @@
-(setq-default company-idle-delay nil)
-(setq-default company-frontends '(company-echo-metadata-frontend
-                                  company-pseudo-tooltip-frontend))
-(setq-default company-tooltip-limit 10)
-
 (setf (cdr company-active-map) nil)
 (define-key company-active-map (kbd "<C-g>") 'company-abort)
 (define-key company-active-map (kbd "<C-h>") 'company-show-doc-buffer)

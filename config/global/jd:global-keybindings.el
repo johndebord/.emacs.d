@@ -286,7 +286,7 @@
 ;; (define-key global-map (kbd "<C-M-c>")  'undefined)
 ;; (define-key global-map (kbd "<C-M-d>")  'undefined)
 ;; (define-key global-map (kbd "<C-M-e>")  'undefined)
-(define-key global-map (kbd "<C-M-f>")  'ivy-switch-buffer)
+(define-key global-map (kbd "<C-M-f>") 'counsel-switch-buffer)
 ;; (define-key global-map (kbd "<C-M-g>")  'undefined)
 (define-key global-map (kbd "<C-M-h>")  'xref-find-references)
 (define-key global-map (kbd "<C-M-i>")
@@ -760,7 +760,40 @@
 (define-key global-map (kbd "<jd:S-spc>")     'jd:self-insert-space)
 ;; (define-key global-map (kbd "<jd:C-spc>")     'undefined)
 ;; (define-key global-map (kbd "<jd:C-S-spc>")   'undefined)
-(define-key global-map (kbd "<jd:M-spc>")     'jd:macro-swap-buffers)
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+(define-key global-map (kbd "<jd:M-spc>")     'jd:macro-swap-buffers) ;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+(define-key global-map (kbd "<jd:M-spc>")
+  (lambda ()
+    (interactive)
+    (switch-to-buffer (buffer-name (other-buffer (current-buffer)))))) ;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;;   elt = Frassq (buffer, Vbuffer_alist);
+;;   aelt_cons = Fmemq (aelt, Vbuffer_alist);
+;;   Vbuffer_alist = Fdelq (aelt, Vbuffer_alist);
+;;   XSETCDR (aelt_cons, Qnil);
+;;   Vbuffer_alist = nconc2 (Vbuffer_alist, aelt_cons);
+;;   Vinhibit_quit = tem;
+
+;;   /* Update buffer lists of selected frame.  */
+;;   fset_buffer_list (f, Fdelq (buffer, f->buffer_list));
+;;   fset_buried_buffer_list
+;;     (f, Fcons (buffer, Fdelq (buffer, f->buried_buffer_list)));
+
+;;   /* Run buffer-list-update-hook.  */
+;;   if (!NILP (Vrun_hooks) && !XBUFFER (buffer)->inhibit_buffer_hooks)
+;;     call1 (Vrun_hooks, Qbuffer_list_update_hook);
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
+;; TODO FIGURE THIS OUT!!!!!!!!!!!!!
 ;; (define-key global-map (kbd "<jd:M-S-spc>")   'undefined)
 ;; (define-key global-map (kbd "<jd:C-M-spc>")   'undefined)
 ;; (define-key global-map (kbd "<jd:C-M-S-spc>") 'undefined)

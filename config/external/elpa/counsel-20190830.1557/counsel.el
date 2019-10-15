@@ -5443,7 +5443,11 @@ Display a preview of the selected ivy completion candidate buffer
 in the current window."
   (interactive)
   (ivy-read "Switch to buffer: " 'internal-complete-buffer
-            :preselect (buffer-name (other-buffer (current-buffer)))
+            ;; HACK
+            ;; Oct. 14th, 2019
+            ;; My ideal functionality is for `counsel-switch-buffer'
+            ;; to show the current buffer upon activation of this command.
+            :preselect (buffer-name (current-buffer))
             :keymap ivy-switch-buffer-map
             :action #'ivy--switch-buffer-action
             :matcher #'ivy--switch-buffer-matcher
