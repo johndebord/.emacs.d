@@ -41,8 +41,18 @@
 If `darwin' the path prefix shall be 'Users/johndebord/.emacs.d/'.
 If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
 
-(defconst jd:lisp-prefix  
-  "/usr/local/share/emacs/27.0.50/lisp/"
+(defconst jd:lisp-prefix
+  (cond
+   ((string-equal system-type "darwin")
+    (progn
+      (setq-default jd:lisp-prefix "/Users/john.debord/emacs/lisp/")
+      (add-to-list 'load-path "/Users/john.debord/emacs/lisp/")))
+   ((string-equal system-type "gnu/linux")
+    (if (string-match-p "Windows" (getenv "PATH"))
+        (progn
+          (setq-default jd:lisp-prefix "/usr/local/share/emacs/27.0.50/lisp/"))
+      (progn
+        (setq-default jd:lisp-prefix "/usr/local/share/emacs/27.0.50/lisp/")))))
   "Path to which the stock/default emacs lisp files are.")
 
 (defconst jd:global-prefix  
