@@ -944,7 +944,7 @@
 ;; (define-key global-map (kbd "<f7>")  'undefined)
 ;; (define-key global-map (kbd "<f8>")  'undefined)
 ;; (define-key global-map (kbd "<f9>")  'undefined)
-(define-key global-map (kbd "<f10>") 'sr-speedbar-toggle)
+;; (define-key global-map (kbd "<f10>") 'undefined)
 ;; (define-key global-map (kbd "<f11>") 'undefined)
 (define-key global-map (kbd "<f12>") 'scroll-lock-mode)
 

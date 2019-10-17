@@ -6,14 +6,7 @@
           (lambda ()
             (company-mode 1)
             (set (make-local-variable 'company-backends)
-                 '((company-rtags company-clang company-dabbrev company-yasnippet)))))
-
-(add-hook 'c++-mode-hook
-          (lambda ()
-            (flycheck-mode 1)
-            (flycheck-select-checker 'rtags)
-            (setq-local flycheck-check-syntax-automatically nil)
-            (setq-local flycheck-highlighting-mode nil)))
+                 '((company-clang company-dabbrev company-yasnippet)))))
 
 (add-hook 'c++-mode-hook
           (lambda ()
