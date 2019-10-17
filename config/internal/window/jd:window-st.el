@@ -1,6 +1,10 @@
 (setq-default pop-up-frames nil)
 (setq-default pop-up-windows nil)
 
+(advice-add 'bury-buffer :override (lambda (&optional buffer-or-name)))
+(advice-add 'bury-buffer-internal :override (lambda (&optional buffer-or-name)))
+(advice-add 'help-window-display-message :override (lambda (quit-part window &optional scroll)))
+
 (add-to-list 'same-window-buffer-names "*Apropos*")
 (add-to-list 'same-window-buffer-names "*Completions*")
 (add-to-list 'same-window-buffer-names "*Faces*")
