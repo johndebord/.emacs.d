@@ -1,5 +1,5 @@
 (setq-default eshell-highlight-prompt nil)
-(setq-default eshell-prompt-function  #'jd:eshell-prompt)
+(setq-default eshell-prompt-function  'jd:eshell-prompt)
 
 (defun jd:eshell-prompt ()
   "https://emacs.stackexchange.com/questions/33405/no-colors-for-eshell
@@ -14,5 +14,9 @@ Highlight eshell pwd and prompt separately."
    `((,(abbreviate-file-name (eshell/pwd)) :foreground "#569cd6")
      (,(if (zerop (user-uid)) " # " " $ ") :foreground "#569cd6"))
    ""))
+
+(add-hook 'eshell-before-prompt-hook
+          (lambda ()
+            (setenv "TERM" "xterm-256color")))
 
 (provide 'jd:em-prompt-st.el)

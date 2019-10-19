@@ -186,6 +186,16 @@ function; if it does, let the user know and don't execute the function.
     (end-of-defun)
     (indent-for-tab-command)))
 
+(defun jd:next-error ()
+  (interactive)
+  (select-window (get-buffer-window))
+  (next-error))
+
+(defun jd:previous-error ()
+  (interactive)
+  (select-window (get-buffer-window))
+  (previous-error))
+
 (defun jd:remove-unneeded-files ()
   "[ ] TODO: Conglomerate."
   (interactive)

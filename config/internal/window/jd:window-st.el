@@ -5,6 +5,17 @@
 (advice-add 'bury-buffer-internal :override (lambda (&optional buffer-or-name)))
 (advice-add 'help-window-display-message :override (lambda (quit-part window &optional scroll)))
 
+(add-to-list 'display-buffer-alist
+             '((lambda (&rest _)
+                 (memq this-command
+                       '(compile-goto-error
+                         jd:byte-compile-file
+                         jd:next-error
+                         jd:previous-error)))
+               (display-buffer-reuse-window
+                display-buffer-same-window)
+               (inhibit-same-window . nil)))
+
 (add-to-list 'same-window-buffer-names "*Apropos*")
 (add-to-list 'same-window-buffer-names "*Completions*")
 (add-to-list 'same-window-buffer-names "*Faces*")

@@ -64,8 +64,4 @@
     (if (not (equal jd:saved-column-number nil))
         (move-to-column jd:saved-column-number))))
 
-(add-hook 'tty-setup-hook
-          (lambda ()
-            (setenv "TERM" "xterm-256color")))
-
 (provide 'jd:esh-mode-st.el)
