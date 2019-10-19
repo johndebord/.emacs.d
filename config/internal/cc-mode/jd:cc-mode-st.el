@@ -6,7 +6,7 @@
           (lambda ()
             (company-mode 1)
             (set (make-local-variable 'company-backends)
-                 '((company-clang company-dabbrev company-yasnippet)))))
+                 '((company-etags)))))
 
 (add-hook 'c++-mode-hook
           (lambda ()

@@ -4,6 +4,8 @@
 (setq-default eshell-directory-name (concat jd:internal-prefix "esh-mode/eshell"))
 (setq-default eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
 
+(add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+
 (defun jd:counsel-esh-history ()
   (interactive)
   (company-abort)
@@ -62,6 +64,8 @@
     (if (not (equal jd:saved-column-number nil))
         (move-to-column jd:saved-column-number))))
 
-(add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+(add-hook 'tty-setup-hook
+          (lambda ()
+            (setenv "TERM" "xterm-256color")))
 
 (provide 'jd:esh-mode-st.el)

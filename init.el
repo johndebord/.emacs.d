@@ -83,6 +83,8 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
 (require 'jd:external-config.el
          (concat jd:external-prefix "jd:external-config.elc"))
 
+(setenv "TERM" "xterm-256color")
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
