@@ -11,8 +11,7 @@
 (define-key c++-mode-map (kbd ">") 'c-electric-lt-gt)
 (define-key c++-mode-map (kbd "{") 'c-electric-brace)
 (define-key c++-mode-map (kbd "}") 'c-electric-brace)
-(define-key c++-mode-map (kbd "<C-b>") 'compile)
-(define-key c++-mode-map (kbd "<C-;>") 'c-mark-function)
+(define-key c++-mode-map (kbd "<C-b>") 'jd:compile)
 
 (provide 'jd:cc-mode-kb.el)
 

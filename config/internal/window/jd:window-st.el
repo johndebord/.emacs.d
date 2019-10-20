@@ -8,13 +8,14 @@
 (add-to-list 'display-buffer-alist
              '((lambda (&rest _)
                  (memq this-command
-                       '(compile-goto-error
-                         jd:byte-compile-file
-                         jd:next-error
-                         jd:previous-error)))
+                       '(byte-force-recompile
+                         compile-goto-error
+                         jd:byte-compile-file)))
                (display-buffer-reuse-window
                 display-buffer-same-window)
                (inhibit-same-window . nil)))
+
+(setq display-buffer-alist nil)
 
 (add-to-list 'same-window-buffer-names "*Apropos*")
 (add-to-list 'same-window-buffer-names "*Completions*")
@@ -22,6 +23,7 @@
 (add-to-list 'same-window-buffer-names "*Help*")
 (add-to-list 'same-window-buffer-names "*Output*")
 (add-to-list 'same-window-buffer-names "*Keymap*")
+(add-to-list 'same-window-buffer-names "*xref*")
 (add-to-list 'same-window-regexps ".+c")
 (add-to-list 'same-window-regexps ".+cpp")
 (add-to-list 'same-window-regexps ".+el")
