@@ -8,6 +8,10 @@
             (set (make-local-variable 'company-backends)
                  '((company-etags)))))
 
+;; (company-bbdb company-eclim company-semantic company-clang company-xcode company-cmake company-capf company-files
+;;               (company-dabbrev-code company-gtags company-etags company-keywords)
+;;               company-oddmuse company-dabbrev)
+
 (add-hook 'c++-mode-hook
           (lambda ()
             (yas-minor-mode t)))

@@ -1,3 +1,11 @@
+(cond
+ ((string-equal system-type "darwin")
+  (jd:mac-keys))
+ ((string-equal system-type "gnu/linux")
+  (if (string-match-p "Windows" (getenv "PATH"))
+      (jd:linux-keys)
+    (jd:linux-keys))))
+
 (define-prefix-command 'jd:c-h-prefix-key)
 (define-prefix-command 'jd:c-x-prefix-key)
 
@@ -775,7 +783,13 @@
 (define-key global-map (kbd "<jd:tab>") 'jd:incredibly-smart-tab)
 ;; (define-key global-map (kbd "<jd:S-tab>")     'undefined)
 (define-key global-map (kbd "<jd:C-tab>")     'jd:window-forward)
-(define-key global-map (kbd "<jd:C-S-tab>")   'jd:window-backward)
+(cond
+ ((string-equal system-type "darwin")
+  (define-key global-map (kbd "<C-tab>")   'jd:window-backward))
+ ((string-equal system-type "gnu/linux")
+  (if (string-match-p "Windows" (getenv "PATH"))
+      (define-key global-map (kbd "<jd:C-S-tab>")   'jd:window-backward)
+    (define-key global-map (kbd "<jd:C-S-tab>")   'jd:window-backward))))
 ;; (define-key global-map (kbd "<jd:M-tab>")     'undefined)
 ;; (define-key global-map (kbd "<jd:M-S-tab>")   'undefined)
 ;; (define-key global-map (kbd "<jd:C-M-tab>")   'undefined)
