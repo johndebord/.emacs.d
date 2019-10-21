@@ -762,7 +762,7 @@
   (lambda ()
     (interactive)
     (select-window (get-buffer-window))
-    (switch-to-buffer (buffer-name (other-buffer (current-buffer))))
+    (jd:macro-swap-buffers)
     (select-window (get-buffer-window))))
 ;; (define-key global-map (kbd "<jd:M-S-spc>")   'undefined)
 ;; (define-key global-map (kbd "<jd:C-M-spc>")   'undefined)
