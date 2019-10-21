@@ -19,7 +19,9 @@
             (jd:file-name nil)
             (jd:line-number nil))
         (setq jd:char-property-value (get-char-property (point) 'face))
-        (cond ((equal (nth 0 (cdr jd:char-property-value)) "#ADCF44")
+        (cond ((or
+                (equal (nth 0 (cdr jd:char-property-value)) "#ADCF44")
+                (equal (nth 0 (cdr jd:char-property-value)) "#63B4F6"))
 	       (setq jd:file-name (thing-at-point 'filename 'no-properties))
 	       (find-file jd:file-name)
 	       (forward-line (- (line-number-at-pos))))

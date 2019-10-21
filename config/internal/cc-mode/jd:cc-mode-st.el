@@ -15,6 +15,6 @@
 (add-hook 'c++-mode-hook
           (lambda ()
             (set (make-local-variable 'compile-command)
-                 (concat "g++ -Wall -Wextra -std=c++17 -o prog " buffer-file-name " && ./prog"))))
+                 (concat "clang++ -Wall -Wextra -std=c++17 -o prog " buffer-file-name " && ./prog"))))
 
 (provide 'jd:cc-mode-st.el)
