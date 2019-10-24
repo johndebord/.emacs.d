@@ -1,11 +1,21 @@
+(setq-default xref-after-jump-hook nil)
+
 (defun jd:xref-next-line ()
   (interactive)
   (beginning-of-line)
-  (forward-line))
+  (forward-line 1))
 
 (defun jd:xref-previous-line ()
   (interactive)
   (beginning-of-line)
-  (forward-line))
+  (forward-line -1))
+
+(add-hook 'xref-after-jump-hook
+          (lambda ()
+            (progn
+              (forward-sexp)
+              (backward-sexp)
+              (recenter)
+              (xref-pulse-momentarily))))
 
 (provide 'jd:xref-st.el)

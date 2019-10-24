@@ -275,4 +275,17 @@ just the file names where the references are found."
   (interactive)
   (other-window  1))
 
+(defun jd:xref-find-definitions ()
+  (interactive)
+  (if (equal (sexp-at-point) nil)
+      (message "Point is not over a valid s-expression.")
+    (if (and (memq 'company-etags (car company-backends))
+             (equal tags-file-name nil))
+        (message "`TAGS' file has not been set.")
+      (if (company--active-p)
+          (progn
+            (xref-find-definitions (nth company-selection company-candidates)))
+        (progn
+          (xref-find-definitions (symbol-name (symbol-at-point))))))))
+
 (provide 'jd:global-definitions.el)

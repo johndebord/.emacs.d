@@ -2,6 +2,7 @@
 (require 'jd:ansi-color.el (concat jd:internal-prefix "ansi-color/jd:ansi-color.elc"))
 (require 'jd:apropos.el (concat jd:internal-prefix "apropos/jd:apropos.elc"))
 (require 'jd:asm-mode.el (concat jd:internal-prefix "asm-mode/jd:asm-mode.elc"))
+(require 'jd:autorevert.el (concat jd:internal-prefix "autorevert/jd:autorevert.elc"))
 (require 'jd:bindings.el (concat jd:internal-prefix "bindings/jd:bindings.elc"))
 (require 'jd:buff-menu.el (concat jd:internal-prefix "buff-menu/jd:buff-menu.elc"))
 (require 'jd:bytecomp.el (concat jd:internal-prefix "bytecomp/jd:bytecomp.elc"))

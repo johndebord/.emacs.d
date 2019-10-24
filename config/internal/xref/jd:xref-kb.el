@@ -5,9 +5,7 @@
 (define-key xref--xref-buffer-mode-map (kbd "i") 'jd:xref-previous-line)
 (define-key xref--xref-buffer-mode-map (kbd "k") 'jd:xref-next-line)
 (define-key xref--xref-buffer-mode-map (kbd "l") 'xref-show-location-at-point)
-(define-key xref--xref-buffer-mode-map (kbd "r") 'xref-revert-buffer)
-(define-key xref--xref-buffer-mode-map (kbd "q") 'quit-window)
-(define-key xref--xref-buffer-mode-map (kbd "<C-S-x>>") 'xref-query-replace-in-results)
+(define-key xref--xref-buffer-mode-map (kbd "q") (lambda () (interactive) (quit-window t)))
 
 (provide 'jd:xref-kb.el)
 

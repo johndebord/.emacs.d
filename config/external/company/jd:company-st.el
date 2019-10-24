@@ -20,28 +20,10 @@
     (set-buffer (get-buffer doc-buffer))
     (display-buffer doc-buffer)))
 
-(defun jd:company-show-location ()
-  "Temporarily display a buffer showing the selected candidate in context."
-  (interactive)
-  (let* ((selected (nth company-selection company-candidates))
-         (location (company-call-backend 'location selected))
-         (pos (or (cdr location) (user-error "No location available")))
-         (buffer (or (and (bufferp (car location)) (car location))
-                     (find-file-noselect (car location) t))))
-    (set-buffer (get-buffer buffer))
-    (display-buffer buffer)
-    (if (bufferp (car location))
-        (goto-char pos)
-      (goto-char (point-min))
-      (forward-line (1- pos)))
-    (set-window-start nil (point))
-    (forward-sexp)
-    (backward-sexp)
-    (recenter)))
-
 (defun jd:incredibly-smart-tab ()
   "[ ] TODO: Use a custom indentation function.
-[ ] TODO: Possibly different behavior with `skippable-char-p'."
+[ ] TODO: Possibly different behavior with `skippable-char-p'.
+[ ] TODO: Get this operating with correctly before brackets."
   (interactive)
   (cl-flet
       ((jd:skippable-char-p

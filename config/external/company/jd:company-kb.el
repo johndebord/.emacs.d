@@ -3,7 +3,6 @@
 (define-key company-active-map (kbd "<C-h>") 'jd:company-show-doc-buffer)
 (define-key company-active-map (kbd "<C-i>") 'company-previous-page)
 (define-key company-active-map (kbd "<C-k>") 'company-next-page)
-(define-key company-active-map (kbd "<M-h>") 'jd:company-show-location)
 (define-key company-active-map (kbd "<M-i>") 'company-select-previous)
 (define-key company-active-map (kbd "<M-k>") 'company-select-next)
 (define-key company-active-map (kbd "<jd:ret>") 'company-complete-selection)

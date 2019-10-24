@@ -6,11 +6,7 @@
           (lambda ()
             (company-mode 1)
             (set (make-local-variable 'company-backends)
-                 '((company-etags)))))
-
-;; (company-bbdb company-eclim company-semantic company-clang company-xcode company-cmake company-capf company-files
-;;               (company-dabbrev-code company-gtags company-etags company-keywords)
-;;               company-oddmuse company-dabbrev)
+                 '((company-etags :separate company-dabbrev-code)))))
 
 (add-hook 'c++-mode-hook
           (lambda ()
