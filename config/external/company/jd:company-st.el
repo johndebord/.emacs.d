@@ -92,6 +92,34 @@
           (company-complete-selection)
           (setq jd:company-select nil)))))))
 
+(defun jd:company-next-page ()
+  (interactive)
+  (when (company-manual-begin)
+    (if (and company-selection-wrap-around
+             (= company-selection (1- company-candidates-length)))
+        (company-set-selection 0)
+      (let (company-selection-wrap-around)
+        (company-set-selection (+ company-selection
+                                  (1- company-tooltip-limit)))))))
+
+(defun jd:company-previous-page ()
+  (interactive)
+  (when (company-manual-begin)
+    (if (and company-selection-wrap-around
+             (zerop company-selection))
+        (company-set-selection (1- company-candidates-length))
+      (let (company-selection-wrap-around)
+        (company-set-selection (- company-selection
+                                  (1- company-tooltip-limit)))))))
+
+(defun jd:company-beginning-of-candidates ()
+  (interactive)
+  (company-set-selection 1))
+
+(defun jd:company-end-of-candidates ()
+  (interactive)
+  (company-set-selection company-candidates-length))
+
 (add-hook 'company-after-completion-hook
           (lambda (_)
             (setq jd:company-select nil)))
