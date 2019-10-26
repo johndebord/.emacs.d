@@ -959,7 +959,7 @@
 ;; (define-key global-map (kbd "<f9>")  'undefined)
 ;; (define-key global-map (kbd "<f10>") 'undefined)
 ;; (define-key global-map (kbd "<f11>") 'undefined)
-(define-key global-map (kbd "<f12>") 'scroll-lock-mode)
+;; (define-key global-map (kbd "<f12>") 'undefined)
 
 (define-key global-map (kbd "<down>")  'next-line)
 (define-key global-map (kbd "<left>")  'backward-char)

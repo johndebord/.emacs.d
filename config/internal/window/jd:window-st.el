@@ -17,8 +17,6 @@
                 display-buffer-same-window)
                (inhibit-same-window . nil)))
 
-(setq display-buffer-alist nil)
-
 (add-to-list 'same-window-buffer-names "*Apropos*")
 (add-to-list 'same-window-buffer-names "*Completions*")
 (add-to-list 'same-window-buffer-names "*Faces*")

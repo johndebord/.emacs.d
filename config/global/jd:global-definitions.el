@@ -209,15 +209,33 @@ function; if it does, let the user know and don't execute the function.
 
 (defun jd:scroll-down ()
   (interactive "^")
-  (recenter)
-  (scroll-up-command)
-  (move-to-window-line nil))
+  (let ((jd:proper-center-point
+         (save-excursion
+           (move-to-window-line nil)
+           (point))))
+    (if (not (eobp))
+        (if (not (equal jd:proper-center-point (point)))
+            (progn
+              (move-to-window-line nil))
+          (progn
+            (cua-scroll-up)
+            (if (not (eobp))
+                (move-to-window-line nil)))))))
 
 (defun jd:scroll-up ()
   (interactive "^")
-  (recenter)
-  (scroll-down-command)
-  (move-to-window-line nil))
+  (let ((jd:proper-center-point
+         (save-excursion
+           (move-to-window-line nil)
+           (point))))
+    (if (not (bobp))
+        (if (not (equal jd:proper-center-point (point)))
+            (progn
+              (move-to-window-line nil))
+          (progn
+            (cua-scroll-down)
+            (if (not (bobp))
+                (move-to-window-line nil)))))))
 
 (defun jd:self-insert-space ()
   (interactive)
