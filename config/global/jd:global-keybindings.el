@@ -296,7 +296,7 @@
 ;; (define-key global-map (kbd "<C-M-e>")  'undefined)
 (define-key global-map (kbd "<C-M-f>") 'counsel-switch-buffer)
 ;; (define-key global-map (kbd "<C-M-g>")  'undefined)
-(define-key global-map (kbd "<C-M-h>")  'xref-find-references)
+(define-key global-map (kbd "<C-M-h>")  'jd:xref-find-references)
 (define-key global-map (kbd "<C-M-i>")
   (lambda ()
     (interactive)

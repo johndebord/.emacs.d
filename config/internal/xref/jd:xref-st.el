@@ -1,5 +1,9 @@
 (setq-default xref-after-jump-hook nil)
 
+;; (defun xref--insert-propertized (props &rest strings))
+
+;; (advice-add 'xref--insert-propertized :override (lambda (props &rest strings)))
+
 (defun jd:xref-next-line ()
   (interactive)
   (beginning-of-line)

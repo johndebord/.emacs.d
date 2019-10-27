@@ -1,4 +1,5 @@
 (setq-default company-async-timeout 10)
+(setq-default company-backends nil)
 (setq-default company-idle-delay nil)
 (setq-default company-frontends '(company-echo-metadata-frontend
                                   company-pseudo-tooltip-frontend))
@@ -114,7 +115,7 @@
 
 (defun jd:company-beginning-of-candidates ()
   (interactive)
-  (company-set-selection 1))
+  (company-set-selection 0))
 
 (defun jd:company-end-of-candidates ()
   (interactive)
