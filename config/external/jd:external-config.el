@@ -3,11 +3,7 @@
 (require 'jd:modern-cpp-font-lock.el (concat jd:external-prefix "modern-cpp-font-lock/jd:modern-cpp-font-lock.elc"))
 (require 'jd:gnuplot-mode.el (concat jd:external-prefix "gnuplot-mode/jd:gnuplot-mode.elc"))
 (require 'jd:ivy.el (concat jd:external-prefix "ivy/jd:ivy.elc"))
-(require 'jd:load-relative.el (concat jd:external-prefix "load-relative/jd:load-relative.elc"))
-(require 'jd:loc-changes.el (concat jd:external-prefix "loc-changes/jd:loc-changes.elc"))
-(require 'jd:realgud.el (concat jd:external-prefix "realgud/jd:realgud.elc"))
 (require 'jd:swiper.el (concat jd:external-prefix "swiper/jd:swiper.elc"))
-(require 'jd:test-simple.el (concat jd:external-prefix "test-simple/jd:test-simple.elc"))
 (require 'jd:xterm-color.el (concat jd:external-prefix "xterm-color/jd:xterm-color.elc"))
 (require 'jd:yasnippet.el (concat jd:external-prefix "yasnippet/jd:yasnippet.elc"))
 

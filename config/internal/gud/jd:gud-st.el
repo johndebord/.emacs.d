@@ -1,3 +1,5 @@
+(setq-default gud-gud-gdb-command-name "gdb --quiet --fullname")
+
 ;;; Hack to undo the hack on line 65 of `gud.el'
 (global-set-key (kbd "C-x") nil)
 
@@ -27,5 +29,12 @@ screen clears; fix this behavior later."
   (insert "y")
   (comint-send-input)
   (comint-send-input))
+
+(add-hook 'gud-mode-hook
+          (lambda ()
+            (font-lock-mode -1)
+            (make-local-variable 'font-lock-function)
+            (setq font-lock-function (lambda (_) nil))
+            (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
 
 (provide 'jd:gud-st.el)
