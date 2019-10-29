@@ -17,33 +17,14 @@
                 display-buffer-same-window)
                (inhibit-same-window . nil)))
 
+;; For reference.
 ;; (add-to-list 'display-buffer-alist
 ;;              '((lambda (&rest _)
 ;;                  (memq this-command
-;;                        '(byte-force-recompile
-;;                          compile-goto-error
-;;                          jd:byte-compile-file
-;;                          jd:next-error
-;;                          jd:previous-error)))
-;;                (display-buffer-same-window)
+;;                        '(gdb)))
+;;                (display-buffer-reuse-window
+;;                 display-buffer-below-selected)
 ;;                (inhibit-same-window . nil)))
-
-;; delete-other-windows
-;; split-window
-
-;; (push '("\\`\\*shell" display-buffer-same-window (inhibit-same-window)) display-buffer-alist)
-
-;; (setq display-buffer-alist nil)
-
-;; (add-to-list 'display-buffer-alist
-;;              '((lambda (&rest _)
-;;                  (memq this-command
-;;                        '(gdb-get-source-file)))
-;;                (let ((window (split-window)))
-;;                  (setq gdb-main-file "/home/i/main.cpp")
-;;                  (display-buffer-reuse-window
-;;                   display-buffer-same-window)
-;;                  (inhibit-same-window . nil))))
 
 (add-to-list 'same-window-buffer-names "*Apropos*")
 (add-to-list 'same-window-buffer-names "*Completions*")

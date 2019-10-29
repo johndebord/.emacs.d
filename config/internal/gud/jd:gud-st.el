@@ -1,11 +1,5 @@
 (setq-default gud-gud-gdb-command-name "gdb --quiet --fullname")
 
-;; (add-hook 'gud-gdb-mode-hook
-;;           (lambda ()
-;;             (message "HI")
-;;             (let ((win0 (split-window)))
-;;               (setq gdb-source-window win0))))
-
 ;;; Hack to undo the hack on line 65 of `gud.el'
 (global-set-key (kbd "C-x") nil)
 
