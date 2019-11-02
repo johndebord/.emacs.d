@@ -1,9 +1,10 @@
 (setq-default pop-up-frames nil)
 (setq-default pop-up-windows nil)
 
-(advice-add 'bury-buffer :override (lambda (&optional buffer-or-name)))
-(advice-add 'bury-buffer-internal :override (lambda (&optional buffer-or-name)))
-(advice-add 'help-window-display-message :override (lambda (quit-part window &optional scroll)))
+(advice-add 'bury-buffer :override (lambda (&rest _)))
+(advice-add 'bury-buffer-internal :override (lambda (&rest _)))
+(advice-add 'help-window-display-message :override (lambda (&rest _)))
+(advice-add 'set-window-dedicated-p :override (lambda (&rest _)))
 
 (add-to-list 'display-buffer-alist
              '((lambda (&rest _)
