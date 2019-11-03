@@ -1,4 +1,3 @@
-/home/johndebord/.emacs.d
 ~/.emacs.d
 /home/johndebord/.emacs.d/config
 /home/johndebord/.emacs.d/config/external/elpa
@@ -27,6 +26,7 @@
 /home/i/.emacs.d
 /home/i/emacs
 /home/i/emacs
-~
 /home/i/emacs/lisp
+~
+/home/i/.emacs.d
 ~
