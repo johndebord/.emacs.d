@@ -1,7 +1,7 @@
 (setq-default gdb-display-io-nopopup t)
 (setq-default gud-gdb-command-name "gdb --quiet --interpreter=mi")
-(setq-default gdb-many-windows t)
-(setq-default gdb-show-main nil)
+(setq-default gdb-many-windows nil)
+(setq-default gdb-show-main t)
 
 (defmacro jd:gdb-propertize-header (name display-function mouse-face face)
   `(propertize ,name
@@ -28,7 +28,6 @@
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Memory"      gdb-display-memory-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-breakpoints-header
@@ -40,7 +39,6 @@
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer        mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer  mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Memory"      gdb-display-memory-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer           mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-locals-header
@@ -52,7 +50,6 @@
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Memory"      gdb-display-memory-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-registers-header
@@ -64,7 +61,6 @@
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Memory"      gdb-display-memory-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-stack-header
@@ -76,7 +72,6 @@
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       nil                 mode-line)          " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Memory"      gdb-display-memory-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-threads-header
@@ -88,7 +83,6 @@
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     nil                 mode-line)          " "
    (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Memory"      gdb-display-memory-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-disassembly-header
@@ -100,7 +94,6 @@
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer nil                 mode-line)          " "
-   (jd:gdb-propertize-header "Memory"      gdb-display-memory-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-memory-header
@@ -112,7 +105,6 @@
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Memory"      gdb-display-memory-buffer      nil                 mode-line)          " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-inferior-io-header
@@ -124,7 +116,6 @@
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Memory"      gdb-display-memory-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          nil                 mode-line)))
 
 ;; Redefinition.
@@ -227,13 +218,6 @@
   (set (make-local-variable 'font-lock-defaults)
        '(gdb-disassembly-font-lock-keywords))
   'gdb-invalidate-disassembly)
-
-;; Redefinition.
-(define-derived-mode gdb-memory-mode gdb-parent-mode "Memory"
-  (setq header-line-format jd:gdb-memory-header)
-  (set (make-local-variable 'font-lock-defaults)
-       '(gdb-memory-font-lock-keywords))
-  'gdb-invalidate-memory)
 
 ;; Redefinition.
 (define-derived-mode gdb-inferior-io-mode comint-mode "Inferior I/O"
