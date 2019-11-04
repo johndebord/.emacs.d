@@ -128,6 +128,49 @@
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          nil                 mode-line)))
 
 ;; Redefinition.
+(def-gdb-trigger-and-handler
+  gdb-invalidate-locals
+  (concat (gdb-current-context-command "-stack-list-variables")
+          " --simple-values")
+  gdb-locals-handler gdb-locals-handler-custom
+  '(start update))
+
+;; Redefinition.
+(defun gdb-locals-handler-custom ()
+  (let ((locals-list (bindat-get-field (gdb-json-partial-output) 'variables))
+        (table (make-gdb-table)))
+    (dolist (local locals-list)
+      (let ((name (bindat-get-field local 'name))
+            (value (bindat-get-field local 'value))
+            (type (bindat-get-field local 'type)))
+        (when (not value)
+          (setq value "<complex data type>"))
+        (if (or (not value)
+                (string-match "0x" value))
+            (add-text-properties 0 (length name)
+                                 `(mouse-face highlight
+                                              help-echo "mouse-2: create watch expression"
+                                              local-map ,gdb-locals-watch-map)
+                                 name)
+          (add-text-properties 0 (length value)
+                               `(mouse-face highlight
+                                            help-echo "mouse-2: edit value"
+                                            local-map ,gdb-edit-locals-map-1)
+                               value))
+        (gdb-table-add-row
+         table
+         (list
+          (propertize type 'font-lock-face font-lock-type-face)
+          (propertize name 'font-lock-face font-lock-variable-name-face)
+          value)
+         `(gdb-local-variable ,local))))
+    (insert (gdb-table-string table " "))
+    (setq mode-name
+          (gdb-current-context-mode-name
+           (concat "Locals: "
+                   (bindat-get-field (gdb-current-buffer-frame) 'func))))))
+
+;; Redefinition.
 (define-derived-mode gud-mode comint-mode "Debugger"
   (setq header-line-format jd:gdb-comint-header)
   (setq mode-line-process '(":%s"))
@@ -230,140 +273,5 @@
 (advice-add 'gdb-display-buffer :override 'jd:gdb-display-buffer)
 (advice-add 'gdb-display-gdb-buffer :override 'jd:gdb-display-gdb-buffer)
 (advice-add 'gud-kill-buffer-hook :after 'jd:gdb-shutdown)
-
-;; ;; Redefinition.
-;; (def-gdb-trigger-and-handler
-;;   gdb-invalidate-locals
-;;   (concat (gdb-current-context-command "-stack-list-variables")
-;;           " --simple-values")
-;;   gdb-locals-handler gdb-locals-handler-custom
-;;   '(start update))
-
-;; (def-gdb-trigger-and-handler
-;;   gdb-locals-values
-;;   (concat (gdb-current-context-command "-stack-list-variables")
-;;           " --all-values")
-;;   gdb-locals-values-handler gdb-locals-values-handler-custom
-;;   '(start update))
-
-;; (gdb-set-buffer-rules
-;;  'gdb-locals-values-buffer
-;;  'gdb-locals-values-buffer-name
-;;  'gdb-locals-mode
-;;  'gdb-locals-values)
-
-;; (defun gdb-locals-values-buffer-name ()
-;;   (gdb-current-context-buffer-name
-;;    (concat "local values of " (gdb-get-target-string))))
-
-;; (defcustom gdb-locals-simple-values-only nil
-;;   "Only display simple values in the Locals buffer."
-;;   :type 'boolean
-;;   :group 'gud)
-
-;; (defcustom gdb-locals-value-limit 100
-;;   "Maximum length the value of a local variable is allowed to be."
-;;   :type 'integer
-;;   :group 'gud)
-
-;; (defvar gdb-locals-values-table (make-hash-table :test #'equal)
-;;   "Mapping of local variable names to a string with their value.")
-
-;; (defun gdb-locals-values-handler-custom ()
-;;   "Store the values of local variables in `gdb-locals-value-map'."
-;;   (let ((locals-list (bindat-get-field (gdb-json-partial-output) 'variables)))
-;;     (dolist (local locals-list)
-;;       (let ((name (bindat-get-field local 'name))
-;;             (value (bindat-get-field local 'value)))
-;;         (puthash name value gdb-locals-values-table)))))
- 
-;; (defun gdb-locals-value-filter (value)
-;;   "Filter function for the local variable VALUE."
-;;   (let* ((no-nl (replace-regexp-in-string "\n" " " value))
-;;          (str (replace-regexp-in-string "[[:space:]]+" " " no-nl))
-;;          (limit gdb-locals-value-limit))
-;;     (if (>= (length str) limit)
-;;         (concat (substring str 0 limit) "...")
-;;       str)))
-
-;; ;; Redefinition.
-;; ;; Complex data types are looked up in `gdb-locals-values-table'.
-;; (defun gdb-locals-handler-custom ()
-;;   "Handler to rebuild the local variables table buffer."
-;;   (let ((locals-list (bindat-get-field (gdb-json-partial-output) 'locals))
-;;         (table (make-gdb-table)))
-;;     (dolist (local locals-list)
-;;       (let ((name (bindat-get-field local 'name))
-;;             (value (bindat-get-field local 'value))
-;;             (type (bindat-get-field local 'type)))
-;;         (when (not value)
-;;           (setq value
-;;                 (if gdb-locals-simple-values-only
-;;                     "<complex data type>"
-;;                   (gethash name gdb-locals-values-table "<unavailable>"))))
-;;         (setq value (gdb-locals-value-filter value))
-;;         (if (or (not value)
-;;                 (string-match "0x" value))
-;;             (add-text-properties 0 (length name)
-;;                                  `(mouse-face highlight
-;;                                               help-echo "mouse-2: create watch expression"
-;;                                               local-map ,gdb-locals-watch-map)
-;;                                  name)
-;;           (add-text-properties 0 (length value)
-;;                                `(mouse-face highlight
-;;                                             help-echo "mouse-2: edit value"
-;;                                             local-map ,gdb-edit-locals-map-1)
-;;                                value))
-;;         (gdb-table-add-row
-;;          table
-;;          (list
-;;           (propertize type 'font-lock-face font-lock-type-face)
-;;           (propertize name 'font-lock-face font-lock-variable-name-face)
-;;           value)
-;;          `(gdb-local-variable ,local))))
-;;     (insert (gdb-table-string table " "))
-;;     (setq mode-name
-;;           (gdb-current-context-mode-name
-;;            (concat "Locals: "
-;;                    (bindat-get-field (gdb-current-buffer-frame) 'func))))))
-
-;; ;; Redefinition.
-;; (defun gdb-setup-windows ()
-;;   "Layout the window pattern for option `gdb-many-windows'."
-;;   ;; Make sure that local values are updated before locals.
-;;   (gdb-get-buffer-create 'gdb-locals-values-buffer)
-;;   (gdb-get-buffer-create 'gdb-locals-buffer)
-;;   (gdb-get-buffer-create 'gdb-stack-buffer)
-;;   (gdb-get-buffer-create 'gdb-breakpoints-buffer)
-;;   (set-window-dedicated-p (selected-window) nil)
-;;   (switch-to-buffer gud-comint-buffer)
-;;   (delete-other-windows)
-;;   (let ((win0 (selected-window))
-;;         (win1 (split-window nil ( / ( * (window-height) 3) 4)))
-;;         (win2 (split-window nil ( / (window-height) 3)))
-;;         (win3 (split-window-right)))
-;;     (gdb-set-window-buffer (gdb-locals-buffer-name) nil win3)
-;;     (select-window win2)
-;;     (set-window-buffer
-;;      win2
-;;      (if gud-last-last-frame
-;;          (gud-find-file (car gud-last-last-frame))
-;;        (if gdb-main-file
-;;            (gud-find-file gdb-main-file)
-;;          ;; Put buffer list in window if we
-;;          ;; can't find a source file.
-;;          (list-buffers-noselect))))
-;;     (setq gdb-source-window (selected-window))
-;;     (let ((win4 (split-window-right)))
-;;       (gdb-set-window-buffer
-;;        (gdb-get-buffer-create 'gdb-inferior-io) nil win4))
-;;     (select-window win1)
-;;     (gdb-set-window-buffer (gdb-stack-buffer-name))
-;;     (let ((win5 (split-window-right)))
-;;       (gdb-set-window-buffer (if gdb-show-threads-by-default
-;;                                  (gdb-threads-buffer-name)
-;;                                (gdb-breakpoints-buffer-name))
-;;                              nil win5))
-;;     (select-window win0)))
 
 (provide 'jd:gdb-mi-st.el)
