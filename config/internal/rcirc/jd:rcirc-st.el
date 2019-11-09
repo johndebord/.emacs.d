@@ -6,6 +6,7 @@
 (defconst jd:irc-nickname (jd:get-string-from-file "~/.authinfo"  0 15))
 (defconst jd:irc-password (jd:get-string-from-file "~/.authinfo" 16 26))
 
+(setq-default rcirc-prompt "(rcirc) ")
 (setq-default rcirc-authinfo `(("freenode" nickserv ,jd:irc-nickname ,jd:irc-password)))
 (setq-default rcirc-default-nick jd:irc-nickname)
 (setq-default rcirc-fill-prefix "       ")

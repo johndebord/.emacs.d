@@ -1,4 +1,5 @@
 (setf (cdr rcirc-mode-map) nil)
+(define-key rcirc-mode-map (kbd "<M-u>") 'beginning-of-line)
 (define-key rcirc-mode-map (kbd "<C-M-i>") 'rcirc-insert-prev-input)
 (define-key rcirc-mode-map (kbd "<C-M-k>") 'rcirc-insert-next-input)
 (define-key rcirc-mode-map (kbd "<jd:ret>") 'rcirc-send-input)

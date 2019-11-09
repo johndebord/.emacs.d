@@ -1,4 +1,5 @@
 (setf (cdr gud-mode-map) nil)
+(define-key gud-mode-map (kbd "<M-u>") 'beginning-of-line)
 (define-key gud-mode-map (kbd "<C-M-i>") 'comint-previous-input)
 (define-key gud-mode-map (kbd "<C-M-k>") 'comint-next-input)
 (define-key gud-mode-map (kbd "<C-c> <C-d>") 'comint-send-eof)

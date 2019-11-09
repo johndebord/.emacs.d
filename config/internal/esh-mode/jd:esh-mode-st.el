@@ -40,6 +40,7 @@
 (defun jd:eshell-beginning-of-line-or-prompt ()
   (interactive "^")
   (if (or
+       (not (equal (line-number-at-pos) (save-excursion (end-of-buffer) (line-number-at-pos))))
        (equal (get-text-property (line-beginning-position) 'read-only) nil)
        (and (equal (get-text-property (line-beginning-position) 'read-only) t)
             (equal (char-before) #x24)))
@@ -48,7 +49,7 @@
 
 (defun jd:eshell-clear-buffer ()
   (interactive)
-  (let ((jd:minimum-viable-eshell-command-column-number 13)
+  (let ((jd:minimum-viable-eshell-command-column-number 4)
         (jd:saved-column-number nil))
     (if (and (equal (line-number-at-pos) (count-lines (point-max) (point-min)))
              (>= (current-column) jd:minimum-viable-eshell-command-column-number))
@@ -61,7 +62,7 @@
       (eshell-send-input)
       (beginning-of-line)
       (backward-delete-char 1))
-    (end-of-line)
+    (goto-char (point-max))
     (yank)
     (if (not (equal jd:saved-column-number nil))
         (move-to-column jd:saved-column-number))))
