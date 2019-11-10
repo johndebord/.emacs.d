@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: yas_adjacent_find
+# key: yas_adjacent_find
+# --
+auto ${1:pos}{std::adjacent_find(std::begin(${2:container}), std::end($2))};
+if ($1 != std::end($2)) {
+  $0
+}

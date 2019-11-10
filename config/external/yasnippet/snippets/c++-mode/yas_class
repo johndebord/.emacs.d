@@ -1,10 +1,10 @@
 # -*- mode: snippet -*-
-# name: class
-# key: yasclass
+# name: yas_class
+# key: yas_class
 # --
 class ${1:name} {
 public:
-    ${1:$(yas/substr yas-text "[^: ]*")}()
+    $1()
     { }
 
 private:

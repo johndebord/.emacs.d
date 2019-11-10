@@ -2,4 +2,4 @@
 # name: yas_accumulate
 # key: yas_accumulate
 # --
-auto $1{std::accumulate(std::begin(${2:container}), std::end($2), 0)};$0
+auto ${1:sum}{std::accumulate(std::begin(${2:container}), std::end($2), 0)};$0

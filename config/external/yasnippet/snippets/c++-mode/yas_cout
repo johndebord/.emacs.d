@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: yas_cout
+# key: yas_cout
+# --
+std::cout << $0;

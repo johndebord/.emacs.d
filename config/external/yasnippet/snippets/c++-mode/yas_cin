@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: yas_cin
+# key: yas_cin
+# --
+std::cin >> $0;
