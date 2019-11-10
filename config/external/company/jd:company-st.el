@@ -27,8 +27,7 @@
 [ ] TODO: Get this operating with correctly before brackets."
   (interactive)
   (cl-flet
-      ((jd:skippable-char-p
-        ()
+      ((jd:skippable-char-p ()
         (if (memq
              (char-after)
              '(#x29   ; ')'
@@ -39,13 +38,11 @@
                #x22)) ; '"'
             t
           nil))
-       (jd:empty-line-p
-        ()
+       (jd:empty-line-p ()
         (save-excursion
           (beginning-of-line)
           (looking-at "[[:space:]]*$")))
-       (jd:nothing-before-or-after-cursor-p
-        ()
+       (jd:nothing-before-or-after-cursor-p ()
         (and
          (or
           (equal (char-before) nil)
@@ -53,8 +50,7 @@
          (or
           (equal (char-after) nil)
           (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) 0))))
-       (jd:nothing-before-but-something-after-cursor-p
-        ()
+       (jd:nothing-before-but-something-after-cursor-p ()
         (and
          (or
           (equal (char-before) nil)
@@ -62,8 +58,7 @@
          (and
           (not (equal (char-after) nil))
           (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) nil))))
-       (jd:something-before-and-after-cursor-p
-        ()
+       (jd:something-before-and-after-cursor-p ()
         (and
          (and
           (not (equal (char-after) nil))
@@ -72,6 +67,8 @@
           (not (equal (char-after) nil))
           (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) nil)))))
     (cond
+     ((equal (yas--field-p (yas-current-field)) t)
+      (yas-next-field))
      ((equal (jd:skippable-char-p) t)
       (forward-char 1))
      ((equal (region-active-p) t)

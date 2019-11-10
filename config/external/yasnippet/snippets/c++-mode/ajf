@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: adjacent_find
-# key: ajf
+# name: yas_adjacent_find
+# key: yas_adjacent_find
 # --
 auto pos = std::adjacent_find(std::begin(${1:container}), std::end($1));
 if (pos != std::end($1)) {
