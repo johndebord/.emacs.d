@@ -40,7 +40,8 @@
 (defun jd:eshell-beginning-of-line-or-prompt ()
   (interactive "^")
   (if (or
-       (not (equal (line-number-at-pos) (save-excursion (end-of-buffer) (line-number-at-pos))))
+       (not (equal (line-number-at-pos) (save-restriction
+                                          (line-number-at-pos (point-max)))))
        (equal (get-text-property (line-beginning-position) 'read-only) nil)
        (and (equal (get-text-property (line-beginning-position) 'read-only) t)
             (equal (char-before) #x24)))
