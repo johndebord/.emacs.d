@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: yscast
+# key: yscast
+# --
+static_cast<$1>($2)$0

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name : ytry
+# key: ytry
+# --
+try {
+    $0
+}

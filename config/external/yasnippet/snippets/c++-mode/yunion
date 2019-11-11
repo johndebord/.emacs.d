@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: yunion
+# key: yunion
+# --
+union {
+    $0
+};

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : yincs
+# key  : yincs
+# --
+#include <$1>$0

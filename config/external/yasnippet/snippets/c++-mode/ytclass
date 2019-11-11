@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: ytclass
+# key: ytclass
+# --
+template<typename T>
+class ${1:name} {
+public:
+    $1();
+
+private:
+    $0
+};

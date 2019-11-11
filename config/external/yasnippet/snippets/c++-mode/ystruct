@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ystruct
+# key: ystruct
+# --
+struct ${1:name} {
+    $0
+};

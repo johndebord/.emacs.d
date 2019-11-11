@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: yas_cerr
-# key: yas_cerr
-# --
-std::cerr << $0;

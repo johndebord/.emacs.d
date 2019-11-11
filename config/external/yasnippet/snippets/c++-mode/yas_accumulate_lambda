@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: yas_accumulate_lambda
-# key: yas_accumulate_lambda
-# --
-auto ${1:sum}{std::accumulate(std::begin(${2:container}), std::end($2), 0, []($3) {
-  $0
-})};

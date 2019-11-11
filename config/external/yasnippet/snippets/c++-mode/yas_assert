@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: yas_assert
-# key: yas_assert
-# --
-assert($0);

@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name : random (...) { ... }
-# key: random
-# --
-srand(time(NULL)); // SEED RNG
-rand(); // RETURN RN

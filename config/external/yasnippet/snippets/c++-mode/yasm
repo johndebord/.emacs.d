@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: yasm
+# key: yasm
+# --
+asm("");

@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: for
-# key: for
-# --
-for (size_t i{}; i < ${1:n}; ++i) {
-    $0
-}

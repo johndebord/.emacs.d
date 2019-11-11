@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: yas_all_of
-# key: yas_all_of
-# --
-if (std::all_of(std::begin(${1:container}), std::end($1), []($2) {
-  $3
-})) {
-  $0
-}

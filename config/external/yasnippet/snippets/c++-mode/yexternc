@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: yexternc
+# key: yexternc
+# --
+extern "C" {
+    $0
+}

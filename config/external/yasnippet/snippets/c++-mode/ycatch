@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name : ycatch
+# key: ycatch
+# --
+catch (${1:condition}) {
+    $0
+}

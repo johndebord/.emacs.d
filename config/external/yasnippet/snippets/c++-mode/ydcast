@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ydcast
+# key: ydcast
+# --
+dynamic_cast<$1>($2)$0

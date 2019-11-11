@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: yas_boost_require
-# key: yas_boost_require
-# --
-BOOST_REQUIRE(${1:condition});
