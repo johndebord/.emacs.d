@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: yruleof3
+# key: yruleof3
+# --
+~${1:class}() {
+}
+
+$1(const $1& other) {
+}
+
+$1& operator=(const $1& other) {
+}
