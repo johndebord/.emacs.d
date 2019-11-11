@@ -2,7 +2,7 @@
 # name: yruleof5
 # key: yruleof5
 # --
-~${1:class}() {
+~${1:name}() {
 }
 
 $1(const $1& other) {
