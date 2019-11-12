@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ycond
+# key: ycond
+# --
+(cond
+ ((${1:condition})
+  $0))

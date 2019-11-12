@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ymessage
+# key: ymessage
+# --
+(message "${1:FORMAT-STRING}" ${2:ARGS})

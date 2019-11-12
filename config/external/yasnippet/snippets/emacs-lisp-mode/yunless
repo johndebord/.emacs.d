@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: yunless
+# key: yunless
+# --
+(unless ${1:COND}
+  $0)

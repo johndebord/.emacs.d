@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: ytstruct
-# key: ytstruct
-# --
-template<typename T>
-struct ${1:name} {
-    $0
-};

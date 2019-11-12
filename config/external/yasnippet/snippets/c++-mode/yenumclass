@@ -2,6 +2,6 @@
 # name: yenumclass
 # key: yenumclass
 # --
-enum ${1:enumeration} : ${2:type} {
+enum class ${1:enumeration} : ${2:type} {
     $0
 };

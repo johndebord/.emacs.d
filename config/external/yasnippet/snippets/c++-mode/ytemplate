@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ytemplate
+# key: ytemplate
+# --
+template<typename ${1:T}>$0

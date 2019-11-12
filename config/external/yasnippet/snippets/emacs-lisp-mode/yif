@@ -1,0 +1,6 @@
+# -*- mode: snippet; -*-
+# name: yif
+# key: yif
+# --
+(if ${1:COND}
+    $0)

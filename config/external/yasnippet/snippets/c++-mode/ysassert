@@ -2,4 +2,4 @@
 # name: ysassert
 # key: ysassert
 # --
-static_assert($1, $2)$0
+static_assert($1, $2);$0

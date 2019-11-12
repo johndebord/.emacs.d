@@ -2,6 +2,6 @@
 # name: yunion
 # key: yunion
 # --
-union {
+union ${1:name} {
     $0
 };

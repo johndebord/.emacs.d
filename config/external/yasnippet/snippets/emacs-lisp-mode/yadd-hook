@@ -1,0 +1,5 @@
+# -*- mode: snippet; -*-
+# name: yadd-hook
+# key: yadd-hook
+# --
+(add-hook ${1:HOOK} ${2:FUNCTION})$0

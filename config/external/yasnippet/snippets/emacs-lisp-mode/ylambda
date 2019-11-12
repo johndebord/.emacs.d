@@ -1,0 +1,6 @@
+# -*- mode: snippet; -*-
+# name: ylambda
+# key: ylambda
+# --
+(lambda (${1:ARGS})
+  $0)

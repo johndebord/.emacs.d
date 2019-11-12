@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ylet
+# key: ylet
+# --
+(let${1:*} ((${2:VARLIST}))
+  $0)

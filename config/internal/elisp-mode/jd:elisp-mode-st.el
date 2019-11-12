@@ -27,12 +27,20 @@
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (eldoc-mode 1)))
+            (abbrev-mode -1)))
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (company-mode 1)
             (set (make-local-variable 'company-backends)
-                 '((company-capf)))))
+                 '((company-etags :separate company-dabbrev-code :separate company-yasnippet)))))
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (eldoc-mode 1)))
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (yas-minor-mode t)))
 
 (provide 'jd:elisp-mode-st.el)

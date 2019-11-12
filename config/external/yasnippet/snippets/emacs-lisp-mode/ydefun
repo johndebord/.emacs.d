@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ydefun
+# key: ydefun
+# --
+(defun ${1:NAME} (${2:ARGLIST})
+  $0)
