@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: yas-ruleof3
+# key: ruleof3
+# --
+~${1:name}() {
+}
+
+$1(const $1& other) {
+}
+
+$1& operator=(const $1& other) {
+}

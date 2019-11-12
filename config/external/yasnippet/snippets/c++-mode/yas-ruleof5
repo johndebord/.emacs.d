@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: yas-ruleof5
+# key: ruleof5
+# --
+~${1:name}() {
+}
+
+$1(const $1& other) {
+}
+
+$1($1&& other) {
+}
+
+$1& operator=(const $1& other) {
+}
+
+$1& operator=($1&& other) {
+}

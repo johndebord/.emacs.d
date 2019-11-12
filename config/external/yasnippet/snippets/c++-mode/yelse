@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: yelse
-# key: yelse
-# --
-else {
-    $0
-}

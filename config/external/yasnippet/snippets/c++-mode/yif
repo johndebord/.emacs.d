@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: yif
-# key: yif
-# --
-if (${1:condition}) {
-    $0
-}

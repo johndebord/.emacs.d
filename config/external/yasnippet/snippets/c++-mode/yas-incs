@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: yas-incs
+# key: incs
+# --
+#include <$1>$0

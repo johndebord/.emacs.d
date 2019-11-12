@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: yas-union
+# key: union
+# --
+union ${1:name} {
+    $0
+};

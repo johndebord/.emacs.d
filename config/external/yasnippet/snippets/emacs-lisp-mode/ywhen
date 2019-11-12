@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: ywhen
-# key: ywhen
-# --
-(when ${1:COND}
-  $0)

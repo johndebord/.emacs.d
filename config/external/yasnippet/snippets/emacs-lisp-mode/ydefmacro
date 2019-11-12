@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: ydefmacro
-# key: ydefmacro
-# --
-(defmacro (${1:NAME} ${2:ARGLIST})
-    $0)

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: yrcast
-# key: yrcast
-# --
-reinterpret_cast<$1>($2)$0

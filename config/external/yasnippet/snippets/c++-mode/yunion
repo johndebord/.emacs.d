@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: yunion
-# key: yunion
-# --
-union ${1:name} {
-    $0
-};

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: yas-externc
+# key: externc
+# --
+extern "C" {
+    $0
+}

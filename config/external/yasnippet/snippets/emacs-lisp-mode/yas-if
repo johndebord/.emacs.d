@@ -1,0 +1,6 @@
+# -*- mode: snippet; -*-
+# name: yas-if
+# key: if
+# --
+(if ${1:COND}
+    $0)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: yas-scast
+# key: scast
+# --
+static_cast<$1>($2)$0

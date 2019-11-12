@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: yas-else
+# key: else
+# --
+else {
+    $0
+}

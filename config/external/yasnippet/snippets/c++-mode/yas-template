@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: yas-template
+# key: template
+# --
+template<typename ${1:T}>$0

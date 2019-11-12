@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ycin
-# key: ycin
-# --
-std::cin >> $0;

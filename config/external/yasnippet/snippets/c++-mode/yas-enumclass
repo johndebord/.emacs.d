@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: yas-enumclass
+# key: enumclass
+# --
+enum class ${1:enumeration} : ${2:type} {
+    $0
+};

@@ -172,6 +172,116 @@ pst = package settings"
                   (princ (substitute-command-keys (format "\\{%s}" jd:keymap))))
                 jd:keymap-symbols)))))
 
+(defun jd:incredibly-smart-backspace ()
+  (interactive)
+  (if (equal (yas--field-p (yas-current-field)) t)
+      (yas-skip-and-clear-field)
+    (progn
+      (setq jd:company-select nil)
+      (delete-backward-char 1))))
+
+(defun jd:incredibly-smart-return ()
+  (interactive)
+  (if (get-char-property (point) 'face)
+      (let ((jd:save-point (point))
+            (jd:char-property-value nil)
+            (jd:file-name nil)
+            (jd:line-number nil))
+        (setq jd:char-property-value (get-char-property (point) 'face))
+        (cond ((or
+                (equal (nth 0 (cdr jd:char-property-value)) "#ADCF44")
+                (equal (nth 0 (cdr jd:char-property-value)) "#63B4F6"))
+	       (setq jd:file-name (thing-at-point 'filename 'no-properties))
+	       (find-file jd:file-name)
+	       (forward-line (- (line-number-at-pos))))
+	      ((equal (nth 0 (cdr jd:char-property-value)) "#F0C649")
+	       (setq jd:line-number (thing-at-point 'word 'no-properties))
+	       (beginning-of-line)
+	       (while (not (equal (nth 0 (cdr (get-char-property (point) 'face))) "#ADCF44"))
+	         (forward-line -1))
+	       (setq jd:file-name (thing-at-point 'filename 'no-properties))
+               (goto-char jd:save-point)
+	       (find-file jd:file-name)
+               (goto-char (point-min))
+	       (forward-line (- (string-to-number jd:line-number) 1)))))
+    (eshell-send-input)))
+
+
+
+(defun jd:incredibly-smart-tab ()
+  "[ ] TODO: Use a custom indentation function.
+[ ] TODO: Possibly different behavior with `skippable-char-p'.
+[ ] TODO: Get this operating with correctly before brackets."
+  (interactive)
+  (cl-flet
+      ((jd:skippable-char-p
+        ()
+        (if (memq
+             (char-after)
+             '(#x29   ; ')'
+               #x7d   ; '}'
+               #x5d   ; ']'
+               #x3e   ; '>'
+               #x27   ; '''
+               #x22)) ; '"'
+            t
+          nil))
+       (jd:empty-line-p
+        ()
+        (save-excursion
+          (beginning-of-line)
+          (looking-at "[[:space:]]*$")))
+       (jd:nothing-before-or-after-cursor-p
+        ()
+        (and
+         (or
+          (equal (char-before) nil)
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) 0))
+         (or
+          (equal (char-after) nil)
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) 0))))
+       (jd:nothing-before-but-something-after-cursor-p
+        ()
+        (and
+         (or
+          (equal (char-before) nil)
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) 0))
+         (and
+          (not (equal (char-after) nil))
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) nil))))
+       (jd:something-before-and-after-cursor-p
+        ()
+        (and
+         (and
+          (not (equal (char-after) nil))
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) nil))
+         (and
+          (not (equal (char-after) nil))
+          (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) nil)))))
+    (cond
+     ((equal (yas--field-p (yas-current-field)) t)
+      (yas-next-field))
+     ((equal (jd:skippable-char-p) t)
+      (forward-char 1))
+     ((equal (region-active-p) t)
+      (indent-for-tab-command))
+     ((equal (jd:empty-line-p) t)
+      (indent-for-tab-command))
+     ((equal (jd:nothing-before-or-after-cursor-p) t)
+      (indent-for-tab-command))
+     ((equal (jd:nothing-before-but-something-after-cursor-p) t)
+      (indent-for-tab-command))
+     ((equal (jd:something-before-and-after-cursor-p) t)
+      (indent-for-tab-command))
+     ((equal company-mode t)
+      (if (equal jd:company-select nil)
+          (progn
+            (company-complete-common)
+            (setq jd:company-select t))
+        (progn
+          (company-complete-selection)
+          (setq jd:company-select nil)))))))
+
 (defun jd:indent-region ()
   "Indents the entire function the cursor is currently in.
 [ ] TODO:  Get this to work in other modes as well; in particuluar,

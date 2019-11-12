@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: yfore
-# key: yfore
-# --
-for (${1:const }auto${2:&} ${3:e} : ${4:container}) {
-    $0
-}

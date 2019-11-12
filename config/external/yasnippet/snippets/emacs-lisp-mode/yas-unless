@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: yas-unless
+# key: unless
+# --
+(unless ${1:COND}
+  $0)

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: yas-fore
+# key: fore
+# --
+for (${1:const }auto${2:&} ${3:e} : ${4:container}) {
+    $0
+}

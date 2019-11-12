@@ -1,0 +1,6 @@
+# -*- mode: snippet; -*-
+# name: yas-lambda
+# key: lambda
+# --
+(lambda (${1:ARGS})
+  $0)

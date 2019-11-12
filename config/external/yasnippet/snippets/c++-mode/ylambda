@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: ylambda
-# key: ylambda
-# --
-[$1]($2) {
-    $0
-}

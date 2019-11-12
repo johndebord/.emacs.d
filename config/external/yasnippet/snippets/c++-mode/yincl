@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: yincl
-# key: yincl
-# --
-#include "$1"$0

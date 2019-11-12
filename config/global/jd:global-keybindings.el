@@ -716,14 +716,7 @@
 ;; (define-key global-map (kbd "<s-S-_>")  'undefined)
 ;; (define-key global-map (kbd "<s-S-+>")  'undefined)
 
-(define-key global-map (kbd "<jd:bks>")
-  (lambda ()
-    (interactive)
-    (if (equal (yas--field-p (yas-current-field)) t)
-        (yas-skip-and-clear-field)
-      (progn
-        (setq jd:company-select nil)
-        (delete-backward-char 1)))))
+(define-key global-map (kbd "<jd:bks>") 'jd:incredibly-smart-backspace)
 (define-key global-map (kbd "<jd:S-bks>")
   (lambda ()
      (interactive)

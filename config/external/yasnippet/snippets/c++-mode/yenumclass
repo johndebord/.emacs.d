@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: yenumclass
-# key: yenumclass
-# --
-enum class ${1:enumeration} : ${2:type} {
-    $0
-};

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: yas-incl
+# key: incl
+# --
+#include "$1"$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: yas-sassert
+# key: sassert
+# --
+static_assert($1, $2);$0

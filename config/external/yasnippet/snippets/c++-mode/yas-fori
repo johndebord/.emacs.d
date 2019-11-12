@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: yas-fori
+# key: fori
+# --
+for (auto ${1:iter}{${2:container}.${3:c}begin()}; $1 < $2.$3end(); ++$1) {
+    $0
+}

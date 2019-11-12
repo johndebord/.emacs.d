@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: yenum
-# key: yenum
-# --
-enum ${1:enumeration} {
-    $0
-};

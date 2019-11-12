@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: yas-dolist
+# key: dolist
+# --
+(dolist (${1:VAR} ${2:LIST} ${3:RESULT})
+  $0)

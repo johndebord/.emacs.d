@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: ywhile
-# key: ywhile
-# --
-while (${1:condition}) {
-    $0
-}

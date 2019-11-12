@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: ycout
-# key: ycout
-# --
-std::cout << $0;

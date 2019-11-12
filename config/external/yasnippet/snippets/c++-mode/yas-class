@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: yas-class
+# key: class
+# --
+class ${1:name} {
+public:
+    $1();
+
+private:
+    $0
+};

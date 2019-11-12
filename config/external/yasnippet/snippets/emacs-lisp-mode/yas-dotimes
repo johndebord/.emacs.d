@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: yas-dotimes
+# key: dotimes
+# --
+(dotimes (${1:VAR} ${2:COUNT} ${3:RESULT})
+  $0)

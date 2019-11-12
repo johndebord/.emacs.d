@@ -1,3 +1,24 @@
+(defun slurp ()
+  (interactive)
+  )
+
+(defun barf ()
+  (interactive)
+  )
+
+;; (setq var (list 1 2 3))
+;; (message "%s" (car) var)
+
+;; end of sexp
+;; forward char
+;; forward sexp
+;; highlight backward sexp
+;; kill region
+;; zap to char
+;; backward char
+;; space
+;; yank
+
 (defun jd:eval-defun ()
   (interactive)
   (let ((jd:beg
@@ -33,7 +54,7 @@
           (lambda ()
             (company-mode 1)
             (set (make-local-variable 'company-backends)
-                 '((company-etags :separate company-dabbrev-code :separate company-yasnippet)))))
+                 '((company-capf :separate company-dabbrev-code :separate company-yasnippet)))))
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
