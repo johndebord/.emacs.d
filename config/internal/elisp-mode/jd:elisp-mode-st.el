@@ -1,24 +1,3 @@
-(defun slurp ()
-  (interactive)
-  )
-
-(defun barf ()
-  (interactive)
-  )
-
-;; (setq var (list 1 2 3))
-;; (message "%s" (car) var)
-
-;; end of sexp
-;; forward char
-;; forward sexp
-;; highlight backward sexp
-;; kill region
-;; zap to char
-;; backward char
-;; space
-;; yank
-
 (defun jd:eval-defun ()
   (interactive)
   (let ((jd:beg
@@ -45,6 +24,17 @@
            (point))))
     (eval-last-sexp nil)
     (pulse-momentary-highlight-region jd:beg jd:end 'highlight)))
+
+(defun jd:slurp ()
+  (interactive)
+  (thing-at-point--end-of-sexp)
+  (forward-char)
+  (while (looking-at  "[[:space:]]")
+    (delete-char 1))
+  (kill-sexp)
+  (backward-char)
+  (jd:self-insert-space)
+  (yank))
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()

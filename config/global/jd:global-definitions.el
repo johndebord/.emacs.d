@@ -175,10 +175,7 @@ pst = package settings"
 (defun jd:incredibly-smart-backspace ()
   (interactive)
   (if (equal (yas--field-p (yas-current-field)) t)
-      (yas-skip-and-clear-field)
-    (progn
-      (setq jd:company-select nil)
-      (delete-backward-char 1))))
+      (yas-skip-and-clear-field)))
 
 (defun jd:incredibly-smart-return ()
   (interactive)
@@ -205,8 +202,6 @@ pst = package settings"
                (goto-char (point-min))
 	       (forward-line (- (string-to-number jd:line-number) 1)))))
     (eshell-send-input)))
-
-
 
 (defun jd:incredibly-smart-tab ()
   "[ ] TODO: Use a custom indentation function.
