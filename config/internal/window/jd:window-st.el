@@ -1,3 +1,5 @@
+(setq-default display-buffer-base-action
+              '((display-buffer-reuse-window display-buffer-same-window) . (inhibit-same-window . nil)))
 (setq-default pop-up-frames nil)
 (setq-default pop-up-windows nil)
 
@@ -11,21 +13,13 @@
                  (memq this-command
                        '(byte-force-recompile
                          compile-goto-error
+                         man
                          jd:byte-compile-file
                          jd:next-error
                          jd:previous-error)))
                (display-buffer-reuse-window
                 display-buffer-same-window)
                (inhibit-same-window . nil)))
-
-;; For reference.
-;; (add-to-list 'display-buffer-alist
-;;              '((lambda (&rest _)
-;;                  (memq this-command
-;;                        '(gdb)))
-;;                (display-buffer-reuse-window
-;;                 display-buffer-below-selected)
-;;                (inhibit-same-window . nil)))
 
 (add-to-list 'same-window-buffer-names "*Apropos*")
 (add-to-list 'same-window-buffer-names "*Completions*")

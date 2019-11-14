@@ -1,3 +1,5 @@
+(setq-default edebug-save-windows nil)
+
 (defun jd:edebug-eval-top-level-form ()
   (interactive)
   (let ((jd:beg
@@ -10,5 +12,7 @@
            (point))))
     (edebug-eval-top-level-form)
     (pulse-momentary-highlight-region jd:beg jd:end 'highlight)))
+
+(advice-add 'edebug-pop-to-buffer :override 'pop-to-buffer)
 
 (provide 'jd:edebug-st.el)
