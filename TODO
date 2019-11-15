@@ -1,0 +1,65 @@
+[ ] Configure:     Seperate the .elc files from the .el files
+[ ] Configure:     Proper Edebug setup (mirror of gdb)
+[ ] Configure:     Normal and esoteric C/C++ formatting variables set (templates/lambdas/switch/etc.)
+[ ] Configure:     Make 'q' exit have the same behavior in Apropos/Help buffers etc.
+[ ] Configure:     ispell and completing text accurately/on-the-fly
+[ ] Configure:     Check <M-l> behavior in each minibuffer mode and adjust the behavior accordingly
+[ ] Configure:     When I set a bookmark, highlight said line with a specific color (also indicate with number in fringe)
+[ ] Configure:     Theme.
+[ ] Configure:     GO OVER ALL CONFIGURATION FILES AGAIN AND LOOK AT/PLAY WITH ALL OF THEIR CORRESPONDING API's.
+                   (in particuluar counsel looks like it has alot of good stuff)
+                   - Customizable group variables; set them all accordingly in their respective files
+                   - Look for similar functions that I can replace with these said better ones that I find in the APIs
+                   - Optimize/refactor/properly replace the functions I've defined (ist/isd/etc.)
+                   - Go through keymaps once more (including comint); this time edit
+                     their functionality at the site-lisp level (on a fork of emacs along with byte
+                     compilation scheme/fonts for maximum portability (include other dotfiles))
+                     (PREFACE all modified standard functions that I have modified with comments/etc.)
+
+[ ] Functionality: Disable autoloading; instead load everything
+[ ] Functionality: When previewing another buffer in ivy the enable recurisve file navigation to search path of said buffer
+[ ] Functionality: A quick and easy way to kill multiple buffers; instead of just starting a new Emacs session
+[ ] Functionality: Proper `gdb' disassembly and proper scrolling to the top when opening headers (thing registers buffer)
+[ ] Functionality: Semantic `company' `etags'
+[ ] Functionality: Highlighting word that the cursor is currently on (maybe different highlight color)
+[ ] Functionality: Proper integration of `tagproject' and its corresponding functionality
+[ ] Functionality: Function to drag region up and down lines (and fix the current one)
+                   (/questions/52971/command-that-does-different-things-based-on-whether-something-is-selected)
+[ ] Functionality: Arbitrarily insert print statements incrementally and delete all at once (with specific bg color; C/C++/elisp)
+[ ] Functionality: Goto compilation error in eshell with smart return
+
+[ ] Standardize:   Proper hooks for initiating minor modes in major modes (look at how I use `company' for an example)
+[ ] Standardize:   Convention for ordering defvar/defun/etc. in files
+[ ] Standardize:   Decide to use lambdas or actual functions everywhere
+[ ] Standardize:   Decide to fset or defadvice the chosen functions
+[ ] Standardize:   progn all the functions
+[ ] Standardize:   Decide what to macrotize
+
+[ ] Fix:           Prevent selecting a window to make that window the "last buffer used"
+[ ] Fix:           Window buryage
+[ ] Fix:           `edebug' will open source code in a window; throw an error if it's not already open.
+[ ] Fix:           Emacs overwrites text upon a parenthesis/bracket/etc.
+[ ] Fix:           Check for eshell setting that doesn't make the text jump around when pushing
+[ ] Fix:           I can't insert a '*' in eshell
+[ ] Fix:           Functions for a better display of key bindings in describe bindings
+[ ] Fix:           Macros get screwed up when going down a page in a buffer
+[ ] Fix:           Ivy is now not quite aligned when opening its minibuffer up due to the box changes
+[ ] Fix:           Windows ringing bell behavior
+[ ] Fix:           Flash eval function improper behavior
+[ ] Fix:           save-excursion when moving line up and down (keep that in mind for moving region as well)
+[ ] Fix:           Not being able to save new files in scratch buffer
+[ ] Fix:           Having to keep typing in the git token whenever I push
+[ ] Fix:           All compilation warnings and Emacs startup warnings
+[ ] Fix:           <C-S-l> does not work on windows
+[ ] Fix:           xref random syntax highlighting; just make sure that the sources are
+                   copied without properties; that should do it
+
+Tools To Learn With Mastery (Possibly From First-Principles):
+=============================================================
+[ ] package manager
+[ ] gdb
+[ ] git (.gitignore)
+[ ] llvm
+[ ] binutils
+[ ] Text manipulation tools (ack/grep/sed/)
+[ ] Basically like flawless file/directory navigation/manipulation

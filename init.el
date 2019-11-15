@@ -724,5 +724,5 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet xterm-color sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company)))
+   '(rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet xterm-color sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company)))
 (put 'narrow-to-region 'disabled nil)
