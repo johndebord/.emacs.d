@@ -6,6 +6,7 @@
 (require 'jd:ivy.el (concat jd:external-prefix "ivy/jd:ivy.elc"))
 (require 'jd:rmsbolt.el (concat jd:external-prefix "rmsbolt/jd:rmsbolt.elc"))
 (require 'jd:swiper.el (concat jd:external-prefix "swiper/jd:swiper.elc"))
+(require 'jd:undo-tree.el (concat jd:external-prefix "undo-tree/jd:undo-tree.elc"))
 (require 'jd:xterm-color.el (concat jd:external-prefix "xterm-color/jd:xterm-color.elc"))
 (require 'jd:yasnippet.el (concat jd:external-prefix "yasnippet/jd:yasnippet.elc"))
 

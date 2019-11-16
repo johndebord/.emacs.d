@@ -99,6 +99,17 @@ pst = package settings"
   (end-of-line)
   (message "Line copied"))
 
+(defun jd:counsel-find-file ()
+  (interactive)
+  (let ((jd:current-selection-file-path nil))
+    (if (and (equal major-mode 'minibuffer-inactive-mode)
+             (setq jd:current-selection-file-path
+                   (buffer-file-name (get-buffer (ivy-state-current ivy-last)))))
+        (progn
+          (setq jd:current-selection-file-path (file-name-directory jd:current-selection-file-path))
+          (funcall 'counsel-find-file jd:current-selection-file-path))
+      (funcall 'counsel-find-file))))
+
 (defun jd:delete-line ()
   (interactive)
   (beginning-of-line)
@@ -396,7 +407,7 @@ just the file names where the references are found."
 
 (defun jd:window-forward ()
   (interactive)
-  (other-window  1))
+  (other-window 1))
 
 (defun jd:xref-find-definitions ()
   (interactive)

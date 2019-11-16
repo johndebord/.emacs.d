@@ -1,9 +1,7 @@
+possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ...
 [ ] Configure:     Seperate the .elc files from the .el files
 [ ] Configure:     Proper Edebug setup (mirror of gdb)
 [ ] Configure:     Normal and esoteric C/C++ formatting variables set (templates/lambdas/switch/etc.)
-[ ] Configure:     Make 'q' exit have the same behavior in Apropos/Help buffers etc.
-[ ] Configure:     ispell and completing text accurately/on-the-fly
-[ ] Configure:     Check <M-l> behavior in each minibuffer mode and adjust the behavior accordingly
 [ ] Configure:     When I set a bookmark, highlight said line with a specific color (also indicate with number in fringe)
 [ ] Configure:     Theme.
 [ ] Configure:     GO OVER ALL CONFIGURATION FILES AGAIN AND LOOK AT/PLAY WITH ALL OF THEIR CORRESPONDING API's.
@@ -17,7 +15,6 @@
                      (PREFACE all modified standard functions that I have modified with comments/etc.)
 
 [ ] Functionality: Disable autoloading; instead load everything
-[ ] Functionality: When previewing another buffer in ivy the enable recurisve file navigation to search path of said buffer
 [ ] Functionality: A quick and easy way to kill multiple buffers; instead of just starting a new Emacs session
 [ ] Functionality: Proper `gdb' disassembly and proper scrolling to the top when opening headers (thing registers buffer)
 [ ] Functionality: Semantic `company' `etags'
@@ -34,9 +31,8 @@
 [ ] Standardize:   Decide to fset or defadvice the chosen functions
 [ ] Standardize:   progn all the functions
 [ ] Standardize:   Decide what to macrotize
+[ ] Standardize:   Figure minor mode initialization with either t or 1
 
-[ ] Fix:           Prevent selecting a window to make that window the "last buffer used"
-[ ] Fix:           Window buryage
 [ ] Fix:           `edebug' will open source code in a window; throw an error if it's not already open.
 [ ] Fix:           Emacs overwrites text upon a parenthesis/bracket/etc.
 [ ] Fix:           Check for eshell setting that doesn't make the text jump around when pushing

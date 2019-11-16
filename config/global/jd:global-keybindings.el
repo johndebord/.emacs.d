@@ -161,7 +161,7 @@
 ;; (define-key global-map (kbd "<M-c>")  'undefined)
 ;; (define-key global-map (kbd "<M-d>")  'undefined)
 ;; (define-key global-map (kbd "<M-e>")  'undefined)
-(define-key global-map (kbd "<M-f>")  'counsel-find-file)
+(define-key global-map (kbd "<M-f>")  'jd:counsel-find-file)
 ;; (define-key global-map (kbd "<M-g>")  'undefined)
 (define-key global-map (kbd "<M-h>")  'jd:xref-find-definitions)
 (define-key global-map (kbd "<M-i>")  'previous-line)

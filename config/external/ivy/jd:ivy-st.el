@@ -2,6 +2,7 @@
 (setq-default ivy-extra-directories nil)
 (setq-default ivy-format-function 'ivy-format-function-line)
 (setq-default ivy-height 15)
+(setq-default ivy-recursive-restore nil)
 
 (defun jd:ivy-scroll-up-command ()
   "Set `ivy-height' to an odd number."
