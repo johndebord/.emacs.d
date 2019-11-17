@@ -2,8 +2,8 @@ possible strat for fixing ist: save-excursion, insert space, go back one char, c
 [ ] Configure:     Seperate the .elc files from the .el files
 [ ] Configure:     Proper Edebug setup (mirror of gdb)
 [ ] Configure:     Normal and esoteric C/C++ formatting variables set (templates/lambdas/switch/etc.)
-[ ] Configure:     When I set a bookmark, highlight said line with a specific color (also indicate with number in fringe)
-[ ] Configure:     Theme.
+[ ] Configure:     All compilation warnings and Emacs startup warnings
+[ ] Configure:     Theme (including modeline formatting stuff)
 [ ] Configure:     GO OVER ALL CONFIGURATION FILES AGAIN AND LOOK AT/PLAY WITH ALL OF THEIR CORRESPONDING API's.
                    (in particuluar counsel looks like it has alot of good stuff)
                    - Customizable group variables; set them all accordingly in their respective files
@@ -15,13 +15,12 @@ possible strat for fixing ist: save-excursion, insert space, go back one char, c
                      (PREFACE all modified standard functions that I have modified with comments/etc.)
 
 [ ] Functionality: Disable autoloading; instead load everything
-[ ] Functionality: A quick and easy way to kill multiple buffers; instead of just starting a new Emacs session
 [ ] Functionality: Proper `gdb' disassembly and proper scrolling to the top when opening headers (thing registers buffer)
 [ ] Functionality: Semantic `company' `etags'
-[ ] Functionality: Highlighting word that the cursor is currently on (maybe different highlight color)
 [ ] Functionality: Proper integration of `tagproject' and its corresponding functionality
 [ ] Functionality: Function to drag region up and down lines (and fix the current one)
                    (/questions/52971/command-that-does-different-things-based-on-whether-something-is-selected)
+[ ] Functionality: `save-excursion' when moving line up and down (keep that in mind for moving region as well)
 [ ] Functionality: Arbitrarily insert print statements incrementally and delete all at once (with specific bg color; C/C++/elisp)
 [ ] Functionality: Goto compilation error in eshell with smart return
 
@@ -34,24 +33,17 @@ possible strat for fixing ist: save-excursion, insert space, go back one char, c
 [ ] Standardize:   Figure minor mode initialization with either t or 1
 
 [ ] Fix:           `edebug' will open source code in a window; throw an error if it's not already open.
-[ ] Fix:           Emacs overwrites text upon a parenthesis/bracket/etc.
-[ ] Fix:           Check for eshell setting that doesn't make the text jump around when pushing
 [ ] Fix:           I can't insert a '*' in eshell
-[ ] Fix:           Functions for a better display of key bindings in describe bindings
-[ ] Fix:           Macros get screwed up when going down a page in a buffer
-[ ] Fix:           Ivy is now not quite aligned when opening its minibuffer up due to the box changes
-[ ] Fix:           Windows ringing bell behavior
 [ ] Fix:           Flash eval function improper behavior
-[ ] Fix:           save-excursion when moving line up and down (keep that in mind for moving region as well)
+[ ] Fix:           Functions for a better display of key bindings in describe bindings
 [ ] Fix:           Not being able to save new files in scratch buffer
 [ ] Fix:           Having to keep typing in the git token whenever I push
-[ ] Fix:           All compilation warnings and Emacs startup warnings
-[ ] Fix:           <C-S-l> does not work on windows
 [ ] Fix:           xref random syntax highlighting; just make sure that the sources are
                    copied without properties; that should do it
 
 Tools To Learn With Mastery (Possibly From First-Principles):
 =============================================================
+[ ] linux from scratch
 [ ] package manager
 [ ] gdb
 [ ] git (.gitignore)

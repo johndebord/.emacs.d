@@ -1,7 +1,5 @@
 (setf (cdr c++-mode-map) nil)
 (define-key c++-mode-map (kbd "#") 'c-electric-pound)
-(define-key c++-mode-map (kbd "(") 'c-electric-paren)
-(define-key c++-mode-map (kbd ")") 'c-electric-paren)
 (define-key c++-mode-map (kbd "*") 'c-electric-star)
 (define-key c++-mode-map (kbd ",") 'c-electric-semi&comma)
 (define-key c++-mode-map (kbd "/") 'c-electric-slash)
