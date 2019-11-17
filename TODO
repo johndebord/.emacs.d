@@ -1,4 +1,4 @@
-possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ...
+possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ..
 [ ] Configure:     Seperate the .elc files from the .el files
 [ ] Configure:     Proper Edebug setup (mirror of gdb)
 [ ] Configure:     Normal and esoteric C/C++ formatting variables set (templates/lambdas/switch/etc.)
