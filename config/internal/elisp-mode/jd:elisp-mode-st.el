@@ -2,6 +2,7 @@
   (interactive)
   (let ((jd:beg
          (save-excursion
+           (end-of-defun)
            (beginning-of-defun)
            (point)))
         (jd:end

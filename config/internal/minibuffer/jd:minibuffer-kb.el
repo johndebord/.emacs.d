@@ -5,7 +5,7 @@
 (define-key minibuffer-local-completion-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-completion-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-completion-map (kbd "<C-M-k>") 'next-history-element)
-(define-key minibuffer-local-completion-map (kbd "<jd:ret>") 'minibuffer-complete-and-exit)
+(define-key minibuffer-local-completion-map (kbd "<jd:ret>") 'exit-minibuffer)
 (define-key minibuffer-local-completion-map (kbd "<jd:spc>") 'minibuffer-complete-word)
 (define-key minibuffer-local-completion-map (kbd "<jd:tab>") 'minibuffer-complete)
 
@@ -13,7 +13,7 @@
 (define-key minibuffer-local-must-match-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-must-match-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-must-match-map (kbd "<C-M-k>") 'next-history-element)
-(define-key minibuffer-local-must-match-map (kbd "<jd:ret>") 'minibuffer-complete-and-exit)
+(define-key minibuffer-local-must-match-map (kbd "<jd:ret>") 'exit-minibuffer)
 (define-key minibuffer-local-must-match-map (kbd "<jd:spc>") 'minibuffer-complete-word)
 (define-key minibuffer-local-must-match-map (kbd "<jd:tab>") 'minibuffer-complete)
 

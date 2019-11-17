@@ -1037,6 +1037,6 @@
 (define-key minibuffer-local-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-map (kbd "<C-M-k>") 'next-history-element)
 (define-key minibuffer-local-map (kbd "<jd:ret>") 'exit-minibuffer)
-(define-key minibuffer-local-map (kbd "<jd:tab>") 'minibuffer-complete)
+(define-key minibuffer-local-map (kbd "<jd:tab>") 'exit-minibuffer)
 
 (provide 'jd:global-keybindings.el)
