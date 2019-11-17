@@ -5,4 +5,4 @@
 (fset 'jd:macro-swap-buffers
       (kmacro-lambda-form [?\C-\M-f ?\M-k return] 0 "%d"))
 
-(provide 'jd:global-macros.el)
+(provide 'jd:global-macro-definitions.el)

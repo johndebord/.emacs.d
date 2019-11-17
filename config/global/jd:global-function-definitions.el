@@ -435,4 +435,4 @@ just the file names where the references are found."
         (progn
           (xref-find-references (symbol-name (symbol-at-point))))))))
 
-(provide 'jd:global-definitions.el)
+(provide 'jd:global-function-definitions.el)
