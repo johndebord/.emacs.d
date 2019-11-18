@@ -373,17 +373,21 @@ function; if it does, let the user know and don't execute the function.
 
 (defun jd:transpose-line-down ()
   (interactive)
-  (save-excursion
-    (forward-line)
-    (transpose-lines 1))
-  (forward-line))
+  (let ((jd:current-column (current-column)))
+    (forward-line 1)
+    (transpose-lines 1)
+    (forward-line -1)
+    (move-to-column jd:current-column)))
 
 (defun jd:transpose-line-up ()
   (interactive)
-  (save-excursion
-    (forward-line)
-    (transpose-lines -1))
-  (forward-line -1))
+  (if (not (equal (line-number-at-pos) 1))
+      (let ((jd:current-column (current-column)))
+        (progn
+          (forward-line 1)
+          (transpose-lines -1)
+          (forward-line -1)
+          (move-to-column jd:current-column)))))
 
 (defun jd:truncate-xref-references ()
   "Organizes output of `xref-find-references'; narrowing it down to

@@ -6,3 +6,4 @@ alias ll ls -l $*
 alias la ls -a $*
 alias gr grep -rnw './' -e $*
 alias fnd find . -name $*
+alias acke ack --ignore-dir=elpa $*

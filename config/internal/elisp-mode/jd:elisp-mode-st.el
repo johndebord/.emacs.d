@@ -1,16 +1,30 @@
-(defun jd:eval-defun ()
+(defun jd:eval ()
   (interactive)
-  (let ((jd:beg
-         (save-excursion
-           (end-of-defun)
-           (beginning-of-defun)
-           (point)))
-        (jd:end
-         (save-excursion
-           (end-of-defun)
-           (point))))
-    (eval-defun nil)
-    (pulse-momentary-highlight-region jd:beg jd:end 'highlight)))
+  (if (region-active-p)
+      (progn
+        (let ((jd:beg
+               (if (< (mark) (point))
+                   (mark)
+                 (point)))
+              (jd:end
+               (if (< (mark) (point))
+                   (point)
+                 (mark))))
+          (eval-region jd:beg jd:end)
+          (deactivate-mark)
+          (pulse-momentary-highlight-region jd:beg jd:end 'highlight)))
+    (progn
+      (let ((jd:beg
+             (save-excursion
+               (end-of-defun)
+               (beginning-of-defun)
+               (point)))
+            (jd:end
+             (save-excursion
+               (end-of-defun)
+               (point))))
+        (eval-defun nil)
+        (pulse-momentary-highlight-region jd:beg jd:end 'highlight)))))
 
 (defun jd:eval-last-sexp ()
   (interactive)

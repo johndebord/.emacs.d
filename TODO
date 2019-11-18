@@ -35,7 +35,6 @@ possible strat for fixing ist: save-excursion, insert space, go back one char, c
 [ ] Fix:           `edebug' will open source code in a window; throw an error if it's not already open.
 [ ] Fix:           I can't insert a '*' in eshell
 [ ] Fix:           Functions for a better display of key bindings in describe bindings
-[ ] Fix:           Having to keep typing in the git token whenever I push
 [ ] Fix:           xref random syntax highlighting; just make sure that the sources are
                    copied without properties; that should do it
 
