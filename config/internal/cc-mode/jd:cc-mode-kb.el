@@ -7,8 +7,6 @@
 (define-key c++-mode-map (kbd ";") 'c-electric-semi&comma)
 (define-key c++-mode-map (kbd "<") 'c-electric-lt-gt)
 (define-key c++-mode-map (kbd ">") 'c-electric-lt-gt)
-(define-key c++-mode-map (kbd "{") 'c-electric-brace)
-(define-key c++-mode-map (kbd "}") 'c-electric-brace)
 (define-key c++-mode-map (kbd "<C-b>") 'jd:compile)
 (define-key c++-mode-map (kbd "<C-M-o>")  'jd:next-error)
 (define-key c++-mode-map (kbd "<C-M-u>")  'jd:previous-error)
