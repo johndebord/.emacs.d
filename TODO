@@ -1,5 +1,7 @@
 possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ..
+fix how ISM completes after I'm done spamming tab on a yasnippet
 [ ] Configure:     Seperate the .elc files from the .el files
+[ ] Configure:     Disable autoloading; instead load everything
 [ ] Configure:     Proper Edebug setup (mirror of gdb)
 [ ] Configure:     Normal and esoteric C/C++ formatting variables set (templates/lambdas/switch/etc.)
 [ ] Configure:     All compilation warnings and Emacs startup warnings
@@ -14,15 +16,11 @@ possible strat for fixing ist: save-excursion, insert space, go back one char, c
                      compilation scheme/fonts for maximum portability (include other dotfiles))
                      (PREFACE all modified standard functions that I have modified with comments/etc.)
 
-[ ] Functionality: Disable autoloading; instead load everything
 [ ] Functionality: Proper `gdb' disassembly and proper scrolling to the top when opening headers (thing registers buffer)
-[ ] Functionality: Semantic `company' `etags'
 [ ] Functionality: Proper integration of `tagproject' and its corresponding functionality
-[ ] Functionality: Function to drag region up and down lines (and fix the current one)
-                   (/questions/52971/command-that-does-different-things-based-on-whether-something-is-selected)
-[ ] Functionality: `save-excursion' when moving line up and down (keep that in mind for moving region as well)
 [ ] Functionality: Arbitrarily insert print statements incrementally and delete all at once (with specific bg color; C/C++/elisp)
 [ ] Functionality: Goto compilation error in eshell with smart return
+[ ] Functionality: Functions for a better display of key bindings in describe bindings
 
 [ ] Standardize:   Proper hooks for initiating minor modes in major modes (look at how I use `company' for an example)
 [ ] Standardize:   Convention for ordering defvar/defun/etc. in files
@@ -34,17 +32,5 @@ possible strat for fixing ist: save-excursion, insert space, go back one char, c
 
 [ ] Fix:           `edebug' will open source code in a window; throw an error if it's not already open.
 [ ] Fix:           I can't insert a '*' in eshell
-[ ] Fix:           Functions for a better display of key bindings in describe bindings
 [ ] Fix:           xref random syntax highlighting; just make sure that the sources are
                    copied without properties; that should do it
-
-Tools To Learn With Mastery (Possibly From First-Principles):
-=============================================================
-[ ] linux from scratch
-[ ] package manager
-[ ] gdb
-[ ] git (.gitignore)
-[ ] llvm
-[ ] binutils
-[ ] Text manipulation tools (ack/grep/sed/)
-[ ] Basically like flawless file/directory navigation/manipulation
