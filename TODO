@@ -11,8 +11,9 @@ fix how ISM completes after I'm done spamming tab on a yasnippet
                    - Customizable group variables; set them all accordingly in their respective files
                    - Look for similar functions that I can replace with these said better ones that I find in the APIs
                    - Optimize/refactor/properly replace the functions I've defined (ist/isd/etc.)
-                   - Go through keymaps once more (including comint); this time edit
-                     their functionality at the site-lisp level (on a fork of emacs along with byte
+                   - Go through keymaps once more (including comint) (when rewriting them this time, include, within
+                     the `setcdr' logic the keymap with the default bindings themselves, but with those bindings commented out);
+                     this time edit their functionality at the site-lisp level (on a fork of emacs along with byte
                      compilation scheme/fonts for maximum portability (include other dotfiles))
                      (PREFACE all modified standard functions that I have modified with comments/etc.)
 
@@ -21,6 +22,12 @@ fix how ISM completes after I'm done spamming tab on a yasnippet
 [ ] Functionality: Arbitrarily insert print statements incrementally and delete all at once (with specific bg color; C/C++/elisp)
 [ ] Functionality: Goto compilation error in eshell with smart return
 [ ] Functionality: Functions for a better display of key bindings in describe bindings
+                   (I really want this in the format Major Mode, then Minor Modes, then Globals)
+
+[ ] Fix:           `edebug' will open source code in a window; throw an error if it's not already open.
+[ ] Fix:           I can't insert a '*' in eshell
+[ ] Fix:           xref random syntax highlighting; just make sure that the sources are
+                   copied without properties; that should do it
 
 [ ] Standardize:   Proper hooks for initiating minor modes in major modes (look at how I use `company' for an example)
 [ ] Standardize:   Convention for ordering defvar/defun/etc. in files
@@ -29,8 +36,3 @@ fix how ISM completes after I'm done spamming tab on a yasnippet
 [ ] Standardize:   progn all the functions
 [ ] Standardize:   Decide what to macrotize
 [ ] Standardize:   Figure minor mode initialization with either t or 1
-
-[ ] Fix:           `edebug' will open source code in a window; throw an error if it's not already open.
-[ ] Fix:           I can't insert a '*' in eshell
-[ ] Fix:           xref random syntax highlighting; just make sure that the sources are
-                   copied without properties; that should do it
