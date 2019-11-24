@@ -1,3 +1,7 @@
+;; I'm doing this because when I rebind the keys, I like knowing what the
+;; original binds were.  Thus if I rebind "<C-a>" to something, I can now what
+;; the original "C-a" did while inspecting the output of my custom describe
+;; keybindings function.
 (defun jd:linux-keys ()
   (progn
     (define-key input-decode-map (kbd "C-a")  [\C-\a])

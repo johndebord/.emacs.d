@@ -42,4 +42,7 @@
     (if (not (equal jd:saved-column-number nil))
         (move-to-column jd:saved-column-number))))
 
+(add-hook 'eshell-mode-hook
+          (lambda () (font-lock-mode t)))
+
 (provide 'jd:esh-mode-st.el)

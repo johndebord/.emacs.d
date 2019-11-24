@@ -1,6 +1,6 @@
 (setq-default gud-gdb-command-name "gdb --quiet --interpreter=mi")
 (setq-default gdb-many-windows nil)
-(setq-default gdb-show-main t)
+(setq-default gdb-show-main nil)
 
 (defmacro jd:gdb-propertize-header (name display-function mouse-face face)
   `(propertize ,name

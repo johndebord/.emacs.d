@@ -15,6 +15,11 @@
                          compile-goto-error
                          man
                          jd:byte-compile-file
+                         
+                         jd:edebug-eval-top-level-form
+                         jd:eval
+                         jd:eval-print-last-sexp
+                         
                          jd:next-error
                          jd:previous-error)))
                (display-buffer-reuse-window

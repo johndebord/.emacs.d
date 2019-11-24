@@ -14,6 +14,4 @@
     (edebug-eval-top-level-form)
     (pulse-momentary-highlight-region jd:beg jd:end 'highlight)))
 
-(advice-add 'edebug-pop-to-buffer :override 'pop-to-buffer)
-
 (provide 'jd:edebug-st.el)

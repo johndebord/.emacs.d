@@ -34,6 +34,7 @@
 (require 'jd:esh-var.el (concat jd:internal-prefix "esh-var/jd:esh-var.elc"))
 (require 'jd:etags.el (concat jd:internal-prefix "etags/jd:etags.elc"))
 (require 'jd:files.el (concat jd:internal-prefix "files/jd:files.elc"))
+(require 'jd:font-core.el (concat jd:internal-prefix "font-core/jd:font-core.elc"))
 (require 'jd:frame.el (concat jd:internal-prefix "frame/jd:frame.elc"))
 (require 'jd:gdb-mi.el (concat jd:internal-prefix "gdb-mi/jd:gdb-mi.elc"))
 (require 'jd:grep.el (concat jd:internal-prefix "grep/jd:grep.elc"))

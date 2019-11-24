@@ -23,8 +23,8 @@
              (save-excursion
                (end-of-defun)
                (point))))
-        (eval-defun nil)
-        (pulse-momentary-highlight-region jd:beg jd:end 'highlight)))))
+        (pulse-momentary-highlight-region jd:beg jd:end 'highlight)
+        (eval-defun nil)))))
 
 (defun jd:eval-last-sexp ()
   (interactive)
@@ -37,8 +37,22 @@
            (thing-at-point--beginning-of-sexp)
            (thing-at-point--end-of-sexp)
            (point))))
-    (eval-last-sexp nil)
-    (pulse-momentary-highlight-region jd:beg jd:end 'highlight)))
+    (pulse-momentary-highlight-region jd:beg jd:end 'highlight)
+    (eval-last-sexp nil)))
+
+(defun jd:eval-print-last-sexp ()
+  (interactive)
+  (let ((jd:beg
+         (save-excursion
+           (thing-at-point--beginning-of-sexp)
+           (point)))
+        (jd:end
+         (save-excursion
+           (thing-at-point--beginning-of-sexp)
+           (thing-at-point--end-of-sexp)
+           (point))))
+    (pulse-momentary-highlight-region jd:beg jd:end 'highlight)
+    (eval-print-last-sexp nil)))
 
 (defun jd:slurp ()
   (interactive)
@@ -64,6 +78,9 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (eldoc-mode 1)))
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (font-lock-mode t)))
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
