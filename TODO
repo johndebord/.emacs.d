@@ -1,9 +1,6 @@
-possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ..
-fix how ISM completes after I'm done spamming tab on a yasnippet
-[ ] Configure:     Seperate the .elc files from the .el files
-[ ] Configure:     Disable autoloading; instead load everything (meaning load every single elisp file at startup)
-[ ] Configure:     All compilation warnings and Emacs startup warnings
-[ ] Configure:     Theme (including modeline formatting stuff)
+Possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ..
+Fix how ISM completes after I'm done spamming tab on a yasnippet
+
 [ ] Configure:     GO OVER ALL CONFIGURATION FILES AGAIN AND LOOK AT/PLAY WITH ALL OF THEIR CORRESPONDING API's.
                    (in particuluar counsel looks like it has alot of good stuff)
                    - Customizable group variables; set them all accordingly in their respective files
@@ -18,7 +15,10 @@ fix how ISM completes after I'm done spamming tab on a yasnippet
                      switch/etc.)))
                      (PREFACE all modified standard functions that I have modified with comments/etc.)
 
-[ ] Functionality: Proper `gdb' disassembly and proper scrolling to the top when opening headers (thing registers buffer)
+[ ] Functionality: Seperate the .elc files from the .el files
+[ ] Functionality: Disable autoloading; instead load everything (meaning load every single elisp file at startup)
+[ ] Functionality: All compilation warnings and Emacs startup warnings
+[ ] Functionality: Theme (including modeline formatting stuff)
 [ ] Functionality: Proper integration of `tagproject' and its corresponding functionality
 [ ] Functionality: Arbitrarily insert print statements incrementally and delete all at once (with specific bg color; C/C++/elisp)
 [ ] Functionality: Functions for a better display of key bindings in describe bindings

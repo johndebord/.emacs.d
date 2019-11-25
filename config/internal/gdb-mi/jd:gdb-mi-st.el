@@ -24,19 +24,21 @@
    (jd:gdb-propertize-header "Breakpoints" gdb-display-breakpoints-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Locals"      gdb-display-locals-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Registers"   gdb-display-registers-buffer   mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-breakpoints-header
   (list
-   (jd:gdb-propertize-header "GDB"         gdb-display-gdb-buffer          mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Breakpoints" gdb-display-breakpoints-buffer  nil                 mode-line)          " "
-   (jd:gdb-propertize-header "Locals"      gdb-display-locals-buffer       mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Registers"   gdb-display-registers-buffer    mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer        mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer      mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer           mode-line-highlight mode-line-inactive)))
+   (jd:gdb-propertize-header "GDB"         gdb-display-gdb-buffer         mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Breakpoints" gdb-display-breakpoints-buffer nil                 mode-line)          " "
+   (jd:gdb-propertize-header "Locals"      gdb-display-locals-buffer      mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Registers"   gdb-display-registers-buffer   mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-locals-header
   (list
@@ -44,6 +46,7 @@
    (jd:gdb-propertize-header "Breakpoints" gdb-display-breakpoints-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Locals"      gdb-display-locals-buffer      nil                 mode-line)          " "
    (jd:gdb-propertize-header "Registers"   gdb-display-registers-buffer   mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
@@ -54,6 +57,18 @@
    (jd:gdb-propertize-header "Breakpoints" gdb-display-breakpoints-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Locals"      gdb-display-locals-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Registers"   gdb-display-registers-buffer   nil                 mode-line)          " "
+   (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
+
+(defconst jd:gdb-disassembly-header
+  (list
+   (jd:gdb-propertize-header "GDB"         gdb-display-gdb-buffer         mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Breakpoints" gdb-display-breakpoints-buffer mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Locals"      gdb-display-locals-buffer      mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Registers"   gdb-display-registers-buffer   mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer nil                 mode-line)          " "
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
@@ -64,6 +79,7 @@
    (jd:gdb-propertize-header "Breakpoints" gdb-display-breakpoints-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Locals"      gdb-display-locals-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Registers"   gdb-display-registers-buffer   mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       nil                 mode-line)          " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
@@ -74,18 +90,9 @@
    (jd:gdb-propertize-header "Breakpoints" gdb-display-breakpoints-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Locals"      gdb-display-locals-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Registers"   gdb-display-registers-buffer   mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     nil                 mode-line)          " "
-   (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
-
-(defconst jd:gdb-memory-header
-  (list
-   (jd:gdb-propertize-header "GDB"         gdb-display-gdb-buffer         mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Breakpoints" gdb-display-breakpoints-buffer mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Locals"      gdb-display-locals-buffer      mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Registers"   gdb-display-registers-buffer   mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
-   (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          mode-line-highlight mode-line-inactive)))
 
 (defconst jd:gdb-inferior-io-header
@@ -94,6 +101,7 @@
    (jd:gdb-propertize-header "Breakpoints" gdb-display-breakpoints-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Locals"      gdb-display-locals-buffer      mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Registers"   gdb-display-registers-buffer   mode-line-highlight mode-line-inactive) " "
+   (jd:gdb-propertize-header "Disassembly" gdb-display-disassembly-buffer mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Stack"       gdb-display-stack-buffer       mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          nil                 mode-line)))
@@ -171,6 +179,16 @@
   'gdb-invalidate-registers)
 
 ;; Redefinition.
+(define-derived-mode gdb-disassembly-mode gdb-parent-mode "Disassembly"
+  (setq header-line-format jd:gdb-disassembly-header)
+  (add-to-list 'overlay-arrow-variable-list 'gdb-disassembly-position)
+  (setq fringes-outside-margins t)
+  (set (make-local-variable 'gdb-disassembly-position) (make-marker))
+  (set (make-local-variable 'font-lock-defaults)
+       '(gdb-disassembly-font-lock-keywords))
+  'gdb-invalidate-disassembly)
+
+;; Redefinition.
 (define-derived-mode gdb-frames-mode gdb-parent-mode "Frames"
   (setq header-line-format jd:gdb-stack-header)
   (setq gdb-stack-position (make-marker))
@@ -200,6 +218,51 @@
   (with-current-buffer (gdb-get-buffer-create 'gdb-inferior-io)
     (comint-output-filter proc string)))
 
+;; Redefinition.
+(defun gdb-disassembly-handler-custom ()
+  (let* ((instructions (bindat-get-field (gdb-json-partial-output) 'asm_insns))
+         (address (bindat-get-field (gdb-current-buffer-frame) 'addr))
+         (table (make-gdb-table))
+         (marked-line nil))
+    (dolist (instr instructions)
+      (gdb-table-add-row table
+                         (list
+                          (bindat-get-field instr 'address)
+                          (let
+                              ((func-name (bindat-get-field instr 'func-name))
+                               (offset (bindat-get-field instr 'offset)))
+                            (if func-name
+                                (format "<%s+%s>:" func-name offset)
+                              ""))
+                          (bindat-get-field instr 'inst)))
+      (when (string-equal (bindat-get-field instr 'address)
+                          address)
+        (progn
+          (setq marked-line (length (gdb-table-rows table)))
+          (setq fringe-indicator-alist
+                (if (string-equal gdb-frame-number "0")
+                    nil
+                  '((overlay-arrow . hollow-right-triangle)))))))
+    (insert (gdb-table-string table " "))
+    (gdb-disassembly-place-breakpoints)
+
+    (if (get-buffer-window (gdb-disassembly-buffer-name))
+        (progn
+          (when marked-line
+            (let ((window (get-buffer-window (gdb-disassembly-buffer-name) 0)))
+              (set-window-point window (gdb-mark-line marked-line
+                                                      gdb-disassembly-position)))))
+      (if (get-buffer (gdb-disassembly-buffer-name))
+          (progn
+            (when marked-line
+              (with-current-buffer (gdb-disassembly-buffer-name)
+                (goto-char (gdb-mark-line marked-line
+                                          gdb-disassembly-position)))))))
+    (setq mode-name
+          (gdb-current-context-mode-name
+           (concat "Disassembly: "
+                   (bindat-get-field (gdb-current-buffer-frame) 'func))))))
+
 (defun jd:gdb-startup ()
   (sleep-for 1)
   (delete-other-windows)
@@ -222,12 +285,43 @@
   (let ((window (display-buffer buf '(display-buffer-same-window (inhibit-duplicate-buffer . t)))))
     window))
 
+(defun jd:gdb-display-buffer (buf)
+  (let ((window (display-buffer buf '(display-buffer-same-window (inhibit-duplicate-buffer . t)))))
+    (unless (equal (buffer-name (window-buffer)) (gdb-disassembly-buffer-name))
+      (with-current-buffer (window-buffer window)
+        (goto-char (point-min))))
+    window))
+
 (defun jd:gdb-display-gdb-buffer ()
   (interactive)
   (let ((window (display-buffer gud-comint-buffer '(display-buffer-same-window (inhibit-duplicate-buffer . t)))))
     window))
 
 (add-hook 'gdb-mode-hook 'jd:gdb-startup)
+
+(add-hook 'gud-mode-hook
+          (lambda () (font-lock-mode t)))
+
+(add-hook 'gdb-breakpoints-mode-hook
+          (lambda () (font-lock-mode t)))
+
+(add-hook 'gdb-locals-mode-hook
+          (lambda () (font-lock-mode t)))
+
+(add-hook 'gdb-registers-mode-hook
+          (lambda () (font-lock-mode t)))
+
+(add-hook 'gdb-frames-mode-hook
+          (lambda () (font-lock-mode t)))
+
+(add-hook 'gdb-threads-mode-hook
+          (lambda () (font-lock-mode t)))
+
+(add-hook 'gdb-inferior-io-mode-hook
+          (lambda () (font-lock-mode t)))
+
+(add-hook 'gdb-disassembly-mode-hook
+          (lambda () (font-lock-mode t)))
 
 (advice-add 'gdb-display-buffer :override 'jd:gdb-display-buffer)
 (advice-add 'gdb-display-gdb-buffer :override 'jd:gdb-display-gdb-buffer)
