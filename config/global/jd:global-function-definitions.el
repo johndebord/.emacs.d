@@ -1,3 +1,132 @@
+(defvar jd:cpp-print-active nil)
+
+(defvar jd:cpp-print-value nil)
+
+(defvar jd:cpp-print-string nil)
+
+(defvar jd:cpp-print-count 0)
+
+(defvar jd:cpp-print-strlen 0)
+
+(defun jd:describe-bindings ()
+  (interactive)
+  (cl-flet*
+      ((jd:keymap-symbol
+        (jd:keymap)
+        (catch 'return
+          (mapatoms
+           (lambda (jd:symbol)
+             (and (boundp jd:symbol)
+                  (eq (symbol-value jd:symbol) jd:keymap)
+                  (not (eq jd:symbol 'jd:keymap))
+                  (throw 'return jd:symbol))))))
+       
+       (jd:construct-minor-modes-keymaps-list
+        (jd:keymaps)
+        (let ((jd:list nil))
+          (dolist (jd:keymap (cdr (current-minor-mode-maps)))
+            (add-to-list 'jd:list (jd:keymap-symbol jd:keymap)))
+          (setq jd:list (sort jd:list (lambda (a b) (string< a b)))))))
+    
+    (let ((jd:major-mode  (jd:keymap-symbol (current-local-map)))
+          (jd:minor-modes (jd:construct-minor-modes-keymaps-list (current-minor-mode-maps)))
+          (jd:global-mode (jd:keymap-symbol (current-global-map))))
+
+      (with-output-to-temp-buffer "*Help*"
+        (let ((jd:name (symbol-name jd:major-mode)))
+          (princ jd:name) (princ " (major-mode)") (terpri)
+          (princ (make-string (length (concat jd:name " (major-mode)")) ?-)) (terpri)
+          (with-current-buffer "*Help*"
+            (insert (substitute-command-keys (concat "\\{" jd:name "}"))))
+          
+          (dolist (jd:minor-mode-keymap jd:minor-modes)
+            (setq jd:name (symbol-name jd:minor-mode-keymap))
+            (princ jd:name) (princ " (minor-mode)") (terpri)
+            (princ (make-string (length (concat jd:name " (minor-mode)")) ?-)) (terpri)
+            (with-current-buffer "*Help*"
+              (insert (substitute-command-keys (concat "\\{" jd:name "}")))))
+          
+          (setq jd:name (symbol-name jd:global-mode))
+          (princ jd:name) (princ " (global-mode)") (terpri)
+          (princ (make-string (length (concat jd:name " (global-mode)")) ?-)) (terpri)
+          (with-current-buffer "*Help*"
+            (insert (substitute-command-keys (concat "\\{" jd:name "}")))))))))
+
+(defun jd:describe-keymaps-in-file ()
+  (interactive)
+  (let ((jd:file-name (concat (file-name-sans-extension (buffer-file-name)) "c"))
+        (jd:keymap-symbols nil))
+    
+    (mapatoms
+     (lambda (jd:symbol)
+       (when (and (boundp jd:symbol)
+                  (keymapp (symbol-value jd:symbol))
+                  (string= (symbol-file jd:symbol) jd:file-name))
+         (push jd:symbol jd:keymap-symbols))))
+
+    (with-output-to-temp-buffer "*Help*"
+      (princ (format "File: %s" jd:file-name)) (terpri) (terpri)
+      (let ((jd:name nil))
+        (dolist (jd:keymap jd:keymap-symbols)
+          (setq jd:name (symbol-name jd:keymap))
+          (princ jd:name) (terpri)
+          (princ (make-string (length jd:name) ?-)) (terpri)
+          (with-current-buffer "*Help*"
+            (insert (substitute-command-keys (concat "\\{" jd:name "}")))))))))
+
+(defun jd:remove-text-properties ()
+  (interactive)
+  (remove-text-properties (mark) (point) '(face nil)))
+
+;; bind to C-c C-c
+(defun jd:cpp-print ()
+  (interactive)
+  (if (null jd:cpp-print-active)
+      (progn
+        (setq jd:cpp-print-value (read-from-minibuffer "Enter an optional value to print (if any): "))
+        (if (not (= (length jd:cpp-print-value) 0))
+            (setq jd:cpp-print-string (concat " /*jd:cpp-print*/ std::cout << \"---"
+                                              (number-to-string jd:cpp-print-count)
+                                              "---\" << "
+                                              jd:cpp-print-value
+                                              " << std::endl;"))
+          (setq jd:cpp-print-string (concat " /*jd:cpp-print*/ std::cout << \"---"
+                                            (number-to-string jd:cpp-print-count)
+                                            "---\" << std::endl;"))))
+    (progn
+      (if (= (length jd:cpp-print-value) 0)
+          (setq jd:cpp-print-string (concat " /*jd:cpp-print*/ std::cout << \"---"
+                                            (number-to-string jd:cpp-print-count)
+                                            "---\" << std::endl;"))
+        (setq jd:cpp-print-string (concat " /*jd:cpp-print*/ std::cout << \"---"
+                                          (number-to-string jd:cpp-print-count)
+                                          "---\" << "
+                                          jd:cpp-print-value
+                                          " << std::endl;")))))
+  (setq jd:cpp-print-active t)
+  (point-to-register jd:cpp-print-count)
+  (insert jd:cpp-print-string)
+  (indent-for-tab-command)
+  (setq jd:cpp-print-count (1+ jd:cpp-print-count)))
+
+;; bind to C-c C-d
+(defun jd:delete-cpp-prints ()
+  (interactive)
+  (save-excursion
+    (let ((i 0))
+      (while (< i jd:cpp-print-count)
+        (progn
+          (jump-to-register i)
+          (delete-region (point)
+                         (save-excursion
+                           (end-of-line)
+                           (point)))
+          (setq i (1+ i))))))
+  (setq jd:cpp-print-active nil)
+  (setq jd:cpp-print-value nil)
+  (setq jd:cpp-print-string nil)
+  (setq jd:cpp-print-count 0))
+
 (defun jd:construct-mode-folder ()
   "Automates the construction of a mode directory for customization.
 [ ] TODO: Add feature to insert templates for rebinding all keymaps and
@@ -134,54 +263,6 @@ pst = package settings"
    (progn
      (backward-word)
      (point))))
-
-(defun jd:describe-elpa-file-keymaps ()
-  "Describes the keymaps in the given elpa file.
-[ ] TODO:  Combine the two functions.
-[ ] TODO:  Produce more readable/robust output.
-[ ] TODO:  Revisit when a deeper understanding of Emacs Lisp is gained.
-[ ] TODO:  Auto-completion for both stock and/or elpa files.
-[ ] FIXME: Swapping buffers is buggy after buffer generation."
-  (interactive)
-  (let ((jd:file-name nil))
-    (setq jd:file-name (concat jd:elpa-prefix (read-from-minibuffer "Please enter the file-name: ")))
-    (let ((jd:keymap-symbols nil))
-      (mapatoms
-       (lambda (jd:symbol)
-         (when (and (boundp jd:symbol)
-                    (keymapp (symbol-value jd:symbol))
-                    (string= (symbol-file jd:symbol) jd:file-name))
-           (push jd:symbol jd:keymap-symbols))))
-      (with-output-to-temp-buffer "*Keymap*"
-        (princ (format "File: %s\n\n" jd:file-name))
-        (seq-do (lambda (jd:keymap)
-                  (princ (format "%s\n\n" jd:keymap))
-                  (princ (substitute-command-keys (format "\\{%s}" jd:keymap))))
-                jd:keymap-symbols)))))
-
-(defun jd:describe-stock-file-keymaps ()
-  "Describes the keymaps in the given elpa file.
-[ ] TODO:  Combine the two functions.
-[ ] TODO:  Produce more readable/robust output.
-[ ] TODO:  Revisit when a deeper understanding of Emacs Lisp is gained.
-[ ] TODO:  Auto-completion for both stock and/or elpa files.
-[ ] FIXME: Swapping buffers is buggy after buffer generation."
-  (interactive)
-  (let ((jd:file-name nil))
-    (setq jd:file-name (concat jd:lisp-prefix (read-from-minibuffer "Please enter the file-name: ")))
-    (let ((jd:keymap-symbols nil))
-      (mapatoms
-       (lambda (jd:symbol)
-         (when (and (boundp jd:symbol)
-                    (keymapp (symbol-value jd:symbol))
-                    (string= (symbol-file jd:symbol) jd:file-name))
-           (push jd:symbol jd:keymap-symbols))))
-      (with-output-to-temp-buffer "*Keymap*"
-        (princ (format "File: %s\n\n" jd:file-name))
-        (seq-do (lambda (jd:keymap)
-                  (princ (format "%s\n\n" jd:keymap))
-                  (princ (substitute-command-keys (format "\\{%s}" jd:keymap))))
-                jd:keymap-symbols)))))
 
 (defun jd:incredibly-smart-backspace ()
   (interactive)
@@ -329,7 +410,6 @@ function; if it does, let the user know and don't execute the function.
 
 (defun jd:remove-unneeded-files ()
   "[ ] TODO: Conglomerate."
-  (interactive)
   (shell-command (concat "cd " jd:path-prefix "&& find . -name \"*.elc\" -type f -delete"))
   (shell-command (concat "cd " jd:path-prefix "&& find . -name \"*~\" -type f -delete"))
   (shell-command (concat "cd " jd:path-prefix "&& find . -name \"*#\" -type f -delete")))

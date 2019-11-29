@@ -1,3 +1,7 @@
+(add-hook 'help-mode-hook
+          (lambda ()
+            (font-lock-mode t)))
+
 (defun jd:help-mode-scroll-down ()
   (interactive)
   (beginning-of-line)

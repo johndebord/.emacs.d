@@ -800,7 +800,7 @@
 ;; (define-key global-map (kbd "<jd:H-S-tab>")   'undefined)
 
 (define-key global-map (kbd "<C-h> a") 'counsel-apropos)
-(define-key global-map (kbd "<C-h> b") 'describe-bindings)
+(define-key global-map (kbd "<C-h> b") 'jd:describe-bindings)
 (define-key global-map (kbd "<C-h> c") 'apropos-command)
 (define-key global-map (kbd "<C-h> d") 'apropos-documentation)
 ;; (define-key global-map (kbd "<C-h> e") 'undefined)

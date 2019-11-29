@@ -1,4 +1,4 @@
-Possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ..
+Possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ..uu
 Fix how ISM completes after I'm done spamming tab on a yasnippet
 
 [ ] Configure:     GO OVER ALL CONFIGURATION FILES AGAIN AND LOOK AT/PLAY WITH ALL OF THEIR CORRESPONDING API's.
@@ -12,17 +12,14 @@ Fix how ISM completes after I'm done spamming tab on a yasnippet
                      compilation scheme/fonts for maximum portability (include other dotfiles) (try a more stable version
                      for the super long custom box bug that I find very annoying) (I can't insert a '*' in eshell
                      (try a more stable emacs version)) (normal and esoteric C/C++ formatting variables set (templates/lambdas/
-                     switch/etc.)))
+                     switch/etc.))) (MAKE sure to separate out the references to third party/outside stuff into their respective
+                     settings files, or else if I will need to ack and search around for it aimlessly until I find all instances)
                      (PREFACE all modified standard functions that I have modified with comments/etc.)
 
 [ ] Functionality: Seperate the .elc files from the .el files
 [ ] Functionality: Disable autoloading; instead load everything (meaning load every single elisp file at startup)
 [ ] Functionality: All compilation warnings and Emacs startup warnings
 [ ] Functionality: Theme (including modeline formatting stuff)
-[ ] Functionality: Proper integration of `tagproject' and its corresponding functionality
-[ ] Functionality: Arbitrarily insert print statements incrementally and delete all at once (with specific bg color; C/C++/elisp)
-[ ] Functionality: Functions for a better display of key bindings in describe bindings
-                   (I really want this in the format Major Mode, then Minor Modes, then Globals)
 
 [ ] Standardize:   Proper hooks for initiating minor modes in major modes (look at how I use `company' for an example)
 [ ] Standardize:   Convention for ordering defvar/defun/etc. in files
