@@ -9,7 +9,7 @@
 (define-key company-active-map (kbd "<M-k>") 'company-select-next)
 (define-key company-active-map (kbd "<jd:ret>") 'company-complete-selection)
 
-(provide 'jd:company-kb.el)
+(provide 'jd:company-kb)
 
 ;; company-filter-map
 ;; company-mode-map

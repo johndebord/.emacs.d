@@ -1,3 +1,3 @@
 (column-number-mode 1)
 
-(provide 'jd:simple-st.el)
+(provide 'jd:simple-st)

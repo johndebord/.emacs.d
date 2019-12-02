@@ -1,4 +1,4 @@
-(provide 'jd:cus-edit-kb.el)
+(provide 'jd:cus-edit-kb)
 
 ;; custom-mode-link-map
 ;; custom-field-keymap

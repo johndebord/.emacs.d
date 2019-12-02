@@ -7,6 +7,6 @@
 (define-key grep-mode-map (kbd "<jd:tab>") 'compilation-next-error)
 (define-key grep-mode-map (kbd "<jd:S-tab>") 'compilation-previous-error)
 
-(provide 'jd:grep-kb.el)
+(provide 'jd:grep-kb)
 
 ;; grep-mode-tool-bar-map

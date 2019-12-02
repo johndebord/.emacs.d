@@ -1,6 +1,5 @@
-(require 'buff-menu (concat jd:lisp-prefix "buff-menu.elc"))
+(jd:load-feature buff-menu jd:site-lisp-prefix)
+(jd:load-feature jd:buff-menu-kb jd:internal-prefix "buff-menu/")
+(jd:load-feature jd:buff-menu-st jd:internal-prefix "buff-menu/")
 
-(require 'jd:buff-menu-kb.el (concat jd:internal-prefix "buff-menu/jd:buff-menu-kb.elc"))
-(require 'jd:buff-menu-st.el (concat jd:internal-prefix "buff-menu/jd:buff-menu-st.elc"))
-
-(provide 'jd:buff-menu.el)
+(provide 'jd:buff-menu)

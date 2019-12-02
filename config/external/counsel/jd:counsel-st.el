@@ -25,4 +25,4 @@
 
 (advice-add 'counsel-M-x-transformer :override #'jd:counsel-M-x-transformer)
 
-(provide 'jd:counsel-st.el)
+(provide 'jd:counsel-st)

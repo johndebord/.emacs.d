@@ -1,6 +1,5 @@
-(require 'bytecomp (concat jd:lisp-prefix "emacs-lisp/bytecomp.elc"))
+(jd:load-feature bytecomp jd:site-lisp-prefix "emacs-lisp/")
+(jd:load-feature jd:bytecomp-kb jd:internal-prefix "bytecomp/")
+(jd:load-feature jd:bytecomp-st jd:internal-prefix "bytecomp/")
 
-(require 'jd:bytecomp-kb.el (concat jd:internal-prefix "bytecomp/jd:bytecomp-kb.elc"))
-(require 'jd:bytecomp-st.el (concat jd:internal-prefix "bytecomp/jd:bytecomp-st.elc"))
-
-(provide 'jd:bytecomp.el)
+(provide 'jd:bytecomp)

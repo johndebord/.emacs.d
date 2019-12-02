@@ -1,3 +1,3 @@
-(provide 'jd:em-pred-kb.el)
+(provide 'jd:em-pred-kb)
 
 ;; eshell-pred-mode-map

@@ -1,1 +1,1 @@
-(provide 'jd:mwheel-kb.el)
+(provide 'jd:mwheel-kb)

@@ -1,6 +1,5 @@
-(require 'ivy (concat jd:elpa-prefix "ivy-20190825.1023/ivy.elc"))
+(jd:load-feature ivy jd:elpa-prefix "ivy-20190825.1023/")
+(jd:load-feature jd:ivy-kb jd:external-prefix "ivy/")
+(jd:load-feature jd:ivy-st jd:external-prefix "ivy/")
 
-(require 'jd:ivy-kb.el (concat jd:external-prefix "ivy/jd:ivy-kb.elc"))
-(require 'jd:ivy-st.el (concat jd:external-prefix "ivy/jd:ivy-st.elc"))
-
-(provide 'jd:ivy.el)
+(provide 'jd:ivy)

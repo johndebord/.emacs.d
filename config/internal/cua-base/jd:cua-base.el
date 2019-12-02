@@ -1,6 +1,5 @@
-(require 'cua-base (concat jd:lisp-prefix "emulation/cua-base.elc"))
+(jd:load-feature cua-base jd:site-lisp-prefix "emulation/")
+(jd:load-feature jd:cua-base-kb jd:internal-prefix "cua-base/")
+(jd:load-feature jd:cua-base-st jd:internal-prefix "cua-base/")
 
-(require 'jd:cua-base-kb.el (concat jd:internal-prefix "cua-base/jd:cua-base-kb.elc"))
-(require 'jd:cua-base-st.el (concat jd:internal-prefix "cua-base/jd:cua-base-st.elc"))
-
-(provide 'jd:cua-base.el)
+(provide 'jd:cua-base)

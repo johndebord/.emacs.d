@@ -1,3 +1,3 @@
-(provide 'jd:bytecomp-kb.el)
+(provide 'jd:bytecomp-kb)
 
 ;; emacs-lisp-compilation-mode-map

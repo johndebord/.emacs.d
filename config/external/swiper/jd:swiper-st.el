@@ -22,4 +22,4 @@
 
 (advice-add 'swiper--line :override 'jd:swiper--line)
 
-(provide 'jd:swiper-st.el)
+(provide 'jd:swiper-st)

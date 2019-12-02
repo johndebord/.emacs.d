@@ -1,3 +1,3 @@
-(provide 'jd:comint-kb.el)
+(provide 'jd:comint-kb)
 
 ;; comint-mode-map

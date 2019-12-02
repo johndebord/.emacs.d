@@ -1,1 +1,1 @@
-(provide 'jd:scroll-bar-kb.el)
+(provide 'jd:scroll-bar-kb)

@@ -1,1 +1,1 @@
-(provide 'jd:eldoc-kb.el)
+(provide 'jd:eldoc-kb)

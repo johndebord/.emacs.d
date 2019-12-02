@@ -1,1 +1,1 @@
-(provide 'jd:modern-cpp-font-lock-st.el)
+(provide 'jd:modern-cpp-font-lock-st)

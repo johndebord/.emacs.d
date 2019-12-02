@@ -19,7 +19,7 @@
 (define-key ivy-minibuffer-map (kbd "<up>") 'ivy-previous-line)
 (define-key ivy-minibuffer-map (kbd "<mouse-1>") 'ivy-mouse-done)
 
-(provide 'jd:ivy-kb.el)
+(provide 'jd:ivy-kb)
 
 ;; ivy-mode-map
 ;; ivy-switch-buffer-map

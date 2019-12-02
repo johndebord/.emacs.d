@@ -1,6 +1,5 @@
-(require 'diff-mode (concat jd:lisp-prefix "vc/diff-mode.elc"))
+(jd:load-feature diff-mode jd:site-lisp-prefix "vc/")
+(jd:load-feature jd:diff-mode-kb jd:internal-prefix "diff-mode/")
+(jd:load-feature jd:diff-mode-st jd:internal-prefix "diff-mode/")
 
-(require 'jd:diff-mode-kb.el (concat jd:internal-prefix "diff-mode/jd:diff-mode-kb.elc"))
-(require 'jd:diff-mode-st.el (concat jd:internal-prefix "diff-mode/jd:diff-mode-st.elc"))
-
-(provide 'jd:diff-mode.el)
+(provide 'jd:diff-mode)

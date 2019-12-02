@@ -11,7 +11,7 @@
 (define-key c++-mode-map (kbd "<C-M-o>")  'jd:next-error)
 (define-key c++-mode-map (kbd "<C-M-u>")  'jd:previous-error)
 
-(provide 'jd:cc-mode-kb.el)
+(provide 'jd:cc-mode-kb)
 
 ;; c-awk-menu
 ;; c-mode-base-map

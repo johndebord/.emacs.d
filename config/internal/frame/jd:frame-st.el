@@ -2,4 +2,4 @@
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(provide 'jd:frame-st.el)
+(provide 'jd:frame-st)

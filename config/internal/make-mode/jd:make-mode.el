@@ -1,6 +1,5 @@
-(require 'make-mode (concat jd:lisp-prefix "progmodes/make-mode.elc"))
+(jd:load-feature make-mode jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:make-mode-kb jd:internal-prefix "make-mode/")
+(jd:load-feature jd:make-mode-st jd:internal-prefix "make-mode/")
 
-(require 'jd:make-mode-kb.el (concat jd:internal-prefix "make-mode/jd:make-mode-kb.elc"))
-(require 'jd:make-mode-st.el (concat jd:internal-prefix "make-mode/jd:make-mode-st.elc"))
-
-(provide 'jd:make-mode.el)
+(provide 'jd:make-mode)

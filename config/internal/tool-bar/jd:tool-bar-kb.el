@@ -1,3 +1,3 @@
-(provide 'jd:tool-bar-kb.el)
+(provide 'jd:tool-bar-kb)
 
 ;; tool-bar-map

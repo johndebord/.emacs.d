@@ -1,8 +1,38 @@
 Possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ..uu
 Fix how ISM completes after I'm done spamming tab on a yasnippet
 
+Script logic:
+(Test on Windows VM)
+====================
+Must have auto tools and stuff to build emacs; so get those
+checkout emacs-26
+Run auto-gen in root emacs dir
+mkdir emacs-26
+cd emacs-26
+../configure
+make
+
+Ensure that it is a certain version of linux mint.
+Install git.
+Possibly install gdb.
+Possibly install clang.
+Possibly install llvm.
+Possibly install chrome.
+Possibly install ack/dependencies.
+Possibly install fd/dependencies.
+Possibly install ...
+Clone my repository which contains:
+  emacs fork
+  font
+  .emacs.d
+  .bashrc
+  .config stuff?
+Open up emacs.
+Byte compile all files.
+
 [ ] Configure:     GO OVER ALL CONFIGURATION FILES AGAIN AND LOOK AT/PLAY WITH ALL OF THEIR CORRESPONDING API's.
                    (in particuluar counsel looks like it has alot of good stuff)
+                   Must have a setup script to be good to go on any virtual box
                    - Customizable group variables; set them all accordingly in their respective files
                    - Look for similar functions that I can replace with these said better ones that I find in the APIs
                    - Optimize/refactor/properly replace the functions I've defined (ist/isd/etc.)
@@ -15,9 +45,7 @@ Fix how ISM completes after I'm done spamming tab on a yasnippet
                      switch/etc.))) (MAKE sure to separate out the references to third party/outside stuff into their respective
                      settings files, or else if I will need to ack and search around for it aimlessly until I find all instances)
                      (PREFACE all modified standard functions that I have modified with comments/etc.)
-
-[ ] Functionality: Seperate the .elc files from the .el files
-[ ] Functionality: Disable autoloading; instead load everything (meaning load every single elisp file at startup)
+                     
 [ ] Functionality: All compilation warnings and Emacs startup warnings
 [ ] Functionality: Theme (including modeline formatting stuff)
 
@@ -27,4 +55,6 @@ Fix how ISM completes after I'm done spamming tab on a yasnippet
 [ ] Standardize:   Decide to fset or defadvice the chosen functions
 [ ] Standardize:   progn all the functions
 [ ] Standardize:   Decide what to macrotize
+[ ] Standardize:   Predicates should all end in `-p`
+[ ] Standardize:   Comments should use the `` Markdown notation
 [ ] Standardize:   Figure minor mode initialization with either t or 1

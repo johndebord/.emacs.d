@@ -1,4 +1,4 @@
-(provide 'jd:swiper-kb.el)
+(provide 'jd:swiper-kb)
 
 ;; swiper-map
 ;; swiper-isearch-map

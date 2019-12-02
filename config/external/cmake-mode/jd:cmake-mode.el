@@ -1,6 +1,5 @@
-(require 'cmake-mode (concat jd:elpa-prefix "cmake-mode-20190710.1319/cmake-mode.elc"))
+(jd:load-feature cmake-mode jd:elpa-prefix "cmake-mode-20190710.1319/")
+(jd:load-feature jd:cmake-mode-kb jd:external-prefix "cmake-mode/")
+(jd:load-feature jd:cmake-mode-st jd:external-prefix "cmake-mode/")
 
-(require 'jd:cmake-mode-kb.el (concat jd:external-prefix "cmake-mode/jd:cmake-mode-kb.elc"))
-(require 'jd:cmake-mode-st.el (concat jd:external-prefix "cmake-mode/jd:cmake-mode-st.elc"))
-
-(provide 'jd:cmake-mode.el)
+(provide 'jd:cmake-mode)

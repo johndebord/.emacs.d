@@ -1,4 +1,4 @@
-(provide 'jd:isearch-kb.el)
+(provide 'jd:isearch-kb)
 
 ;; isearch-menu-bar-map
 ;; isearch-tool-bar-map

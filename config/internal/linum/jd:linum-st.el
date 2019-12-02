@@ -1,3 +1,3 @@
 (global-linum-mode 1)
 
-(provide 'jd:linum-st.el)
+(provide 'jd:linum-st)

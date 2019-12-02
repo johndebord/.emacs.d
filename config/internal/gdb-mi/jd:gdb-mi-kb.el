@@ -3,7 +3,7 @@
 (define-key gdb-inferior-io-mode-map (kbd "<C-c> <C-d>") 'gdb-io-eof)
 (define-key gdb-inferior-io-mode-map (kbd "<jd:ret>") 'comint-send-input)
 
-(provide 'jd:gdb-mi-kb.el)
+(provide 'jd:gdb-mi-kb)
 
 ;; gdb-breakpoints-mode-map
 ;; gdb-frames-mode-map

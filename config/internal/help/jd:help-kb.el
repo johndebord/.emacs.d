@@ -1,3 +1,3 @@
-(provide 'jd:help-kb.el)
+(provide 'jd:help-kb)
 
 ;; help-map

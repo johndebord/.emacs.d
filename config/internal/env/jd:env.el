@@ -1,6 +1,5 @@
-(require 'env (concat jd:lisp-prefix "env.elc"))
+(jd:load-feature env jd:site-lisp-prefix)
+(jd:load-feature jd:env-kb jd:internal-prefix "env/")
+(jd:load-feature jd:env-st jd:internal-prefix "env/")
 
-(require 'jd:env-kb.el (concat jd:internal-prefix "env/jd:env-kb.elc"))
-(require 'jd:env-st.el (concat jd:internal-prefix "env/jd:env-st.elc"))
-
-(provide 'jd:env.el)
+(provide 'jd:env)

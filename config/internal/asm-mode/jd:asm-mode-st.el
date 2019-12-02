@@ -1,1 +1,1 @@
-(provide 'jd:asm-mode-st.el)
+(provide 'jd:asm-mode-st)

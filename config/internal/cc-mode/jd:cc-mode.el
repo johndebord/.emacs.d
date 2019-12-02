@@ -1,6 +1,5 @@
-(require 'cc-mode (concat jd:lisp-prefix "progmodes/cc-mode.elc"))
+(jd:load-feature cc-mode jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:cc-mode-kb jd:internal-prefix "cc-mode/")
+(jd:load-feature jd:cc-mode-st jd:internal-prefix "cc-mode/")
 
-(require 'jd:cc-mode-kb.el (concat jd:internal-prefix "cc-mode/jd:cc-mode-kb.elc"))
-(require 'jd:cc-mode-st.el (concat jd:internal-prefix "cc-mode/jd:cc-mode-st.elc"))
-
-(provide 'jd:cc-mode.el)
+(provide 'jd:cc-mode)

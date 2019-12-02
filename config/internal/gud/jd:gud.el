@@ -1,6 +1,5 @@
-(require 'gud (concat jd:lisp-prefix "progmodes/gud.elc"))
+(jd:load-feature gud jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:gud-kb jd:internal-prefix "gud/")
+(jd:load-feature jd:gud-st jd:internal-prefix "gud/")
 
-(require 'jd:gud-kb.el (concat jd:internal-prefix "gud/jd:gud-kb.elc"))
-(require 'jd:gud-st.el (concat jd:internal-prefix "gud/jd:gud-st.elc"))
-
-(provide 'jd:gud.el)
+(provide 'jd:gud)

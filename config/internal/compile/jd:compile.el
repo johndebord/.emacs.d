@@ -1,6 +1,5 @@
-(require 'compile (concat jd:lisp-prefix "progmodes/compile.elc"))
+(jd:load-feature compile jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:compile-kb jd:internal-prefix "compile/")
+(jd:load-feature jd:compile-st jd:internal-prefix "compile/")
 
-(require 'jd:compile-kb.el (concat jd:internal-prefix "compile/jd:compile-kb.elc"))
-(require 'jd:compile-st.el (concat jd:internal-prefix "compile/jd:compile-st.elc"))
-
-(provide 'jd:compile.el)
+(provide 'jd:compile)

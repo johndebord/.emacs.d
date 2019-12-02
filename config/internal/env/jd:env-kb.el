@@ -1,1 +1,1 @@
-(provide 'jd:env-kb.el)
+(provide 'jd:env-kb)

@@ -1,4 +1,4 @@
-(provide 'jd:etags-kb.el)
+(provide 'jd:etags-kb)
 
 ;; select-tags-table-mode-map
 ;; tags-table-mode-map

@@ -1,1 +1,1 @@
-(provide 'jd:autorevert-kb.el)
+(provide 'jd:autorevert-kb)

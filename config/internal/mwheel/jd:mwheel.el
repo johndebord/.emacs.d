@@ -1,6 +1,5 @@
-(require 'mwheel (concat jd:lisp-prefix "mwheel.elc"))
+(jd:load-feature mwheel jd:site-lisp-prefix)
+(jd:load-feature jd:mwheel-kb jd:internal-prefix "mwheel/")
+(jd:load-feature jd:mwheel-st jd:internal-prefix "mwheel/")
 
-(require 'jd:mwheel-kb.el (concat jd:internal-prefix "mwheel/jd:mwheel-kb.elc"))
-(require 'jd:mwheel-st.el (concat jd:internal-prefix "mwheel/jd:mwheel-st.elc"))
-
-(provide 'jd:mwheel.el)
+(provide 'jd:mwheel)

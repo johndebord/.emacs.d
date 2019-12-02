@@ -1,1 +1,1 @@
-(provide 'jd:debug-st.el)
+(provide 'jd:debug-st)

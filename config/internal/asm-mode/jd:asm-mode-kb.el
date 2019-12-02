@@ -1,3 +1,3 @@
-(provide 'jd:asm-mode-kb.el)
+(provide 'jd:asm-mode-kb)
 
 ;; asm-mode-map

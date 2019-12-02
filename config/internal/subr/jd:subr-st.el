@@ -1,1 +1,1 @@
-(provide 'jd:subr-st.el)
+(provide 'jd:subr-st)

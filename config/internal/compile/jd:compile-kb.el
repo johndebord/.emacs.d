@@ -4,7 +4,7 @@
 (define-key compilation-mode-map (kbd "<C-c> <C-c>") 'kill-compilation)
 (define-key compilation-mode-map (kbd "<jd:ret>") 'compile-goto-error)
 
-(provide 'jd:compile-kb.el)
+(provide 'jd:compile-kb)
 
 ;; compilation-mode-tool-bar-map
 ;; compilation-minor-mode-map

@@ -1,6 +1,5 @@
-(require 'em-cmpl (concat jd:lisp-prefix "eshell/em-cmpl.elc"))
+(jd:load-feature em-cmpl jd:site-lisp-prefix "eshell/")
+(jd:load-feature jd:em-cmpl-kb jd:internal-prefix "em-cmpl/")
+(jd:load-feature jd:em-cmpl-st jd:internal-prefix "em-cmpl/")
 
-(require 'jd:em-cmpl-kb.el (concat jd:internal-prefix "em-cmpl/jd:em-cmpl-kb.elc"))
-(require 'jd:em-cmpl-st.el (concat jd:internal-prefix "em-cmpl/jd:em-cmpl-st.elc"))
-
-(provide 'jd:em-cmpl.el)
+(provide 'jd:em-cmpl)

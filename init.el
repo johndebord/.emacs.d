@@ -1,89 +1,94 @@
 ;;; Author: John DeBord
 
-;;; This is how I should do it
-;; (add-hook 'texinfo-mode-hook
-;; 	  (lambda ()
-;; 	    (define-key texinfo-mode-map "\C-cp"
-;; 	      'backward-paragraph)
-;; 	    (define-key texinfo-mode-map "\C-cn"
-;; 	      'forward-paragraph)))
-
-;; TODO I should make a program that counts the number of time I press
-;; certain bindings to determine which ones are of the most importance
-
-;; TODO: There should be a smart tab function that does this
-;; functionality, plus smart auto completion when using auto complete
-;; <C-x> <jd:tab> (translated from C-x <tab>) runs the command
-;; completion-at-point (found in global-map), which is an interactive
-;; compiled Lisp function in ‘minibuffer.el’.
-;; AND
-;; <C-x> <jd:C-tab> (translated from C-x <C-tab>) runs the command
-;; dabbrev-expand (found in global-map), which is an interactive
-;; autoloaded compiled Lisp function in ‘dabbrev.el’.
-;;
-;; This is so that I can use <C-x> <jd:tab> for indenting region
+(defconst jd:wsl-environment-p
+  (if (string-match-p "Windows" (getenv "PATH"))
+      t
+    nil))
 
 (defconst jd:path-prefix
-  (cond
-   ((string-equal system-type "darwin")
-    (progn
-      (setq-default jd:path-prefix "/Users/john.debord/.emacs.d/")
-      (setq-default default-directory jd:path-prefix)))
-   ((string-equal system-type "gnu/linux")
-    (if (string-match-p "Windows" (getenv "PATH"))
-        (progn
-          (setq-default jd:path-prefix "/home/johndebord/.emacs.d/")
-          (setq-default default-directory jd:path-prefix))
-      (progn
-        (setq-default jd:path-prefix "/home/i/.emacs.d/")
-        (setq-default default-directory jd:path-prefix)))))
-  "Determine which operating system Emacs is currently being used in.
-If `darwin' the path prefix shall be 'Users/johndebord/.emacs.d/'.
-If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
+  (if jd:wsl-environment-p
+      "/home/johndebord/.emacs.d/" ;; TODO: Should I move my init logic into my emacs fork directory?
+    "/home/i/.emacs.d/"))
 
-(defconst jd:lisp-prefix
-  (cond
-   ((string-equal system-type "darwin")
-    (progn
-      (setq-default jd:lisp-prefix "/Users/john.debord/emacs/lisp/")))
-   ((string-equal system-type "gnu/linux")
-    (if (string-match-p "Windows" (getenv "PATH"))
-        (progn
-          (setq-default jd:lisp-prefix "/usr/local/share/emacs/27.0.50/lisp/"))
-      (progn
-        (setq-default jd:lisp-prefix "/usr/local/share/emacs/27.0.50/lisp/")))))
-  "Path to which the stock/default emacs lisp files are.")
+(defconst jd:elc-prefix
+  (if jd:wsl-environment-p
+      (concat jd:path-prefix ".elc/") ;; TODO: Should I move my init logic into my emacs fork directory?
+    (concat jd:path-prefix ".elc/")))
 
-(defconst jd:global-prefix  
-  (concat jd:path-prefix "config/global/")
-  "Path to which the global file configurations are.")
+(defconst jd:site-lisp-prefix
+  (if jd:wsl-environment-p
+      "/usr/local/share/emacs/26.3.50/lisp/"
+    "/usr/local/share/emacs/26.3.50/lisp/"))
+
+(defconst jd:load-from-byte-compiled-dir-p
+  (if (directory-files jd:path-prefix nil ".+\\.elc") ;; TODO: Might need to do this recursively
+      t                                                                ;; TODO: Also must have the mirror functions:
+    nil))                                                              ;;       Compile everything to here
+                                                                       ;;       Delete everything in here
+(defconst jd:global-prefix
+  (if jd:load-from-byte-compiled-dir-p
+      (concat jd:path-prefix ".elc/config/global/")
+    (concat jd:path-prefix "config/global/")))
 
 (defconst jd:external-prefix
-  (concat jd:path-prefix "config/external/")
-  "Path to which the external file configurations are.")
+  (if jd:load-from-byte-compiled-dir-p
+      (concat jd:path-prefix ".elc/config/external/")
+    (concat jd:path-prefix "config/external/")))
 
-(defconst jd:internal-prefix  
-  (concat jd:path-prefix "config/internal/")
-  "Path to which the stock/builtin file configurations are.")
+(defconst jd:internal-prefix
+  (if jd:load-from-byte-compiled-dir-p
+      (concat jd:path-prefix ".elc/config/internal/")
+    (concat jd:path-prefix "config/internal/")))
 
-(defconst jd:elpa-prefix  
-  (concat jd:external-prefix "elpa/")
-  "Path to which the exteranl elpa files are.")
-
+;; TODO: Might have to move this elpa variable (or add another) around due to auto compiling files.
+(defconst jd:elpa-prefix (concat jd:path-prefix "config/external/elpa/"))
 (setq-default package-user-dir jd:elpa-prefix)
 (package-initialize)
 (setq-default package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                                  ("melpa" . "http://melpa.milkbox.net/packages/")
                                  ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-(require 'jd:global-config.el
-         (concat jd:global-prefix "jd:global-config.elc"))
-(require 'jd:builtin-config.el
-         (concat jd:internal-prefix "jd:internal-config.elc"))
-(require 'jd:external-config.el
-         (concat jd:external-prefix "jd:external-config.elc"))
+;;; `alloc.c'
+(setq-default gc-cons-threshold 64000000)
 
-(setenv "TERM" "xterm-256color")
+;;; `buffer.c'
+(setq-default default-directory jd:path-prefix) ;; TODO: Does this also pertain to initial eshell? ;; holds site lisp dir
+(setq-default truncate-lines nil)
+(setq-default fill-column 80)
+
+;;; `fns.c'
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;;; `frame.c'
+(setq-default make-pointer-invisible nil)
+
+;;; `indent.c'
+(setq-default indent-tabs-mode nil)
+
+;;; `keyboard.c'
+(setq-default echo-keystrokes 0.001)
+(setq-default meta-prefix-char nil)
+(setq-default show-help-function nil)
+
+;;; `minibuf.c'
+(setq-default enable-recursive-minibuffers t)
+
+;;; `xdisp.c'
+(setq-default hscroll-margin 2)
+(setq-default hscroll-step 14)
+(setq-default x-stretch-cursor 1)
+
+(defmacro jd:load-feature (feature_ &rest prefixes_)
+  `(if jd:load-from-byte-compiled-dir-p
+       (load (concat ,@prefixes_ (symbol-name ',feature_) ".elc"))
+     (load (concat ,@prefixes_ (symbol-name ',feature_) ".el"))))
+
+;; (jd:load-feature jd:elpa-config jd:elpa-prefix) ;; TODO
+(jd:load-feature jd:external-config jd:external-prefix)
+(jd:load-feature jd:global-config jd:global-prefix)
+(jd:load-feature jd:internal-config jd:internal-prefix)
+;; (jd:load-feature jd:theme jd:path-prefix) ;; TODO: For the theme.
+;; (setenv "TERM" "xterm-256color") ;; TODO: This needed?
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -286,10 +291,10 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
  '(ivy-cursor ((t (:background "purple" :foreground "black"))))
  '(ivy-highlight-face ((t nil)))
  '(ivy-match-required-face ((t (:background "purple" :foreground "black"))))
- '(ivy-minibuffer-match-face-1 ((t (:underline "#ffffff"))))
- '(ivy-minibuffer-match-face-2 ((t (:underline "#ffffff"))))
- '(ivy-minibuffer-match-face-3 ((t (:underline "#ffffff"))))
- '(ivy-minibuffer-match-face-4 ((t (:underline "#ffffff"))))
+ '(ivy-minibuffer-match-face-1 ((t (:underline "#FFFFFF"))))
+ '(ivy-minibuffer-match-face-2 ((t (:inherit ivy-minibuffer-match-face-1))))
+ '(ivy-minibuffer-match-face-3 ((t (:inherit ivy-minibuffer-match-face-1))))
+ '(ivy-minibuffer-match-face-4 ((t (:inherit ivy-minibuffer-match-face-1))))
  '(ivy-minibuffer-match-highlight ((t (:background "#535353"))))
  '(ivy-modified-buffer ((t (:foreground "#ff7400"))))
  '(ivy-modified-outside-buffer ((t (:foreground "#ff0000"))))
@@ -643,11 +648,15 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
  '(subscript ((t (:background "purple" :foreground "black"))))
  '(success ((t (:foreground "#00cc00" :weight bold))))
  '(superscript ((t (:background "purple" :foreground "black"))))
+ '(swiper-background-match-face-1 ((t (:background "#BE8A2D" :foreground "#192033"))))
+ '(swiper-background-match-face-2 ((t (:inherit swiper-background-match-face-1))))
+ '(swiper-background-match-face-3 ((t (:inherit swiper-background-match-face-1))))
+ '(swiper-background-match-face-4 ((t (:inherit swiper-background-match-face-1))))
  '(swiper-line-face ((t (:background "#535353"))))
- '(swiper-match-face-1 ((t (:underline "#ffffff"))))
- '(swiper-match-face-2 ((t (:underline "#ffffff"))))
- '(swiper-match-face-3 ((t (:underline "#ffffff"))))
- '(swiper-match-face-4 ((t (:underline "#ffffff"))))
+ '(swiper-match-face-1 ((t (:inherit swiper-background-match-face-1))))
+ '(swiper-match-face-2 ((t (:inherit swiper-background-match-face-1))))
+ '(swiper-match-face-3 ((t (:inherit swiper-background-match-face-1))))
+ '(swiper-match-face-4 ((t (:inherit swiper-background-match-face-1))))
  '(term ((t (:background "purple" :foreground "black"))))
  '(term-bold ((t (:background "purple" :foreground "black"))))
  '(term-color-black ((t (:background "purple" :foreground "black"))))
@@ -726,3 +735,4 @@ If `linux/gnu' the path prefix shall be '/home/john.debord/.emacs.d/'.")
  '(package-selected-packages
    '(rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet xterm-color sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company)))
 (put 'narrow-to-region 'disabled nil)
+(put 'erase-buffer 'disabled nil)

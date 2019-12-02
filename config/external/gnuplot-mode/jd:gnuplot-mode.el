@@ -1,6 +1,5 @@
-(require 'gnuplot-mode (concat jd:elpa-prefix "gnuplot-mode-20171013.1616/gnuplot-mode.elc"))
+(jd:load-feature gnuplot-mode jd:elpa-prefix "gnuplot-mode-20171013.1616/")
+(jd:load-feature jd:gnuplot-mode-kb jd:external-prefix "gnuplot-mode/")
+(jd:load-feature jd:gnuplot-mode-st jd:external-prefix "gnuplot-mode/")
 
-(require 'jd:gnuplot-mode-kb.el (concat jd:external-prefix "gnuplot-mode/jd:gnuplot-mode-kb.elc"))
-(require 'jd:gnuplot-mode-st.el (concat jd:external-prefix "gnuplot-mode/jd:gnuplot-mode-st.elc"))
-
-(provide 'jd:gnuplot-mode.el)
+(provide 'jd:gnuplot-mode)

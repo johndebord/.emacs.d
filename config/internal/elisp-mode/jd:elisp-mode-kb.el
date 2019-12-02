@@ -5,7 +5,7 @@
 (define-key emacs-lisp-mode-map (kbd "<jd:C-ret>") 'jd:eval-print-last-sexp)
 (define-key emacs-lisp-mode-map (kbd "<f1>") 'jd:eval-last-sexp)
 
-(provide 'jd:elisp-mode-kb.el)
+(provide 'jd:elisp-mode-kb)
 
 ;; elisp-byte-code-mode-map
 ;; lisp-interaction-mode-map

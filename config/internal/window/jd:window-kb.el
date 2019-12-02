@@ -1,1 +1,1 @@
-(provide 'jd:window-kb.el)
+(provide 'jd:window-kb)

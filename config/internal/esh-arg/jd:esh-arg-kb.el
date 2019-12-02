@@ -1,3 +1,3 @@
-(provide 'jd:esh-arg-kb.el)
+(provide 'jd:esh-arg-kb)
 
 ;; eshell-arg-mode-map

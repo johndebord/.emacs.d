@@ -1,1 +1,1 @@
-(provide 'jd:cmake-mode-kb.el)
+(provide 'jd:cmake-mode-kb)

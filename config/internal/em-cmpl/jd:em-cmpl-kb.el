@@ -1,3 +1,3 @@
-(provide 'jd:em-cmpl-kb.el)
+(provide 'jd:em-cmpl-kb)
 
 ;; eshell-cmpl-mode-map

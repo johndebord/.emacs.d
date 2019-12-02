@@ -1,6 +1,5 @@
-(require 'cus-edit (concat jd:lisp-prefix "cus-edit.elc"))
+(jd:load-feature cus-edit jd:site-lisp-prefix)
+(jd:load-feature jd:cus-edit-kb jd:internal-prefix "cus-edit/")
+(jd:load-feature jd:cus-edit-st jd:internal-prefix "cus-edit/")
 
-(require 'jd:cus-edit-kb.el (concat jd:internal-prefix "cus-edit/jd:cus-edit-kb.elc"))
-(require 'jd:cus-edit-st.el (concat jd:internal-prefix "cus-edit/jd:cus-edit-st.elc"))
-
-(provide 'jd:cus-edit.el)
+(provide 'jd:cus-edit)

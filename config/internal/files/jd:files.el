@@ -1,6 +1,5 @@
-(require 'files (concat jd:lisp-prefix "files.elc"))
+(jd:load-feature files jd:site-lisp-prefix)
+(jd:load-feature jd:files-kb jd:internal-prefix "files/")
+(jd:load-feature jd:files-st jd:internal-prefix "files/")
 
-(require 'jd:files-kb.el (concat jd:internal-prefix "files/jd:files-kb.elc"))
-(require 'jd:files-st.el (concat jd:internal-prefix "files/jd:files-st.elc"))
-
-(provide 'jd:files.el)
+(provide 'jd:files)

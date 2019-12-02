@@ -327,4 +327,4 @@
 (advice-add 'gdb-display-gdb-buffer :override 'jd:gdb-display-gdb-buffer)
 (advice-add 'gud-kill-buffer-hook :after 'jd:gdb-shutdown)
 
-(provide 'jd:gdb-mi-st.el)
+(provide 'jd:gdb-mi-st)

@@ -1,6 +1,5 @@
-(require 'isearch (concat jd:lisp-prefix "isearch.elc"))
+(jd:load-feature isearch jd:site-lisp-prefix)
+(jd:load-feature jd:isearch-kb jd:internal-prefix "isearch/")
+(jd:load-feature jd:isearch-st jd:internal-prefix "isearch/")
 
-(require 'jd:isearch-kb.el (concat jd:internal-prefix "isearch/jd:isearch-kb.elc"))
-(require 'jd:isearch-st.el (concat jd:internal-prefix "isearch/jd:isearch-st.elc"))
-
-(provide 'jd:isearch.el)
+(provide 'jd:isearch)

@@ -1,6 +1,5 @@
-(require 'edmacro (concat jd:lisp-prefix "edmacro.elc"))
+(jd:load-feature edmacro jd:site-lisp-prefix)
+(jd:load-feature jd:edmacro-kb jd:internal-prefix "edmacro/")
+(jd:load-feature jd:edmacro-st jd:internal-prefix "edmacro/")
 
-(require 'jd:edmacro-kb.el (concat jd:internal-prefix "edmacro/jd:edmacro-kb.elc"))
-(require 'jd:edmacro-st.el (concat jd:internal-prefix "edmacro/jd:edmacro-st.elc"))
-
-(provide 'jd:edmacro.el)
+(provide 'jd:edmacro)

@@ -1,6 +1,5 @@
-(require 'etags (concat jd:lisp-prefix "progmodes/etags.elc"))
+(jd:load-feature etags jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:etags-kb jd:internal-prefix "etags/")
+(jd:load-feature jd:etags-st jd:internal-prefix "etags/")
 
-(require 'jd:etags-kb.el (concat jd:internal-prefix "etags/jd:etags-kb.elc"))
-(require 'jd:etags-st.el (concat jd:internal-prefix "etags/jd:etags-st.elc"))
-
-(provide 'jd:etags.el)
+(provide 'jd:etags)

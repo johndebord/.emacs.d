@@ -1,4 +1,4 @@
-(provide 'jd:abbrev-kb.el)
+(provide 'jd:abbrev-kb)
 
 ;; edit-abbrevs-mode-map
 ;; edit-abbrevs-map

@@ -24,4 +24,4 @@
     (ivy-set-index (max (1+ (- ivy--index ivy-height))
                         0))))
 
-(provide 'jd:ivy-st.el)
+(provide 'jd:ivy-st)

@@ -3,4 +3,4 @@
 (c-set-offset 'inline-open '0)
 (c-set-offset 'namespace-close '0)
 
-(provide 'jd:cc-styles-st.el)
+(provide 'jd:cc-styles-st)

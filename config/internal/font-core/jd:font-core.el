@@ -1,6 +1,5 @@
-(require 'font-core (concat jd:lisp-prefix "font-core.elc"))
+(jd:load-feature font-core jd:site-lisp-prefix)
+(jd:load-feature jd:font-core-kb jd:internal-prefix "font-core/")
+(jd:load-feature jd:font-core-st jd:internal-prefix "font-core/")
 
-(require 'jd:font-core-kb.el (concat jd:internal-prefix "font-core/jd:font-core-kb.elc"))
-(require 'jd:font-core-st.el (concat jd:internal-prefix "font-core/jd:font-core-st.elc"))
-
-(provide 'jd:font-core.el)
+(provide 'jd:font-core)

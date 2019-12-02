@@ -7,6 +7,6 @@
 (define-key help-mode-map (kbd "<jd:ret>") 'push-button)
 (define-key help-mode-map (kbd "<mouse-1>") 'push-button)
 
-(provide 'jd:help-mode-kb.el)
+(provide 'jd:help-mode-kb)
 
 ;; help-mode-menu

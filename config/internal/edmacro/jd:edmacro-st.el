@@ -1,1 +1,1 @@
-(provide 'jd:edmacro-st.el)
+(provide 'jd:edmacro-st)

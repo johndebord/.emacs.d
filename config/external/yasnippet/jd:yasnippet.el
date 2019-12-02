@@ -1,6 +1,5 @@
-(require 'yasnippet (concat jd:elpa-prefix "yasnippet-20190724.1204/yasnippet.elc"))
+(jd:load-feature yasnippet jd:elpa-prefix "yasnippet-20190724.1204/")
+(jd:load-feature jd:yasnippet-kb jd:external-prefix "yasnippet/")
+(jd:load-feature jd:yasnippet-st jd:external-prefix "yasnippet/")
 
-(require 'jd:yasnippet-kb.el (concat jd:external-prefix "yasnippet/jd:yasnippet-kb.elc"))
-(require 'jd:yasnippet-st.el (concat jd:external-prefix "yasnippet/jd:yasnippet-st.elc"))
-
-(provide 'jd:yasnippet.el)
+(provide 'jd:yasnippet)

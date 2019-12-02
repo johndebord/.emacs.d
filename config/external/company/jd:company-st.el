@@ -60,4 +60,4 @@
 (advice-add 'company-show-doc-buffer :override 'jd:company-show-doc-buffer)
 (advice-add 'company-show-location :override 'jd:company-show-location)
 
-(provide 'jd:company-st.el)
+(provide 'jd:company-st)

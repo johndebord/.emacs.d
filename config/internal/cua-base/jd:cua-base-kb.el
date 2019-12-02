@@ -12,7 +12,7 @@
 (define-key cua--prefix-repeat-keymap (kbd "<C-c> <C-c>") 'cua--prefix-repeat-handler)
 (define-key cua--prefix-repeat-keymap (kbd "<C-x> <C-x>") 'cua--prefix-repeat-handler)
 
-(provide 'jd:cua-base-kb.el)
+(provide 'jd:cua-base-kb)
 
 ;; cua--global-mark-keymap
 ;; cua--rectangle-keymap

@@ -1,3 +1,3 @@
 (global-auto-revert-mode 1)
 
-(provide 'jd:autorevert-st.el)
+(provide 'jd:autorevert-st)

@@ -1,1 +1,1 @@
-(provide 'jd:diff-mode-st.el)
+(provide 'jd:diff-mode-st)

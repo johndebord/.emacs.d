@@ -1,6 +1,5 @@
-(require 'startup (concat jd:lisp-prefix "startup.elc"))
+(jd:load-feature startup jd:site-lisp-prefix)
+(jd:load-feature jd:startup-kb jd:internal-prefix "startup/")
+(jd:load-feature jd:startup-st jd:internal-prefix "startup/")
 
-(require 'jd:startup-kb.el (concat jd:internal-prefix "startup/jd:startup-kb.elc"))
-(require 'jd:startup-st.el (concat jd:internal-prefix "startup/jd:startup-st.elc"))
-
-(provide 'jd:startup.el)
+(provide 'jd:startup)

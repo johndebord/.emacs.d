@@ -1,3 +1,3 @@
-(provide 'jd:debug-kb.el)
+(provide 'jd:debug-kb)
 
 ;; debugger-mode-map

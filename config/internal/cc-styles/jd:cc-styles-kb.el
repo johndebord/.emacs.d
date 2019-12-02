@@ -1,1 +1,1 @@
-(provide 'jd:cc-styles-kb.el)
+(provide 'jd:cc-styles-kb)

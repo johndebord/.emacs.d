@@ -1,6 +1,5 @@
-(require 'eldoc (concat jd:lisp-prefix "emacs-lisp/eldoc.elc"))
+(jd:load-feature eldoc jd:site-lisp-prefix "emacs-lisp/")
+(jd:load-feature jd:eldoc-kb jd:internal-prefix "eldoc/")
+(jd:load-feature jd:eldoc-st jd:internal-prefix "eldoc/")
 
-(require 'jd:eldoc-kb.el (concat jd:internal-prefix "eldoc/jd:eldoc-kb.elc"))
-(require 'jd:eldoc-st.el (concat jd:internal-prefix "eldoc/jd:eldoc-st.elc"))
-
-(provide 'jd:eldoc.el)
+(provide 'jd:eldoc)

@@ -1,6 +1,5 @@
-(require 'rcirc (concat jd:lisp-prefix "net/rcirc.elc"))
+(jd:load-feature rcirc jd:site-lisp-prefix "net/")
+(jd:load-feature jd:rcirc-kb jd:internal-prefix "rcirc/")
+(jd:load-feature jd:rcirc-st jd:internal-prefix "rcirc/")
 
-(require 'jd:rcirc-kb.el (concat jd:internal-prefix "rcirc/jd:rcirc-kb.elc"))
-(require 'jd:rcirc-st.el (concat jd:internal-prefix "rcirc/jd:rcirc-st.elc"))
-
-(provide 'jd:rcirc.el)
+(provide 'jd:rcirc)

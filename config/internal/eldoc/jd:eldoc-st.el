@@ -3,4 +3,4 @@
 (eldoc-add-command 'delete-backward-char)
 (eldoc-add-command 'jd:self-insert-space)
 
-(provide 'jd:eldoc-st.el)
+(provide 'jd:eldoc-st)

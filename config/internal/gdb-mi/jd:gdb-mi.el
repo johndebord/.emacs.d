@@ -1,6 +1,5 @@
-(require 'gdb-mi (concat jd:lisp-prefix "progmodes/gdb-mi.elc"))
+(jd:load-feature gdb-mi jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:gdb-mi-kb jd:internal-prefix "gdb-mi/")
+(jd:load-feature jd:gdb-mi-st jd:internal-prefix "gdb-mi/")
 
-(require 'jd:gdb-mi-kb.el (concat jd:internal-prefix "gdb-mi/jd:gdb-mi-kb.elc"))
-(require 'jd:gdb-mi-st.el (concat jd:internal-prefix "gdb-mi/jd:gdb-mi-st.elc"))
-
-(provide 'jd:gdb-mi.el)
+(provide 'jd:gdb-mi)

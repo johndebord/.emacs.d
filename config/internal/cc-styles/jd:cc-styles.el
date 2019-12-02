@@ -1,6 +1,5 @@
-(require 'cc-styles (concat jd:lisp-prefix "progmodes/cc-styles.elc"))
+(jd:load-feature cc-styles jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:cc-styles-kb jd:internal-prefix "cc-styles/")
+(jd:load-feature jd:cc-styles-st jd:internal-prefix "cc-styles/")
 
-(require 'jd:cc-styles-kb.el (concat jd:internal-prefix "cc-styles/jd:cc-styles-kb.elc"))
-(require 'jd:cc-styles-st.el (concat jd:internal-prefix "cc-styles/jd:cc-styles-st.elc"))
-
-(provide 'jd:cc-styles.el)
+(provide 'jd:cc-styles)

@@ -1,6 +1,5 @@
-(require 'tool-bar (concat jd:lisp-prefix "tool-bar.elc"))
+(jd:load-feature tool-bar jd:site-lisp-prefix)
+(jd:load-feature jd:tool-bar-kb jd:internal-prefix "tool-bar/")
+(jd:load-feature jd:tool-bar-st jd:internal-prefix "tool-bar/")
 
-(require 'jd:tool-bar-kb.el (concat jd:internal-prefix "tool-bar/jd:tool-bar-kb.elc"))
-(require 'jd:tool-bar-st.el (concat jd:internal-prefix "tool-bar/jd:tool-bar-st.elc"))
-
-(provide 'jd:tool-bar.el)
+(provide 'jd:tool-bar)

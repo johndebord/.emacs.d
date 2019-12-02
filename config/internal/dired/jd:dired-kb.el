@@ -1,3 +1,3 @@
-(provide 'jd:dired-kb.el)
+(provide 'jd:dired-kb)
 
 ;; dired-mode-map

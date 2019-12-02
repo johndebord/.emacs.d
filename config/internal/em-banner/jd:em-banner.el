@@ -1,6 +1,5 @@
-(require 'em-banner (concat jd:lisp-prefix "eshell/em-banner.elc"))
+(jd:load-feature em-banner jd:site-lisp-prefix "eshell/")
+(jd:load-feature jd:em-banner-kb jd:internal-prefix "em-banner/")
+(jd:load-feature jd:em-banner-st jd:internal-prefix "em-banner/")
 
-(require 'jd:em-banner-kb.el (concat jd:internal-prefix "em-banner/jd:em-banner-kb.elc"))
-(require 'jd:em-banner-st.el (concat jd:internal-prefix "em-banner/jd:em-banner-st.elc"))
-
-(provide 'jd:em-banner.el)
+(provide 'jd:em-banner)

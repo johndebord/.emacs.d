@@ -1,6 +1,5 @@
-(require 'em-hist (concat jd:lisp-prefix "eshell/em-hist.elc"))
+(jd:load-feature em-hist jd:site-lisp-prefix "eshell/")
+(jd:load-feature jd:em-hist-kb jd:internal-prefix "em-hist/")
+(jd:load-feature jd:em-hist-st jd:internal-prefix "em-hist/")
 
-(require 'jd:em-hist-kb.el (concat jd:internal-prefix "em-hist/jd:em-hist-kb.elc"))
-(require 'jd:em-hist-st.el (concat jd:internal-prefix "em-hist/jd:em-hist-st.elc"))
-
-(provide 'jd:em-hist.el)
+(provide 'jd:em-hist)

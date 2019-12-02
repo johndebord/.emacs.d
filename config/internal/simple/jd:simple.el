@@ -1,6 +1,5 @@
-(require 'simple (concat jd:lisp-prefix "simple.elc"))
+(jd:load-feature simple jd:site-lisp-prefix)
+(jd:load-feature jd:simple-kb jd:internal-prefix "simple/")
+(jd:load-feature jd:simple-st jd:internal-prefix "simple/")
 
-(require 'jd:simple-kb.el (concat jd:internal-prefix "simple/jd:simple-kb.elc"))
-(require 'jd:simple-st.el (concat jd:internal-prefix "simple/jd:simple-st.elc"))
-
-(provide 'jd:simple.el)
+(provide 'jd:simple)

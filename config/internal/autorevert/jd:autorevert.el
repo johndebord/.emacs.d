@@ -1,6 +1,5 @@
-(require 'autorevert (concat jd:lisp-prefix "autorevert.elc"))
+(jd:load-feature autorevert jd:site-lisp-prefix)
+(jd:load-feature jd:autorevert-kb jd:internal-prefix "autorevert/")
+(jd:load-feature jd:autorevert-st jd:internal-prefix "autorevert/")
 
-(require 'jd:autorevert-kb.el (concat jd:internal-prefix "autorevert/jd:autorevert-kb.elc"))
-(require 'jd:autorevert-st.el (concat jd:internal-prefix "autorevert/jd:autorevert-st.elc"))
-
-(provide 'jd:autorevert.el)
+(provide 'jd:autorevert)

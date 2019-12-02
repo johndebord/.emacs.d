@@ -2,4 +2,4 @@
 (define-key read-passwd-map (kbd "<C-g>") 'abort-recursive-edit)
 (define-key read-passwd-map (kbd "<jd:ret>") 'exit-minibuffer)
 
-(provide 'jd:subr-kb.el)
+(provide 'jd:subr-kb)

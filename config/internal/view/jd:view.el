@@ -1,6 +1,5 @@
-(require 'view (concat jd:lisp-prefix "view.elc"))
+(jd:load-feature view jd:site-lisp-prefix)
+(jd:load-feature jd:view-kb jd:internal-prefix "view/")
+(jd:load-feature jd:view-st jd:internal-prefix "view/")
 
-(require 'jd:view-kb.el (concat jd:internal-prefix "view/jd:view-kb.elc"))
-(require 'jd:view-st.el (concat jd:internal-prefix "view/jd:view-st.elc"))
-
-(provide 'jd:view.el)
+(provide 'jd:view)

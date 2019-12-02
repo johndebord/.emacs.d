@@ -1,3 +1,3 @@
 (cua-mode 1)
 
-(provide 'jd:cua-base-st.el)
+(provide 'jd:cua-base-st)

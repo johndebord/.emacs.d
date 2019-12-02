@@ -1,6 +1,5 @@
-(require 'dired (concat jd:lisp-prefix "dired.elc"))
+(jd:load-feature dired jd:site-lisp-prefix)
+(jd:load-feature jd:dired-kb jd:internal-prefix "dired/")
+(jd:load-feature jd:dired-st jd:internal-prefix "dired/")
 
-(require 'jd:dired-kb.el (concat jd:internal-prefix "dired/jd:dired-kb.elc"))
-(require 'jd:dired-st.el (concat jd:internal-prefix "dired/jd:dired-st.elc"))
-
-(provide 'jd:dired.el)
+(provide 'jd:dired)

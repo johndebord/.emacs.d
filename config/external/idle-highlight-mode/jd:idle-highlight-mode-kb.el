@@ -1,1 +1,1 @@
-(provide 'jd:idle-highlight-mode-kb.el)
+(provide 'jd:idle-highlight-mode-kb)

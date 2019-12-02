@@ -17,7 +17,7 @@
 (define-key rcirc-mode-map (kbd "<jd:ret>") 'rcirc-send-input)
 (define-key rcirc-mode-map (kbd "<jd:tab>") 'rcirc-complete)
 
-(provide 'jd:rcirc-kb.el)
+(provide 'jd:rcirc-kb)
 
 ;; rcirc-track-minor-mode-map
 ;; rcirc-multiline-minor-mode-map

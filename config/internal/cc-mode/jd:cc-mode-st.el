@@ -24,4 +24,4 @@
             (set (make-local-variable 'compile-command)
                  (concat "clang++ -Wall -Wextra -std=c++17 -o prog " buffer-file-name " && ./prog"))))
 
-(provide 'jd:cc-mode-st.el)
+(provide 'jd:cc-mode-st)

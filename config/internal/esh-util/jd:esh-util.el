@@ -1,6 +1,5 @@
-(require 'esh-util (concat jd:lisp-prefix "eshell/esh-util.elc"))
+(jd:load-feature esh-util jd:site-lisp-prefix "eshell/")
+(jd:load-feature jd:esh-util-kb jd:internal-prefix "esh-util/")
+(jd:load-feature jd:esh-util-st jd:internal-prefix "esh-util/")
 
-(require 'jd:esh-util-kb.el (concat jd:internal-prefix "esh-util/jd:esh-util-kb.elc"))
-(require 'jd:esh-util-st.el (concat jd:internal-prefix "esh-util/jd:esh-util-st.elc"))
-
-(provide 'jd:esh-util.el)
+(provide 'jd:esh-util)

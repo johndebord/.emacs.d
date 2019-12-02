@@ -1,1 +1,1 @@
-(provide 'jd:linum-kb.el)
+(provide 'jd:linum-kb)

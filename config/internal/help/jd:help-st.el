@@ -1,1 +1,1 @@
-(provide 'jd:help-st.el)
+(provide 'jd:help-st)

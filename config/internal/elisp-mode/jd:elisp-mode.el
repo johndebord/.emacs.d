@@ -1,6 +1,5 @@
-(require 'elisp-mode (concat jd:lisp-prefix "progmodes/elisp-mode.elc"))
+(jd:load-feature elisp-mode jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:elisp-mode-kb jd:internal-prefix "elisp-mode/")
+(jd:load-feature jd:elisp-mode-st jd:internal-prefix "elisp-mode/")
 
-(require 'jd:elisp-mode-kb.el (concat jd:internal-prefix "elisp-mode/jd:elisp-mode-kb.elc"))
-(require 'jd:elisp-mode-st.el (concat jd:internal-prefix "elisp-mode/jd:elisp-mode-st.elc"))
-
-(provide 'jd:elisp-mode.el)
+(provide 'jd:elisp-mode)

@@ -1,1 +1,1 @@
-(provide 'jd:em-banner-kb.el)
+(provide 'jd:em-banner-kb)

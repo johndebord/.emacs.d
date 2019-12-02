@@ -1,6 +1,5 @@
-(require 'cc-vars (concat jd:lisp-prefix "progmodes/cc-vars.elc"))
+(jd:load-feature cc-vars jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:cc-vars-kb jd:internal-prefix "cc-vars/")
+(jd:load-feature jd:cc-vars-st jd:internal-prefix "cc-vars/")
 
-(require 'jd:cc-vars-kb.el (concat jd:internal-prefix "cc-vars/jd:cc-vars-kb.elc"))
-(require 'jd:cc-vars-st.el (concat jd:internal-prefix "cc-vars/jd:cc-vars-st.elc"))
-
-(provide 'jd:cc-vars.el)
+(provide 'jd:cc-vars)

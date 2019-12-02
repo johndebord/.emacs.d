@@ -1,1 +1,1 @@
-(provide 'jd:view-st.el)
+(provide 'jd:view-st)

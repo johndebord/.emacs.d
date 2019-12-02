@@ -1,3 +1,3 @@
-(provide 'jd:edmacro-kb.el)
+(provide 'jd:edmacro-kb)
 
 ;; edmacro-mode-map

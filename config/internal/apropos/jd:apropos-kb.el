@@ -4,6 +4,6 @@
 (define-key apropos-mode-map (kbd "<jd:tab>") 'forward-button)
 (define-key apropos-mode-map (kbd "<jd:S-tab>") 'backward-button)
 
-(provide 'jd:apropos-kb.el)
+(provide 'jd:apropos-kb)
 
 ;; apropos-mode-map

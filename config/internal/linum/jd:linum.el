@@ -1,6 +1,5 @@
-(require 'linum (concat jd:lisp-prefix "linum.elc"))
+(jd:load-feature linum jd:site-lisp-prefix)
+(jd:load-feature jd:linum-kb jd:internal-prefix "linum/")
+(jd:load-feature jd:linum-st jd:internal-prefix "linum/")
 
-(require 'jd:linum-kb.el (concat jd:internal-prefix "linum/jd:linum-kb.elc"))
-(require 'jd:linum-st.el (concat jd:internal-prefix "linum/jd:linum-st.elc"))
-
-(provide 'jd:linum.el)
+(provide 'jd:linum)

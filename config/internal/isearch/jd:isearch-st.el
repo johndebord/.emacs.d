@@ -1,1 +1,1 @@
-(provide 'jd:isearch-st.el)
+(provide 'jd:isearch-st)

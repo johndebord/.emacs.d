@@ -1,6 +1,5 @@
-(require 'ansi-color (concat jd:lisp-prefix "ansi-color.elc"))
+(jd:load-feature ansi-color jd:site-lisp-prefix)
+(jd:load-feature jd:ansi-color-kb jd:internal-prefix "ansi-color/")
+(jd:load-feature jd:ansi-color-st jd:internal-prefix "ansi-color/")
 
-(require 'jd:ansi-color-kb.el (concat jd:internal-prefix "ansi-color/jd:ansi-color-kb.elc"))
-(require 'jd:ansi-color-st.el (concat jd:internal-prefix "ansi-color/jd:ansi-color-st.elc"))
-
-(provide 'jd:ansi-color.el)
+(provide 'jd:ansi-color)

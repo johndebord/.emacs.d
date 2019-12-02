@@ -1,4 +1,4 @@
-(provide 'jd:yasnippet-kb.el)
+(provide 'jd:yasnippet-kb)
 
 ;; yas-minor-mode-map
 ;; snippet-mode-map

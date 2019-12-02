@@ -1,1 +1,1 @@
-(provide 'jd:dired-st.el)
+(provide 'jd:dired-st)

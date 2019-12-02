@@ -1,6 +1,5 @@
-(require 'paren (concat jd:lisp-prefix "paren.elc"))
+(jd:load-feature paren jd:site-lisp-prefix)
+(jd:load-feature jd:paren-kb jd:internal-prefix "paren/")
+(jd:load-feature jd:paren-st jd:internal-prefix "paren/")
 
-(require 'jd:paren-kb.el (concat jd:internal-prefix "paren/jd:paren-kb.elc"))
-(require 'jd:paren-st.el (concat jd:internal-prefix "paren/jd:paren-st.elc"))
-
-(provide 'jd:paren.el)
+(provide 'jd:paren)

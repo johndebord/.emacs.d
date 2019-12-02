@@ -1,6 +1,5 @@
-(require 'elec-pair (concat jd:lisp-prefix "elec-pair.elc"))
+(jd:load-feature elec-pair jd:site-lisp-prefix)
+(jd:load-feature jd:elec-pair-kb jd:internal-prefix "elec-pair/")
+(jd:load-feature jd:elec-pair-st jd:internal-prefix "elec-pair/")
 
-(require 'jd:elec-pair-kb.el (concat jd:internal-prefix "elec-pair/jd:elec-pair-kb.elc"))
-(require 'jd:elec-pair-st.el (concat jd:internal-prefix "elec-pair/jd:elec-pair-st.elc"))
-
-(provide 'jd:elec-pair.el)
+(provide 'jd:elec-pair)

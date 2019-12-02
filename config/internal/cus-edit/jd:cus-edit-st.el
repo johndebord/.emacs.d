@@ -1,2 +1,2 @@
-(provide 'jd:cus-edit-st.el)
+(provide 'jd:cus-edit-st)
 

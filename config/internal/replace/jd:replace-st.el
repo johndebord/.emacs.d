@@ -1,1 +1,1 @@
-(provide 'jd:replace-st.el)
+(provide 'jd:replace-st)

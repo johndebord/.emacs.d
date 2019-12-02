@@ -1,3 +1,12 @@
+;;; method for testing site-listp changes and then committing:
+;;; - remove all .elc files
+;;; - run make in build directory
+;;; - if success, then sudo make install
+
+;; find . -name "*.elc" -type f -delete    jd:delete all
+;; But use it with precaution. Run first:
+;; find . -name "*.elc" -type f            jd:preview-delete-all
+
 (defvar jd:cpp-print-active nil)
 
 (defvar jd:cpp-print-value nil)
@@ -7,6 +16,16 @@
 (defvar jd:cpp-print-count 0)
 
 (defvar jd:cpp-print-strlen 0)
+
+(defun jd:copy-and-comment-out ()
+  (interactive)
+  (cl-assert (region-active-p)
+             nil
+             "Region is not active.")
+  (let ((beg_ (mark))
+        (end_ (point)))
+    (copy-region-as-kill beg_ end_)
+    (comment-region beg_ end_)))
 
 (defun jd:describe-bindings ()
   (interactive)
@@ -153,7 +172,7 @@ pst = package settings"
 	  (let* ((jd:v-str
                   (if (equal jd:pt "external") "jd:external-prefix" "jd:internal-prefix"))
                  (jd:b-str
-                  (if (equal jd:pt "external") "jd:elpa-prefix" "jd:lisp-prefix"))
+                  (if (equal jd:pt "external") "jd:elpa-prefix" "jd:site-lisp-prefix"))
                  (jd:pfp
                   (if (equal jd:pt "external") jd:external-prefix jd:internal-prefix))
 		 (jd:ps
@@ -527,11 +546,11 @@ just the file names where the references are found."
       (message "Point is not over a valid s-expression.")
     (if (and (memq 'company-etags (car company-backends))
              (equal tags-file-name nil))
-        (message "`TAGS' file has not been set.")
+        (message "`TAGS` file has not been set.")
       (if (company--active-p)
           (progn
             (xref-find-references (nth company-selection company-candidates)))
         (progn
           (xref-find-references (symbol-name (symbol-at-point))))))))
 
-(provide 'jd:global-function-definitions.el)
+(provide 'jd:global-procedure-definitions)

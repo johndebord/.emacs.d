@@ -1,1 +1,1 @@
-(provide 'jd:make-mode-st.el)
+(provide 'jd:make-mode-st)

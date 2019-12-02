@@ -1,1 +1,1 @@
-(provide 'jd:apropos-st.el)
+(provide 'jd:apropos-st)

@@ -1,7 +1,8 @@
+network-security.data
 tramp
 *~
 *#
-network-security.data
+*.elc
 ./auto-save-list/
 ./autosaves/
 ./backups/

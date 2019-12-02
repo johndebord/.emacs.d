@@ -1,6 +1,5 @@
-(require 'menu-bar (concat jd:lisp-prefix "menu-bar.elc"))
+(jd:load-feature menu-bar jd:site-lisp-prefix)
+(jd:load-feature jd:menu-bar-kb jd:internal-prefix "menu-bar/")
+(jd:load-feature jd:menu-bar-st jd:internal-prefix "menu-bar/")
 
-(require 'jd:menu-bar-kb.el (concat jd:internal-prefix "menu-bar/jd:menu-bar-kb.elc"))
-(require 'jd:menu-bar-st.el (concat jd:internal-prefix "menu-bar/jd:menu-bar-st.elc"))
-
-(provide 'jd:menu-bar.el)
+(provide 'jd:menu-bar)

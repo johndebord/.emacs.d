@@ -17,7 +17,7 @@
 (define-key minibuffer-local-must-match-map (kbd "<jd:spc>") 'minibuffer-complete-word)
 (define-key minibuffer-local-must-match-map (kbd "<jd:tab>") 'minibuffer-complete)
 
-(provide 'jd:minibuffer-kb.el)
+(provide 'jd:minibuffer-kb)
 
 ;; minibuffer-local-must-match-filename-map
 ;; minibuffer-local-filename-must-match-map

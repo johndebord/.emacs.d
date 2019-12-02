@@ -1,6 +1,5 @@
-(require 'replace (concat jd:lisp-prefix "replace.elc"))
+(jd:load-feature replace jd:site-lisp-prefix)
+(jd:load-feature jd:replace-kb jd:internal-prefix "replace/")
+(jd:load-feature jd:replace-st jd:internal-prefix "replace/")
 
-(require 'jd:replace-kb.el (concat jd:internal-prefix "replace/jd:replace-kb.elc"))
-(require 'jd:replace-st.el (concat jd:internal-prefix "replace/jd:replace-st.elc"))
-
-(provide 'jd:replace.el)
+(provide 'jd:replace)

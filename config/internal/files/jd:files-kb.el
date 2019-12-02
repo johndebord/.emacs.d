@@ -1,1 +1,1 @@
-(provide 'jd:files-kb.el)
+(provide 'jd:files-kb)

@@ -1,6 +1,5 @@
-(require 'subr (concat jd:lisp-prefix "subr.elc"))
+(jd:load-feature subr jd:site-lisp-prefix)
+(jd:load-feature jd:subr-kb jd:internal-prefix "subr/")
+(jd:load-feature jd:subr-st jd:internal-prefix "subr/")
 
-(require 'jd:subr-kb.el (concat jd:internal-prefix "subr/jd:subr-kb.elc"))
-(require 'jd:subr-st.el (concat jd:internal-prefix "subr/jd:subr-st.elc"))
-
-(provide 'jd:subr.el)
+(provide 'jd:subr)

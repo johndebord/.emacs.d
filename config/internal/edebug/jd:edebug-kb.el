@@ -15,7 +15,7 @@
 (define-key edebug-mode-map (kbd "u") 'edebug-unset-breakpoint)
 (define-key edebug-mode-map (kbd "x") 'edebug-set-conditional-breakpoint)
 
-(provide 'jd:edebug-kb.el)
+(provide 'jd:edebug-kb)
 
 ;; global-edebug-map
 ;; edebug-menu

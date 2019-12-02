@@ -10,6 +10,6 @@
 (define-key xref--xref-buffer-mode-map (kbd "q") (lambda () (interactive) (quit-window t)))
 (define-key xref--xref-buffer-mode-map (kbd "u") 'beginning-of-buffer)
 
-(provide 'jd:xref-kb.el)
+(provide 'jd:xref-kb)
 
 ;; xref--transient-buffer-mode-map

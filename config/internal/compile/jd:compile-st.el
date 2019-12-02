@@ -99,4 +99,4 @@
 
 (advice-add 'compilation-filter :around 'jd:advice-compilation-filter)
 
-(provide 'jd:compile-st.el)
+(provide 'jd:compile-st)

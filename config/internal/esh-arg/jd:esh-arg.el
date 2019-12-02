@@ -1,6 +1,5 @@
-(require 'esh-arg (concat jd:lisp-prefix "eshell/esh-arg.elc"))
+(jd:load-feature esh-arg jd:site-lisp-prefix "eshell/")
+(jd:load-feature jd:esh-arg-kb jd:internal-prefix "esh-arg/")
+(jd:load-feature jd:esh-arg-st jd:internal-prefix "esh-arg/")
 
-(require 'jd:esh-arg-kb.el (concat jd:internal-prefix "esh-arg/jd:esh-arg-kb.elc"))
-(require 'jd:esh-arg-st.el (concat jd:internal-prefix "esh-arg/jd:esh-arg-st.elc"))
-
-(provide 'jd:esh-arg.el)
+(provide 'jd:esh-arg)

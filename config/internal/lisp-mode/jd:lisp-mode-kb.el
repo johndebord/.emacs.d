@@ -4,6 +4,6 @@
 (define-key emacs-lisp-mode-map (kbd "<jd:C-ret>") 'jd:eval-print-last-sexp)
 (define-key lisp-mode-map (kbd "<f1>") 'jd:eval-last-sexp)
 
-(provide 'jd:lisp-mode-kb.el)
+(provide 'jd:lisp-mode-kb)
 
 ;; lisp-mode-shared-map

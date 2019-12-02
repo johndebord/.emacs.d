@@ -14,4 +14,4 @@
   (forward-line -1)
   (recenter))
 
-(provide 'jd:help-mode-st.el)
+(provide 'jd:help-mode-st)

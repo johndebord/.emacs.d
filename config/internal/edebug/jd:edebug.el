@@ -1,6 +1,5 @@
-(require 'edebug (concat jd:lisp-prefix "emacs-lisp/edebug.elc"))
+(jd:load-feature edebug jd:site-lisp-prefix "emacs-lisp/")
+(jd:load-feature jd:edebug-kb jd:internal-prefix "edebug/")
+(jd:load-feature jd:edebug-st jd:internal-prefix "edebug/")
 
-(require 'jd:edebug-kb.el (concat jd:internal-prefix "edebug/jd:edebug-kb.elc"))
-(require 'jd:edebug-st.el (concat jd:internal-prefix "edebug/jd:edebug-st.elc"))
-
-(provide 'jd:edebug.el)
+(provide 'jd:edebug)

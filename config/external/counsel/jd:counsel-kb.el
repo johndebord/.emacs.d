@@ -2,7 +2,7 @@
 (define-key counsel-find-file-map (kbd "<jd:C-bks>") 'counsel-up-directory)
 (define-key counsel-find-file-map (kbd "<jd:ret>") 'ivy-alt-done)
 
-(provide 'jd:counsel-kb.el)
+(provide 'jd:counsel-kb)
 
 ;; counsel-ag-map
 ;; counsel-imenu-map

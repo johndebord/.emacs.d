@@ -42,4 +42,4 @@
             (setq font-lock-function (lambda (_) nil))
             (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
 
-(provide 'jd:gud-st.el)
+(provide 'jd:gud-st)

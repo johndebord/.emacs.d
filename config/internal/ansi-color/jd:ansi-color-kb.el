@@ -1,1 +1,1 @@
-(provide 'jd:ansi-color-kb.el)
+(provide 'jd:ansi-color-kb)

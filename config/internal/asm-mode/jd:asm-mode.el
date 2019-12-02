@@ -1,6 +1,5 @@
-(require 'asm-mode (concat jd:lisp-prefix "progmodes/asm-mode.elc"))
+(jd:load-feature asm-mode jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:asm-mode-kb jd:internal-prefix "asm-mode/")
+(jd:load-feature jd:asm-mode-st jd:internal-prefix "asm-mode/")
 
-(require 'jd:asm-mode-kb.el (concat jd:internal-prefix "asm-mode/jd:asm-mode-kb.elc"))
-(require 'jd:asm-mode-st.el (concat jd:internal-prefix "asm-mode/jd:asm-mode-st.elc"))
-
-(provide 'jd:asm-mode.el)
+(provide 'jd:asm-mode)

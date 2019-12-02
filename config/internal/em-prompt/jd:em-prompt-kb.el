@@ -1,3 +1,3 @@
-(provide 'jd:em-prompt-kb.el)
+(provide 'jd:em-prompt-kb)
 
 ;; eshell-prompt-mode-map

@@ -1,1 +1,1 @@
-(provide 'jd:xterm-color-kb.el)
+(provide 'jd:xterm-color-kb)

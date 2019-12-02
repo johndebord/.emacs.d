@@ -1,6 +1,5 @@
-(require 'xref (concat jd:lisp-prefix "progmodes/xref.elc"))
+(jd:load-feature xref jd:site-lisp-prefix "progmodes/")
+(jd:load-feature jd:xref-kb jd:internal-prefix "xref/")
+(jd:load-feature jd:xref-st jd:internal-prefix "xref/")
 
-(require 'jd:xref-kb.el (concat jd:internal-prefix "xref/jd:xref-kb.elc"))
-(require 'jd:xref-st.el (concat jd:internal-prefix "xref/jd:xref-st.elc"))
-
-(provide 'jd:xref.el)
+(provide 'jd:xref)

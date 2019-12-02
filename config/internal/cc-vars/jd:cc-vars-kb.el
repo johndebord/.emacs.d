@@ -1,1 +1,1 @@
-(provide 'jd:cc-vars-kb.el)
+(provide 'jd:cc-vars-kb)

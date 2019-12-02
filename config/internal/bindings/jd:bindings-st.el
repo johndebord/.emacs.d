@@ -1,1 +1,1 @@
-(provide 'jd:bindings-st.el)
+(provide 'jd:bindings-st)

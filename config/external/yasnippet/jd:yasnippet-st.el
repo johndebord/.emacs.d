@@ -1,3 +1,3 @@
-(yas-load-directory (concat jd:external-prefix "yasnippet/snippets/"))
+(yas-load-directory (concat jd:path-prefix "config/external/yasnippet/snippets/"))
 
-(provide 'jd:yasnippet-st.el)
+(provide 'jd:yasnippet-st)

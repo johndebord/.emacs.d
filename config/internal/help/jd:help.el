@@ -1,6 +1,5 @@
-(require 'help (concat jd:lisp-prefix "help.elc"))
+(jd:load-feature help jd:site-lisp-prefix)
+(jd:load-feature jd:help-kb jd:internal-prefix "help/")
+(jd:load-feature jd:help-st jd:internal-prefix "help/")
 
-(require 'jd:help-kb.el (concat jd:internal-prefix "help/jd:help-kb.elc"))
-(require 'jd:help-st.el (concat jd:internal-prefix "help/jd:help-st.elc"))
-
-(provide 'jd:help.el)
+(provide 'jd:help)

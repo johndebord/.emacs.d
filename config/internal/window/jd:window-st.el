@@ -41,4 +41,4 @@
 (add-to-list 'same-window-regexps ".+hpp")
 (add-to-list 'same-window-regexps ".+ipp")
 
-(provide 'jd:window-st.el)
+(provide 'jd:window-st)

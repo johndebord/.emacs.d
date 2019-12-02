@@ -2,4 +2,4 @@
 
 (setq-default show-paren-delay 0.001)
 
-(provide 'jd:paren-st.el)
+(provide 'jd:paren-st)

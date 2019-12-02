@@ -21,7 +21,7 @@
 (define-key speedbar-file-key-map (kbd "<mouse-3>") 'speedbar-up-directory)
 (define-key speedbar-file-key-map (kbd "<C-mouse-3>") 'dframe-popup-kludge)
 
-(provide 'jd:speedbar-kb.el)
+(provide 'jd:speedbar-kb)
 
 ;; speedbar-mode-map
 ;; speedbar-key-map

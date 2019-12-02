@@ -1,6 +1,5 @@
-(require 'esh-var (concat jd:lisp-prefix "eshell/esh-var.elc"))
+(jd:load-feature esh-var jd:site-lisp-prefix "eshell/")
+(jd:load-feature jd:esh-var-kb jd:internal-prefix "esh-var/")
+(jd:load-feature jd:esh-var-st jd:internal-prefix "esh-var/")
 
-(require 'jd:esh-var-kb.el (concat jd:internal-prefix "esh-var/jd:esh-var-kb.elc"))
-(require 'jd:esh-var-st.el (concat jd:internal-prefix "esh-var/jd:esh-var-st.elc"))
-
-(provide 'jd:esh-var.el)
+(provide 'jd:esh-var)

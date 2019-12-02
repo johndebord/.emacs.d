@@ -1,1 +1,1 @@
-(provide 'jd:register-kb.el)
+(provide 'jd:register-kb)

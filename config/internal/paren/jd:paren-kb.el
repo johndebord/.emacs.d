@@ -1,1 +1,1 @@
-(provide 'jd:paren-kb.el)
+(provide 'jd:paren-kb)

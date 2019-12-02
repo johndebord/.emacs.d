@@ -3,7 +3,7 @@
 (define-key query-replace-map (kbd "n") 'skip)
 (define-key query-replace-map (kbd "y") 'act)
 
-(provide 'jd:replace-kb.el)
+(provide 'jd:replace-kb)
 
 ;; occur-mode-map
 ;; multi-query-replace-map

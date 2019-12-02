@@ -1,4 +1,4 @@
-(provide 'jd:menu-bar-kb.el)
+(provide 'jd:menu-bar-kb)
 
 ;; menu-bar-showhide-window-divider-menu
 ;; menu-bar-options-menu

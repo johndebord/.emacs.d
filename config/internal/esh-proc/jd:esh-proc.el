@@ -1,6 +1,5 @@
-(require 'esh-proc (concat jd:lisp-prefix "eshell/esh-proc.elc"))
+(jd:load-feature esh-proc jd:site-lisp-prefix "eshell/")
+(jd:load-feature jd:esh-proc-kb jd:internal-prefix "esh-proc/")
+(jd:load-feature jd:esh-proc-st jd:internal-prefix "esh-proc/")
 
-(require 'jd:esh-proc-kb.el (concat jd:internal-prefix "esh-proc/jd:esh-proc-kb.elc"))
-(require 'jd:esh-proc-st.el (concat jd:internal-prefix "esh-proc/jd:esh-proc-st.elc"))
-
-(provide 'jd:esh-proc.el)
+(provide 'jd:esh-proc)

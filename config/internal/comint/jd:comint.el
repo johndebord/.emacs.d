@@ -1,6 +1,5 @@
-(require 'comint (concat jd:lisp-prefix "comint.elc"))
+(jd:load-feature comint jd:site-lisp-prefix)
+(jd:load-feature jd:comint-kb jd:internal-prefix "comint/")
+(jd:load-feature jd:comint-st jd:internal-prefix "comint/")
 
-(require 'jd:comint-kb.el (concat jd:internal-prefix "comint/jd:comint-kb.elc"))
-(require 'jd:comint-st.el (concat jd:internal-prefix "comint/jd:comint-st.elc"))
-
-(provide 'jd:comint.el)
+(provide 'jd:comint)

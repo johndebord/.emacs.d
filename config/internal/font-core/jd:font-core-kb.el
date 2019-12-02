@@ -1,1 +1,1 @@
-(provide 'jd:font-core-kb.el)
+(provide 'jd:font-core-kb)

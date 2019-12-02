@@ -18,7 +18,7 @@
 (define-key read-expression-map (kbd "<jd:ret>") 'exit-minibuffer)
 (define-key read-expression-map (kbd "<jd:tab>") 'completion-at-point)
 
-(provide 'jd:simple-kb.el)
+(provide 'jd:simple-kb)
 
 ;; messages-buffer-mode-map
 ;; process-menu-mode-map

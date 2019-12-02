@@ -29,7 +29,7 @@
 (define-key gud-minibuffer-local-map (kbd "<jd:ret>") 'exit-minibuffer)
 (define-key gud-minibuffer-local-map (kbd "<jd:tab>") 'comint-dynamic-complete-filename)
 
-(provide 'jd:gud-kb.el)
+(provide 'jd:gud-kb)
 
 ;; gud-minor-mode-map
 ;; gud-menu-map

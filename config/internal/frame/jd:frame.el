@@ -1,6 +1,5 @@
-(require 'frame (concat jd:lisp-prefix "frame.elc"))
+(jd:load-feature frame jd:site-lisp-prefix)
+(jd:load-feature jd:frame-kb jd:internal-prefix "frame/")
+(jd:load-feature jd:frame-st jd:internal-prefix "frame/")
 
-(require 'jd:frame-kb.el (concat jd:internal-prefix "frame/jd:frame-kb.elc"))
-(require 'jd:frame-st.el (concat jd:internal-prefix "frame/jd:frame-st.elc"))
-
-(provide 'jd:frame.el)
+(provide 'jd:frame)

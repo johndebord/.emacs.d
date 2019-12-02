@@ -1,6 +1,5 @@
-(require 'speedbar (concat jd:lisp-prefix "speedbar.elc"))
+(jd:load-feature speedbar jd:site-lisp-prefix)
+(jd:load-feature jd:speedbar-kb jd:internal-prefix "speedbar/")
+(jd:load-feature jd:speedbar-st jd:internal-prefix "speedbar/")
 
-(require 'jd:speedbar-kb.el (concat jd:internal-prefix "speedbar/jd:speedbar-kb.elc"))
-(require 'jd:speedbar-st.el (concat jd:internal-prefix "speedbar/jd:speedbar-st.elc"))
-
-(provide 'jd:speedbar.el)
+(provide 'jd:speedbar)

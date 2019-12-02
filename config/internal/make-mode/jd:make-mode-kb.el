@@ -1,4 +1,4 @@
-(provide 'jd:make-mode-kb.el)
+(provide 'jd:make-mode-kb)
 
 ;; makefile-makepp-mode-map
 ;; makefile-mode-map

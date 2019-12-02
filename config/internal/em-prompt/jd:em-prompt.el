@@ -1,6 +1,5 @@
-(require 'em-prompt (concat jd:lisp-prefix "eshell/em-prompt.elc"))
+(jd:load-feature em-prompt jd:site-lisp-prefix "eshell/")
+(jd:load-feature jd:em-prompt-kb jd:internal-prefix "em-prompt/")
+(jd:load-feature jd:em-prompt-st jd:internal-prefix "em-prompt/")
 
-(require 'jd:em-prompt-kb.el (concat jd:internal-prefix "em-prompt/jd:em-prompt-kb.elc"))
-(require 'jd:em-prompt-st.el (concat jd:internal-prefix "em-prompt/jd:em-prompt-st.elc"))
-
-(provide 'jd:em-prompt.el)
+(provide 'jd:em-prompt)

@@ -4,4 +4,4 @@
 
 (advice-add 'display-startup-echo-area-message :override (lambda () (message "")))
 
-(provide 'jd:startup-st.el)
+(provide 'jd:startup-st)

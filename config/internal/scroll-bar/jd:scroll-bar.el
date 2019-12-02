@@ -1,6 +1,5 @@
-(require 'scroll-bar (concat jd:lisp-prefix "scroll-bar.elc"))
+(jd:load-feature scroll-bar jd:site-lisp-prefix)
+(jd:load-feature jd:scroll-bar-kb jd:internal-prefix "scroll-bar/")
+(jd:load-feature jd:scroll-bar-st jd:internal-prefix "scroll-bar/")
 
-(require 'jd:scroll-bar-kb.el (concat jd:internal-prefix "scroll-bar/jd:scroll-bar-kb.elc"))
-(require 'jd:scroll-bar-st.el (concat jd:internal-prefix "scroll-bar/jd:scroll-bar-st.elc"))
-
-(provide 'jd:scroll-bar.el)
+(provide 'jd:scroll-bar)

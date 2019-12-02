@@ -1,1 +1,1 @@
-(provide 'jd:frame-kb.el)
+(provide 'jd:frame-kb)

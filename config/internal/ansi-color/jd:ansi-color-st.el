@@ -1,1 +1,1 @@
-(provide 'jd:ansi-color-st.el)
+(provide 'jd:ansi-color-st)

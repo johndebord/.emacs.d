@@ -1,4 +1,4 @@
-(provide 'jd:bindings-kb.el)
+(provide 'jd:bindings-kb)
 
 ;; mode-line-column-line-number-mode-map
 ;; goto-map

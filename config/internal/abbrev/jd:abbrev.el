@@ -1,6 +1,5 @@
-(require 'abbrev (concat jd:lisp-prefix "abbrev.elc"))
+(jd:load-feature abbrev jd:site-lisp-prefix)
+(jd:load-feature jd:abbrev-kb jd:internal-prefix "abbrev/")
+(jd:load-feature jd:abbrev-st jd:internal-prefix "abbrev/")
 
-(require 'jd:abbrev-kb.el (concat jd:internal-prefix "abbrev/jd:abbrev-kb.elc"))
-(require 'jd:abbrev-st.el (concat jd:internal-prefix "abbrev/jd:abbrev-st.elc"))
-
-(provide 'jd:abbrev.el)
+(provide 'jd:abbrev)

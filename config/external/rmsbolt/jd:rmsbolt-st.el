@@ -1,1 +1,1 @@
-(provide 'jd:rmsbolt-st.el)
+(provide 'jd:rmsbolt-st)

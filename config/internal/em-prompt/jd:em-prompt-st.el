@@ -19,4 +19,4 @@ Highlight eshell pwd and prompt separately."
           (lambda ()
             (setenv "TERM" "xterm-256color")))
 
-(provide 'jd:em-prompt-st.el)
+(provide 'jd:em-prompt-st)

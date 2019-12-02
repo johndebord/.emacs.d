@@ -12,4 +12,4 @@
 (setq-default rcirc-fill-prefix "       ")
 (setq-default rcirc-server-alist '(("irc.freenode.net" :port 6667 :channels ("#emacs"))))
 
-(provide 'jd:rcirc-st.el)
+(provide 'jd:rcirc-st)

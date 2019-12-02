@@ -1,6 +1,5 @@
-(require 'apropos (concat jd:lisp-prefix "apropos.elc"))
+(jd:load-feature apropos jd:site-lisp-prefix)
+(jd:load-feature jd:apropos-kb jd:internal-prefix "apropos/")
+(jd:load-feature jd:apropos-st jd:internal-prefix "apropos/")
 
-(require 'jd:apropos-kb.el (concat jd:internal-prefix "apropos/jd:apropos-kb.elc"))
-(require 'jd:apropos-st.el (concat jd:internal-prefix "apropos/jd:apropos-st.elc"))
-
-(provide 'jd:apropos.el)
+(provide 'jd:apropos)

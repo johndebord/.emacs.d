@@ -1,6 +1,5 @@
-(require 'minibuffer (concat jd:lisp-prefix "minibuffer.elc"))
+(jd:load-feature minibuffer jd:site-lisp-prefix)
+(jd:load-feature jd:minibuffer-kb jd:internal-prefix "minibuffer/")
+(jd:load-feature jd:minibuffer-st jd:internal-prefix "minibuffer/")
 
-(require 'jd:minibuffer-kb.el (concat jd:internal-prefix "minibuffer/jd:minibuffer-kb.elc"))
-(require 'jd:minibuffer-st.el (concat jd:internal-prefix "minibuffer/jd:minibuffer-st.elc"))
-
-(provide 'jd:minibuffer.el)
+(provide 'jd:minibuffer)

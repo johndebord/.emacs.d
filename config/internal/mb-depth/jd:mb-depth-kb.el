@@ -1,1 +1,1 @@
-(provide 'jd:mb-depth-kb.el)
+(provide 'jd:mb-depth-kb)

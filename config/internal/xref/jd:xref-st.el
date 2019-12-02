@@ -38,4 +38,4 @@
 
 (advice-add 'xref--collect-matches-1 :override 'jd:xref--collect-matches-1)
 
-(provide 'jd:xref-st.el)
+(provide 'jd:xref-st)
