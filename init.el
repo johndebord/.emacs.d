@@ -1,30 +1,25 @@
 ;;; Author: John DeBord
 
-(defconst jd:wsl-environment-p
-  (if (string-match-p "Windows" (getenv "PATH"))
+;; TODO: Should I move my init logic into my emacs fork directory?
+(defconst jd:path-prefix
+  (concat (getenv "HOME") "/.emacs.d/"))
+
+;; TODO: Should I move my init logic into my emacs fork directory?
+(defconst jd:elc-prefix
+  (concat jd:path-prefix ".elc/"))
+
+(defconst jd:site-lisp-prefix
+  "/usr/local/share/emacs/26.3.50/lisp/")
+
+;; TODO: Might need to do this recursively
+;; TODO: Also must have the mirror functions:
+;;       Compile everything to here
+;;       Delete everything in here
+(defconst jd:load-from-byte-compiled-dir-p
+  (if (directory-files jd:path-prefix nil ".+\\.elc")
       t
     nil))
 
-(defconst jd:path-prefix
-  (if jd:wsl-environment-p
-      "/home/johndebord/.emacs.d/" ;; TODO: Should I move my init logic into my emacs fork directory?
-    "/home/i/.emacs.d/"))
-
-(defconst jd:elc-prefix
-  (if jd:wsl-environment-p
-      (concat jd:path-prefix ".elc/") ;; TODO: Should I move my init logic into my emacs fork directory?
-    (concat jd:path-prefix ".elc/")))
-
-(defconst jd:site-lisp-prefix
-  (if jd:wsl-environment-p
-      "/usr/local/share/emacs/26.3.50/lisp/"
-    "/usr/local/share/emacs/26.3.50/lisp/"))
-
-(defconst jd:load-from-byte-compiled-dir-p
-  (if (directory-files jd:path-prefix nil ".+\\.elc") ;; TODO: Might need to do this recursively
-      t                                                                ;; TODO: Also must have the mirror functions:
-    nil))                                                              ;;       Compile everything to here
-                                                                       ;;       Delete everything in here
 (defconst jd:global-prefix
   (if jd:load-from-byte-compiled-dir-p
       (concat jd:path-prefix ".elc/config/global/")
@@ -41,7 +36,8 @@
     (concat jd:path-prefix "config/internal/")))
 
 ;; TODO: Might have to move this elpa variable (or add another) around due to auto compiling files.
-(defconst jd:elpa-prefix (concat jd:path-prefix "config/external/elpa/"))
+(defconst jd:elpa-prefix
+  (concat jd:path-prefix "config/external/elpa/"))
 (setq-default package-user-dir jd:elpa-prefix)
 (package-initialize)
 (setq-default package-archives '(("gnu" . "http://elpa.gnu.org/packages/")

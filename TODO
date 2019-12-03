@@ -1,5 +1,12 @@
-Possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ..uu
+Possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ...
 Fix how ISM completes after I'm done spamming tab on a yasnippet
+
+VM TODO:
+- Configure the optimal performance settings for the environment
+- Configure the appropriate keyboard settings for the environment (correct alt-tab behavior/ctrl/window/alt)
+- Write the script for downloading and installing all dependencies from scratch for my development environment and eosio
+--- Look into using using SSH with X11 forwarding with VirtualBox
+--- Look into using Docker container like using SSH with X11 forwarding and compare
 
 Script logic:
 (Test on Windows VM)

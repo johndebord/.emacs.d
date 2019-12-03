@@ -91,25 +91,17 @@
             (lambda ()
               (directory-files-recursively jd:internal-prefix ".el")))))
       
-      (dolist (file_ root-files_)
-        (jd:internal--byte-compile-file file_))
-      
-      (dolist (file_ elpa-files_)
-        (jd:internal--byte-compile-file file_))
-      
-      (dolist (file_ external-files_)
-        (jd:internal--byte-compile-file file_))
-
-      (dolist (file_ global-files_)
-        (jd:internal--byte-compile-file file_))
-
-      (dolist (file_ internal-files_)
-        (jd:internal--byte-compile-file file_)))))
+      (dolist (file_ root-files_) (jd:internal--byte-compile-file file_))
+      (dolist (file_ elpa-files_) (jd:internal--byte-compile-file file_))
+      (dolist (file_ external-files_) (jd:internal--byte-compile-file file_))
+      (dolist (file_ global-files_) (jd:internal--byte-compile-file file_))
+      (dolist (file_ internal-files_) (jd:internal--byte-compile-file file_)))))
 
 (defun jd:delete-all-elc-files ()
   (interactive)
   (let ((files_))
     (setq files_ (directory-files-recursively jd:elc-prefix ".elc"))
+    (delete-file (concat (getenv "HOME") "/.emacs.d/init.elc"))
     (dolist (file_ files_)
       (delete-file file_))))
 

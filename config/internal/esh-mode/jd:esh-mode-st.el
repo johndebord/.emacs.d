@@ -1,7 +1,8 @@
 (defalias 'ff 'find-file)
 
 (setq-default eshell-command-map nil)
-(setq-default eshell-directory-name (concat jd:internal-prefix "esh-mode/eshell"))
+(setq-default eshell-directory-name
+              (concat (getenv "HOME") "/.emacs.d/config/internal/esh-mode/eshell"))
 (setq-default eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
 
 (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
