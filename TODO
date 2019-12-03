@@ -2,6 +2,7 @@ Possible strat for fixing ist: save-excursion, insert space, go back one char, c
 Fix how ISM completes after I'm done spamming tab on a yasnippet
 
 VM TODO:
+- Merge my emacs branch with my fork's master branch
 - Configure the optimal performance settings for the environment
 - Configure the appropriate keyboard settings for the environment (correct alt-tab behavior/ctrl/window/alt)
 - Write the script for downloading and installing all dependencies from scratch for my development environment and eosio
