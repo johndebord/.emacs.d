@@ -1,9 +1,27 @@
-(setf (cdr apropos-mode-map) nil)
+(setq-default apropos-mode-map (make-sparse-keymap 'apropos-mode-map))
 (define-key apropos-mode-map (kbd "q") 'quit-window)
-(define-key apropos-mode-map (kbd "<jd:ret>") 'push-button)
-(define-key apropos-mode-map (kbd "<jd:tab>") 'forward-button)
-(define-key apropos-mode-map (kbd "<jd:S-tab>") 'backward-button)
 
 (provide 'jd:apropos-kb)
 
+;; File: /usr/local/share/emacs/26.3.50/lisp/apropos.elc
+;; 
 ;; apropos-mode-map
+;; ----------------
+;; key             binding
+;; ---             -------
+;; 
+;; SPC             scroll-up-command
+;; -               negative-argument
+;; 0 .. 9          digit-argument
+;; <               beginning-of-buffer
+;; >               end-of-buffer
+;; ?               describe-mode
+;; g               revert-buffer
+;; h               describe-mode
+;; q               quit-window
+;; DEL             scroll-down-command
+;; S-SPC           scroll-down-command
+;; <jd:S-tab>      backward-button
+;; <jd:ret>        push-button
+;; <jd:tab>        forward-button
+;; <remap>         Prefix Command

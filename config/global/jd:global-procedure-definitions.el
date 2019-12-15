@@ -76,6 +76,7 @@
   (let ((jd:file-name (concat (file-name-sans-extension (buffer-file-name)) "c"))
         (jd:keymap-symbols nil))
     
+    (load-file jd:file-name)
     (mapatoms
      (lambda (jd:symbol)
        (when (and (boundp jd:symbol)

@@ -1,20 +1,14 @@
 ;;; Author: John DeBord
 
-;; TODO: Should I move my init logic into my emacs fork directory?
 (defconst jd:path-prefix
   (concat (getenv "HOME") "/.emacs.d/"))
 
-;; TODO: Should I move my init logic into my emacs fork directory?
 (defconst jd:elc-prefix
   (concat jd:path-prefix ".elc/"))
 
 (defconst jd:site-lisp-prefix
   "/usr/local/share/emacs/26.3.50/lisp/")
 
-;; TODO: Might need to do this recursively
-;; TODO: Also must have the mirror functions:
-;;       Compile everything to here
-;;       Delete everything in here
 (defconst jd:load-from-byte-compiled-dir-p
   (if (directory-files jd:path-prefix nil ".+\\.elc")
       t
@@ -25,19 +19,28 @@
       (concat jd:path-prefix ".elc/config/global/")
     (concat jd:path-prefix "config/global/")))
 
+(defconst jd:global-elisp-files-prefix
+  (concat jd:path-prefix "config/global/"))
+
 (defconst jd:external-prefix
   (if jd:load-from-byte-compiled-dir-p
       (concat jd:path-prefix ".elc/config/external/")
     (concat jd:path-prefix "config/external/")))
+
+(defconst jd:external-elisp-files-prefix
+  (concat jd:path-prefix "config/external/"))
 
 (defconst jd:internal-prefix
   (if jd:load-from-byte-compiled-dir-p
       (concat jd:path-prefix ".elc/config/internal/")
     (concat jd:path-prefix "config/internal/")))
 
-;; TODO: Might have to move this elpa variable (or add another) around due to auto compiling files.
+(defconst jd:internal-elisp-files-prefix
+  (concat jd:path-prefix "config/internal/"))
+
 (defconst jd:elpa-prefix
   (concat jd:path-prefix "config/external/elpa/"))
+
 (setq-default package-user-dir jd:elpa-prefix)
 (package-initialize)
 (setq-default package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -79,7 +82,6 @@
        (load (concat ,@prefixes_ (symbol-name ',feature_) ".elc"))
      (load (concat ,@prefixes_ (symbol-name ',feature_) ".el"))))
 
-;; (jd:load-feature jd:elpa-config jd:elpa-prefix) ;; TODO
 (jd:load-feature jd:external-config jd:external-prefix)
 (jd:load-feature jd:global-config jd:global-prefix)
 (jd:load-feature jd:internal-config jd:internal-prefix)
@@ -91,7 +93,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 128 :width normal :foundry "ibm" :family "Courier"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "ibm" :family "Courier"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal))))
@@ -729,6 +731,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet xterm-color sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company)))
+   (quote
+    (rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet xterm-color sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company))))
 (put 'narrow-to-region 'disabled nil)
 (put 'erase-buffer 'disabled nil)
