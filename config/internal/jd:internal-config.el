@@ -52,6 +52,7 @@
 (jd:load-feature jd:mwheel jd:internal-prefix "mwheel/")
 (jd:load-feature jd:newcomment jd:internal-prefix "newcomment/")
 (jd:load-feature jd:paren jd:internal-prefix "paren/")
+(jd:load-feature jd:pcomplete jd:internal-prefix "pcomplete/")
 (jd:load-feature jd:rcirc jd:internal-prefix "rcirc/")
 (jd:load-feature jd:register jd:internal-prefix "register/")
 (jd:load-feature jd:replace jd:internal-prefix "replace/")

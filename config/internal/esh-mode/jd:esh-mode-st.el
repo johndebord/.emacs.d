@@ -44,6 +44,11 @@
         (move-to-column jd:saved-column-number))))
 
 (add-hook 'eshell-mode-hook
-          (lambda () (font-lock-mode t)))
+          (lambda ()
+            (company-mode 1)
+            (cua-mode 1)
+            (electric-pair-mode 1)
+            (font-lock-mode t)
+            (idle-highlight-mode 1)))
 
 (provide 'jd:esh-mode-st)

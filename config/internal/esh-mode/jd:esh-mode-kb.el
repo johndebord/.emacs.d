@@ -23,6 +23,6 @@
             (define-key eshell-mode-map (kbd "<C-c> <C-l>") 'jd:eshell-clear-buffer)
             (define-key eshell-mode-map (kbd "<C-c> <C-r>") 'jd:counsel-esh-history)
             (define-key eshell-mode-map (kbd "<jd:ret>") 'jd:incredibly-smart-return)
-            (define-key eshell-mode-map (kbd "<jd:tab>") 'completion-at-point)))
+            (define-key eshell-mode-map (kbd "<jd:tab>") 'jd:pcomplete-std-complete)))
 
 (provide 'jd:esh-mode-kb)

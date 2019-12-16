@@ -1,6 +1,35 @@
 Possible strat for fixing ist: save-excursion, insert space, go back one char, check for comapany, if so leave excursion, ...
 Fix how ISM completes after I'm done spamming tab on a yasnippet
 
+fix all warnings in site lisp files as well
+elec-pair.el:582:7:Warning: misplaced interactive spec: ‘(interactive (list
+    (or current-prefix-arg (quote toggle))))’
+
+BIND:
+goto-line
+hs-hide-stuff
+
+run emacs tests
+
+add a couple more lines to xref to obtain more context
+
+I'm going to have to unbind all keys in said module in order to see the true defaults....
+
+make sure to font lock all modes appropriately
+
+man pages still open up in new frame........................
+
+change to just (make-sparse-keymap)
+
+properly comment and document/describe everything
+
+go over John DeBord functions and make sure they are looking good
+
+customize the color of `` faces and allow parenthesis and/or anything; possibly make it act as mini-code snippet looking thing
+also customize th face of #define ASDF
+
+fix search and replace ivy
+
 [ ] Configure:     GO OVER ALL CONFIGURATION FILES AGAIN AND LOOK AT/PLAY WITH ALL OF THEIR CORRESPONDING API's.
                    (in particuluar counsel looks like it has alot of good stuff)
                    - Customizable group variables; set them all accordingly in their respective files
@@ -9,9 +38,7 @@ Fix how ISM completes after I'm done spamming tab on a yasnippet
                    - Go through keymaps once more (including comint) (when rewriting them this time, include, within
                      the `setcdr' logic the keymap with the default bindings themselves, but with those bindings commented out);
                      this time edit their functionality at the site-lisp level (on a fork of emacs along with byte
-                     compilation scheme/fonts for maximum portability (include other dotfiles) (try a more stable version
-                     for the super long custom box bug that I find very annoying)
-
+                     compilation scheme/fonts for maximum portability (include other dotfiles)
                    - I can't insert a '*' in eshell
                    - (normal and esoteric C/C++ formatting variables set (templates/lambdas/ switch/etc.)))
                    - (MAKE sure to separate out the references to third party/outside stuff into their respective
@@ -21,14 +48,14 @@ Fix how ISM completes after I'm done spamming tab on a yasnippet
 [ ] Functionality: All compilation warnings and Emacs startup warnings
 [ ] Functionality: Theme (including modeline formatting stuff)
 
-[ ] Standardize:   Proper hooks for initiating minor modes in major modes (look at how I use `company' for an example)
-[ ] Standardize:   Convention for ordering defvar/defun/etc. in files
-[ ] Standardize:   Decide to use lambdas or actual functions everywhere
-[ ] Standardize:   Decide to fset or defadvice the chosen functions
+[ ] Standardize:   _ postfix for locals; one space to separate logic; two spaces in between functions; document
+[ ] Standardize:   for site-lisp: same as above and remove autoloading
+[ ] Standardize:   only one hook call
+[ ] Standardize:   setq, defun, other funcs (in alnum)
+[ ] Standardize:   functions everywhere
+[ ] Standardize:   no more add advice overrides anywhere!!!!!!!!!!!!!!!!!! just replace the code
 [ ] Standardize:   progn all the functions
-[ ] Standardize:   Decide what to macrotize
-[ ] Standardize:   Predicates should all end in `-p`
-[ ] Standardize:   Comments should use the `` Markdown notation
+[ ] Standardize:   `` notation
 [ ] Standardize:   Figure minor mode initialization with either t or 1
 
 At the end of this weekend, I want to have a pristine devel environment

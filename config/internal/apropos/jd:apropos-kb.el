@@ -1,4 +1,4 @@
-(setq-default apropos-mode-map (make-sparse-keymap 'apropos-mode-map))
+(setq-default apropos-mode-map (make-sparse-keymap))
 (define-key apropos-mode-map (kbd "q") 'quit-window)
 
 (provide 'jd:apropos-kb)
@@ -10,6 +10,9 @@
 ;; key             binding
 ;; ---             -------
 ;; 
+;; TAB             forward-button
+;; RET             apropos-follow
+;; ESC             Prefix Command
 ;; SPC             scroll-up-command
 ;; -               negative-argument
 ;; 0 .. 9          digit-argument
@@ -21,7 +24,7 @@
 ;; q               quit-window
 ;; DEL             scroll-down-command
 ;; S-SPC           scroll-down-command
-;; <jd:S-tab>      backward-button
-;; <jd:ret>        push-button
-;; <jd:tab>        forward-button
+;; <backtab>       backward-button
 ;; <remap>         Prefix Command
+;; 
+;; ESC TAB         backward-button

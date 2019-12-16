@@ -1,4 +1,16 @@
 ;;; Author: John DeBord
+;;;
+;;; Personal conventions:
+;;;
+;;; Prefix `jd:`
+;;;   Reserved for personal variables, functions, and files.
+;;; Postfix `_`
+;;;   Reserved for variables in the scope of a personal function and/or
+;;;   variables in the scope of a site-lisp file that I have modified.
+;;;
+;;; If a site-lisp file is modified, the style and comments shall also be
+;;; modified to reflect the changes, as well as to remove any erroneous
+;;; commentation of the functionality.
 
 (defconst jd:path-prefix
   (concat (getenv "HOME") "/.emacs.d/"))
@@ -93,7 +105,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "ibm" :family "Courier"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "ibm" :family "Courier"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal))))
@@ -289,7 +301,7 @@
  '(ivy-cursor ((t (:background "purple" :foreground "black"))))
  '(ivy-highlight-face ((t nil)))
  '(ivy-match-required-face ((t (:background "purple" :foreground "black"))))
- '(ivy-minibuffer-match-face-1 ((t (:underline "#FFFFFF"))))
+ '(ivy-minibuffer-match-face-1 ((t (:underline "#BE8A2D"))))
  '(ivy-minibuffer-match-face-2 ((t (:inherit ivy-minibuffer-match-face-1))))
  '(ivy-minibuffer-match-face-3 ((t (:inherit ivy-minibuffer-match-face-1))))
  '(ivy-minibuffer-match-face-4 ((t (:inherit ivy-minibuffer-match-face-1))))

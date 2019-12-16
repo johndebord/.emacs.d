@@ -7,6 +7,11 @@
 ;; But use it with precaution. Run first:
 ;; find . -name "*.elc" -type f            jd:preview-delete-all
 
+(defun jd:delete-backward-char ()
+  (interactive)
+  (setq jd:company-select nil)
+  (delete-backward-char 1))
+
 (defvar jd:cpp-print-active nil)
 
 (defvar jd:cpp-print-value nil)
@@ -73,7 +78,10 @@
 
 (defun jd:describe-keymaps-in-file ()
   (interactive)
-  (let ((jd:file-name (concat (file-name-sans-extension (buffer-file-name)) "c"))
+  (let ((jd:file-name
+         (if (equal (file-name-extension (buffer-file-name)) "gz")
+             (concat (file-name-sans-extension (buffer-file-name)) "c")
+           (buffer-file-name)))
         (jd:keymap-symbols nil))
     
     (load-file jd:file-name)
