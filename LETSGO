@@ -5,9 +5,19 @@ fix all warnings in site lisp files as well
 elec-pair.el:582:7:Warning: misplaced interactive spec: ‘(interactive (list
     (or current-prefix-arg (quote toggle))))’
 
+after everything is set up, go over the emacs fork once again and assert a
+certain style; and of the repo as a whole; deleting branches, cleaning it up,
+etc.
+
 BIND:
 goto-line
 hs-hide-stuff
+
+change syntax highlighting of non-ascii chars: look at file `jd:em-hist-kb.el` as the test
+
+after standardizing the config, make sure to optimize the config as well.
+
+rebind copy and paste iwth timeouts to prevent unwanted instantaneous copies
 
 run emacs tests
 

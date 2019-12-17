@@ -23,6 +23,7 @@
       (beginning-of-line)
     (eshell-bol)))
 
+;; This is buggy in eshell
 (defun jd:eshell-clear-buffer ()
   (interactive)
   (let ((jd:minimum-viable-eshell-command-column-number 4)

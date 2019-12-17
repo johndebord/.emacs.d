@@ -1,8 +1,8 @@
-;; Reconstruct the name of the given file if it is one of my configuration
-;; files; this is so that it can be saved in the appropriate directory. If the
-;; file is not one of my configuration files, the `.elc` file shall be placed in
-;; the current directory. After the name of the file has been established,
-;; byte-compile it.
+;; Reconstruct the name of the given file if it is indeed one of my personal
+;; configuration files; this is so that the byte-compiled file may be saved in
+;; the appropriate directory. If the file is not indeed one of my configuration
+;; files, the `.elc` file shall be placed in the current directory. After the
+;; name of the file has been established, byte-compile it.
 (defun jd:internal--byte-compile-file (file_)
   (cl-flet
       ((reconstruct-file_
@@ -50,7 +50,7 @@
      (t
       (byte-compile-file file_)))))
 
-;; Byte-compile all of my configuration files and, place them in their
+;; Byte-compile all of my personal configuration files and, place them in their
 ;; appropriate directory; where all of my corresponding `.elc` files reside.
 (defun jd:byte-recompile-all-files ()
   (interactive)
@@ -104,8 +104,8 @@
       (dolist (file_ global-files_) (jd:internal--byte-compile-file file_))
       (dolist (file_ internal-files_) (jd:internal--byte-compile-file file_)))))
 
-;; Delete all of my byte-compiled configuration files. This is to keep my
-;; configuration clean and portable when need be.
+;; Delete all of my byte-compiled personal configuration files. This is to keep
+;; my configuration clean and portable when need be.
 (defun jd:delete-all-elc-files ()
   (interactive)
   (let ((files_))

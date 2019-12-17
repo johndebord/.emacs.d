@@ -1,5 +1,6 @@
-;; Do not save the initial state all windows when starting a debugging session,
-;; because I might land in some place interesting while debugging.
+;; Do not save the initial state that all windows are in when starting a
+;; debugging session; this is because I might land in some place interesting
+;; whilst debugging.
 (setq-default edebug-save-windows nil)
 
 ;; Instrument the function for debugging and pulse highlight the region to
