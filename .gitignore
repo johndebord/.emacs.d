@@ -3,9 +3,9 @@
 *.elc
 network-security.data
 tramp
-./.elc/
-./autosaves/
-./backups/
-./config/external/elpa/archives/
-./config/internal/eshell/eshell/lastdir
-./config/internal/eshell/eshell/history
+autosaves/
+backups/
+config/external/elpa/archives/
+config/internal/eshell/eshell/history
+config/internal/eshell/eshell/lastdir
+config/internal/eshell/eshell/lastdir
