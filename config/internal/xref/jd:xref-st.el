@@ -1,41 +1,63 @@
+;; Customization variables.
+(defvar xref-after-return-hook)
+(defvar xref-marker-ring-length)
+(defvar xref-prompt-for-identifier)
+
 (setq-default xref-after-jump-hook nil)
 
-(defun jd:xref--collect-matches-1 (regexp file line line-beg line-end syntax-needed)
-  (let (matches)
-    (when syntax-needed
-      (syntax-propertize line-end))
-    (while (and
-            (or (null matches)
-                (> (point) line-beg))
-            (re-search-forward regexp line-end t))
-      (let* ((beg-column (- (match-beginning 0) line-beg))
-             (end-column (- (match-end 0) line-beg))
-             (loc (xref-make-file-location file line beg-column))
-             (summary (buffer-substring-no-properties line-beg line-end)))
-        (add-face-text-property beg-column end-column 'xref-match
-                                t summary)
-        (push (xref-make-match summary loc (- end-column beg-column))
-              matches)))
-    (nreverse matches)))
-
-(defun jd:xref-next-line ()
+;; Utility function used at one point to organize the output of
+;; `xref-find-references`; narrowing it down to just the file names where the
+;; references are found.
+(defun jd:truncate-xref-references ()
   (interactive)
-  (beginning-of-line)
-  (forward-line 1))
+  (forward-line)
+  (set-mark (point))
+  (let ((b 0))
+    (while (equal b 0)
+      (forward-line)
+      (if (or (equal (string (char-after (point))) "/")
+	      (equal (point) (point-max)))
+	  (progn
+	    (delete-active-region)
+	    (setq b 1))))))
 
-(defun jd:xref-previous-line ()
+;; Find xref definitions in either the `company` popup or in a normal fashion.
+(defun jd:xref-find-definitions ()
   (interactive)
-  (beginning-of-line)
-  (forward-line -1))
+  (if (and (memq 'company-etags (car company-backends))
+           (equal tags-file-name nil))
+      (message "`TAGS` file has not been set.")
+    (if (company--active-p)
+        (progn
+          (xref-find-definitions (nth company-selection company-candidates)))
+      (progn
+        (xref-find-definitions (symbol-name (symbol-at-point)))))))
 
-(add-hook 'xref-after-jump-hook
-          (lambda ()
-            (progn
-              (forward-sexp)
-              (backward-sexp)
-              (recenter)
-              (xref-pulse-momentarily))))
+;; Find xref references in either the `company` popup or in a normal fashion.
+(defun jd:xref-find-references ()
+  (interactive)
+  (if (and (memq 'company-etags (car company-backends))
+           (equal tags-file-name nil))
+      (message "`TAGS` file has not been set.")
+    (if (company--active-p)
+        (progn
+          (xref-find-references (nth company-selection company-candidates)))
+      (progn
+        (xref-find-references (symbol-name (symbol-at-point)))))))
 
-(advice-add 'xref--collect-matches-1 :override 'jd:xref--collect-matches-1)
+;; Pulse the sexp of which I am cross-referencing.
+(defun jd:xref-pulse ()
+  (progn
+    (forward-sexp)
+    (backward-sexp)
+    (recenter)
+    (xref-pulse-momentarily)))
+
+(defun jd:xref--xref-buffer-mode-hook ()
+  (font-lock-mode 1)
+  (idle-highlight-mode 1))
+
+(add-hook 'xref--xref-buffer-mode-hook 'jd:xref--xref-buffer-mode-hook)
+(add-hook 'xref-after-jump-hook 'jd:xref-pulse)
 
 (provide 'jd:xref-st)

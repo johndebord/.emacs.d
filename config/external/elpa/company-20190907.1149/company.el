@@ -2312,21 +2312,37 @@ character, stripping the modifiers.  That character must be a digit."
                                  unread-command-events))
     (clear-this-command-keys t)))
 
+;; (defun company-show-doc-buffer ()
+;;   "Temporarily show the documentation buffer for the selection."
+;;   (interactive)
+;;   (let (other-window-scroll-buffer)
+;;     (company--electric-do
+;;       (let* ((selected (nth company-selection company-candidates))
+;;              (doc-buffer (or (company-call-backend 'doc-buffer selected)
+;;                              (user-error "No documentation available")))
+;;              start)
+;;         (when (consp doc-buffer)
+;;           (setq start (cdr doc-buffer)
+;;                 doc-buffer (car doc-buffer)))
+;;         (setq other-window-scroll-buffer (get-buffer doc-buffer))
+;;         (let ((win (display-buffer doc-buffer t)))
+;;           (set-window-start win (if start start (point-min))))))))
+
+;;; John DeBord
+;;; Dec. 28th, 2019
 (defun company-show-doc-buffer ()
   "Temporarily show the documentation buffer for the selection."
   (interactive)
-  (let (other-window-scroll-buffer)
-    (company--electric-do
-      (let* ((selected (nth company-selection company-candidates))
-             (doc-buffer (or (company-call-backend 'doc-buffer selected)
-                             (user-error "No documentation available")))
-             start)
-        (when (consp doc-buffer)
-          (setq start (cdr doc-buffer)
-                doc-buffer (car doc-buffer)))
-        (setq other-window-scroll-buffer (get-buffer doc-buffer))
-        (let ((win (display-buffer doc-buffer t)))
-          (set-window-start win (if start start (point-min))))))))
+  (let* ((selected (nth company-selection company-candidates))
+         (doc-buffer (or (company-call-backend 'doc-buffer selected)
+                         (user-error "No documentation available")))
+         start)
+    (when (consp doc-buffer)
+      (setq start (cdr doc-buffer)
+            doc-buffer (car doc-buffer)))
+    (set-buffer (get-buffer doc-buffer))
+    (display-buffer doc-buffer)))
+
 (put 'company-show-doc-buffer 'company-keep t)
 
 (defun company-show-location ()

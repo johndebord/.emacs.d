@@ -2,4 +2,4 @@
 # name: yas-message
 # key: message
 # --
-(message "${1:%s}"${2: ARGS})
+(message "$0")

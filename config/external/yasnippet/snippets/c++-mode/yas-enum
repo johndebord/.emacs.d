@@ -2,6 +2,6 @@
 # name: yas-enum
 # key: enum
 # --
-enum ${1:enumeration} {
+enum $1 {
     $0
 };

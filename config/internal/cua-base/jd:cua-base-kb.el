@@ -1,28 +1,13 @@
-(setq-default cua--cua-keys-keymap (make-sparse-keymap))
 (define-key cua--cua-keys-keymap (kbd "<C-v>") 'yank)
 (define-key cua--cua-keys-keymap (kbd "<C-z>") 'undo)
 (define-key cua--cua-keys-keymap (kbd "<C-c> <timeout>") 'copy-region-as-kill)
 (define-key cua--cua-keys-keymap (kbd "<C-x> <timeout>") 'kill-region)
 
-(setq-default cua--prefix-override-keymap (make-sparse-keymap))
 (define-key cua--prefix-override-keymap (kbd "<C-c>") 'cua--prefix-override-handler)
 (define-key cua--prefix-override-keymap (kbd "<C-x>") 'cua--prefix-override-handler)
 
-(setq-default cua--prefix-repeat-keymap (make-sparse-keymap))
 (define-key cua--prefix-repeat-keymap (kbd "<C-c> <C-c>") 'cua--prefix-repeat-handler)
 (define-key cua--prefix-repeat-keymap (kbd "<C-x> <C-x>") 'cua--prefix-repeat-handler)
-
-;; To be consistent with my pattern of clearing a keymap with `(setq-default
-;; <keymap-symbol> (make-sparse-keymap))`, I have to re-set `cua--keymap-alist`
-;; in this situation.
-(setq cua--keymap-alist
-      `((cua--ena-prefix-override-keymap . ,cua--prefix-override-keymap)
-        (cua--ena-prefix-repeat-keymap . ,cua--prefix-repeat-keymap)
-        (cua--ena-cua-keys-keymap . ,cua--cua-keys-keymap)
-        (cua--ena-global-mark-keymap . ,cua--global-mark-keymap)
-        (cua--rectangle . ,cua--rectangle-keymap)
-        (cua--ena-region-keymap . ,cua--region-keymap)
-        (cua-mode . ,cua-global-keymap)))
 
 (provide 'jd:cua-base-kb)
 

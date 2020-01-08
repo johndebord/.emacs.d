@@ -2,4 +2,4 @@
 # name: yas-asm
 # key: asm
 # --
-asm("");
+asm("");$0

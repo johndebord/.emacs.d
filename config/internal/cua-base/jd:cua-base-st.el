@@ -1,6 +1,37 @@
-;; Initiate `cua-mode` for everything, everywhere (to the best of my
-;; knowledge). Keep in mind that this is a global minor mode, so this procedure
-;; call need not be reiterated.
+;; Faces.
+(defvar cua-global-mark)
+(defvar cua-rectangle)
+(defvar cua-rectangle-noselect)
+
+;; Customization variables.
+(defvar cua-auto-mark-last-change)
+(defvar cua-auto-tabify-rectangles)
+(defvar cua-check-pending-input)
+(defvar cua-delete-copy-to-register-0)
+(defvar cua-delete-selection)
+(defvar cua-enable-cua-keys)
+(defvar cua-enable-cursor-indications)
+(defvar cua-enable-modeline-indications)
+(defvar cua-enable-rectangle-auto-help)
+(defvar cua-enable-region-auto-help)
+(defvar cua-enable-register-prefix)
+(defvar cua-global-mark-blink-cursor-interval)
+(defvar cua-global-mark-cursor-color)
+(defvar cua-global-mark-keep-visible)
+(defvar cua-highlight-region-shift-only)
+(defvar cua-keep-region-after-copy)
+(defvar cua-normal-cursor-color)
+(defvar cua-overwrite-cursor-color)
+(defvar cua-paste-pop-rotate-temporarily)
+(defvar cua-prefix-override-inhibit-delay)
+(defvar cua-read-only-cursor-color)
+(defvar cua-rectangle-mark-key)
+(defvar cua-rectangle-modifier-key)
+(defvar cua-remap-control-v)
+(defvar cua-remap-control-z)
+(defvar cua-toggle-set-mark)
+(defvar cua-virtual-rectangle-edges)
+
 (cua-mode 1)
 
 (provide 'jd:cua-base-st)

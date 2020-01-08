@@ -1,6 +1,10 @@
+(jd:load-feature jd:construct-folder jd:global-prefix)
+(jd:load-feature jd:cpp-print jd:global-prefix)
+(jd:load-feature jd:describe jd:global-prefix)
+(jd:load-feature jd:global-definitions jd:global-prefix)
+(jd:load-feature jd:incredible jd:global-prefix)
 (jd:load-feature jd:global-key-translations jd:global-prefix)
 (jd:load-feature jd:global-keybindings jd:global-prefix)
 (jd:load-feature jd:global-macro-definitions jd:global-prefix)
-(jd:load-feature jd:global-procedure-definitions jd:global-prefix)
 
 (provide 'jd:global-config)

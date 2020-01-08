@@ -2,7 +2,7 @@
 ;; I like knowing what the original binds were.  Thus if I rebind my custom
 ;; easily-maintainable "<C-a>" bind to something, I can know what the original
 ;; "C-a" did while inspecting the output of my custom describe keybindings
-;; function.
+;; function if the given keymap has not been cleared.
 
 (define-key input-decode-map (kbd "C-a")  [\C-\a])
 (define-key input-decode-map (kbd "C-b")  [\C-\b])

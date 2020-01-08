@@ -2,5 +2,5 @@
 # name: yas-lambda
 # key: lambda
 # --
-(lambda (${1:ARGS})
+(lambda ($1)
   $0)

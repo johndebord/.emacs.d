@@ -2,4 +2,4 @@
 # name: yas-incl
 # key: incl
 # --
-#include "$1"$0
+#include "$0"

@@ -1,1 +1,37 @@
+;; Faces.
+(defvar makefile-makepp-perl)
+(defvar makefile-shell)
+(defvar makefile-space)
+(defvar makefile-targets)
+
+;; Customization variables.
+(defvar makefile-backslash-align)
+(defvar makefile-backslash-column)
+(defvar makefile-brave-make)
+(defvar makefile-browser-auto-advance-after-selection-p)
+(defvar makefile-browser-buffer-name)
+(defvar makefile-browser-cursor-column)
+(defvar makefile-browser-leftmost-column)
+(defvar makefile-browser-selected-mark)
+(defvar makefile-browser-unselected-mark)
+(defvar makefile-cleanup-continuations)
+(defvar makefile-electric-keys)
+(defvar makefile-macro-assign)
+(defvar makefile-mode-hook)
+(defvar makefile-pickup-everything-picks-up-filenames-p)
+(defvar makefile-query-one-target-method-function)
+(defvar makefile-runtime-macros-list)
+(defvar makefile-special-targets-list)
+(defvar makefile-tab-after-target-colon)
+(defvar makefile-target-colon)
+(defvar makefile-up-to-date-buffer-name)
+(defvar makefile-use-curly-braces-for-macros-p)
+
+(defun jd:makefile-mode-hook ()
+  (electric-pair-mode 1)
+  (font-lock-mode 1)
+  (idle-highlight-mode 1))
+
+(add-hook 'makefile-mode-hook 'jd:makefile-mode-hook)
+
 (provide 'jd:make-mode-st)

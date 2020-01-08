@@ -2,4 +2,4 @@
 # name: yas-add-hook
 # key: add-hook
 # --
-(add-hook ${1:HOOK} ${2:FUNCTION})$0
+(add-hook $1 $2)$0

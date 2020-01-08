@@ -2,4 +2,4 @@
 # name: yas-incs
 # key: incs
 # --
-#include <$1>$0
+#include <$0>

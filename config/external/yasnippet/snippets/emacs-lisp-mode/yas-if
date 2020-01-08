@@ -2,5 +2,5 @@
 # name: yas-if
 # key: if
 # --
-(if ${1:COND}
+(if $1
     $0)

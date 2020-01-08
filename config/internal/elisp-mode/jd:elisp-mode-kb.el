@@ -1,7 +1,5 @@
-(setq-default emacs-lisp-mode-map (make-sparse-keymap))
 (define-key emacs-lisp-mode-map (kbd "<C-b>") 'jd:eval)
 (define-key emacs-lisp-mode-map (kbd "<C-x> b") 'jd:edebug-eval-top-level-form)
-(define-key emacs-lisp-mode-map (kbd "<M-y>") 'jd:slurp)
 (define-key emacs-lisp-mode-map (kbd "<jd:C-ret>") 'jd:eval-print-last-sexp)
 (define-key emacs-lisp-mode-map (kbd "<f1>") 'jd:eval-last-sexp)
 
@@ -17,7 +15,6 @@
 ;; C-x             Prefix Command
 ;; ESC             Prefix Command
 ;; DEL             backward-delete-char-untabify
-;; <jd:C-ret>      jd:eval-print-last-sexp
 ;; 
 ;; C-x C-a         Prefix Command
 ;; 

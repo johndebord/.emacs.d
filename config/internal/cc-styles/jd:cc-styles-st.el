@@ -1,6 +1,9 @@
-(c-set-offset 'case-label '4)
-(c-set-offset 'inlambda '0)
-(c-set-offset 'inline-open '0)
-(c-set-offset 'namespace-close '0)
+(c-add-style "johndebord"
+             '("stroustrup"
+               (c-offsets-alist
+                (func-decl-cont . 0)
+                (inlambda . 0)
+                (member-init-intro . 0)
+                (template-args-cont . 0))))
 
 (provide 'jd:cc-styles-st)

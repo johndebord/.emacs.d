@@ -2,7 +2,7 @@
 # name: yas-class
 # key: class
 # --
-class ${1:name} {
+class $1 {
 public:
     $1();
 

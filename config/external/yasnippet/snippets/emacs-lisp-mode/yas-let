@@ -2,5 +2,5 @@
 # name: yas-let
 # key: let
 # --
-(let${1:*} ((${2:VARLIST}))
+(let (($1))
   $0)

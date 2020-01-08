@@ -1,22 +1,57 @@
-(setq-default gud-gdb-command-name "gdb --quiet --interpreter=mi")
+;; Faces.
+(defvar breakpoint-disabled)
+(defvar breakpoint-enabled)
+
+;; Customization variables.
+(defvar gdb-cpp-define-alist-flags)
+(defvar gdb-cpp-define-alist-program)
+(defvar gdb-create-source-file-list)
+(defvar gdb-debug-log-max)
+(defvar gdb-delete-out-of-scope)
+(defvar gdb-discard-unordered-replies)
+(defvar gdb-display-buffer-other-frame-action)
+(defvar gdb-display-io-nopopup)
+(defvar gdb-gud-control-all-threads)
+(defvar gdb-max-children)
+(defvar gdb-memory-columns)
+(defvar gdb-memory-format)
+(defvar gdb-memory-rows)
+(defvar gdb-memory-unit)
+(defvar gdb-mi-decode-strings)
+(defvar gdb-non-stop-setting)
+(defvar gdb-show-changed-values)
+(defvar gdb-show-threads-by-default)
+(defvar gdb-stack-buffer-addresses)
+(defvar gdb-stack-buffer-locations)
+(defvar gdb-stopped-functions)
+(defvar gdb-switch-reasons)
+(defvar gdb-switch-when-another-stopped)
+(defvar gdb-thread-buffer-addresses)
+(defvar gdb-thread-buffer-arguments)
+(defvar gdb-thread-buffer-locations)
+(defvar gdb-thread-buffer-verbose-names)
+(defvar gdb-use-colon-colon-notation)
+
 (setq-default gdb-many-windows nil)
 (setq-default gdb-show-main nil)
+(setq-default gud-gdb-command-name "gdb --quiet --interpreter=mi")
 
 (defmacro jd:gdb-propertize-header (name display-function mouse-face face)
-  `(propertize ,name
-               'help-echo nil
-	       'mouse-face ',mouse-face
-	       'face ',face
-	       'local-map
-	       (gdb-make-header-line-mouse-map
-	        'mouse-1
-                (lambda (event)
-                  (interactive "e")
-                  (save-selected-window
-                    (select-window (posn-window (event-start event)))
-                    (switch-to-buffer
-                     (window-buffer
-                      (funcall ',display-function)) nil 'force-same-window))))))
+  `(propertize
+    ,name
+    'help-echo nil
+    'mouse-face ',mouse-face
+    'face ',face
+    'local-map
+    (gdb-make-header-line-mouse-map
+     'mouse-1
+     (lambda (event)
+       (interactive "e")
+       (save-selected-window
+         (select-window (posn-window (event-start event)))
+         (switch-to-buffer
+          (window-buffer
+           (funcall ',display-function)) nil 'force-same-window))))))
 
 (defconst jd:gdb-comint-header
   (list
@@ -106,164 +141,7 @@
    (jd:gdb-propertize-header "Threads"     gdb-display-threads-buffer     mode-line-highlight mode-line-inactive) " "
    (jd:gdb-propertize-header "Inferior IO" gdb-display-io-buffer          nil                 mode-line)))
 
-;; Redefinition.
-(def-gdb-trigger-and-handler
-  gdb-invalidate-locals
-  (concat (gdb-current-context-command "-stack-list-variables")
-          " --simple-values")
-  gdb-locals-handler gdb-locals-handler-custom
-  '(start update))
-
-;; Redefinition.
-(defun gdb-locals-handler-custom ()
-  (let ((locals-list (bindat-get-field (gdb-json-partial-output) 'variables))
-        (table (make-gdb-table)))
-    (dolist (local locals-list)
-      (let ((name (bindat-get-field local 'name))
-            (value (bindat-get-field local 'value))
-            (type (bindat-get-field local 'type)))
-        (when (not value)
-          (setq value "<complex data type>"))
-        (if (or (not value)
-                (string-match "0x" value))
-            (add-text-properties 0 (length name)
-                                 `(mouse-face highlight
-                                              help-echo "mouse-2: create watch expression"
-                                              local-map ,gdb-locals-watch-map)
-                                 name)
-          (add-text-properties 0 (length value)
-                               `(mouse-face highlight
-                                            help-echo "mouse-2: edit value"
-                                            local-map ,gdb-edit-locals-map-1)
-                               value))
-        (gdb-table-add-row
-         table
-         (list
-          (propertize type 'font-lock-face font-lock-type-face)
-          (propertize name 'font-lock-face font-lock-variable-name-face)
-          value)
-         `(gdb-local-variable ,local))))
-    (insert (gdb-table-string table " "))
-    (setq mode-name
-          (gdb-current-context-mode-name
-           (concat "Locals: "
-                   (bindat-get-field (gdb-current-buffer-frame) 'func))))))
-
-;; Redefinition.
-(define-derived-mode gud-mode comint-mode "Debugger"
-  (setq header-line-format jd:gdb-comint-header)
-  (setq mode-line-process '(":%s"))
-  (define-key (current-local-map) "\C-c\C-l" 'gud-refresh)
-  (set (make-local-variable 'gud-last-frame) nil)
-  (if (boundp 'tool-bar-map)
-      (setq-local tool-bar-map gud-tool-bar-map))
-  (make-local-variable 'comint-prompt-regexp)
-  (set (make-local-variable 'comint-input-ignoredups) t)
-  (make-local-variable 'paragraph-start)
-  (set (make-local-variable 'gud-delete-prompt-marker) (make-marker))
-  (add-hook 'kill-buffer-hook 'gud-kill-buffer-hook nil t))
-
-;; Redefinition.
-(define-derived-mode gdb-breakpoints-mode gdb-parent-mode "Breakpoints"
-  (setq header-line-format jd:gdb-breakpoints-header)
-  'gdb-invalidate-breakpoints)
-
-;; Redefinition.
-(define-derived-mode gdb-locals-mode gdb-parent-mode "Locals"
-  (setq header-line-format jd:gdb-locals-header)
-  'gdb-invalidate-locals)
-
-;; Redefinition.
-(define-derived-mode gdb-registers-mode gdb-parent-mode "Registers"
-  (setq header-line-format jd:gdb-registers-header)
-  'gdb-invalidate-registers)
-
-;; Redefinition.
-(define-derived-mode gdb-disassembly-mode gdb-parent-mode "Disassembly"
-  (setq header-line-format jd:gdb-disassembly-header)
-  (add-to-list 'overlay-arrow-variable-list 'gdb-disassembly-position)
-  (setq fringes-outside-margins t)
-  (set (make-local-variable 'gdb-disassembly-position) (make-marker))
-  (set (make-local-variable 'font-lock-defaults)
-       '(gdb-disassembly-font-lock-keywords))
-  'gdb-invalidate-disassembly)
-
-;; Redefinition.
-(define-derived-mode gdb-frames-mode gdb-parent-mode "Frames"
-  (setq header-line-format jd:gdb-stack-header)
-  (setq gdb-stack-position (make-marker))
-  (add-to-list 'overlay-arrow-variable-list 'gdb-stack-position)
-  (setq truncate-lines t)
-  (set (make-local-variable 'font-lock-defaults)
-       '(gdb-frames-font-lock-keywords))
-  'gdb-invalidate-frames)
-
-;; Redefinition.
-(define-derived-mode gdb-threads-mode gdb-parent-mode "Threads"
-  (setq header-line-format jd:gdb-threads-header)
-  (setq gdb-thread-position (make-marker))
-  (add-to-list 'overlay-arrow-variable-list 'gdb-thread-position)
-  (set (make-local-variable 'font-lock-defaults)
-       '(gdb-threads-font-lock-keywords))
-  'gdb-invalidate-threads)
-
-;; Redefinition.
-(define-derived-mode gdb-inferior-io-mode comint-mode "Inferior I/O"
-  :syntax-table nil :abbrev-table nil
-  (make-comint-in-buffer "gdb-inferior" (current-buffer) nil)
-  (setq header-line-format jd:gdb-inferior-io-header))
-
-;; Redefinition.
-(defun gdb-inferior-filter (proc string)
-  (with-current-buffer (gdb-get-buffer-create 'gdb-inferior-io)
-    (comint-output-filter proc string)))
-
-;; Redefinition.
-(defun gdb-disassembly-handler-custom ()
-  (let* ((instructions (bindat-get-field (gdb-json-partial-output) 'asm_insns))
-         (address (bindat-get-field (gdb-current-buffer-frame) 'addr))
-         (table (make-gdb-table))
-         (marked-line nil))
-    (dolist (instr instructions)
-      (gdb-table-add-row table
-                         (list
-                          (bindat-get-field instr 'address)
-                          (let
-                              ((func-name (bindat-get-field instr 'func-name))
-                               (offset (bindat-get-field instr 'offset)))
-                            (if func-name
-                                (format "<%s+%s>:" func-name offset)
-                              ""))
-                          (bindat-get-field instr 'inst)))
-      (when (string-equal (bindat-get-field instr 'address)
-                          address)
-        (progn
-          (setq marked-line (length (gdb-table-rows table)))
-          (setq fringe-indicator-alist
-                (if (string-equal gdb-frame-number "0")
-                    nil
-                  '((overlay-arrow . hollow-right-triangle)))))))
-    (insert (gdb-table-string table " "))
-    (gdb-disassembly-place-breakpoints)
-
-    (if (get-buffer-window (gdb-disassembly-buffer-name))
-        (progn
-          (when marked-line
-            (let ((window (get-buffer-window (gdb-disassembly-buffer-name) 0)))
-              (set-window-point window (gdb-mark-line marked-line
-                                                      gdb-disassembly-position)))))
-      (if (get-buffer (gdb-disassembly-buffer-name))
-          (progn
-            (when marked-line
-              (with-current-buffer (gdb-disassembly-buffer-name)
-                (goto-char (gdb-mark-line marked-line
-                                          gdb-disassembly-position)))))))
-    (setq mode-name
-          (gdb-current-context-mode-name
-           (concat "Disassembly: "
-                   (bindat-get-field (gdb-current-buffer-frame) 'func))))))
-
-(defun jd:gdb-startup ()
+(defun jd:gdb-mode-hook ()
   (sleep-for 1)
   (delete-other-windows)
   (let ((win0 (selected-window)))
@@ -276,55 +154,34 @@
             (setq gdb-source-window (selected-window)))))
     (select-window win0)))
 
-(defun jd:gdb-shutdown ()
-  (sleep-for 1)
-  (delete-other-windows)
-  (eshell))
+(defun jd:gdb-breakpoints-mode-hook ()
+  (font-lock-mode 1))
 
-(defun jd:gdb-display-buffer (buf)
-  (let ((window (display-buffer buf '(display-buffer-same-window (inhibit-duplicate-buffer . t)))))
-    window))
+(defun jd:gdb-locals-mode-hook ()
+  (font-lock-mode 1))
 
-(defun jd:gdb-display-buffer (buf)
-  (let ((window (display-buffer buf '(display-buffer-same-window (inhibit-duplicate-buffer . t)))))
-    (unless (equal (buffer-name (window-buffer)) (gdb-disassembly-buffer-name))
-      (with-current-buffer (window-buffer window)
-        (goto-char (point-min))))
-    window))
+(defun jd:gdb-registers-mode-hook ()
+  (font-lock-mode 1))
 
-(defun jd:gdb-display-gdb-buffer ()
-  (interactive)
-  (let ((window (display-buffer gud-comint-buffer '(display-buffer-same-window (inhibit-duplicate-buffer . t)))))
-    window))
+(defun jd:gdb-disassembly-mode-hook ()
+  (font-lock-mode 1))
 
-(add-hook 'gdb-mode-hook 'jd:gdb-startup)
+(defun jd:gdb-frames-mode-hook ()
+  (font-lock-mode 1))
 
-(add-hook 'gud-mode-hook
-          (lambda () (font-lock-mode t)))
+(defun jd:gdb-threads-mode-hook ()
+  (font-lock-mode 1))
 
-(add-hook 'gdb-breakpoints-mode-hook
-          (lambda () (font-lock-mode t)))
+(defun jd:gdb-inferior-io-mode-hook ()
+  (font-lock-mode 1))
 
-(add-hook 'gdb-locals-mode-hook
-          (lambda () (font-lock-mode t)))
-
-(add-hook 'gdb-registers-mode-hook
-          (lambda () (font-lock-mode t)))
-
-(add-hook 'gdb-frames-mode-hook
-          (lambda () (font-lock-mode t)))
-
-(add-hook 'gdb-threads-mode-hook
-          (lambda () (font-lock-mode t)))
-
-(add-hook 'gdb-inferior-io-mode-hook
-          (lambda () (font-lock-mode t)))
-
-(add-hook 'gdb-disassembly-mode-hook
-          (lambda () (font-lock-mode t)))
-
-(advice-add 'gdb-display-buffer :override 'jd:gdb-display-buffer)
-(advice-add 'gdb-display-gdb-buffer :override 'jd:gdb-display-gdb-buffer)
-(advice-add 'gud-kill-buffer-hook :after 'jd:gdb-shutdown)
+(add-hook 'gdb-mode-hook 'jd:gdb-mode-hook)
+(add-hook 'gdb-breakpoints-mode-hook 'jd:gdb-breakpoints-mode-hook)
+(add-hook 'gdb-locals-mode-hook 'jd:gdb-locals-mode-hook)
+(add-hook 'gdb-registers-mode-hook 'jd:gdb-registers-mode-hook)
+(add-hook 'gdb-disassembly-mode-hook 'jd:gdb-disassembly-mode-hook)
+(add-hook 'gdb-frames-mode-hook 'jd:gdb-frames-mode-hook)
+(add-hook 'gdb-threads-mode-hook 'jd:gdb-threads-mode-hook)
+(add-hook 'gdb-inferior-io-mode-hook 'jd:gdb-inferior-io-mode-hook)
 
 (provide 'jd:gdb-mi-st)

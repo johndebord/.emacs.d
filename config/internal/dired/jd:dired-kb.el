@@ -1,3 +1,7 @@
+(define-key dired-mode-map (kbd "i") 'jd:backward-line)
+(define-key dired-mode-map (kbd "k") 'jd:forward-line)
+(define-key dired-mode-map (kbd "<jd:ret>") 'dired-find-file)
+
 (provide 'jd:dired-kb)
 
 ;; File: /usr/local/share/emacs/26.3.50/lisp/dired.elc

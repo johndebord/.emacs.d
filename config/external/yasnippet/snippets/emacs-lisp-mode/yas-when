@@ -2,5 +2,5 @@
 # name: yas-when
 # key: when
 # --
-(when ${1:COND}
+(when $1
   $0)

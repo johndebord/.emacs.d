@@ -1,21 +1,70 @@
+;; Faces.
+(defvar ivy-action)
+(defvar ivy-completions-annotations)
+(defvar ivy-confirm-face)
+(defvar ivy-current-match)
+(defvar ivy-grep-info)
+(defvar ivy-grep-line-number)
+(defvar ivy-highlight-face)
+(defvar ivy-match-required-face)
+(defvar ivy-minibuffer-match-face-1)
+(defvar ivy-minibuffer-match-face-2)
+(defvar ivy-minibuffer-match-face-3)
+(defvar ivy-minibuffer-match-face-4)
+(defvar ivy-minibuffer-match-highlight)
+(defvar ivy-modified-buffer)
+(defvar ivy-modified-outside-buffer)
+(defvar ivy-org)
+(defvar ivy-prompt-match)
+(defvar ivy-remote)
+(defvar ivy-separator)
+(defvar ivy-subdir)
+(defvar ivy-virtual)
+(defvar ivy-yanked-word)
+
+;; Customization variables.
+(defvar ivy-action-wrap)
+(defvar ivy-add-newline-after-prompt)
+(defvar ivy-case-fold-search-default)
+(defvar ivy-completing-read-handlers-alist)
+(defvar ivy-display-functions-alist)
+(defvar ivy-display-style)
+(defvar ivy-do-completion-in-region)
+(defvar ivy-dynamic-exhibit-delay-ms)
+(defvar ivy-fixed-height-minibuffer)
+(defvar ivy-format-functions-alist)
+(defvar ivy-height-alist)
+(defvar ivy-hooks-alist)
+(defvar ivy-ignore-buffers)
+(defvar ivy-initial-inputs-alist)
+(defvar ivy-magic-slash-non-match-action)
+(defvar ivy-magic-tilde)
+(defvar ivy-minibuffer-faces)
+(defvar ivy-on-del-error-function)
+(defvar ivy-pre-prompt-function)
+(defvar ivy-preferred-re-builders)
+(defvar ivy-pulse-delay)
+(defvar ivy-read-action-function)
+(defvar ivy-sort-functions-alist)
+(defvar ivy-sort-matches-functions-alist)
+(defvar ivy-sort-max-size)
+(defvar ivy-tab-space)
+(defvar ivy-truncate-lines)
+(defvar ivy-use-ignore-default)
+(defvar ivy-use-selectable-prompt)
+(defvar ivy-use-virtual-buffers)
+(defvar ivy-virtual-abbreviate)
+(defvar ivy-wrap)
+
 (setq-default ivy-count-format "%d/%d ")
 (setq-default ivy-extra-directories nil)
 (setq-default ivy-format-function 'ivy-format-function-line)
 (setq-default ivy-height 15)
 (setq-default ivy-recursive-restore nil)
 
-(defun jd:ivy-scroll-up-command ()
-  "Set `ivy-height' to an odd number."
-  (interactive)
-  (if (and
-       (< ivy--index (/ ivy-height 2))
-       (not (equal ivy--index (/ ivy-height 2))))
-      (ivy-set-index (/ ivy-height 2))
-    (ivy-set-index (min (1- (+ ivy--index ivy-height))
-                        (1- ivy--length)))))
-
+;; Scroll down in the `ivy` minibuffer whilst keeping the selection centered in
+;; the minibuffer.
 (defun jd:ivy-scroll-down-command ()
-  "Set `ivy-height' to an odd number."
   (interactive)
   (if (and
        (> ivy--index (- ivy--length (/ ivy-height 2)))
@@ -23,5 +72,16 @@
       (ivy-set-index (- ivy--length (/ ivy-height 2)))
     (ivy-set-index (max (1+ (- ivy--index ivy-height))
                         0))))
+
+;; Scroll up in the `ivy` minibuffer whilst keeping the selection centered in
+;; the minibuffer.
+(defun jd:ivy-scroll-up-command ()
+  (interactive)
+  (if (and
+       (< ivy--index (/ ivy-height 2))
+       (not (equal ivy--index (/ ivy-height 2))))
+      (ivy-set-index (/ ivy-height 2))
+    (ivy-set-index (min (1- (+ ivy--index ivy-height))
+                        (1- ivy--length)))))
 
 (provide 'jd:ivy-st)

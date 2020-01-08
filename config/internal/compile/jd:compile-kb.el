@@ -1,4 +1,5 @@
-(setq-default compilation-mode-map (make-sparse-keymap))
+(define-key compilation-mode-map (kbd "i") 'jd:backward-line)
+(define-key compilation-mode-map (kbd "k") 'jd:forward-line)
 (define-key compilation-mode-map (kbd "<C-M-o>")  'jd:next-error)
 (define-key compilation-mode-map (kbd "<C-M-u>")  'jd:previous-error)
 (define-key compilation-mode-map (kbd "<C-c> <C-c>") 'kill-compilation)

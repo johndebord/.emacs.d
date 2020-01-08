@@ -1,5 +1,8 @@
-(setq-default apropos-mode-map (make-sparse-keymap))
-(define-key apropos-mode-map (kbd "q") 'quit-window)
+(define-key apropos-mode-map (kbd "i") 'jd:backward-line)
+(define-key apropos-mode-map (kbd "k") 'jd:forward-line)
+(define-key apropos-mode-map (kbd "<jd:ret>") 'apropos-follow)
+(define-key apropos-mode-map (kbd "<jd:tab>") 'forward-button)
+(define-key apropos-mode-map (kbd "<jd:S-tab>") 'backward-button)
 
 (provide 'jd:apropos-kb)
 

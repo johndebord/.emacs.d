@@ -1,15 +1,8 @@
-(setq-default c++-mode-map (make-sparse-keymap))
-(define-key c++-mode-map (kbd "#") 'c-electric-pound)
-(define-key c++-mode-map (kbd "*") 'c-electric-star)
-(define-key c++-mode-map (kbd ",") 'c-electric-semi&comma)
-(define-key c++-mode-map (kbd "/") 'c-electric-slash)
-(define-key c++-mode-map (kbd ":") 'c-electric-colon)
-(define-key c++-mode-map (kbd ";") 'c-electric-semi&comma)
-(define-key c++-mode-map (kbd "<") 'c-electric-lt-gt)
-(define-key c++-mode-map (kbd ">") 'c-electric-lt-gt)
 (define-key c++-mode-map (kbd "<C-b>") 'compile)
 (define-key c++-mode-map (kbd "<C-M-o>") 'jd:next-error)
 (define-key c++-mode-map (kbd "<C-M-u>") 'jd:previous-error)
+(define-key c++-mode-map (kbd "<C-c> <C-c>") 'jd:cpp-print-add-print)
+(define-key c++-mode-map (kbd "<C-c> <C-d>") 'jd:cpp-print-delete-prints)
 
 (provide 'jd:cc-mode-kb)
 

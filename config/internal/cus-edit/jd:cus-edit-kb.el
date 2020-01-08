@@ -1,3 +1,8 @@
+(define-key custom-mode-map (kbd "<C-s>") 'Custom-save)
+(define-key custom-mode-map (kbd "<jd:ret>") 'Custom-newline)
+(define-key custom-mode-map (kbd "<jd:tab>") 'widget-forward)
+(define-key custom-mode-map (kbd "<jd:S-tab>") 'widget-backward)
+
 (provide 'jd:cus-edit-kb)
 
 ;; File: /usr/local/share/emacs/26.3.50/lisp/cus-edit.elc

@@ -3,5 +3,5 @@
 # key: cond
 # --
 (cond
- ((${1:condition})
+ (($1)
   $0))

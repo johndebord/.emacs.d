@@ -1,118 +1,132 @@
+;; Customization variables.
+(defvar byte-compile-call-tree-sort)
+(defvar byte-compile-cond-use-jump-table)
+(defvar byte-compile-delete-errors)
+(defvar byte-compile-dest-file-function)
+(defvar byte-compile-dynamic-docstrings)
+(defvar byte-compile-error-on-warn)
+(defvar byte-compile-generate-call-tree)
+(defvar byte-compile-verbose)
+(defvar byte-compile-warnings)
+(defvar byte-optimize)
+(defvar byte-optimize-log)
+(defvar emacs-lisp-file-regexp)
+
 ;; Reconstruct the name of the given file if it is indeed one of my personal
 ;; configuration files; this is so that the byte-compiled file may be saved in
 ;; the appropriate directory. If the file is not indeed one of my configuration
 ;; files, the `.elc` file shall be placed in the current directory. After the
 ;; name of the file has been established, byte-compile it.
-(defun jd:internal--byte-compile-file (file_)
+(defun jd:internal--byte-compile-file (file)
   (cl-flet
-      ((reconstruct-file_
-        (prefix_ filename_)
-        (let ((file_))
-          (setq file_
+      ((reconstruct-file
+        (prefix filename)
+        (let ((file))
+          (setq file
                 (concat jd:elc-prefix
                         "config/"
-                        (file-name-nondirectory (directory-file-name (file-name-directory prefix_)))
+                        (file-name-nondirectory (directory-file-name (file-name-directory prefix)))
                         "/"))
-          (if (not (equal (file-name-nondirectory (directory-file-name (file-name-directory filename_)))
-                          (file-name-nondirectory (directory-file-name (file-name-directory prefix_)))))
-              (setq file_
+          (if (not (equal (file-name-nondirectory (directory-file-name (file-name-directory filename)))
+                          (file-name-nondirectory (directory-file-name (file-name-directory prefix)))))
+              (setq file
                     (concat
-                     file_
-                     (file-name-nondirectory (directory-file-name (file-name-directory filename_)))
+                     file
+                     (file-name-nondirectory (directory-file-name (file-name-directory filename)))
                      "/")))
-          (setq file_
+          (setq file
                 (concat
-                 file_
-                 (file-name-sans-extension (file-name-nondirectory filename_))
+                 file
+                 (file-name-sans-extension (file-name-nondirectory filename))
                  ".elc"))
-          file_)))
+          file)))
 
     (cond
-     ((and (string-prefix-p jd:external-prefix file_)
-           (not (string-prefix-p jd:elpa-prefix file_)))
+     ((and (string-prefix-p jd:external-prefix file)
+           (not (string-prefix-p jd:elpa-prefix file)))
       (let ((byte-compile-dest-file-function
-             (lambda (filename_)
-               (reconstruct-file_ jd:external-prefix filename_))))
-        (byte-compile-file file_)))
+             (lambda (filename)
+               (reconstruct-file jd:external-prefix filename))))
+        (byte-compile-file file)))
 
-     ((string-prefix-p jd:global-prefix file_)
+     ((string-prefix-p jd:global-prefix file)
       (let ((byte-compile-dest-file-function
-             (lambda (filename_)
-               (reconstruct-file_ jd:global-prefix filename_))))
-        (byte-compile-file file_)))
+             (lambda (filename)
+               (reconstruct-file jd:global-prefix filename))))
+        (byte-compile-file file)))
 
-     ((string-prefix-p jd:internal-prefix file_)
+     ((string-prefix-p jd:internal-prefix file)
       (let ((byte-compile-dest-file-function
-             (lambda (filename_)
-               (reconstruct-file_ jd:internal-prefix filename_))))
-        (byte-compile-file file_)))
+             (lambda (filename)
+               (reconstruct-file jd:internal-prefix filename))))
+        (byte-compile-file file)))
 
      (t
-      (byte-compile-file file_)))))
+      (byte-compile-file file)))))
 
 ;; Byte-compile all of my personal configuration files and, place them in their
 ;; appropriate directory; where all of my corresponding `.elc` files reside.
 (defun jd:byte-recompile-all-files ()
   (interactive)
   (cl-flet
-      ((construct-files-list_
-        (directory-search-function_ &optional predicate_)
+      ((construct-files-list
+        (directory-search-function &optional predicate)
         (delq nil
               (mapcar
-               (lambda (filename_)
-                 (if (equal "el" (file-name-extension filename_))
-                     (if (not (null predicate_))
-                         (if (funcall predicate_ filename_)
-                             filename_
+               (lambda (filename)
+                 (if (equal "el" (file-name-extension filename))
+                     (if (not (null predicate))
+                         (if (funcall predicate filename)
+                             filename
                            nil)
-                       filename_)
+                       filename)
                    nil))
-               (funcall directory-search-function_)))))
+               (funcall directory-search-function)))))
 
-    (let ((root-files_
-           (construct-files-list_
+    (let ((root-files
+           (construct-files-list
             (lambda ()
               (directory-files jd:path-prefix t ".el$"))))
 
-          (elpa-files_
-           (construct-files-list_
+          (elpa-files
+           (construct-files-list
             (lambda ()
               (directory-files-recursively jd:external-prefix ".el"))
-            (lambda (filename_)
-              (string-prefix-p jd:elpa-prefix filename_))))
+            (lambda (filename)
+              (string-prefix-p jd:elpa-prefix filename))))
 
-          (external-files_
-           (construct-files-list_
+          (external-files
+           (construct-files-list
             (lambda ()
               (directory-files-recursively jd:external-prefix ".el"))
-            (lambda (filename_)
-              (not (string-prefix-p jd:elpa-prefix filename_)))))
+            (lambda (filename)
+              (not (string-prefix-p jd:elpa-prefix filename)))))
 
-          (global-files_
-           (construct-files-list_
+          (global-files
+           (construct-files-list
             (lambda ()
               (directory-files jd:global-prefix t ".el$"))))
 
-          (internal-files_
-           (construct-files-list_
+          (internal-files
+           (construct-files-list
             (lambda ()
               (directory-files-recursively jd:internal-prefix ".el")))))
 
-      (dolist (file_ root-files_) (jd:internal--byte-compile-file file_))
-      (dolist (file_ elpa-files_) (jd:internal--byte-compile-file file_))
-      (dolist (file_ external-files_) (jd:internal--byte-compile-file file_))
-      (dolist (file_ global-files_) (jd:internal--byte-compile-file file_))
-      (dolist (file_ internal-files_) (jd:internal--byte-compile-file file_)))))
+      (dolist (file root-files) (jd:internal--byte-compile-file file))
+      (dolist (file elpa-files) (jd:internal--byte-compile-file file))
+      (dolist (file external-files) (jd:internal--byte-compile-file file))
+      (dolist (file global-files) (jd:internal--byte-compile-file file))
+      (dolist (file internal-files) (jd:internal--byte-compile-file file)))))
 
 ;; Delete all of my byte-compiled personal configuration files. This is to keep
 ;; my configuration clean and portable when need be.
 (defun jd:delete-all-elc-files ()
   (interactive)
-  (let ((files_))
-    (setq files_ (directory-files-recursively jd:elc-prefix ".elc"))
+  (let ((files))
+    (setq files (directory-files-recursively jd:elc-prefix ".elc"))
     (delete-file (concat (getenv "HOME") "/.emacs.d/init.elc"))
-    (dolist (file_ files_)
-      (delete-file file_))))
+    (dolist (file files)
+      (delete-file file))))
 
 ;; Byte-compile one individual file.
 (defun jd:byte-compile-file ()

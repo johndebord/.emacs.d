@@ -1,17 +1,10 @@
-(add-hook 'help-mode-hook
-          (lambda ()
-            (font-lock-mode t)))
+;; Customization variables.
+(defvar help-mode-hook)
 
-(defun jd:help-mode-scroll-down ()
-  (interactive)
-  (beginning-of-line)
-  (forward-line)
-  (recenter))
+(defun jd:help-mode-hook ()
+  (font-lock-mode 1)
+  (idle-highlight-mode 1))
 
-(defun jd:help-mode-scroll-up ()
-  (interactive)
-  (beginning-of-line)
-  (forward-line -1)
-  (recenter))
+(add-hook 'help-mode-hook 'jd:help-mode-hook)
 
 (provide 'jd:help-mode-st)

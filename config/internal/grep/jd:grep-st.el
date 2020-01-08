@@ -1,1 +1,18 @@
+;; Customization variables.
+(defvar grep-command)
+(defvar grep-error-screen-columns)
+(defvar grep-files-aliases)
+(defvar grep-find-command)
+(defvar grep-find-ignored-directories)
+(defvar grep-find-ignored-files)
+(defvar grep-find-template)
+(defvar grep-highlight-matches)
+(defvar grep-save-buffers)
+(defvar grep-scroll-output)
+(defvar grep-setup-hook)
+(defvar grep-template)
+(defvar grep-use-null-device)
+(defvar grep-use-null-filename-separator)
+(defvar grep-window-height)
+
 (provide 'jd:grep-st)

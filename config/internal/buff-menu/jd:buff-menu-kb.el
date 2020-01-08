@@ -1,3 +1,7 @@
+(define-key Buffer-menu-mode-map (kbd "i") 'jd:backward-line)
+(define-key Buffer-menu-mode-map (kbd "k") 'jd:forward-line)
+(define-key Buffer-menu-mode-map (kbd "<jd:ret>") 'Buffer-menu-this-window)
+
 (provide 'jd:buff-menu-kb)
 
 ;; File: /usr/local/share/emacs/26.3.50/lisp/buff-menu.elc

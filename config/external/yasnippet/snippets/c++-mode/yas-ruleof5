@@ -2,7 +2,7 @@
 # name: yas-ruleof5
 # key: ruleof5
 # --
-~${1:name}() {
+~$1() {
 }
 
 $1(const $1& other) {

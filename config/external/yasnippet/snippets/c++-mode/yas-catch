@@ -2,6 +2,6 @@
 # name: yas-catch
 # key: catch
 # --
-catch (${1:condition}) {
+catch ($1) {
     $0
 }

@@ -2,5 +2,5 @@
 # name: yas-defmacro
 # key: defmacro
 # --
-(defmacro (${1:NAME} ${2:ARGLIST})
+(defmacro ($1 $2)
     $0)

@@ -2,6 +2,6 @@
 # name: yas-union
 # key: union
 # --
-union ${1:name} {
+union $1 {
     $0
 };

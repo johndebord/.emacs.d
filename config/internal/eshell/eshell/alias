@@ -1,3 +1,4 @@
+alias ff find-file $1
 alias up cd .. $*
 alias push pushd ./ $*
 alias pop popd $*

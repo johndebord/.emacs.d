@@ -7,7 +7,6 @@
 (jd:load-feature jd:ivy jd:external-prefix "ivy/")
 (jd:load-feature jd:rmsbolt jd:external-prefix "rmsbolt/")
 (jd:load-feature jd:swiper jd:external-prefix "swiper/")
-(jd:load-feature jd:xterm-color jd:external-prefix "xterm-color/")
 (jd:load-feature jd:yasnippet jd:external-prefix "yasnippet/")
 
 (provide 'jd:external-config)

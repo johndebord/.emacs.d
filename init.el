@@ -1,16 +1,4 @@
 ;;; Author: John DeBord
-;;;
-;;; Personal conventions:
-;;;
-;;; Prefix `jd:`
-;;;   Reserved for personal variables, functions, and files.
-;;; Postfix `_`
-;;;   Reserved for variables in the scope of a personal function and/or
-;;;   variables in the scope of a site-lisp file that I have modified.
-;;;
-;;; If a site-lisp file is modified, the style and comments shall also be
-;;; modified to reflect the changes, as well as to remove any erroneous
-;;; commentation of the functionality.
 
 (defconst jd:path-prefix
   (concat (getenv "HOME") "/.emacs.d/"))
@@ -53,59 +41,70 @@
 (defconst jd:elpa-prefix
   (concat jd:path-prefix "config/external/elpa/"))
 
+(with-temp-buffer
+  (insert-file-contents (concat (getenv "HOME") "/.authinfo"))
+  (let* ((line (split-string (buffer-string) "\n"))
+         (username (nth 0 line))
+         (password (nth 1 line)))
+    (defconst jd:irc-nickname username)
+    (defconst jd:irc-password password)))
+
 (setq-default package-user-dir jd:elpa-prefix)
 (package-initialize)
 (setq-default package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                                  ("melpa" . "http://melpa.milkbox.net/packages/")
                                  ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-;;; `alloc.c'
+;;; `alloc.c`
 (setq-default gc-cons-threshold 64000000)
 
-;;; `buffer.c'
-(setq-default default-directory jd:path-prefix) ;; TODO: Does this also pertain to initial eshell? ;; holds site lisp dir
+;;; `buffer.c`
+(setq-default default-directory jd:path-prefix)
 (setq-default truncate-lines nil)
 (setq-default fill-column 80)
+(put 'erase-buffer 'disabled nil)
 
-;;; `fns.c'
+;;; `editfns.c`
+(put 'narrow-to-region 'disabled nil)
+
+;;; `fns.c`
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;;; `frame.c'
+;;; `frame.c`
 (setq-default make-pointer-invisible nil)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-;;; `indent.c'
+;;; `indent.c`
 (setq-default indent-tabs-mode nil)
 
-;;; `keyboard.c'
+;;; `keyboard.c`
 (setq-default echo-keystrokes 0.001)
 (setq-default meta-prefix-char nil)
 (setq-default show-help-function nil)
 
-;;; `minibuf.c'
+;;; `minibuf.c`
 (setq-default enable-recursive-minibuffers t)
 
-;;; `xdisp.c'
+;;; `xdisp.c`
 (setq-default hscroll-margin 2)
 (setq-default hscroll-step 14)
 (setq-default x-stretch-cursor 1)
 
-(defmacro jd:load-feature (feature_ &rest prefixes_)
+(defmacro jd:load-feature (feature &rest prefixes)
   `(if jd:load-from-byte-compiled-dir-p
-       (load (concat ,@prefixes_ (symbol-name ',feature_) ".elc"))
-     (load (concat ,@prefixes_ (symbol-name ',feature_) ".el"))))
+       (load (concat ,@prefixes (symbol-name ',feature) ".elc"))
+     (load (concat ,@prefixes (symbol-name ',feature) ".el"))))
 
 (jd:load-feature jd:external-config jd:external-prefix)
 (jd:load-feature jd:global-config jd:global-prefix)
 (jd:load-feature jd:internal-config jd:internal-prefix)
-;; (jd:load-feature jd:theme jd:path-prefix) ;; TODO: For the theme.
-;; (setenv "TERM" "xterm-256color") ;; TODO: This needed?
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "ibm" :family "Courier"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "ibm" :family "Courier"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal))))
@@ -144,7 +143,7 @@
  '(company-tooltip-selection ((t (:background "#535353"))))
  '(compilation-column-number ((t nil)))
  '(compilation-error ((t (:foreground "#ff0000" :weight bold))))
- '(compilation-info ((t nil)))
+ '(compilation-info ((t (:foreground "#569cd6"))))
  '(compilation-line-number ((t nil)))
  '(compilation-mode-line-exit ((t (:foreground "#00cc00" :weight bold))))
  '(compilation-mode-line-fail ((t (:foreground "#ff0000" :weight bold))))
@@ -169,9 +168,9 @@
  '(custom-comment ((t (:background "purple" :foreground "black"))))
  '(custom-comment-tag ((t (:background "purple" :foreground "black"))))
  '(custom-documentation ((t nil)))
- '(custom-face-tag ((t (:foreground "#569cd6" :weight bold))))
+ '(custom-face-tag ((t (:foreground "#569cd6"))))
  '(custom-group-subtitle ((t (:background "purple" :foreground "black"))))
- '(custom-group-tag ((t (:foreground "#569cd6" :weight bold))))
+ '(custom-group-tag ((t (:foreground "#569cd6"))))
  '(custom-group-tag-1 ((t (:background "purple" :foreground "black"))))
  '(custom-invalid ((t (:background "purple" :foreground "black"))))
  '(custom-link ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button)))))
@@ -179,10 +178,10 @@
  '(custom-rogue ((t (:background "purple" :foreground "black"))))
  '(custom-saved ((t (:background "purple" :foreground "black"))))
  '(custom-set ((t (:background "purple" :foreground "black"))))
- '(custom-state ((t (:foreground "#00cc00" :weight bold))))
+ '(custom-state ((t (:foreground "#00cc00"))))
  '(custom-themed ((t (:background "purple" :foreground "black"))))
  '(custom-variable-button ((t (:background "purple" :foreground "black"))))
- '(custom-variable-tag ((t (:foreground "#569cd6" :weight bold))))
+ '(custom-variable-tag ((t (:foreground "#569cd6"))))
  '(custom-visibility ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal :height 0.8))))
  '(diary ((t (:background "purple" :foreground "black"))))
  '(diff-added ((t (:foreground "#00cc00"))))
@@ -211,14 +210,14 @@
  '(dired-symlink ((t nil)))
  '(dired-warning ((t (:background "purple" :foreground "black"))))
  '(eldoc-highlight-function-argument ((t (:weight bold))))
- '(error ((t (:foreground "#ff0000" :weight bold))))
+ '(error ((t (:foreground "#ff0000"))))
  '(escape-glyph ((t (:foreground "#00ffff"))))
  '(eshell-ls-archive ((t (:foreground "#bd63c5"))))
  '(eshell-ls-backup ((t (:foreground "#5c5c5c"))))
  '(eshell-ls-clutter ((t (:background "purple" :foreground "black"))))
  '(eshell-ls-directory ((t (:foreground "#569cd6"))))
  '(eshell-ls-executable ((t (:foreground "#00cc00"))))
- '(eshell-ls-missing ((t (:background "purple" :foreground "black"))))
+ '(eshell-ls-missing ((t (:foreground "#ff0000"))))
  '(eshell-ls-product ((t nil)))
  '(eshell-ls-readonly ((t (:foreground "#5c5c5c"))))
  '(eshell-ls-special ((t (:foreground "#d6c556"))))
@@ -249,6 +248,7 @@
  '(font-lock-builtin-face ((t (:foreground "#569cd6"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "#424242"))))
  '(font-lock-comment-face ((t (:foreground "#424242"))))
+ '(font-lock-comment-symbol-face ((t (:foreground "#727272"))))
  '(font-lock-constant-face ((t (:foreground "#569cd6"))))
  '(font-lock-doc-face ((t (:foreground "#424242"))))
  '(font-lock-function-name-face ((t nil)))
@@ -260,7 +260,7 @@
  '(font-lock-string-face ((t (:foreground "#d69d85"))))
  '(font-lock-type-face ((t (:foreground "#4ec9b0"))))
  '(font-lock-variable-name-face ((t nil)))
- '(font-lock-warning-face ((t (:foreground "#ff7400" :weight bold))))
+ '(font-lock-warning-face ((t (:foreground "#ff7400"))))
  '(fringe ((t nil)))
  '(git-commit-comment-action ((t (:background "purple" :foreground "black"))))
  '(git-commit-comment-branch-local ((t (:background "purple" :foreground "black"))))
@@ -274,13 +274,16 @@
  '(git-commit-overlong-summary ((t (:background "purple" :foreground "black"))))
  '(git-commit-pseudo-header ((t (:background "purple" :foreground "black"))))
  '(git-commit-summary ((t (:background "purple" :foreground "black"))))
- '(glyphless-char ((t (:background "purple" :foreground "black"))))
+ '(glyphless-char ((t (:foreground "#00ffff"))))
  '(header-line ((t nil)))
  '(help-argument-name ((t (:slant italic))))
+ '(hi-blue-b ((t (:foreground "blue1" :weight bold))))
+ '(hi-yellow ((t (:background "yellow1" :foreground "black"))))
  '(highlight ((t (:background "#535353"))))
  '(hl-line ((t (:background "#535353"))))
  '(holiday ((t (:background "purple" :foreground "black"))))
  '(homoglyph ((t (:foreground "cyan"))))
+ '(idle-highlight ((t (:background "#323232"))))
  '(info-header-node ((t (:background "purple" :foreground "black"))))
  '(info-header-xref ((t (:background "purple" :foreground "black"))))
  '(info-index-match ((t (:background "purple" :foreground "black"))))
@@ -473,7 +476,7 @@
  '(mode-line-inactive ((t (:background "#323232" :foreground "#dcdcdc"))))
  '(mouse ((t nil)))
  '(next-error ((t (:background "#535353"))))
- '(nobreak-space ((t (:background "purple" :foreground "black"))))
+ '(nobreak-space ((t nil)))
  '(nxml-attribute-colon ((t (:background "purple" :foreground "black"))))
  '(nxml-attribute-local-name ((t (:background "purple" :foreground "black"))))
  '(nxml-attribute-prefix ((t (:background "purple" :foreground "black"))))
@@ -744,6 +747,4 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet xterm-color sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company))))
-(put 'narrow-to-region 'disabled nil)
-(put 'erase-buffer 'disabled nil)
+    (rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company))))

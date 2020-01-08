@@ -2,7 +2,7 @@
 # name: yas-case
 # key: case
 # --
-case ${1:expression}: {
+case $1: {
     $0
     break;
 }

@@ -2,5 +2,5 @@
 # name: yas-unless
 # key: unless
 # --
-(unless ${1:COND}
+(unless $1
   $0)

@@ -3,11 +3,11 @@
 # key: doc
 # --
 /**
- * @brief      ${1:function description}
+ * @brief      $1
  *
- * @details    ${2:detailed description}
+ * @details    $2
  *
- * @param      ${3:param}
+ * @param      $3
  *
- * @return     ${4:return type}
+ * @return     $4
  */

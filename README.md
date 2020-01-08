@@ -3,23 +3,20 @@ Modularized Emacs Configuration.
 
 Top-level files hold the logic to initialize the lower-level files.
 - `README.md`: what you're currently reading.
-- `init.el`: the initialization module.
-- `jd:muses.el`: code I've determined not useful for the time being.
-- `jd:theme.el`: customized theme.
+- `init.el`: the initialization file.
 
 The `config` folder contains all custom configurations.
-- `external`: libraries consisting outside of stock Emacs.
+- `external`: libraries that refer to external downloads.
 - `global`: global configurations not pertaining to any specific library.
-- `internal`: libraries consisting in stock Emacs.
+- `internal`: libraries that refer to site-lisp files.
 
 ```
-.emacs.d/
-├── config/
-│   ├── external/
-│   ├── global/
-│   └── internal/
+~/.emacs.d $ tree
+.
+├── config
+│   ├── external
+│   ├── global
+│   └── internal
 ├── init.el
-├── jd:muses.el
-├── jd:theme.el
 └── README.md
 ```

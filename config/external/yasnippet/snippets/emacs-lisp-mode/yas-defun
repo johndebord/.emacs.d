@@ -2,5 +2,5 @@
 # name: yas-defun
 # key: defun
 # --
-(defun ${1:NAME} (${2:ARGLIST})
+(defun $1 ($2)
   $0)
