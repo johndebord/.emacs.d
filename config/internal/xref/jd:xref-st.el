@@ -3,6 +3,8 @@
 (defvar xref-marker-ring-length)
 (defvar xref-prompt-for-identifier)
 
+(setq-default swiper-font-lock-exclude
+              (append swiper-font-lock-exclude '(xref--xref-buffer-mode)))
 (setq-default xref-after-jump-hook nil)
 
 ;; Utility function used at one point to organize the output of

@@ -7,7 +7,7 @@
   (set (make-local-variable 'company-backends)
        '((company-etags :separate company-dabbrev-code :separate company-yasnippet)))
   (set (make-local-variable 'compile-command)
-       (concat "clang++ -Wall -Wextra -std=c++17 -o prog " buffer-file-name " && ./prog")))
+       (concat "clang++ -g -Wall -Wextra -std=c++17 -o prog " buffer-file-name " && ./prog")))
 
 (add-hook 'c++-mode-hook 'jd:c++-mode-hook)
 
