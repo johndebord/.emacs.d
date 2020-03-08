@@ -4,7 +4,7 @@
   (font-lock-mode 1)
   (idle-highlight-mode 1)
   (yas-minor-mode 1)
-  (lsp)
+  (jd:lsp)
   (set (make-local-variable 'company-backends)
        '((company-lsp :separate company-dabbrev-code :separate company-yasnippet)))
   (set (make-local-variable 'compile-command)

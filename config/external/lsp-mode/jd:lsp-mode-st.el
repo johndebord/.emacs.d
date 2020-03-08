@@ -102,4 +102,10 @@
 ;; lsp-clients.el
 (setq-default lsp-clients-clangd-args '("--background-index=false"))
 
+;; Disable `flymake-mode` whenever using `lsp-mode`, because `flymake-mode` adds
+;; more confusion than value due to it identifying false-positives in code.
+(defun jd:lsp ()
+  (lsp)
+  (flymake-mode 0))
+
 (provide 'jd:lsp-mode-st)
