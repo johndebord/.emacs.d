@@ -31,3 +31,21 @@ Git Respecting `.gitignore`:
 git rm -rf --cached .
 git add .
 ```
+
+Creating A Swap File When In Need Of Extra Memory:
+--------------------------------------------------
+```bash
+sudo dd if=/dev/zero of=/home/i/0EXTERNAL/swapfile.img bs=1024 count=1M
+```
+
+Add `/home/i/0EXTERNAL/swapfile.img swap swap sw 0 0` at the end of file `/etc/fstab`
+
+```bash
+sudo swapon /home/i/0EXTERNAL/swapfile.img
+```
+
+To check how much swap space you have issue the commands:
+```bash
+cat /proc/swaps
+grep -n Swap /proc/meminfo
+```
