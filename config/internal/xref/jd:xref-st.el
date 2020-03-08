@@ -26,26 +26,20 @@
 ;; Find xref definitions in either the `company` popup or in a normal fashion.
 (defun jd:xref-find-definitions ()
   (interactive)
-  (if (and (memq 'company-etags (car company-backends))
-           (equal tags-file-name nil))
-      (message "`TAGS` file has not been set.")
-    (if (company--active-p)
-        (progn
-          (xref-find-definitions (nth company-selection company-candidates)))
+  (if (company--active-p)
       (progn
-        (xref-find-definitions (symbol-name (symbol-at-point)))))))
+        (xref-find-definitions (nth company-selection company-candidates)))
+    (progn
+      (xref-find-definitions (symbol-name (symbol-at-point))))))
 
 ;; Find xref references in either the `company` popup or in a normal fashion.
 (defun jd:xref-find-references ()
   (interactive)
-  (if (and (memq 'company-etags (car company-backends))
-           (equal tags-file-name nil))
-      (message "`TAGS` file has not been set.")
-    (if (company--active-p)
-        (progn
-          (xref-find-references (nth company-selection company-candidates)))
+  (if (company--active-p)
       (progn
-        (xref-find-references (symbol-name (symbol-at-point)))))))
+        (xref-find-references (nth company-selection company-candidates)))
+    (progn
+      (xref-find-references (symbol-name (symbol-at-point))))))
 
 ;; Pulse the sexp of which I am cross-referencing.
 (defun jd:xref-pulse ()

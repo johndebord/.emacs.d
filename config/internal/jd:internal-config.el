@@ -34,6 +34,7 @@
 (jd:load-feature jd:eshell jd:internal-prefix "eshell/")
 (jd:load-feature jd:etags jd:internal-prefix "etags/")
 (jd:load-feature jd:files jd:internal-prefix "files/")
+(jd:load-feature jd:flymake jd:internal-prefix "flymake/")
 (jd:load-feature jd:font-core jd:internal-prefix "font-core/")
 (jd:load-feature jd:frame jd:internal-prefix "frame/")
 (jd:load-feature jd:gdb-mi jd:internal-prefix "gdb-mi/")

@@ -1,6 +1,6 @@
 ;; Automates the construction of a customization directory.
 ;;
-;; A directory should have this structure:
+;; A directory shall have this structure:
 ;; `````````````````````
 ;; ~/.emacs.d/config/internal/cc-mode $ tree
 ;; .
@@ -33,6 +33,10 @@
 ;;
 ;; The `*-st.el` file should have this structure:
 ;; `````````````````````
+;; ;; Faces.
+;; (defvar ...)
+
+;; ;; Customization variables.
 ;; (defvar ...)
 ;;
 ;; (defun jd:c++-mode-hook ()

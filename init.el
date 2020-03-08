@@ -64,6 +64,17 @@
 (setq-default fill-column 80)
 (put 'erase-buffer 'disabled nil)
 
+;;; `callproc.c`
+(setq-default exec-path
+              (list "/bin"
+                    "/home/i/install/bin"
+                    "/bin"
+                    "/sbin"
+                    "/usr/bin"
+                    "/usr/sbin"
+                    "/usr/local/bin"
+                    "/usr/local/sbin"))
+
 ;;; `editfns.c`
 (put 'narrow-to-region 'disabled nil)
 
@@ -104,7 +115,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "ibm" :family "Courier"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "ibm" :family "Courier"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal))))
@@ -458,7 +469,7 @@
  '(markdown-url-face ((t (:background "purple" :foreground "black"))))
  '(match ((t (:background "purple" :foreground "black"))))
  '(menu ((t (:background "purple" :foreground "black"))))
- '(message-cited-text ((t (:background "purple" :foreground "black"))) t)
+ '(message-cited-text ((t (:background "purple" :foreground "black"))))
  '(message-header-cc ((t (:background "purple" :foreground "black"))))
  '(message-header-name ((t (:background "purple" :foreground "black"))))
  '(message-header-newsgroups ((t (:background "purple" :foreground "black"))))
@@ -747,4 +758,4 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company))))
+    (company-lsp lsp-mode rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company))))

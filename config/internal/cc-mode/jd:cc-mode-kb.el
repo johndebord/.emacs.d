@@ -1,6 +1,8 @@
 (define-key c++-mode-map (kbd "<C-b>") 'compile)
+(define-key c++-mode-map (kbd "<M-h>") 'lsp-find-definition)
 (define-key c++-mode-map (kbd "<C-M-o>") 'jd:next-error)
 (define-key c++-mode-map (kbd "<C-M-u>") 'jd:previous-error)
+(define-key c++-mode-map (kbd "<C-M-h>") 'lsp-find-references)
 (define-key c++-mode-map (kbd "<C-c> <C-c>") 'jd:cpp-print-add-print)
 (define-key c++-mode-map (kbd "<C-c> <C-d>") 'jd:cpp-print-delete-prints)
 

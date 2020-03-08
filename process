@@ -1,0 +1,14 @@
+File For Documenting Processes
+==============================
+
+Default CMake Command:
+----------------------
+```
+cmake -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DCMAKE_C_COMPILER=/home/i/install/bin/clang -DCMAKE_CXX_COMPILER=/home/i/install/bin/clang++ ..
+```
+
+Symlink `compile_commands.json` To The Root Of The Project Directory:
+---------------------------------------------------------------------
+```
+ln -s ./Release/compile_commands.json ./compile_commands.json
+```

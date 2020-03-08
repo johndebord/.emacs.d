@@ -12,7 +12,8 @@
 (defvar eshell-tar-regexp)
 
 (setq-default eshell-path-env
-              (concat "/bin:"
+              (concat "/home/i/install/bin:"
+                      "/bin:"
                       "/sbin:"
                       "/usr/bin:"
                       "/usr/sbin:"
