@@ -1,14 +1,14 @@
 File For Documenting Processes
 ==============================
 
-Default CMake Command:
-----------------------
+CMake Command:
+--------------
 ```cmake
 cmake -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DCMAKE_C_COMPILER=/home/i/install/bin/clang -DCMAKE_CXX_COMPILER=/home/i/install/bin/clang++ ..
 ```
 
-Default `configure` Commands For Building Bitcoin:
---------------------------------------------------
+`configure` Commands For Building Bitcoin:
+------------------------------------------
 ```bash
 rm -r *; ../configure --with-incompatible-bdb CC=/home/i/install/bin/clang CXX=/home/i/install/bin/clang++ CFLAGS="-O2" CXXFLAGS="-O2"; bear make -j1
 ```
@@ -17,4 +17,17 @@ Symlink `compile_commands.json` To The Root Of The Project Directory:
 ---------------------------------------------------------------------
 ```bash
 ln -s ./Release/compile_commands.json ./compile_commands.json
+```
+
+Git Unstage A File:
+-------------------
+```bash
+git reset HEAD <file>
+```
+
+Git Respecting `.gitignore`:
+----------------------------
+```bash
+git rm -rf --cached .
+git add .
 ```
