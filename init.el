@@ -7,7 +7,7 @@
   (concat jd:path-prefix ".elc/"))
 
 (defconst jd:site-lisp-prefix
-  "/usr/local/share/emacs/26.3.50/lisp/")
+  "/home/johndebord/install/share/emacs/26.3.50/lisp/")
 
 (defconst jd:load-from-byte-compiled-dir-p
   (if (directory-files jd:path-prefix nil ".+\\.elc")
@@ -66,8 +66,7 @@
 
 ;;; `callproc.c`
 (setq-default exec-path
-              (list "/bin"
-                    "/home/i/install/bin"
+              (list "/home/johndebord/install/bin"
                     "/bin"
                     "/sbin"
                     "/usr/bin"

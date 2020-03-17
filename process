@@ -10,7 +10,7 @@ rm -r *; cmake -DCMAKE_PREFIX_PATH=/home/i/install -DCMAKE_INSTALL_PREFIX=/home/
 `configure` Commands For Building Bitcoin:
 ------------------------------------------
 ```bash
-rm -r *; ../configure --with-incompatible-bdb CC=/home/i/install/bin/clang CXX=/home/i/install/bin/clang++ CFLAGS="-O2" CXXFLAGS="-O2"; bear make -j1
+rm -r *; ../configure --prefix=/home/i/install --exec-prefix=/home/i/install --with-incompatible-bdb CC=/home/i/install/bin/clang CXX=/home/i/install/bin/clang++ CFLAGS="-O2" CXXFLAGS="-O2"; bear make -j1
 ```
 
 Symlink `compile_commands.json` To The Root Of The Project Directory:
