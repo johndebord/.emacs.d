@@ -4,7 +4,7 @@ File For Documenting Processes
 CMake Command:
 --------------
 ```cmake
-cmake -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DCMAKE_C_COMPILER=/home/i/install/bin/clang -DCMAKE_CXX_COMPILER=/home/i/install/bin/clang++ ..
+rm -r *; cmake -DCMAKE_PREFIX_PATH=/home/i/install -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DBOOST_ROOT=/home/i/2boosts/boost_1_71_0 -DLLVM_DIR=/home/i/0EXTERNAL/llvm-project-9.0.1/llvm/Release/lib/cmake/llvm -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DCMAKE_C_COMPILER=/home/i/install/bin/clang -DCMAKE_CXX_COMPILER=/home/i/install/bin/clang++ ..; make -j2;
 ```
 
 `configure` Commands For Building Bitcoin:
@@ -32,6 +32,20 @@ git rm -rf --cached .
 git add .
 ```
 
+Git Resetting A Repository:
+---------------------------
+```bash
+git reset --hard HEAD
+```
+
+Git Cleaning (Removing Unstaged Stuff) A Repository:
+---------------------------
+```bash
+git clean -dx--force
+```
+* `-d` means to recurse through directories and directories themselves.
+* `-x` means to delete everything not having to do with the repository as well.
+
 Creating A Swap File When In Need Of Extra Memory:
 --------------------------------------------------
 ```bash
@@ -47,5 +61,17 @@ sudo swapon /home/i/0EXTERNAL/swapfile.img
 To check how much swap space you have issue the commands:
 ```bash
 cat /proc/swaps
-grep -n Swap /proc/meminfo
+cat /prc/meminfo | grep -n Swap
+```
+
+Get The Size Of A Directory And It's Contents:
+----------------------------------------------
+```bash
+du -h <directory>
+```
+
+Unzipping A `.zip` File:
+------------------------
+```bash
+unzip <file>.zip
 ```

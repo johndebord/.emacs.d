@@ -39,7 +39,6 @@
 (defvar lsp-client-packages)
 (defvar lsp-debounce-full-sync-notifications)
 (defvar lsp-debounce-full-sync-notifications-interval)
-(defvar lsp-diagnostic-package)
 (defvar lsp-diagnostics-modeline-scope)
 (defvar lsp-diagnostics-updated-hook)
 (defvar lsp-disabled-clients)
@@ -95,14 +94,19 @@
 (defvar lsp-tcp-connection-timeout)
 (defvar lsp-workspace-folders-changed-functions)
 
+(setq-default lsp-diagnostic-package 'none)
 (setq-default lsp-session-file (concat
                                 jd:external-prefix
                                 "lsp-mode/lsp-sessions/.lsp-session-v1"))
 
-;; Disable `flymake-mode` whenever using `lsp-mode`, because `flymake-mode` adds
-;; more confusion than value due to it identifying false-positives in code.
-(defun jd:lsp ()
-  (lsp)
-  (flymake-mode 0))
+;; TODO: Make this cleaner.
+;; `lsp-clients.el`
+;; (setq-default lsp-clients-clangd-args '("--log=verbose" "--pretty"))
+;; (setq-default lsp-clients-clangd-args '("--sync" "--pch-storage=disk" "--background-index=false" "-j=1"))
+;; (setq-default lsp-clients-clangd-args '("--log=verbose" "-j=1"))
+
+;; TODO: Make this cleaner.
+;; `lsp-clients.el`
+(setq-default lsp-clients-clangd-executable "/home/i/install/bin/clangd-10.0.0")
 
 (provide 'jd:lsp-mode-st)

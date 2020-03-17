@@ -758,4 +758,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-lsp lsp-mode rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company))))
+    (company-lsp lsp-mode rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company)))
+ '(safe-local-variable-values (quote ((flycheck-disabled-checkers emacs-lisp-checkdoc)))))
