@@ -133,81 +133,92 @@
           (forward-line -1)
           (move-to-column current-column)))))
 
+(defun jd:point-to-register-n (register)
+  (point-to-register register)
+  (recenter 0))
+
 (defun jd:point-to-register-1 ()
   (interactive)
-  (point-to-register 1))
+  (jd:point-to-register-n 1))
 
 (defun jd:point-to-register-2 ()
   (interactive)
-  (point-to-register 2))
+  (jd:point-to-register-n 2))
 
 (defun jd:point-to-register-3 ()
   (interactive)
-  (point-to-register 3))
+  (jd:point-to-register-n 3))
 
 (defun jd:point-to-register-4 ()
   (interactive)
-  (point-to-register 4))
+  (jd:point-to-register-n 4))
 
 (defun jd:point-to-register-5 ()
   (interactive)
-  (point-to-register 5))
+  (jd:point-to-register-n 5))
 
 (defun jd:point-to-register-6 ()
   (interactive)
-  (point-to-register 6))
+  (jd:point-to-register-n 6))
 
 (defun jd:point-to-register-7 ()
   (interactive)
-  (point-to-register 7))
+  (jd:point-to-register-n 7))
 
 (defun jd:point-to-register-8 ()
   (interactive)
-  (point-to-register 8))
+  (jd:point-to-register-n 8))
 
 (defun jd:point-to-register-9 ()
   (interactive)
-  (point-to-register 9))
+  (jd:point-to-register-n 9))
+
+(defun jd:jump-to-register-n (register)
+  (jump-to-register register)
+  (recenter 0))
 
 (defun jd:jump-to-register-1 ()
   (interactive)
-  (jump-to-register 1))
+  (jd:jump-to-register-n 1))
 
 (defun jd:jump-to-register-2 ()
   (interactive)
-  (jump-to-register 2))
+  (jd:jump-to-register-n 2))
 
 (defun jd:jump-to-register-3 ()
   (interactive)
-  (jump-to-register 3))
+  (jd:jump-to-register-n 3))
 
 (defun jd:jump-to-register-4 ()
   (interactive)
-  (jump-to-register 4))
+  (jd:jump-to-register-n 4))
 
 (defun jd:jump-to-register-5 ()
   (interactive)
-  (jump-to-register 5))
+  (jd:jump-to-register-n 5))
 
 (defun jd:jump-to-register-6 ()
   (interactive)
-  (jump-to-register 6))
+  (jd:jump-to-register-n 6))
 
 (defun jd:jump-to-register-7 ()
   (interactive)
-  (jump-to-register 7))
+  (jd:jump-to-register-n 7))
 
 (defun jd:jump-to-register-8 ()
   (interactive)
-  (jump-to-register 8))
+  (jd:jump-to-register-n 8))
 
 (defun jd:jump-to-register-9 ()
   (interactive)
-  (jump-to-register 9))
+  (jd:jump-to-register-n 9))
 
+;; Note the weird pairing convention because the registers are ordinal.
 (defun jd:reset-registers ()
   (interactive)
-  (setq register-alist (append '((1)(2)(3)(4)(5)(6)(7)(8)(9)) register-alist)))
+  (setq register-alist
+        (append '( (1) (2) (3) (4) (5) (6) (7) (8) (9)
+                  (11)(12)(13)(14)(15)(16)(17)(18)(19)) register-alist)))
 
 ;; Swap the two buffers in two given windows.
 (defun jd:swap-windows (event)

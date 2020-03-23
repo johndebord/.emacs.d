@@ -5,6 +5,8 @@
 (define-key c++-mode-map (kbd "<C-M-h>") 'lsp-find-references)
 (define-key c++-mode-map (kbd "<C-c> <C-c>") 'jd:cpp-print-add-print)
 (define-key c++-mode-map (kbd "<C-c> <C-d>") 'jd:cpp-print-delete-prints)
+(define-key c++-mode-map (kbd "<C-x> <M-h>") 'xref-find-apropos)
+(define-key c++-mode-map (kbd "<C-x> <C-M-h>") 'lsp-describe-thing-at-point)
 
 (provide 'jd:cc-mode-kb)
 

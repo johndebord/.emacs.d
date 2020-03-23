@@ -55,7 +55,6 @@
 (defvar lsp-enable-on-type-formatting)
 (defvar lsp-enable-semantic-highlighting)
 (defvar lsp-enable-snippet)
-(defvar lsp-enable-symbol-highlighting)
 (defvar lsp-enable-text-document-color)
 (defvar lsp-enable-xref)
 (defvar lsp-file-watch-ignored)
@@ -95,18 +94,14 @@
 (defvar lsp-workspace-folders-changed-functions)
 
 (setq-default lsp-diagnostic-package 'none)
+(setq-default lsp-enable-symbol-highlighting nil)
 (setq-default lsp-session-file (concat
                                 jd:external-prefix
                                 "lsp-mode/lsp-sessions/.lsp-session-v1"))
 
 ;; TODO: Make this cleaner.
 ;; `lsp-clients.el`
-;; (setq-default lsp-clients-clangd-args '("--log=verbose" "--pretty"))
-;; (setq-default lsp-clients-clangd-args '("--sync" "--pch-storage=disk" "--background-index=false" "-j=1"))
-;; (setq-default lsp-clients-clangd-args '("--log=verbose" "-j=1"))
-
-;; TODO: Make this cleaner.
-;; `lsp-clients.el`
-(setq-default lsp-clients-clangd-executable "/home/i/install/bin/clangd-10.0.0")
+(setq-default lsp-clients-clangd-args '("--pretty" "--background-index=true"))
+(setq-default lsp-clients-clangd-executable "/usr/bin/clangd-9")
 
 (provide 'jd:lsp-mode-st)

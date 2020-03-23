@@ -7,5 +7,4 @@ alias ll ls -l $*
 alias la ls -a $*
 alias gr grep -rnw './' -e $*
 alias fnd find . -name $*
-alias acke ack --ignore-dir=build --ignore-dir=elpa $*
 alias bear-eosio bear --use-only --use-cc /usr/local/bin/eosio-cc --use-c++ /usr/local/bin/eosio-cpp $*

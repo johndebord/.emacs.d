@@ -432,7 +432,7 @@
  '(makefile-targets ((t (:foreground "#569cd6"))))
  '(markdown-blockquote-face ((t (:background "purple" :foreground "black"))))
  '(markdown-bold-face ((t (:background "purple" :foreground "black"))))
- '(markdown-code-face ((t (:background "purple" :foreground "black"))))
+ '(markdown-code-face ((t nil)))
  '(markdown-comment-face ((t (:background "purple" :foreground "black"))))
  '(markdown-footnote-marker-face ((t (:background "purple" :foreground "black"))))
  '(markdown-footnote-text-face ((t (:background "purple" :foreground "black"))))
