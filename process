@@ -19,6 +19,24 @@ Symlink `compile_commands.json` To The Root Of The Project Directory:
 ln -s ./Release/compile_commands.json ./compile_commands.json
 ```
 
+Git List All Conflict Files:
+----------------------------
+```bash
+git diff --name-only --diff-filter=U
+```
+
+Git Reset All Submodules:
+-------------------------
+```bash
+git submodule foreach git reset --hard
+```
+
+Git Reset Entire Repo:
+----------------------
+```bash
+git reset --hard
+```
+
 Git Revert A File:
 ------------------
 ```bash
