@@ -57,5 +57,6 @@
 (defvar yank-pop-change-selection)
 
 (column-number-mode 1)
+(size-indication-mode 1)
 
 (provide 'jd:simple-st)
