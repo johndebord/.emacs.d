@@ -1,3 +1,61 @@
+;; Custom `mode-line-format` configuration.
+;; Will have to set `mode-line-format` like so:
+;; ```
+;; (setq-default mode-line-format (list
+;;                                 " "
+;;                                 '(:eval (jd:handle-buffer-name))
+;;                                 '(:eval (jd:handle-buffer-file))
+;;                                 '(:eval (jd:handle-position-info))
+;;                                 '(:eval (jd:handle-buffer-size))
+;;                                 '(:eval (jd:handle-version-control))
+;;                                 '(:eval (jd:handle-modes))))
+;; ```
+(defun jd:handle-buffer-name ()
+  (propertize "%b "
+              'face 'bold))
+
+(defun jd:handle-buffer-file ()
+  (if buffer-file-name
+      (cond
+       ((not (file-writable-p buffer-file-name))
+        (propertize "%f "
+                    'face '(:foreground "#5c5c5c" :weight bold)))
+       
+       ((buffer-modified-p)
+        (propertize "%f "
+                    'face '(:foreground "#ff7400" :weight bold)))
+       (t
+        (propertize "%f "
+                    'face '(:weight bold))))))
+
+(defun jd:handle-position-info ()
+  "(%l,%c) ")
+
+(defun jd:handle-buffer-size ()
+  (concat (number-to-string
+           (/ (buffer-size) 1000000.0)) "MB "))
+
+(defun jd:handle-version-control ()
+  (if (vc-registered (buffer-file-name))
+      (concat
+       (symbol-name (vc-responsible-backend (buffer-file-name)))
+       ":"
+       (substring
+        (vc-working-revision (buffer-file-name) (vc-responsible-backend (buffer-file-name)))
+        0 6)
+       " ")))
+
+(defun jd:handle-modes ()
+  (concat
+   "("
+   (upcase mode-name)
+   (if mode-line-process
+       (concat
+        " "
+        (upcase mode-line-process)
+        " "))
+   ")"))
+
 ;; Move the cusor to the middle of the window before scrolling down.
 (defun jd:scroll-down ()
   (interactive "^")

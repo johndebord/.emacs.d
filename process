@@ -7,6 +7,12 @@ CMake Command/Extra:
 rm -r *; cmake -DCMAKE_PREFIX_PATH=/home/i/install -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DBOOST_ROOT=/home/i/2boosts/boost_1_71_0 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;debuginfo-tests;libc;libclc;libcxx;libcxxabi;libunwind;lld;lldb;openmp;parallel-libs;polly;pstl" -DLLVM_DIR=/home/i/0EXTERNAL/llvm-project-9.0.1/llvm/Release/lib/cmake/llvm -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DPYTHON_EXECUTABLE=/usr/bin/python3 -DCMAKE_C_COMPILER=/home/i/install/bin/clang -DCMAKE_CXX_COMPILER=/home/i/install/bin/clang++ ..; make -j2;
 ```
 
+CMake Delete All Files That Have Been Installed:
+------------------------------------------------
+```bash
+xargs rm < install_manifest.txt
+```
+
 `configure` Commands For Building Bitcoin:
 ------------------------------------------
 ```bash

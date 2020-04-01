@@ -819,7 +819,7 @@
 (define-key global-map (kbd "<C-h> v") 'counsel-describe-variable)
 (define-key global-map (kbd "<C-h> y") 'jd:describe-keymap)
 
-(define-key global-map (kbd "<C-x> f")        'counsel-ag)
+(define-key global-map (kbd "<C-x> f")        'rgrep)
 (define-key global-map (kbd "<C-x> h")        'xref-find-apropos)
 (define-key global-map (kbd "<C-x> l")        'goto-line)
 (define-key global-map (kbd "<C-x> o")        'jd:copy-line-and-goto-end)

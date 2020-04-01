@@ -466,7 +466,7 @@
  '(markdown-reference-face ((t (:background "purple" :foreground "black"))))
  '(markdown-strike-through-face ((t (:background "purple" :foreground "black"))))
  '(markdown-url-face ((t (:background "purple" :foreground "black"))))
- '(match ((t (:background "purple" :foreground "black"))))
+ '(match ((t (:background "#323232"))))
  '(menu ((t (:background "purple" :foreground "black"))))
  '(message-cited-text ((t (:background "purple" :foreground "black"))))
  '(message-header-cc ((t (:background "purple" :foreground "black"))))
