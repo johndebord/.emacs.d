@@ -1,5 +1,8 @@
+(setenv (concat "LD_LIBRARY_PATH"
+                "/home/i/install/lib"))
+
 (setenv (concat "PATH"
-                "/home/johndebord/install/bin:"
+                "/home/i/install/bin:"
                 "/bin:"
                 "/sbin:"
                 "/usr/bin:"

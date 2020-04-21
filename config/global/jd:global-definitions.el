@@ -93,14 +93,14 @@
 (defun jd:scroll-down-line()
   (interactive "^")
   (scroll-down-line -1)
-  (next-line 1))
+  (line-move 1))
 
 ;; Scroll up one line and move the window up one line; keeping the cursor
 ;; centered.
 (defun jd:scroll-up-line ()
   (interactive "^")
   (scroll-down-line 1)
-  (next-line -1))
+  (line-move -1))
 
 ;; Scroll up one line whilst keeping the cursor on the far left of the buffer.
 (defun jd:backward-line ()

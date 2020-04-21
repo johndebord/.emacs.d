@@ -13,6 +13,7 @@
 (define-key read-expression-map (kbd "<jd:spc>") 'jd:self-insert-space)
 (define-key read-expression-map (kbd "<jd:tab>") 'completion-at-point)
 (define-key read-expression-map (kbd "<jd:C-ret>") 'exit-minibuffer)
+(define-key read-expression-map (kbd "<jd:S-ret>") 'newline)
 
 (provide 'jd:simple-kb)
 

@@ -102,6 +102,6 @@
 ;; TODO: Make this cleaner.
 ;; `lsp-clients.el`
 (setq-default lsp-clients-clangd-args '("--pretty" "--background-index=true"))
-(setq-default lsp-clients-clangd-executable "/usr/bin/clangd-9")
+(setq-default lsp-clients-clangd-executable "/home/i/install/bin/clangd")
 
 (provide 'jd:lsp-mode-st)
