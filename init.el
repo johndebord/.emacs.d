@@ -302,7 +302,7 @@
  '(hl-line ((t (:background "#535353"))))
  '(holiday ((t (:background "purple" :foreground "black"))))
  '(homoglyph ((t (:foreground "cyan"))))
- '(idle-highlight ((t (:background "#323232"))))
+ '(idle-highlight ((t (:background "#323232" :underline "#00cc00"))))
  '(info-header-node ((t (:background "purple" :foreground "black"))))
  '(info-header-xref ((t (:background "purple" :foreground "black"))))
  '(info-index-match ((t (:background "purple" :foreground "black"))))

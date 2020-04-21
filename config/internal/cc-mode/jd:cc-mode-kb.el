@@ -6,6 +6,8 @@
 (define-key c++-mode-map (kbd "<C-c> <C-c>") 'jd:cpp-print-add-print)
 (define-key c++-mode-map (kbd "<C-c> <C-d>") 'jd:cpp-print-delete-prints)
 (define-key c++-mode-map (kbd "<C-x> <C-M-h>") 'lsp-describe-thing-at-point)
+(define-key c++-mode-map (kbd "<mouse-8>") 'xref-pop-marker-stack)
+(define-key c++-mode-map (kbd "<mouse-9>") 'lsp-find-definition)
 
 (provide 'jd:cc-mode-kb)
 

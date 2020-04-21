@@ -137,6 +137,18 @@ Unzipping A `.zip` File:
 unzip <file>.zip
 ```
 
+Extracting a `.deb` File:
+-------------------------
+```bash
+ar x <file>.deb
+```
+
+Extracting a `.tar.xz` File:
+----------------------------
+```bash
+tar -xvf <file>.tar.xz
+```
+
 SSH Workflow:
 -------------
 ```bash
@@ -164,4 +176,12 @@ Query Replace Newlines Plus Strings:
 ```text
 Simply insert the string as is for the Emacs function `query-replace-regexp`
 Also note that `<C-q><C-j>` constitutes a newline character.
+```bash
+cmake -DCMAKE_INSTALL_PREFIX=/home/i/install .
+```
+
+Apt List All Installed Packages:
+--------------------------------
+```bash
+apt list --installed
 ```
