@@ -4,13 +4,7 @@ File For Documenting Processes
 CMake Command/Extra:
 --------------------
 ```cmake
-rm -r *; cmake -DCMAKE_PREFIX_PATH=/home/i/install -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DBOOST_ROOT=/home/i/2boosts/boost_1_71_0 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;debuginfo-tests;libc;libclc;libcxx;libcxxabi;libunwind;lld;lldb;openmp;parallel-libs;polly;pstl" -DLLVM_DIR=/home/i/0EXTERNAL/llvm-project-9.0.1/llvm/Release/lib/cmake/llvm -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DPYTHON_EXECUTABLE=/usr/bin/python3 -DCMAKE_C_COMPILER=/home/i/install/bin/clang -DCMAKE_CXX_COMPILER=/home/i/install/bin/clang++ ..; make -j2;
-```
-
-CMake Delete All Files That Have Been Installed:
-------------------------------------------------
-```bash
-xargs rm < install_manifest.txt
+rm -r *; cmake -DCMAKE_PREFIX_PATH=/home/i/install -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DBOOST_ROOT=/home/i/2boosts/boost_1_71_0 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;debuginfo-tests;libc;libclc;libcxx;libcxxabi;libunwind;lld;lldb;openmp;parallel-libs;polly;pstl" -DLLVM_DIR=/home/i/0EXTERNAL/llvm-project-9.0.1/llvm/Release/lib/cmake/llvm -DPYTHON_EXECUTABLE=/usr/bin/python3 -DCMAKE_C_COMPILER=/home/i/install/bin/clang -DCMAKE_CXX_COMPILER=/home/i/install/bin/clang++ ..; make -j2;
 ```
 
 `configure` Commands For Building Bitcoin:
@@ -23,6 +17,43 @@ Symlink `compile_commands.json` To The Root Of The Project Directory:
 ---------------------------------------------------------------------
 ```bash
 ln -s ./Release/compile_commands.json ./compile_commands.json
+```
+
+Apt List All Installed Packages:
+--------------------------------
+```bash
+apt list --installed
+
+```
+
+Git Squash And Force Push:
+--------------------------
+```bash
+git reset --soft <commit-hash>
+git push origin +master
+```
+
+Git Merge Without Commit:
+-------------------------
+```bash
+git merge <upstream/master> --no-commit
+```
+
+Git Undo A Merge That Hasn't Been Pushed:
+-----------------------------------------
+```bash
+git reflog
+git reset --hard <commit-hash>
+```
+
+Git Merge Upstream Master With Fork:
+------------------------------------
+```bash
+git remote add upstream <repo.git>
+git fetch upstream
+git checkout master
+git merge upstream/master
+git push origin master
 ```
 
 Git List All Conflict Files:
@@ -111,13 +142,26 @@ SSH Workflow:
 ```bash
 eval "$(ssh-agent -s)"
 ssh-keygen -t rsa # add this public key to GitHub.
-ssh-add $ssh-key
+ssh-add $ssh-key # don't know if this is really necessary; don't know if `ssh-key` is referring to pub or priv.
 ssh-keyscan github.com >> ~/.ssh/known_hosts # clone GitHub repo.
 ```
 * `-t`  means dsa
 * `rsa` means rsa
 * `-s`  means print to stdout
 
-Modifying Installation Path For CMake Project:
+CMake Modifying Installation Path For Project:
 ----------------------------------------------
 cmake -DCMAKE_INSTALL_PREFIX=/home/i/install .
+
+CMake Delete All Files That Have Been Installed:
+------------------------------------------------
+```bash
+xargs rm < install_manifest.txt
+```
+
+Query Replace Newlines Plus Strings:
+------------------------------------
+```text
+Simply insert the string as is for the Emacs function `query-replace-regexp`
+Also note that `<C-q><C-j>` constitutes a newline character.
+```

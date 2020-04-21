@@ -1,13 +1,19 @@
 ;;; Author: John DeBord
 
+(defconst jd:big-storage-dir
+  (concat (getenv "HOME") "/0EXTERNAL/"))
+
 (defconst jd:path-prefix
   (concat (getenv "HOME") "/.emacs.d/"))
+
+(defconst jd:install-prefix
+  (concat (getenv "HOME") "/install/"))
 
 (defconst jd:elc-prefix
   (concat jd:path-prefix ".elc/"))
 
 (defconst jd:site-lisp-prefix
-  "/home/johndebord/install/share/emacs/26.3.50/lisp/")
+  (concat jd:install-prefix "share/emacs/26.3.50/lisp/"))
 
 (defconst jd:load-from-byte-compiled-dir-p
   (if (directory-files jd:path-prefix nil ".+\\.elc")
@@ -66,7 +72,7 @@
 
 ;;; `callproc.c`
 (setq-default exec-path
-              (list "/home/johndebord/install/bin"
+              (list "/home/i/install/bin"
                     "/bin"
                     "/sbin"
                     "/usr/bin"
@@ -91,6 +97,9 @@
 (setq-default echo-keystrokes 0.001)
 (setq-default meta-prefix-char nil)
 (setq-default show-help-function nil)
+
+;;; `lread.c`
+(setq-default source-directory (concat jd:big-storage-dir "/git-repos/emacs-fork/"))
 
 ;;; `minibuf.c`
 (setq-default enable-recursive-minibuffers t)
@@ -680,17 +689,6 @@
  '(swiper-match-face-2 ((t (:background "#BE8A2D"))))
  '(swiper-match-face-3 ((t (:background "#BE8A2D"))))
  '(swiper-match-face-4 ((t (:background "#BE8A2D"))))
- '(term ((t (:background "purple" :foreground "black"))))
- '(term-bold ((t (:background "purple" :foreground "black"))))
- '(term-color-black ((t (:background "purple" :foreground "black"))))
- '(term-color-blue ((t (:background "purple" :foreground "black"))))
- '(term-color-cyan ((t (:background "purple" :foreground "black"))))
- '(term-color-green ((t (:background "purple" :foreground "black"))))
- '(term-color-magenta ((t (:background "purple" :foreground "black"))))
- '(term-color-red ((t (:background "purple" :foreground "black"))))
- '(term-color-white ((t (:background "purple" :foreground "black"))))
- '(term-color-yellow ((t (:background "purple" :foreground "black"))))
- '(term-underline ((t (:background "purple" :foreground "black"))))
  '(tex-math ((t (:background "purple" :foreground "black"))))
  '(tex-verbatim ((t (:background "purple" :foreground "black"))))
  '(tmm-inactive ((t (:background "purple" :foreground "black"))))
