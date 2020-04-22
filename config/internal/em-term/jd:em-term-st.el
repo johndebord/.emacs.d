@@ -6,7 +6,6 @@
 (defvar eshell-visual-commands)
 (defvar eshell-visual-options)
 
-(add-to-list 'eshell-visual-subcommands
-             '("git" . ("merge" "pull" "rebase")))
+(add-to-list 'eshell-visual-commands "git")
 
 (provide 'jd:em-term-st)

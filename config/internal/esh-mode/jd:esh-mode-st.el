@@ -85,22 +85,6 @@
       (scroll-down-line 1)
       (line-move -1))))
 
-;; Deletes any `` character in the `eshell` buffer, which happens occasionally
-;; when using various command-line tools.
-(defun jd:nuke-unwanted-ansi-chars ()
-  (save-excursion
-    (goto-char eshell-last-output-start)
-    (while (re-search-forward
-            "\\(>\\)\\|\\(=\\)\\|\\( \\)\\|\\(\\)"
-            eshell-last-output-end t)
-      (replace-match ""))))
-
-;; Should proably just make this a noop for the time being. Since I don't know
-;; the intracies of why `eshell` is spitting out random control characters, and
-;; I probably shouldn't be messing with it; an updated version of emacs might
-;; have already solved this problem.
-(defun jd:nuke-unwanted-ansi-chars ())
-
 (defun jd:eshell-mode-hook ()
   (electric-pair-mode 1)
   (font-lock-mode 1)
@@ -116,6 +100,5 @@
                  (#x27 . #x27))))) ; '\'' '\''
 
 (add-hook 'eshell-mode-hook 'jd:eshell-mode-hook)
-(add-hook 'eshell-output-filter-functions 'jd:nuke-unwanted-ansi-chars)
 
 (provide 'jd:esh-mode-st)
