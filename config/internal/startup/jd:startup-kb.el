@@ -1,6 +1,6 @@
 (provide 'jd:startup-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/startup.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/startup.elc
 ;; 
 ;; splash-screen-keymap
 ;; --------------------

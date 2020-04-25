@@ -1,6 +1,6 @@
 (provide 'jd:edmacro-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/edmacro.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/edmacro.elc
 ;; 
 ;; edmacro-mode-map
 ;; ----------------

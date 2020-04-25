@@ -4,7 +4,7 @@
 
 (provide 'jd:gdb-mi-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/progmodes/gdb-mi.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/gdb-mi.elc
 ;; 
 ;; gdb-registers-mode-map
 ;; ----------------------

@@ -9,9 +9,9 @@
 (define-key eshell-mode-map (kbd "<C-c> <C-l>") 'jd:eshell-clear-buffer)
 (define-key eshell-mode-map (kbd "<C-c> <C-r>") 'jd:counsel-esh-history)
 (define-key eshell-mode-map (kbd "<jd:ret>") 'jd:incredibly-smart-return)
-(define-key eshell-mode-map (kbd "<jd:tab>") 'jd:pcomplete-std-complete)
+(define-key eshell-mode-map (kbd "<jd:tab>") 'jd:incredibly-smart-tab-eshell)
 
 (provide 'jd:esh-mode-kb)
 
 ;; `eshell` seems to be implemented very unconventionally.
-;; File: /usr/local/share/emacs/26.3.50/lisp/eshell/esh-mode.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/eshell/esh-mode.elc

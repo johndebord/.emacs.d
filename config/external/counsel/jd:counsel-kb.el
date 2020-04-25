@@ -2,7 +2,7 @@
 
 (provide 'jd:counsel-kb)
 
-;; File: /home/i/.emacs.d/config/external/elpa/counsel-20190830.1557/counsel.el
+;; File: $HOME/.emacs.d/config/external/elpa/counsel-20190830.1557/counsel.el
 ;; 
 ;; counsel-ag-map
 ;; --------------

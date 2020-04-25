@@ -10,7 +10,7 @@
 
 (provide 'jd:company-kb)
 
-;; File: /home/i/.emacs.d/config/external/elpa/company-20190907.1149/company.el
+;; File: $HOME/.emacs.d/config/external/elpa/company-20190907.1149/company.el
 ;; 
 ;; company-active-map
 ;; ------------------

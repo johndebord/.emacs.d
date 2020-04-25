@@ -1,6 +1,6 @@
 (provide 'jd:swiper-kb)
 
-;; File: /home/i/.emacs.d/config/external/elpa/swiper-20190822.1708/swiper.el
+;; File: $HOME/.emacs.d/config/external/elpa/swiper-20190822.1708/swiper.el
 ;; 
 ;; swiper-map
 ;; ----------

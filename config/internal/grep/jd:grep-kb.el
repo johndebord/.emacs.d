@@ -4,7 +4,7 @@
 (define-key grep-mode-map (kbd "k") 'jd:forward-line)
 (define-key grep-mode-map (kbd "<jd:ret>") 'compile-goto-error)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/progmodes/grep.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/grep.elc
 ;; 
 ;; grep-mode-map
 ;; -------------

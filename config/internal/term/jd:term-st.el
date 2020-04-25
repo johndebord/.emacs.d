@@ -34,8 +34,7 @@
 (defvar term-suppress-hard-newline)
 
 (defun jd:term-mode-hook ()
-  (font-lock-mode 1)
-  (setenv "TERM" "xterm-256color"))
+  (font-lock-mode 1))
 
 (add-hook 'term-mode-hook 'jd:term-mode-hook)
 

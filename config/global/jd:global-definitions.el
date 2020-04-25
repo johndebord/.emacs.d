@@ -347,10 +347,18 @@
 
 (defun jd:delete-word-backward ()
   (interactive)
-  (delete-region
-   (point)
-   (progn
-     (backward-word)
-     (point))))
+  (let ((start (point))
+        (end (save-excursion
+               (backward-word)
+               (point))))
+    (delete-region start end)))
+
+(defun jd:incredibly-smart-tab-eshell ()
+  (interactive)
+  (jd:incredibly-smart-tab 'eshell))
+
+(defun jd:incredibly-smart-tab-progmode ()
+  (interactive)
+  (jd:incredibly-smart-tab 'progmode))
 
 (provide 'jd:global-definitions)

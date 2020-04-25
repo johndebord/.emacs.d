@@ -1,6 +1,6 @@
 (provide 'jd:isearch-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/isearch.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/isearch.elc
 ;; 
 ;; isearch-help-map
 ;; ----------------

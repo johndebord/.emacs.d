@@ -6,7 +6,7 @@
 
 (provide 'jd:debug-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/emacs-lisp/debug.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/emacs-lisp/debug.elc
 ;; 
 ;; debugger-mode-map
 ;; -----------------

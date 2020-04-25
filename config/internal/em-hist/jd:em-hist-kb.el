@@ -1,6 +1,6 @@
 (provide 'jd:em-hist-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/eshell/em-hist.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/eshell/em-hist.elc
 ;; 
 ;; eshell-isearch-map
 ;; ------------------

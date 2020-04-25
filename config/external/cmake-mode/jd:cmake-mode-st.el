@@ -4,6 +4,7 @@
 (setq-default cmake-tab-width 4)
 
 (defun jd:cmake-mode-hook ()
+  (electric-pair-mode 1)
   (font-lock-mode 1)
   (idle-highlight-mode 1))
 

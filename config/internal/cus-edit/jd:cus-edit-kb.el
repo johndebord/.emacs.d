@@ -5,7 +5,7 @@
 
 (provide 'jd:cus-edit-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/cus-edit.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/cus-edit.elc
 ;; 
 ;; custom-mode-link-map
 ;; --------------------

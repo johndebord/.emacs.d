@@ -2,7 +2,7 @@
 
 (provide 'jd:replace-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/replace.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/replace.elc
 ;; 
 ;; query-replace-map
 ;; -----------------

@@ -5,7 +5,7 @@
 
 (provide 'jd:elisp-mode-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/progmodes/elisp-mode.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/elisp-mode.elc
 ;; 
 ;; emacs-lisp-mode-map
 ;; -------------------

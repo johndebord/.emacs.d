@@ -7,7 +7,7 @@
 
 (provide 'jd:compile-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/progmodes/compile.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/compile.elc
 ;; 
 ;; compilation-mode-tool-bar-map
 ;; -----------------------------

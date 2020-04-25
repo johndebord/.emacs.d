@@ -6,7 +6,7 @@
 
 (provide 'jd:rcirc-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/net/rcirc.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/net/rcirc.elc
 ;; 
 ;; rcirc-track-minor-mode-map
 ;; --------------------------

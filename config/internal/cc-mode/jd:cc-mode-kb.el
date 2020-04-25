@@ -11,7 +11,7 @@
 
 (provide 'jd:cc-mode-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/progmodes/cc-mode.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/cc-mode.elc
 ;; 
 ;; c-awk-menu
 ;; ----------

@@ -20,8 +20,4 @@
 (defvar pcomplete-try-first-hook)
 (defvar pcomplete-use-paring)
 
-(defun jd:pcomplete-std-complete ()
-  (interactive)
-  (pcomplete-std-complete))
-
 (provide 'jd:pcomplete-st)

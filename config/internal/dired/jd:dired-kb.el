@@ -4,7 +4,7 @@
 
 (provide 'jd:dired-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/dired.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/dired.elc
 ;; 
 ;; dired-mode-map
 ;; --------------

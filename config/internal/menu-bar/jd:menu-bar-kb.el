@@ -1,6 +1,6 @@
 (provide 'jd:menu-bar-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/menu-bar.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/menu-bar.elc
 ;; 
 ;; menu-bar-showhide-window-divider-menu
 ;; -------------------------------------

@@ -43,7 +43,6 @@
 (defvar mounted-file-systems)
 (defvar out-of-memory-warning-percentage)
 (defvar remote-file-name-inhibit-cache)
-(defvar require-final-newline)
 (defvar revert-without-query)
 (defvar safe-local-eval-forms)
 (defvar safe-local-variable-values)

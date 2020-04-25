@@ -8,7 +8,7 @@
 
 (provide 'jd:help-mode-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/help-mode.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/help-mode.elc
 ;; 
 ;; help-mode-menu
 ;; --------------

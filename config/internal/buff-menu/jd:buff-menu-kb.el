@@ -4,7 +4,7 @@
 
 (provide 'jd:buff-menu-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/buff-menu.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/buff-menu.elc
 ;; 
 ;; Buffer-menu-mode-map
 ;; --------------------

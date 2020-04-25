@@ -64,18 +64,4 @@
 
 (setq-default counsel-preselect-current-file t)
 
-;; If currently navigating open buffers using `counsel-switch-buffer`, this
-;; command will navigate to the path of the buffer that the cursor is currently
-;; on, else it would perform as usual.
-(defun jd:counsel-find-file ()
-  (interactive)
-  (let ((current-selection-file-path nil))
-    (if (and (equal major-mode 'minibuffer-inactive-mode)
-             (setq current-selection-file-path
-                   (buffer-file-name (get-buffer (ivy-state-current ivy-last)))))
-        (progn
-          (setq current-selection-file-path (file-name-directory current-selection-file-path))
-          (funcall 'counsel-find-file current-selection-file-path))
-      (funcall 'counsel-find-file))))
-
 (provide 'jd:counsel-st)

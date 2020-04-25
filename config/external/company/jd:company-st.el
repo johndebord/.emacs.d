@@ -53,7 +53,7 @@
 (setq-default company-idle-delay nil)
 (setq-default company-tooltip-limit 10)
 
-;; Determines whether to `company-complete` `company-complete-common` the
+;; Determines whether to `company-complete` or `company-complete-common` the
 ;; selection, depending on the context of the situation.
 (defvar jd:company-select nil)
 
@@ -73,14 +73,14 @@
 (defun jd:company-select-t (&rest _)
   (setq jd:company-select t))
 
-;; If `comapny` has exited gracefully with a completion and a subsequent
+;; If `company` has exited gracefully with a completion and a subsequent
 ;; operation has occured (indicated that I may want to try another completion),
 ;; set the state variable `jd:recently-finished-completion` to false to indicate
 ;; that a I'm ready for another completion.
 (defun jd:recently-finished-completion-nil (&rest _)
   (setq jd:recently-finished-completion nil))
 
-;; If `comapny` has exited gracefully with a completion, set the state variable
+;; If `company` has exited gracefully with a completion, set the state variable
 ;; `jd:recently-finished-completion` to true to indicate that a recent
 ;; completion has occurred.
 (defun jd:recently-finished-completion-t (&rest _)

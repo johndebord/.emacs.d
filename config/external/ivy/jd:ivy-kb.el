@@ -20,7 +20,7 @@
 
 (provide 'jd:ivy-kb)
 
-;; File: /home/i/.emacs.d/config/external/elpa/ivy-20190825.1023/ivy.el
+;; File: $HOME/.emacs.d/config/external/elpa/ivy-20190825.1023/ivy.el
 ;; 
 ;; ivy-mode-map
 ;; ------------

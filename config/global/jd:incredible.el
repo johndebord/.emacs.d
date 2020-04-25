@@ -48,129 +48,258 @@
                (forward-char (- (string-to-number column-number) 1)))))
     (eshell-send-input)))
 
+;; ;; Depending on the context of where the cursor is, this function will be smart
+;; ;; enough to know whether to do the following: complete a `yasnippet` snippet,
+;; ;; complete a `company` completion, indent the line appropriately, or skip a
+;; ;; skippable-char.
+;; (defun jd:incredibly-smart-tab ()
+;;   (interactive)
+;;   
+;;   (cl-flet*      
+;;       ((company-complete
+;;         ()
+;; 
+;;         (if (null jd:company-select)
+;;             (progn
+;;               (jd:company-select-t)
+;;               (company-complete-common))
+;;           (if jd:company-select
+;;               (progn
+;;                 (company-complete-selection)
+;;                 (jd:recently-finished-completion-t)))))
+;;        
+;;        (skippable-char-before-p
+;;         ()
+;;         (if (memq
+;;              (char-before)
+;;              '(list #x28    ; '('
+;;                     #x29    ; ')'
+;;                     #x7B    ; '{'
+;;                     #x7D    ; '}'
+;;                     #x5B    ; '['
+;;                     #x5D    ; ']'
+;;                     #x3C    ; '<'
+;;                     #x3E    ; '>'
+;;                     #x27    ; '\''
+;;                     #x22))  ; '\"'
+;;             t
+;;           nil))
+;; 
+;;        (skippable-char-after-p
+;;         ()
+;;         (if (memq
+;;              (char-after)
+;;              '(list #x28    ; '('
+;;                     #x29    ; ')'
+;;                     #x7B    ; '{'
+;;                     #x7D    ; '}'
+;;                     #x5B    ; '['
+;;                     #x5D    ; ']'
+;;                     #x3C    ; '<'
+;;                     #x3E    ; '>'
+;;                     #x27    ; '\''
+;;                     #x22))  ; '\"'
+;;             t
+;;           nil))
+;; 
+;;        (quotation-char-after-p
+;;         ()
+;;         (if (memq
+;;              (char-after)
+;;              (list #x27   ; '\''
+;;                    #x22)) ; '\"'
+;;             t
+;;           nil))
+;; 
+;;        (nothing-before-cusor-p
+;;         ()
+;;         (if (or
+;;              (equal (char-before) nil)
+;;              (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) 0))
+;;             t
+;;           nil))
+;; 
+;;        (nothing-after-cusor-p
+;;         ()
+;;         (if (or
+;;              (equal (char-after) nil)
+;;              (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) 0))
+;;             t
+;;           nil))
+;; 
+;;        (recently-finished-completion-p
+;;         ()
+;;         (if jd:recently-finished-completion
+;;             t
+;;           nil))
+;;        
+;;        (has-context-for-completion-p
+;;         ()
+;;         (if (and (not (nothing-before-cusor-p))
+;;                  (not (skippable-char-before-p))
+;;                  (or (skippable-char-after-p)
+;;                      (nothing-after-cusor-p)))
+;;             t
+;;           nil))
+;; 
+;;        (has-context-for-yasnippet-p
+;;         ()
+;;         (if (yas--field-p (yas-current-field))
+;;             t
+;;           nil)))
+;; 
+;;     (cond
+;;      ((region-active-p)
+;;       (indent-for-tab-command))
+;; 
+;;      ((quotation-char-after-p)
+;;       (forward-char 1))
+;;      
+;;      ((has-context-for-completion-p)
+;;       (if (and (equal company-mode t)
+;;                (not (recently-finished-completion-p)))
+;;           (company-complete)
+;;         (if (has-context-for-yasnippet-p)
+;;             (yas-next-field)
+;;           (if (skippable-char-after-p)
+;;               (forward-char 1)
+;;             (indent-for-tab-command)))))
+;; 
+;;      ((has-context-for-yasnippet-p)
+;;       (yas-next-field))
+;; 
+;;      (t
+;;       (if (skippable-char-after-p)
+;;           (forward-char 1)
+;;         (indent-for-tab-command))))))
+
 ;; Depending on the context of where the cursor is, this function will be smart
 ;; enough to know whether to do the following: complete a `yasnippet` snippet,
 ;; complete a `company` completion, indent the line appropriately, or skip a
 ;; skippable-char.
-(defun jd:incredibly-smart-tab ()
-  (interactive)
-  
-  (cl-flet*      
-      ((company-complete
-        ()
+(defun jd:incredibly-smart-tab (arg)
+  (cond
+   ((eq arg 'eshell)
+    (funcall 'jd:ist-eshell))
+   ((eq arg 'progmode)
+    (funcall 'jd:ist-progmode))))
 
-        (if (null jd:company-select)
-            (progn
-              (jd:company-select-t)
-              (company-complete-common))
-          (if jd:company-select
-              (progn
-                (company-complete-selection)
-                (jd:recently-finished-completion-t)))))
+(defun jd:ist-eshell ()
+  (cond
+   ((and (eq company-mode t)
+         (null (jd:recently-finished-completion-p))
+         (jd:has-context-for-completion-p))
+    (jd:company-complete 'eshell))
+   
+   (t
+    (jd:skip-char 'eshell))))
+
+(defun jd:ist-progmode ()
+  (cond
+   ((region-active-p)
+    (indent-for-tab-command))
+
+   ((and (eq company-mode t)
+         (null (jd:has-context-for-yasnippet-p))
+         (null (jd:recently-finished-completion-p))
+         (jd:has-context-for-completion-p))
+    (jd:company-complete 'progmode))
+
+   ((and (eq yas-minor-mode t)
+         (jd:has-context-for-yasnippet-p))
+    (yas-next-field))
+
+   (t
+    (jd:skip-char 'progmode))))
+
+(defun jd:company-complete (mode)
+  (if (null jd:company-select)
+      (progn
+        (if (null (company-complete-common))
+            (jd:skip-char mode))
+        (jd:company-select-t))
+    (progn
+      (company-complete-selection)
+      (jd:recently-finished-completion-t))))
+
+(defun jd:skip-char (mode)
+  (if (jd:skippable-char-after-p)
+      (forward-char 1)
+    (if (eq mode 'progmode)
+        (indent-for-tab-command))))
+
+(defun jd:skippable-char-before-p ()
+  (if (memq
+       (char-before)
+       '(list #x28    ; '('
+              #x29    ; ')'
+              #x7B    ; '{'
+              #x7D    ; '}'
+              #x5B    ; '['
+              #x5D    ; ']'
+              #x3C    ; '<'
+              #x3E    ; '>'
+              #x27    ; '\''
+              #x22))  ; '\"'
+      t
+    nil))
+
+(defun jd:skippable-char-after-p ()
+  (if (memq
+       (char-after)
+       '(list #x28    ; '('
+              #x29    ; ')'
+              #x7B    ; '{'
+              #x7D    ; '}'
+              #x5B    ; '['
+              #x5D    ; ']'
+              #x3C    ; '<'
+              #x3E    ; '>'
+              #x27    ; '\''
+              #x22))  ; '\"'
+      t
+    nil))
+
+(defun jd:quotation-char-after-p ()
+  (if (memq
+       (char-after)
+       (list #x27   ; '\''
+             #x22)) ; '\"'
+      t
+    nil))
+
+(defun jd:nothing-before-cusor-p ()
+  (if (or
+       (equal (char-before) nil)
+       (equal (string-match "[[:blank:]\n]+"
+                            (char-to-string (char-before))) 0))
+      t
+    nil))
+
+(defun jd:nothing-after-cusor-p ()
+  (if (or
+       (equal (char-after) nil)
+       (equal (string-match "[[:blank:]\n]+"
+                            (char-to-string (char-after))) 0))
+      t
+    nil))
+
+(defun jd:recently-finished-completion-p ()
+  (if jd:recently-finished-completion
+      t
+    nil))
        
-       (skippable-char-before-p
-        ()
-        (if (memq
-             (char-before)
-             '(list #x28    ; '('
-                    #x29    ; ')'
-                    #x7B    ; '{'
-                    #x7D    ; '}'
-                    #x5B    ; '['
-                    #x5D    ; ']'
-                    #x3C    ; '<'
-                    #x3E    ; '>'
-                    #x27    ; '\''
-                    #x22))  ; '\"'
-            t
-          nil))
+(defun jd:has-context-for-completion-p ()
+  (if (and (not (jd:nothing-before-cusor-p))
+           (not (jd:skippable-char-before-p))
+           (or (jd:skippable-char-after-p)
+               (jd:nothing-after-cusor-p)))
+      t
+    nil))
 
-       (skippable-char-after-p
-        ()
-        (if (memq
-             (char-after)
-             '(list #x28    ; '('
-                    #x29    ; ')'
-                    #x7B    ; '{'
-                    #x7D    ; '}'
-                    #x5B    ; '['
-                    #x5D    ; ']'
-                    #x3C    ; '<'
-                    #x3E    ; '>'
-                    #x27    ; '\''
-                    #x22))  ; '\"'
-            t
-          nil))
-
-       (quotation-char-after-p
-        ()
-        (if (memq
-             (char-after)
-             (list #x27   ; '\''
-                   #x22)) ; '\"'
-            t
-          nil))
-
-       (nothing-before-cusor-p
-        ()
-        (if (or
-             (equal (char-before) nil)
-             (equal (string-match "[[:blank:]\n]+" (char-to-string (char-before))) 0))
-            t
-          nil))
-
-       (nothing-after-cusor-p
-        ()
-        (if (or
-             (equal (char-after) nil)
-             (equal (string-match "[[:blank:]\n]+" (char-to-string (char-after))) 0))
-            t
-          nil))
-
-       (recently-finished-completion-p
-        ()
-        (if jd:recently-finished-completion
-            t
-          nil))
-       
-       (has-context-for-completion-p
-        ()
-        (if (and (not (nothing-before-cusor-p))
-                 (not (skippable-char-before-p))
-                 (or (skippable-char-after-p)
-                     (nothing-after-cusor-p)))
-            t
-          nil))
-
-       (has-context-for-yasnippet-p
-        ()
-        (if (yas--field-p (yas-current-field))
-            t
-          nil)))
-    
-    (cond
-     ((region-active-p)
-      (indent-for-tab-command))
-
-     ((quotation-char-after-p)
-      (forward-char 1))
-     
-     ((has-context-for-completion-p)
-      (if (and (equal company-mode t)
-               (not (recently-finished-completion-p)))
-          (company-complete)
-        (if (has-context-for-yasnippet-p)
-            (yas-next-field)
-          (if (skippable-char-after-p)
-              (forward-char 1)
-            (indent-for-tab-command)))))
-
-     ((has-context-for-yasnippet-p)
-      (yas-next-field))
-
-     (t
-      (if (skippable-char-after-p)
-          (forward-char 1)
-        (indent-for-tab-command))))))
+(defun jd:has-context-for-yasnippet-p ()
+  (if (yas--field-p (yas-current-field))
+      t
+    nil))
 
 (provide 'jd:incredible)

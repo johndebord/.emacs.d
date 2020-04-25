@@ -1,6 +1,6 @@
 (provide 'jd:yasnippet-kb)
 
-;; File: /home/i/.emacs.d/config/external/elpa/yasnippet-20190724.1204/yasnippet.el
+;; File: $HOME/.emacs.d/config/external/elpa/yasnippet-20190724.1204/yasnippet.el
 ;; 
 ;; yas-minor-mode-map
 ;; ------------------

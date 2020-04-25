@@ -24,7 +24,7 @@
 
 (provide 'jd:minibuffer-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/minibuffer.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/minibuffer.elc
 ;; 
 ;; minibuffer-local-must-match-filename-map
 ;; ----------------------------------------

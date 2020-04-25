@@ -1,6 +1,6 @@
 (provide 'jd:hideshow-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/progmodes/hideshow.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/hideshow.elc
 ;; 
 ;; hs-minor-mode-menu
 ;; ------------------

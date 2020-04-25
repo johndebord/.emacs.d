@@ -6,7 +6,7 @@
 
 (provide 'jd:apropos-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/apropos.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/apropos.elc
 ;; 
 ;; apropos-mode-map
 ;; ----------------

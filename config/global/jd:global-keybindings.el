@@ -144,7 +144,7 @@
 ;; (define-key global-map (kbd "<M-c>")  ')
 ;; (define-key global-map (kbd "<M-d>")  ')
 ;; (define-key global-map (kbd "<M-e>")  ')
-(define-key global-map (kbd "<M-f>")     'jd:counsel-find-file)
+(define-key global-map (kbd "<M-f>")     'counsel-find-file)
 ;; (define-key global-map (kbd "<M-g>")  ')
 (define-key global-map (kbd "<M-h>")     'jd:xref-find-definitions)
 (define-key global-map (kbd "<M-i>")     'previous-line)
@@ -743,7 +743,7 @@
 ;; (define-key global-map (kbd "<jd:H-spc>")     ')
 ;; (define-key global-map (kbd "<jd:H-S-spc>")   ')
 
-(define-key global-map (kbd "<jd:tab>")          'jd:incredibly-smart-tab)
+(define-key global-map (kbd "<jd:tab>")          'jd:incredibly-smart-tab-progmode)
 ;; (define-key global-map (kbd "<jd:S-tab>")     ')
 (define-key global-map (kbd "<jd:C-tab>")        'jd:window-forward)
 (define-key global-map (kbd "<jd:C-S-tab>")      'jd:window-backward)

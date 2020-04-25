@@ -14,7 +14,7 @@
 
 (provide 'jd:gud-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/progmodes/gud.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/gud.elc
 ;; 
 ;; gud-minibuffer-local-map
 ;; ------------------------

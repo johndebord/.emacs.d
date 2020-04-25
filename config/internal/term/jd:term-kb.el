@@ -1,6 +1,6 @@
 (provide 'jd:term-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/term.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/term.elc
 ;; 
 ;; term-raw-escape-map
 ;; -------------------

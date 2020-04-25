@@ -11,7 +11,7 @@
 
 (provide 'jd:cua-base-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/emulation/cua-base.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/emulation/cua-base.elc
 ;; 
 ;; cua--prefix-repeat-keymap
 ;; -------------------------

@@ -1,6 +1,6 @@
 (provide 'jd:edebug-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/emacs-lisp/edebug.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/emacs-lisp/edebug.elc
 ;; 
 ;; global-edebug-map
 ;; -----------------

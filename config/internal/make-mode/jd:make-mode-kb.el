@@ -1,6 +1,6 @@
 (provide 'jd:make-mode-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/progmodes/make-mode.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/make-mode.elc
 ;; 
 ;; makefile-makepp-mode-map
 ;; ------------------------

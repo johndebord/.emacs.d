@@ -1,6 +1,6 @@
 (provide 'jd:etags-kb)
 
-;; File: /usr/local/share/emacs/26.3.50/lisp/progmodes/etags.elc
+;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/etags.elc
 ;; 
 ;; select-tags-table-mode-map
 ;; --------------------------

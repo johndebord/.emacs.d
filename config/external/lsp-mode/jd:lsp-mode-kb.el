@@ -1,6 +1,6 @@
 (provide 'jd:lsp-mode-kb)
 
-;; File: /home/i/.emacs.d/config/external/elpa/lsp-mode-20200303.109/lsp-mode.el
+;; File: $HOME/.emacs.d/config/external/elpa/lsp-mode-20200303.109/lsp-mode.el
 ;; 
 ;; lsp-browser-mode-map
 ;; --------------------

@@ -2,7 +2,7 @@
 
 (provide 'jd:gnuplot-mode-kb)
 
-;; File: /home/i/.emacs.d/config/external/elpa/gnuplot-mode-20171013.1616/gnuplot-mode.el
+;; File: $HOME/.emacs.d/config/external/elpa/gnuplot-mode-20171013.1616/gnuplot-mode.el
 ;; 
 ;; gnuplot-mode-map
 ;; ----------------
