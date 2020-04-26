@@ -26,7 +26,7 @@
 (defvar compilation-start-hook)
 (defvar compilation-window-height)
 
-(setq-default compilation-scroll-output 'first-error) 
+(setq-default compilation-scroll-output t)
 (setq-default compilation-skip-threshold 0)
 (setq-default compile-command
               (purecopy "make"))

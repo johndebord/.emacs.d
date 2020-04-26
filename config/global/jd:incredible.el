@@ -62,12 +62,11 @@
 (defun jd:ist-eshell ()
   (cond
    ((and (eq company-mode t)
-         (null (jd:recently-finished-completion-p))
          (jd:has-context-for-completion-p))
     (jd:company-complete 'eshell))
    
    (t
-    (jd:skip-char 'eshell))))
+    (jd:skip-char-if-possible 'eshell))))
 
 (defun jd:ist-progmode ()
   (cond
@@ -85,23 +84,45 @@
     (yas-next-field))
 
    (t
-    (jd:skip-char 'progmode))))
+    (jd:skip-char-if-possible 'progmode))))
 
 (defun jd:company-complete (mode)
-  (if (null jd:company-select)
+  (cond
+   ((eq mode 'eshell)
+    (if (or (null jd:company-select)
+            (jd:recently-finished-completion-p))
+        (progn
+          (if (null (company-manual-begin))
+              (jd:skip-char-if-possible mode)
+            (progn
+              ;; This is to deal with the case that a full completion may happen
+              ;; with `company-complete-common` which can beget an all new
+              ;; completion.
+              (if (jd:recently-finished-completion-p)
+                  (jd:recently-finished-completion-nil))
+              
+              (company-complete-common)
+              (jd:company-select-t))))
       (progn
-        (if (null (company-complete-common))
-            (jd:skip-char mode))
-        (jd:company-select-t))
-    (progn
-      (company-complete-selection)
-      (jd:recently-finished-completion-t))))
+        (company-complete-selection)
+        (jd:recently-finished-completion-t))))
+   
+   ((eq mode 'progmode)
+    (if (null jd:company-select)
+        (progn
+          (if (null (company-manual-begin))
+              (jd:skip-char-if-possible mode)
+            (progn
+              (company-complete-common)
+              (jd:company-select-t))))
+      (progn
+        (company-complete-selection)
+        (jd:recently-finished-completion-t))))))
 
-(defun jd:skip-char (mode)
+(defun jd:skip-char-if-possible (mode)
   (if (jd:skippable-char-after-p)
       (forward-char 1)
-    (if (eq mode 'progmode)
-        (indent-for-tab-command))))
+    (if (eq mode 'progmode) (indent-for-tab-command))))
 
 (defun jd:skippable-char-before-p ()
   (if (memq
@@ -176,5 +197,18 @@
   (if (yas--field-p (yas-current-field))
       t
     nil))
+
+;; Depending on the context of where the cursor is, this function will
+;; instantiate a new `eshell` buffer in the given directory or it will pop to
+;; the default `eshell` buffer.
+(defun jd:incredibly-smart-eshell ()
+  (interactive)
+  (if (minibuffer-window-active-p (get-buffer-window))
+      (ivy-exit-with-action
+       (lambda (_)
+         (let ((current-prefix-arg '-)
+               (default-directory ivy--directory))
+           (call-interactively 'eshell))))
+    (eshell)))
 
 (provide 'jd:incredible)

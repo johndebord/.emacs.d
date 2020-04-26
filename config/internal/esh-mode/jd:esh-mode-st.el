@@ -85,37 +85,6 @@
       (scroll-down-line 1)
       (line-move -1))))
 
-;; http://xenodium.com/eshell-pcomplete-company-completion/
-(defun company-pcomplete--overlap-tail (a b)
-  "When A is \"SomeDev\" and B is \"Developer\\n\", return \"eloper\"."
-  (let ((prefix a)
-        (remaining nil))
-    (while (and (not remaining) (> (length prefix) 0))
-      (when (s-starts-with? prefix b)
-        (setq remaining (substring b (length prefix))))
-      (setq prefix (substring prefix 1)))
-    remaining))
-
-;; http://xenodium.com/eshell-pcomplete-company-completion/
-(defun company-pcomplete--candidates (prefix)
-  "Get candidates for PREFIX company completion using `pcomplete'."
-  (-map (lambda (item)
-          (if (s-starts-with? prefix item)
-              item
-            (concat prefix (company-pcomplete--overlap-tail prefix item))))
-        (all-completions prefix (pcomplete-completions))))
-
-;; http://xenodium.com/eshell-pcomplete-company-completion/
-(defun company-pcomplete (command &optional arg &rest ignored)
-  "Complete using pcomplete. See `company''s COMMAND ARG and IGNORED for
-details."
-  (interactive (list 'interactive))
-  (cl-case command
-    (interactive (company-begin-backend 'company-pcomplete))
-    (prefix (company-grab-symbol))
-    (candidates
-     (company-pcomplete--candidates arg))))
-
 (defun jd:eshell-mode-hook ()
   (company-mode 1)
   (electric-pair-mode 1)
@@ -127,7 +96,7 @@ details."
     (with-temp-message (or (current-message) "")
       (jd:load-feature jd:esh-mode-kb jd:internal-prefix "esh-mode/")))
   (set (make-local-variable 'company-backends)
-       '((company-pcomplete)))
+       '((company-capf)))
   (set (make-local-variable 'electric-pair-pairs)
        (append electric-pair-pairs
                '((#x60 . #x60)     ; '`' '`'

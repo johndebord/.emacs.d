@@ -887,7 +887,7 @@
 
 (define-key global-map (kbd "<C-x> <M-x>") 'eval-expression)
 
-(define-key global-map (kbd "<f2>")  'eshell)
+(define-key global-map (kbd "<f2>")  'jd:incredibly-smart-eshell)
 (define-key global-map (kbd "<f3>")  'kmacro-start-macro)
 (define-key global-map (kbd "<f4>")  'kmacro-end-or-call-macro)
 (define-key global-map (kbd "<f5>")  'kill-ring-save)
