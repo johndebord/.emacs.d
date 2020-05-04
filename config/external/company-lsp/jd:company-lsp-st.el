@@ -8,4 +8,4 @@
 (defvar company-lsp-filter-candidates)
 (defvar company-lsp-match-candidate-predicate)
 
-(provide 'jd:company-lsp-st)
+(jd:provide-feature jd:company-lsp-st)

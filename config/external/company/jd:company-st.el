@@ -134,6 +134,24 @@
   (jd:recently-finished-completion-nil)
   (delete-backward-char 1))
 
+;; Find xref definitions in either the `company` popup or in a normal fashion.
+(defun jd:xref-find-definitions ()
+  (interactive)
+  (if (company--active-p)
+      (progn
+        (xref-find-definitions (nth company-selection company-candidates)))
+    (progn
+      (xref-find-definitions (symbol-name (symbol-at-point))))))
+
+;; Find xref references in either the `company` popup or in a normal fashion.
+(defun jd:xref-find-references ()
+  (interactive)
+  (if (company--active-p)
+      (progn
+        (xref-find-references (nth company-selection company-candidates)))
+    (progn
+      (xref-find-references (symbol-name (symbol-at-point))))))
+
 ;; Note for the future: The next step would be to get completions right after a
 ;; call to `undo`. But this would require some plumbing as there are no hooks
 ;; that get called when calling `undo`.
@@ -144,4 +162,4 @@
 (add-hook 'post-self-insert-hook 'jd:company-select-nil)
 (add-hook 'post-self-insert-hook 'jd:recently-finished-completion-nil)
 
-(provide 'jd:company-st)
+(jd:provide-feature jd:company-st)

@@ -21,4 +21,4 @@
 (defvar eshell-show-lisp-alternatives)
 (defvar eshell-show-lisp-completions)
 
-(provide 'jd:em-cmpl-st)
+(jd:provide-feature jd:em-cmpl-st)

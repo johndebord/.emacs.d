@@ -1,4 +1,4 @@
-(provide 'jd:diff-mode-kb)
+(jd:provide-feature jd:diff-mode-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/vc/diff-mode.elc
 ;; 

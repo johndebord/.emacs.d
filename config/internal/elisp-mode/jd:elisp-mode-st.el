@@ -77,4 +77,4 @@
 
 (add-hook 'emacs-lisp-mode-hook 'jd:emacs-lisp-mode-hook)
 
-(provide 'jd:elisp-mode-st)
+(jd:provide-feature jd:elisp-mode-st)

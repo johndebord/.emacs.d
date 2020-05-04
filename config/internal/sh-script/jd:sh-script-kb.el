@@ -1,4 +1,4 @@
-(provide 'jd:sh-script-kb)
+(jd:provide-feature jd:sh-script-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/sh-script.elc
 ;; 

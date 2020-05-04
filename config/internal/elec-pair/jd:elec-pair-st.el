@@ -9,4 +9,4 @@
 (defvar electric-pair-skip-whitespace-chars)
 (defvar electric-pair-text-pairs)
 
-(provide 'jd:elec-pair-st)
+(jd:provide-feature jd:elec-pair-st)

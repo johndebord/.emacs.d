@@ -2,4 +2,4 @@
 (jd:load-feature jd:cc-vars-kb jd:internal-prefix "cc-vars/")
 (jd:load-feature jd:cc-vars-st jd:internal-prefix "cc-vars/")
 
-(provide 'jd:cc-vars)
+(jd:provide-feature jd:cc-vars)

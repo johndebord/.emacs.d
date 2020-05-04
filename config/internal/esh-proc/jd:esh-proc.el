@@ -2,4 +2,4 @@
 (jd:load-feature jd:esh-proc-kb jd:internal-prefix "esh-proc/")
 (jd:load-feature jd:esh-proc-st jd:internal-prefix "esh-proc/")
 
-(provide 'jd:esh-proc)
+(jd:provide-feature jd:esh-proc)

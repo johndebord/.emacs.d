@@ -9,7 +9,7 @@
 (define-key cua--prefix-repeat-keymap (kbd "<C-c> <C-c>") 'cua--prefix-repeat-handler)
 (define-key cua--prefix-repeat-keymap (kbd "<C-x> <C-x>") 'cua--prefix-repeat-handler)
 
-(provide 'jd:cua-base-kb)
+(jd:provide-feature jd:cua-base-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/emulation/cua-base.elc
 ;; 

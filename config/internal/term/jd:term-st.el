@@ -33,9 +33,24 @@
 (defvar term-scroll-to-bottom-on-output)
 (defvar term-suppress-hard-newline)
 
+;; https://emacs.stackexchange.com/questions/23798/enable-cua-mode-in-term-or-ansi-term-mode
+;; enable cua and transient mark modes in term-line-mode
+(defadvice term-line-mode (after term-line-mode-fixes ())
+  (set (make-local-variable 'cua-mode) t)
+  (set (make-local-variable 'transient-mark-mode) t))
+(ad-activate 'term-line-mode)
+
+;; https://emacs.stackexchange.com/questions/23798/enable-cua-mode-in-term-or-ansi-term-mode
+;; disable cua and transient mark modes in term-char-mode
+(defadvice term-char-mode (after term-char-mode-fixes ())
+  (set (make-local-variable 'cua-mode) t)
+  (set (make-local-variable 'transient-mark-mode) t))
+(ad-activate 'term-char-mode)
+
 (defun jd:term-mode-hook ()
+  (idle-highlight-mode 1)
   (font-lock-mode 1))
 
 (add-hook 'term-mode-hook 'jd:term-mode-hook)
 
-(provide 'jd:term-st)
+(jd:provide-feature jd:term-st)

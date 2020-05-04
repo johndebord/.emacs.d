@@ -4,7 +4,7 @@
 (define-key read-passwd-map (kbd "<jd:ret>") 'exit-minibuffer)
 (define-key read-passwd-map (kbd "<jd:C-ret>") 'exit-minibuffer)
 
-(provide 'jd:subr-kb)
+(jd:provide-feature jd:subr-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/subr.elc
 ;; 

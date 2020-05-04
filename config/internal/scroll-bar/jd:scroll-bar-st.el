@@ -3,4 +3,4 @@
 
 (scroll-bar-mode 0)
 
-(provide 'jd:scroll-bar-st)
+(jd:provide-feature jd:scroll-bar-st)

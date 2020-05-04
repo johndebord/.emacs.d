@@ -45,4 +45,4 @@
 
 (add-hook 'dired-mode-hook 'jd:dired-mode-hook)
 
-(provide 'jd:dired-st)
+(jd:provide-feature jd:dired-st)

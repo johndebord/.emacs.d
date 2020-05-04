@@ -1,4 +1,4 @@
-(provide 'jd:swiper-kb)
+(jd:provide-feature jd:swiper-kb)
 
 ;; File: $HOME/.emacs.d/config/external/elpa/swiper-20190822.1708/swiper.el
 ;; 

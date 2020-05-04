@@ -1,4 +1,4 @@
-(provide 'jd:edebug-kb)
+(jd:provide-feature jd:edebug-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/emacs-lisp/edebug.elc
 ;; 

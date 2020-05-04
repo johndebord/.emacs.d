@@ -6,4 +6,4 @@
 (setq-default abbrev-file-name
               (concat jd:internal-prefix "abbrev/abbrev_defs"))
 
-(provide 'jd:abbrev-st)
+(jd:provide-feature jd:abbrev-st)

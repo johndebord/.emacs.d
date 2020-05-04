@@ -5,4 +5,4 @@
 ;; apparent that I have not yet customized the mode that I'm cucrently in.
 (global-font-lock-mode 0)
 
-(provide 'jd:font-core-st)
+(jd:provide-feature jd:font-core-st)

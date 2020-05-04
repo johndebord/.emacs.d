@@ -54,4 +54,4 @@
 
 (add-hook 'sh-mode-hook 'jd:sh-mode-hook)
 
-(provide 'jd:sh-script-st)
+(jd:provide-feature jd:sh-script-st)

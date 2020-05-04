@@ -56,4 +56,4 @@
 (add-hook 'xref--xref-buffer-mode-hook 'jd:xref--xref-buffer-mode-hook)
 (add-hook 'xref-after-jump-hook 'jd:xref-pulse)
 
-(provide 'jd:xref-st)
+(jd:provide-feature jd:xref-st)

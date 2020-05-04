@@ -10,4 +10,4 @@
 
 (show-paren-mode 1)
 
-(provide 'jd:paren-st)
+(jd:provide-feature jd:paren-st)

@@ -1,6 +1,6 @@
 (define-key gnuplot-mode-map (kbd "<C-b>") 'gnuplot-compile)
 
-(provide 'jd:gnuplot-mode-kb)
+(jd:provide-feature jd:gnuplot-mode-kb)
 
 ;; File: $HOME/.emacs.d/config/external/elpa/gnuplot-mode-20171013.1616/gnuplot-mode.el
 ;; 

@@ -1,4 +1,4 @@
-(provide 'jd:em-hist-kb)
+(jd:provide-feature jd:em-hist-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/eshell/em-hist.elc
 ;; 

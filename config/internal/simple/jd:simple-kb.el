@@ -15,7 +15,7 @@
 (define-key read-expression-map (kbd "<jd:C-ret>") 'exit-minibuffer)
 (define-key read-expression-map (kbd "<jd:S-ret>") 'newline)
 
-(provide 'jd:simple-kb)
+(jd:provide-feature jd:simple-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/simple.elc
 ;; 

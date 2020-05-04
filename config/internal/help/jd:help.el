@@ -2,4 +2,4 @@
 (jd:load-feature jd:help-kb jd:internal-prefix "help/")
 (jd:load-feature jd:help-st jd:internal-prefix "help/")
 
-(provide 'jd:help)
+(jd:provide-feature jd:help)

@@ -11,4 +11,4 @@
 (defvar tags-table-list)
 (defvar tags-tag-face)
 
-(provide 'jd:etags-st)
+(jd:provide-feature jd:etags-st)

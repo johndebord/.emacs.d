@@ -1,6 +1,6 @@
 (define-key counsel-find-file-map (kbd "<jd:C-bks>") 'counsel-up-directory)
 
-(provide 'jd:counsel-kb)
+(jd:provide-feature jd:counsel-kb)
 
 ;; File: $HOME/.emacs.d/config/external/elpa/counsel-20190830.1557/counsel.el
 ;; 

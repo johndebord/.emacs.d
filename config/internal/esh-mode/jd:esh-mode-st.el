@@ -104,4 +104,4 @@
 
 (add-hook 'eshell-mode-hook 'jd:eshell-mode-hook)
 
-(provide 'jd:esh-mode-st)
+(jd:provide-feature jd:esh-mode-st)

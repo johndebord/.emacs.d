@@ -7,4 +7,4 @@
 
 (add-hook 'help-mode-hook 'jd:help-mode-hook)
 
-(provide 'jd:help-mode-st)
+(jd:provide-feature jd:help-mode-st)

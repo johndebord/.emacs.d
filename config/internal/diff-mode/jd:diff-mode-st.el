@@ -31,4 +31,4 @@
 
 (add-hook 'diff-mode-hook 'jd:diff-mode-hook)
 
-(provide 'jd:diff-mode-st)
+(jd:provide-feature jd:diff-mode-st)

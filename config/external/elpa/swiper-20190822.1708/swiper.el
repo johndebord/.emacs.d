@@ -356,7 +356,8 @@
 ;;      " "
 ;;      (buffer-substring beg end))))
 
-;; John DeBord
+;;; John DeBord
+;;; Jan. 1st, 2019
 (defun swiper--line ()
   (let* ((beg (cond ((and (eq major-mode 'dired-mode)
                           (bound-and-true-p dired-isearch-filenames))

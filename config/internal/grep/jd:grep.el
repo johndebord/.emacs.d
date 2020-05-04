@@ -2,4 +2,4 @@
 (jd:load-feature jd:grep-kb jd:internal-prefix "grep/")
 (jd:load-feature jd:grep-st jd:internal-prefix "grep/")
 
-(provide 'jd:grep)
+(jd:provide-feature jd:grep)

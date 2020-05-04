@@ -2,4 +2,4 @@
 (jd:load-feature jd:elisp-mode-kb jd:internal-prefix "elisp-mode/")
 (jd:load-feature jd:elisp-mode-st jd:internal-prefix "elisp-mode/")
 
-(provide 'jd:elisp-mode)
+(jd:provide-feature jd:elisp-mode)

@@ -62,4 +62,4 @@
 
 (add-hook 'Custom-mode-hook 'jd:Custom-mode-hook)
 
-(provide 'jd:cus-edit-st)
+(jd:provide-feature jd:cus-edit-st)

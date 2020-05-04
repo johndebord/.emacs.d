@@ -26,4 +26,4 @@
 (defvar replace-lax-whitespace)
 (defvar replace-regexp-lax-whitespace)
 
-(provide 'jd:replace-st)
+(jd:provide-feature jd:replace-st)

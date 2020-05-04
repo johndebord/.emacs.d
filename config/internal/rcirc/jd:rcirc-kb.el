@@ -4,7 +4,7 @@
 (define-key rcirc-mode-map (kbd "<jd:ret>") 'rcirc-send-input)
 (define-key rcirc-mode-map (kbd "<jd:tab>") 'rcirc-complete)
 
-(provide 'jd:rcirc-kb)
+(jd:provide-feature jd:rcirc-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/net/rcirc.elc
 ;; 

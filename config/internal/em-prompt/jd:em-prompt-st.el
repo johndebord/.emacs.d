@@ -9,4 +9,4 @@
 (defvar eshell-prompt-load-hook)
 (defvar eshell-prompt-regexp)
 
-(provide 'jd:em-prompt-st)
+(jd:provide-feature jd:em-prompt-st)

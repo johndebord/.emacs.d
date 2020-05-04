@@ -6,4 +6,4 @@
 (defvar eshell-variable-aliases-list)
 (defvar eshell-variable-name-regexp)
 
-(provide 'jd:esh-var-st)
+(jd:provide-feature jd:esh-var-st)

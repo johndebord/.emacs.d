@@ -1,4 +1,4 @@
-(provide 'jd:speedbar-kb)
+(jd:provide-feature jd:speedbar-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/speedbar.elc
 ;; 

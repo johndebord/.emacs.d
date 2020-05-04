@@ -5,7 +5,7 @@
 (define-key compilation-mode-map (kbd "<C-c> <C-c>") 'kill-compilation)
 (define-key compilation-mode-map (kbd "<jd:ret>") 'compile-goto-error)
 
-(provide 'jd:compile-kb)
+(jd:provide-feature jd:compile-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/compile.elc
 ;; 

@@ -7,5 +7,6 @@
 (defvar eshell-visual-options)
 
 (add-to-list 'eshell-visual-commands "git")
+(add-to-list 'eshell-visual-commands "sudo")
 
-(provide 'jd:em-term-st)
+(jd:provide-feature jd:em-term-st)

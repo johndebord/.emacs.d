@@ -20,4 +20,4 @@
 
 (add-hook 'lisp-mode-hook 'jd:lisp-mode-hook)
 
-(provide 'jd:lisp-mode-st)
+(jd:provide-feature jd:lisp-mode-st)

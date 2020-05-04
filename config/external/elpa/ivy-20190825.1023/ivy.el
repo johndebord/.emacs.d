@@ -1442,7 +1442,10 @@ will be called for each element of this list.")
         (if (eq action #'identity)
             (prog1 x
               (ivy-recursive-restore))
-          (select-window (ivy--get-window ivy-last))
+          ;;; John DeBord
+          ;;; Apr. 27th, 2020
+          ;;; Fixes last buffer usage inconsistencies.
+          (select-window (ivy--get-window ivy-last) t)
           (set-buffer (ivy-state-buffer ivy-last))
           (prog1 (unwind-protect
                       (if ivy-marked-candidates
@@ -4144,8 +4147,11 @@ BUFFER may be a string or nil."
                    (inhibit-message t))
                (ivy-set-view-recur (cadr view))))
             (t
+             ;;; John DeBord
+             ;;; Apr. 27th, 2020
+             ;;; Fixes last buffer usage inconsistencies.
              (switch-to-buffer
-              buffer nil 'force-same-window))))))
+              buffer t 'force-same-window))))))
 
 (defun ivy--switch-buffer-other-window-action (buffer)
   "Switch to BUFFER in other window.

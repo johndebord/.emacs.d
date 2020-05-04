@@ -12,4 +12,4 @@
 
 (add-hook 'debugger-mode-hook 'jd:debugger-mode-hook)
 
-(provide 'jd:debug-st)
+(jd:provide-feature jd:debug-st)

@@ -10,4 +10,4 @@
 
 (add-hook 'cmake-mode-hook 'jd:cmake-mode-hook)
 
-(provide 'jd:cmake-mode-st)
+(jd:provide-feature jd:cmake-mode-st)

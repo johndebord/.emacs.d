@@ -2,4 +2,4 @@
 (jd:load-feature jd:lsp-mode-kb jd:external-prefix "lsp-mode/")
 (jd:load-feature jd:lsp-mode-st jd:external-prefix "lsp-mode/")
 
-(provide 'jd:lsp-mode)
+(jd:provide-feature jd:lsp-mode)

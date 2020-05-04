@@ -20,4 +20,4 @@
 
 (add-hook 'apropos-mode-hook 'jd:apropos-mode-hook)
 
-(provide 'jd:apropos-st)
+(jd:provide-feature jd:apropos-st)

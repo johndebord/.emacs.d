@@ -1,1 +1,1 @@
-(provide 'jd:subr-st)
+(jd:provide-feature jd:subr-st)

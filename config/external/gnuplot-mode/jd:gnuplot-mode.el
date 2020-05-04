@@ -2,4 +2,4 @@
 (jd:load-feature jd:gnuplot-mode-kb jd:external-prefix "gnuplot-mode/")
 (jd:load-feature jd:gnuplot-mode-st jd:external-prefix "gnuplot-mode/")
 
-(provide 'jd:gnuplot-mode)
+(jd:provide-feature jd:gnuplot-mode)

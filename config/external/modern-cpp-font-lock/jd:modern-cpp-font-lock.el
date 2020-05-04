@@ -2,4 +2,4 @@
 (jd:load-feature jd:modern-cpp-font-lock-kb jd:external-prefix "modern-cpp-font-lock/")
 (jd:load-feature jd:modern-cpp-font-lock-st jd:external-prefix "modern-cpp-font-lock/")
 
-(provide 'jd:modern-cpp-font-lock)
+(jd:provide-feature jd:modern-cpp-font-lock)

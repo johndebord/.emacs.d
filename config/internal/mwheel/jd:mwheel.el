@@ -2,4 +2,4 @@
 (jd:load-feature jd:mwheel-kb jd:internal-prefix "mwheel/")
 (jd:load-feature jd:mwheel-st jd:internal-prefix "mwheel/")
 
-(provide 'jd:mwheel)
+(jd:provide-feature jd:mwheel)

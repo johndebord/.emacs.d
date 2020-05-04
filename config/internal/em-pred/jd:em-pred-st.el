@@ -3,4 +3,4 @@
 (defvar eshell-pred-load-hook)
 (defvar eshell-predicate-alist)
 
-(provide 'jd:em-pred-st)
+(jd:provide-feature jd:em-pred-st)

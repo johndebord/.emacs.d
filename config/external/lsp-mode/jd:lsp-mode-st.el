@@ -93,15 +93,114 @@
 (defvar lsp-tcp-connection-timeout)
 (defvar lsp-workspace-folders-changed-functions)
 
-(setq-default lsp-diagnostic-package 'none)
+(setq-default lsp-diagnostic-package :flymake)
 (setq-default lsp-enable-symbol-highlighting nil)
 (setq-default lsp-session-file (concat
                                 jd:external-prefix
                                 "lsp-mode/lsp-sessions/.lsp-session-v1"))
 
-;; TODO: Make this cleaner.
 ;; `lsp-clients.el`
-(setq-default lsp-clients-clangd-args '("--pretty" "--background-index=true"))
+(setq-default lsp-clients-clangd-args '("--background-index=true" "--header-insertion=never" "--pretty"))
 (setq-default lsp-clients-clangd-executable "/home/i/install/bin/clangd")
 
-(provide 'jd:lsp-mode-st)
+;; Find lsp declaration in either the `company` popup or in a normal fashion.
+(defun jd:lsp-find-declaration ()
+  (interactive)
+  (if (and (company--active-p) (jd:lsp-backend-p))
+      (progn
+        (jd:lsp-dispatch 'declaration))
+    (progn
+      (lsp-find-declaration))))
+
+;; Find lsp definitions in either the `company` popup or in a normal fashion.
+(defun jd:lsp-find-definition ()
+  (interactive)
+  (if (and (company--active-p) (jd:lsp-backend-p))
+      (progn
+        (jd:lsp-dispatch 'definition))
+    (progn
+      (lsp-find-definition))))
+
+;; Find lsp references in either the `company` popup or in a normal fashion.
+(defun jd:lsp-find-references ()
+(interactive)
+(if (and (company--active-p) (jd:lsp-backend-p))
+    (progn
+      (jd:lsp-dispatch 'references))
+  (progn
+    (lsp-find-references))))
+
+(defun jd:lsp-backend-p ()
+  (let ((backend (company--group-lighter
+                  (nth company-selection
+                       company-candidates)
+                  company-lighter-base)))
+    (if (not (string-equal backend "company-<lsp>"))
+        (error "`jd:lsp-backend-p`")
+      t)))
+
+(defun jd:lsp-dispatch (tag)
+  (let ((current-company-index company-selection)
+        (saved-position (current-column))
+        (line (buffer-substring (point-at-bol) (point-at-eol)))
+        (source-buffer (current-buffer))
+        (result-buffer)
+        (inhibit-redisplay t))
+
+    (company-complete-selection)
+    
+    ;; Prevent `yasnippet` from complaining.
+    (let ((inhibit-message t))
+      (if (eq (char-before) #x28) ; '('
+          (progn
+            (backward-char 1)
+            (while (not (eq (char-after) #x29))
+              (delete-char 1))
+            (delete-char 1)))
+      (if (eq (char-before) #x29) ; ')'
+          (progn
+            (backward-char 2)
+            (delete-char 2)))
+      (backward-char 1))
+
+    (condition-case nil
+        (cond
+         ((eq tag 'declaration)
+          (if (null (lsp-find-declaration))
+              (progn
+                ;; (jd:lsp-dispatch-reset)
+                (error "`jd:lsp-dispatch`::declaration"))))
+         ((eq tag 'definition)
+          (if (null (lsp-find-definition))
+              (progn
+                ;; (jd:lsp-dispatch-reset)
+                (error "`jd:lsp-dispatch`::definition"))))
+         ((eq tag 'references)
+          (if (null (lsp-find-references))
+              (progn
+                ;; (jd:lsp-dispatch-reset)
+                (error "`jd:lsp-dispatch`::references")))))
+      (error (jd:lsp-dispatch-reset)
+             (error "`jd:lsp-dispatch`")))
+
+    (setq result-buffer (current-buffer))
+    (switch-to-buffer source-buffer)
+    (xref-pop-marker-stack)
+    (jd:lsp-dispatch-reset)
+    (xref-push-marker-stack)
+    (switch-to-buffer result-buffer)))
+
+(defun jd:lsp-dispatch-reset ()
+  (delete-region (point-at-bol)
+                 (point-at-eol))
+  (insert line)
+  (beginning-of-line)
+  (forward-char saved-position)
+  
+  ;; To fake that we actually make a completion.
+  (jd:recently-finished-completion-nil)
+  
+  (jd:incredibly-smart-tab 'progmode)
+  (company-set-selection current-company-index))
+
+(jd:provide-feature jd:lsp-mode-st)

@@ -37,4 +37,4 @@
     (edebug-eval-top-level-form)
     (pulse-momentary-highlight-region beg end 'highlight)))
 
-(provide 'jd:edebug-st)
+(jd:provide-feature jd:edebug-st)

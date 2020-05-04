@@ -22,7 +22,7 @@
 (define-key minibuffer-local-must-match-map (kbd "<jd:tab>") 'minibuffer-complete)
 (define-key minibuffer-local-must-match-map (kbd "<jd:C-ret>") 'exit-minibuffer)
 
-(provide 'jd:minibuffer-kb)
+(jd:provide-feature jd:minibuffer-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/minibuffer.elc
 ;; 

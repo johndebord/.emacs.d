@@ -34,4 +34,4 @@
 
 (cua-mode 1)
 
-(provide 'jd:cua-base-st)
+(jd:provide-feature jd:cua-base-st)

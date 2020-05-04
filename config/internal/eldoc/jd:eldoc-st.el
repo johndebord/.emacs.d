@@ -15,4 +15,4 @@
 (eldoc-add-command 'delete-char)
 (eldoc-add-command 'jd:self-insert-space)
 
-(provide 'jd:eldoc-st)
+(jd:provide-feature jd:eldoc-st)

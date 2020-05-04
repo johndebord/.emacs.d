@@ -11,4 +11,4 @@
               '(1))
 (setq-default mouse-wheel-tilt-scroll t)
 
-(provide 'jd:mwheel-st)
+(jd:provide-feature jd:mwheel-st)

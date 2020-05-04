@@ -6,7 +6,7 @@
 (define-key help-mode-map (kbd "<jd:tab>") 'forward-button)
 (define-key help-mode-map (kbd "<jd:S-tab>") 'backward-button)
 
-(provide 'jd:help-mode-kb)
+(jd:provide-feature jd:help-mode-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/help-mode.elc
 ;; 

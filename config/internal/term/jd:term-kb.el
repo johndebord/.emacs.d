@@ -1,4 +1,12 @@
-(provide 'jd:term-kb)
+(define-key term-raw-map (kbd "<C-c> <C-\\") 'term-quit-subjob)
+(define-key term-raw-map (kbd "<C-c> <C-c>") 'term-interrupt-subjob)
+(define-key term-raw-map (kbd "<C-c> <C-d>") 'term-send-eof)
+(define-key term-raw-map (kbd "<C-c> <C-q>") 'term-continue-subjob)
+(define-key term-raw-map (kbd "<C-c> <C-s>") 'term-stop-subjob)
+(define-key term-raw-map (kbd "<jd:bks>") 'term-send-backspace)
+(define-key term-raw-map (kbd "<jd:ret>") 'term-send-input)
+
+(jd:provide-feature jd:term-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/term.elc
 ;; 

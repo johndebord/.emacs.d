@@ -1,4 +1,4 @@
-(provide 'jd:hideshow-kb)
+(jd:provide-feature jd:hideshow-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/hideshow.elc
 ;; 

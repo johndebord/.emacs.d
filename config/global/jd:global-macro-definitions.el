@@ -3,6 +3,9 @@
 ;; `ivy-next-line'
 ;; `ivy-alt-done'
 (fset 'jd:macro-swap-buffers
-      (kmacro-lambda-form [?\C-\M-f ?\M-k return] 0 "%d"))
+      (lambda (&optional arg)
+        "Keyboard macro."
+        (interactive "p")
+        (kmacro-exec-ring-item (quote ("\206\353\354" 0 "%d")) arg)))
 
 (provide 'jd:global-macro-definitions)

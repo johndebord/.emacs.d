@@ -2,4 +2,4 @@
 (jd:load-feature jd:window-kb jd:internal-prefix "window/")
 (jd:load-feature jd:window-st jd:internal-prefix "window/")
 
-(provide 'jd:window)
+(jd:provide-feature jd:window)

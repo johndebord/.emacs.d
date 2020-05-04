@@ -2,4 +2,4 @@
 (jd:load-feature jd:rmsbolt-kb jd:external-prefix "rmsbolt/")
 (jd:load-feature jd:rmsbolt-st jd:external-prefix "rmsbolt/")
 
-(provide 'jd:rmsbolt)
+(jd:provide-feature jd:rmsbolt)

@@ -2,7 +2,7 @@
 (define-key gdb-inferior-io-mode-map (kbd "<C-c> <C-d>") 'gdb-io-eof)
 (define-key gdb-inferior-io-mode-map (kbd "<jd:ret>") 'comint-send-input)
 
-(provide 'jd:gdb-mi-kb)
+(jd:provide-feature jd:gdb-mi-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/gdb-mi.elc
 ;; 

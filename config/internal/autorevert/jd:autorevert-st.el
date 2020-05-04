@@ -18,4 +18,4 @@
 
 (global-auto-revert-mode 1)
 
-(provide 'jd:autorevert-st)
+(jd:provide-feature jd:autorevert-st)

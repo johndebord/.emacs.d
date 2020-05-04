@@ -20,4 +20,4 @@
 (defvar pcomplete-try-first-hook)
 (defvar pcomplete-use-paring)
 
-(provide 'jd:pcomplete-st)
+(jd:provide-feature jd:pcomplete-st)

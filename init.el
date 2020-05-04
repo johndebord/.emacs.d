@@ -111,8 +111,19 @@
 
 (defmacro jd:load-feature (feature &rest prefixes)
   `(if jd:load-from-byte-compiled-dir-p
-       (load (concat ,@prefixes (symbol-name ',feature) ".elc"))
-     (load (concat ,@prefixes (symbol-name ',feature) ".el"))))
+       (progn
+         (load (concat ,@prefixes (symbol-name ',feature) ".elc")))
+     (progn
+       (load (concat ,@prefixes (symbol-name ',feature) ".el")))))
+
+(defmacro jd:provide-feature (feature)
+  `(if jd:load-from-byte-compiled-dir-p
+       (progn
+         (defconst ,feature nil)
+         (provide ',feature))
+     (progn
+       (defconst ,feature nil)
+       (provide ',feature))))
 
 (jd:load-feature jd:external-config jd:external-prefix)
 (jd:load-feature jd:global-config jd:global-prefix)
@@ -123,7 +134,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "ibm" :family "Courier"))))
+ '(default ((t (:inherit nil :stipple nil :background "#131313" :foreground "#e6e6e6" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "ibm" :family "Courier"))))
  '(border ((t (:background "purple" :foreground "black"))))
  '(buffer-menu-buffer ((t (:weight bold))))
  '(button ((t (:background "#d3d3d3" :foreground "#000000" :box (:line-width 1 :style released-button) :weight normal))))
@@ -322,7 +333,7 @@
  '(ivy-current-match ((t (:background "#535353"))))
  '(ivy-cursor ((t (:background "purple" :foreground "black"))))
  '(ivy-highlight-face ((t nil)))
- '(ivy-match-required-face ((t (:background "purple" :foreground "black"))))
+ '(ivy-match-required-face ((t nil)))
  '(ivy-minibuffer-match-face-1 ((t (:underline "#BE8A2D"))))
  '(ivy-minibuffer-match-face-2 ((t (:inherit ivy-minibuffer-match-face-1))))
  '(ivy-minibuffer-match-face-3 ((t (:inherit ivy-minibuffer-match-face-1))))
@@ -621,7 +632,7 @@
  '(outline-7 ((t (:background "purple" :foreground "black"))))
  '(outline-8 ((t (:background "purple" :foreground "black"))))
  '(package-description ((t nil)))
- '(package-help-section-name ((t (:background "purple" :foreground "black"))))
+ '(package-help-section-name ((t nil)))
  '(package-status-avail-obso ((t (:background "purple" :foreground "black"))))
  '(package-status-available ((t (:background "purple" :foreground "black"))))
  '(package-status-built-in ((t (:background "purple" :foreground "black"))))
@@ -755,5 +766,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-lsp lsp-mode rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company)))
+    (ivy flymake-cursor company-lsp lsp-mode rmsbolt ivy-rtags flycheck-rtags company-rtags rtags cmake-ide flycheck yasnippet sr-speedbar modern-cpp-font-lock gnuplot-mode counsel company)))
  '(safe-local-variable-values (quote ((flycheck-disabled-checkers emacs-lisp-checkdoc)))))

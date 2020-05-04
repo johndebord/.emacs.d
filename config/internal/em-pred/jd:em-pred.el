@@ -2,4 +2,4 @@
 (jd:load-feature jd:em-pred-kb jd:internal-prefix "em-pred/")
 (jd:load-feature jd:em-pred-st jd:internal-prefix "em-pred/")
 
-(provide 'jd:em-pred)
+(jd:provide-feature jd:em-pred)

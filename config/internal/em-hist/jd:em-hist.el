@@ -2,4 +2,4 @@
 (jd:load-feature jd:em-hist-kb jd:internal-prefix "em-hist/")
 (jd:load-feature jd:em-hist-st jd:internal-prefix "em-hist/")
 
-(provide 'jd:em-hist)
+(jd:provide-feature jd:em-hist)

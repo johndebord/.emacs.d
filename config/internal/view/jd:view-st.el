@@ -7,4 +7,4 @@
 (defvar view-scroll-auto-exit)
 (defvar view-try-extend-at-buffer-end)
 
-(provide 'jd:view-st)
+(jd:provide-feature jd:view-st)

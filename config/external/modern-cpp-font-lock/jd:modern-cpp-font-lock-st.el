@@ -10,4 +10,4 @@
 (defvar modern-c++-stl-cstdint)
 (defvar modern-c++-types)
 
-(provide 'jd:modern-cpp-font-lock-st)
+(jd:provide-feature jd:modern-cpp-font-lock-st)

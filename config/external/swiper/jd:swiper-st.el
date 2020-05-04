@@ -15,4 +15,4 @@
 
 (setq-default swiper-action-recenter t)
 
-(provide 'jd:swiper-st)
+(jd:provide-feature jd:swiper-st)

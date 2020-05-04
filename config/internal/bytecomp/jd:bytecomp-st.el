@@ -133,4 +133,4 @@
   (interactive)
   (jd:internal--byte-compile-file (buffer-file-name)))
 
-(provide 'jd:bytecomp-st)
+(jd:provide-feature jd:bytecomp-st)

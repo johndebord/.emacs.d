@@ -2,4 +2,4 @@
 (jd:load-feature jd:em-cmpl-kb jd:internal-prefix "em-cmpl/")
 (jd:load-feature jd:em-cmpl-st jd:internal-prefix "em-cmpl/")
 
-(provide 'jd:em-cmpl)
+(jd:provide-feature jd:em-cmpl)

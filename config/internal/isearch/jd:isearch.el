@@ -2,4 +2,4 @@
 (jd:load-feature jd:isearch-kb jd:internal-prefix "isearch/")
 (jd:load-feature jd:isearch-st jd:internal-prefix "isearch/")
 
-(provide 'jd:isearch)
+(jd:provide-feature jd:isearch)

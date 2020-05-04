@@ -1,4 +1,4 @@
-(provide 'jd:asm-mode-kb)
+(jd:provide-feature jd:asm-mode-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/asm-mode.elc
 ;; 

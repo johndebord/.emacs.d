@@ -16,4 +16,4 @@
 
 (add-hook 'Buffer-menu-mode-hook 'jd:Buffer-menu-mode-hook)
 
-(provide 'jd:buff-menu-st)
+(jd:provide-feature jd:buff-menu-st)

@@ -15,4 +15,4 @@
 (defvar flymake-warning-bitmap)
 (defvar flymake-wrap-around)
 
-(provide 'jd:flymake-st)
+(jd:provide-feature jd:flymake-st)

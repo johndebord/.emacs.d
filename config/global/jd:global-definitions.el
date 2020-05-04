@@ -321,13 +321,12 @@
 ;; Copy the given region as it is and comment it out at the same time.
 (defun jd:copy-and-comment-out ()
   (interactive)
-  (cl-assert (region-active-p)
-             nil
-             "Region is not active.")
-  (let ((beg (mark))
-        (end (point)))
-    (copy-region-as-kill beg end)
-    (comment-region beg end)))
+  (if (not (region-active-p))
+      (error "Region is not active.")
+    (let ((beg (mark))
+          (end (point)))
+      (copy-region-as-kill beg end)
+      (comment-region beg end))))
 
 (defun jd:remove-text-properties ()
   (interactive)
@@ -352,6 +351,25 @@
                (backward-word)
                (point))))
     (delete-region start end)))
+
+(defun jd:kill-buffer ()
+  (interactive)
+  (kill-buffer)
+  (exit-minibuffer))
+
+(defvar jd:macro-count-for-session 1)
+(defun jd:save-and-bind-last-macro ()
+  (interactive)
+  (cl-assert (and (>= jd:macro-count-for-session 1)
+                  (<= jd:macro-count-for-session 9)))
+  (let* ((macro-count-str (number-to-string jd:macro-count-for-session))
+         (macro-count-sym (make-symbol macro-count-str)))
+    (kmacro-name-last-macro macro-count-sym)
+    (define-key global-map (kbd (concat "<M-" macro-count-str ">")) macro-count-sym)
+    (message (format "Macro number %s assigned to keybind <M-%s>"
+                     macro-count-str
+                     macro-count-str)))
+  (setq jd:macro-count-for-session (1+ jd:macro-count-for-session)))
 
 (defun jd:incredibly-smart-tab-eshell ()
   (interactive)

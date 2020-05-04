@@ -1,3 +1,3 @@
 (minibuffer-depth-indicate-mode 1)
 
-(provide 'jd:mb-depth-st)
+(jd:provide-feature jd:mb-depth-st)

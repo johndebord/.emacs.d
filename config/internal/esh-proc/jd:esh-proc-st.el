@@ -11,4 +11,4 @@
 (defvar eshell-process-wait-seconds)
 (defvar eshell-reset-signals)
 
-(provide 'jd:esh-proc-st)
+(jd:provide-feature jd:esh-proc-st)

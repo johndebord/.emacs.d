@@ -1,4 +1,4 @@
-(provide 'jd:startup-kb)
+(jd:provide-feature jd:startup-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/startup.elc
 ;; 

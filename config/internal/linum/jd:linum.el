@@ -2,4 +2,4 @@
 (jd:load-feature jd:linum-kb jd:internal-prefix "linum/")
 (jd:load-feature jd:linum-st jd:internal-prefix "linum/")
 
-(provide 'jd:linum)
+(jd:provide-feature jd:linum)

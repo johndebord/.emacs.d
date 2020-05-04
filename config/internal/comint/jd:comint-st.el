@@ -35,4 +35,4 @@
 
 (add-hook 'comint-mode-hook 'jd:comint-mode-hook)
 
-(provide 'jd:comint-st)
+(jd:provide-feature jd:comint-st)

@@ -2,4 +2,4 @@
 (jd:load-feature jd:em-banner-kb jd:internal-prefix "em-banner/")
 (jd:load-feature jd:em-banner-st jd:internal-prefix "em-banner/")
 
-(provide 'jd:em-banner)
+(jd:provide-feature jd:em-banner)

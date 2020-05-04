@@ -1,4 +1,4 @@
-(provide 'jd:help-kb)
+(jd:provide-feature jd:help-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/help.elc
 ;; 

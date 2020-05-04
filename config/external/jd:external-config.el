@@ -2,6 +2,7 @@
 (jd:load-feature jd:company jd:external-prefix "company/")
 (jd:load-feature jd:company-lsp jd:external-prefix "company-lsp/")
 (jd:load-feature jd:counsel jd:external-prefix "counsel/")
+(jd:load-feature jd:flymake-cursor jd:external-prefix "flymake-cursor/")
 (jd:load-feature jd:modern-cpp-font-lock jd:external-prefix "modern-cpp-font-lock/")
 (jd:load-feature jd:gnuplot-mode jd:external-prefix "gnuplot-mode/")
 (jd:load-feature jd:idle-highlight-mode jd:external-prefix "idle-highlight-mode/")

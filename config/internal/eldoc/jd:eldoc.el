@@ -2,4 +2,4 @@
 (jd:load-feature jd:eldoc-kb jd:internal-prefix "eldoc/")
 (jd:load-feature jd:eldoc-st jd:internal-prefix "eldoc/")
 
-(provide 'jd:eldoc)
+(jd:provide-feature jd:eldoc)

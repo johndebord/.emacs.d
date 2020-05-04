@@ -15,4 +15,4 @@
 (defvar grep-use-null-filename-separator)
 (defvar grep-window-height)
 
-(provide 'jd:grep-st)
+(jd:provide-feature jd:grep-st)

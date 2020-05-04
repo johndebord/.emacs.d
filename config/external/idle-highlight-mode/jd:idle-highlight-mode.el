@@ -2,4 +2,4 @@
 (jd:load-feature jd:idle-highlight-mode-kb jd:external-prefix "idle-highlight-mode/")
 (jd:load-feature jd:idle-highlight-mode-st jd:external-prefix "idle-highlight-mode/")
 
-(provide 'jd:idle-highlight-mode)
+(jd:provide-feature jd:idle-highlight-mode)

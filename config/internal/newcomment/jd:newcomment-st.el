@@ -9,4 +9,4 @@
 
 (setq-default comment-empty-lines t)
 
-(provide 'jd:newcomment-st)
+(jd:provide-feature jd:newcomment-st)

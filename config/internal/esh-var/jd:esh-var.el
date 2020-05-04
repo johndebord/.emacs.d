@@ -2,4 +2,4 @@
 (jd:load-feature jd:esh-var-kb jd:internal-prefix "esh-var/")
 (jd:load-feature jd:esh-var-st jd:internal-prefix "esh-var/")
 
-(provide 'jd:esh-var)
+(jd:provide-feature jd:esh-var)

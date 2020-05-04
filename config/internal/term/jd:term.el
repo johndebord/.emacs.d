@@ -2,4 +2,4 @@
 (jd:load-feature jd:term-kb jd:internal-prefix "term/")
 (jd:load-feature jd:term-st jd:internal-prefix "term/")
 
-(provide 'jd:term)
+(jd:provide-feature jd:term)

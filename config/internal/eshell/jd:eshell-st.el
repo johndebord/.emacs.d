@@ -6,4 +6,4 @@
 (setq-default eshell-directory-name
               (concat jd:internal-elisp-files-prefix "eshell/eshell"))
 
-(provide 'jd:eshell-st)
+(jd:provide-feature jd:eshell-st)

@@ -20,4 +20,4 @@
                       "/usr/local/bin:"
                       "/usr/local/sbin"))
 
-(provide 'jd:esh-util-st)
+(jd:provide-feature jd:esh-util-st)

@@ -1,4 +1,4 @@
-(provide 'jd:isearch-kb)
+(jd:provide-feature jd:isearch-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/isearch.elc
 ;; 

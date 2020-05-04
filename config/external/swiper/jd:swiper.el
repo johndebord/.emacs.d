@@ -2,4 +2,4 @@
 (jd:load-feature jd:swiper-kb jd:external-prefix "swiper/")
 (jd:load-feature jd:swiper-st jd:external-prefix "swiper/")
 
-(provide 'jd:swiper)
+(jd:provide-feature jd:swiper)

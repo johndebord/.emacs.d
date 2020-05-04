@@ -8,4 +8,4 @@
 
 (add-hook 'asm-mode-hook 'jd:asm-mode-hook)
 
-(provide 'jd:asm-mode-st)
+(jd:provide-feature jd:asm-mode-st)

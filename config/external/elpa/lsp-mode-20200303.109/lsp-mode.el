@@ -2706,7 +2706,8 @@ If NO-WAIT is non-nil send the request as notification."
             (while (not (or resp-error resp-result))
               (accept-process-output nil 0.001)
               (when (< expected-time (time-to-seconds (current-time)))
-                (error "Timeout while waiting for response. Method: %s." method)))
+                (error "Timeout while waiting for response. Method: %s." method))
+              )
 
             (cond
              ((eq resp-result :finished) nil)
@@ -5337,8 +5338,12 @@ EXTRA is a plist of extra parameters.
 REFERENCES? t when METHOD returns references."
   (if-let ((loc (lsp-request method
                              (append (lsp--text-document-position-params) extra))))
-      (lsp-show-xrefs (lsp--locations-to-xref-items loc) display-action references?)
-    (message "Not found for: %s" (thing-at-point 'symbol t))))
+      (progn
+        (lsp-show-xrefs (lsp--locations-to-xref-items loc) display-action references?)
+        t)
+    (progn
+      (message "Not found for: %s" (thing-at-point 'symbol t))
+      nil)))
 
 (cl-defun lsp-find-declaration (&key display-action)
   "Find declarations of the symbol under point."

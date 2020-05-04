@@ -857,9 +857,9 @@
 (define-key global-map (kbd "<C-h> p") 'describe-package)
 (define-key global-map (kbd "<C-h> s") 'describe-symbol)
 (define-key global-map (kbd "<C-h> v") 'counsel-describe-variable)
+(define-key global-map (kbd "<C-h> w") 'ispell-word)
 (define-key global-map (kbd "<C-h> y") 'jd:describe-keymap)
 
-(define-key global-map (kbd "<C-x> f")        'rgrep)
 (define-key global-map (kbd "<C-x> h")        'xref-find-apropos)
 (define-key global-map (kbd "<C-x> l")        'goto-line)
 (define-key global-map (kbd "<C-x> o")        'jd:copy-line-and-goto-end)
@@ -880,6 +880,7 @@
 (define-key global-map (kbd "<C-x> <f4>")     'kmacro-edit-macro)
 
 (define-key global-map (kbd "<C-x> <C-c>") 'save-buffers-kill-terminal)
+(define-key global-map (kbd "<C-x> <C-f>") 'rgrep)
 (define-key global-map (kbd "<C-x> <C-s>") 'write-file)
 (define-key global-map (kbd "<C-x> <C-w>") 'kill-buffer)
 

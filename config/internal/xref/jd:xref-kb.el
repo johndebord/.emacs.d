@@ -1,9 +1,10 @@
 (define-key xref--xref-buffer-mode-map (kbd "i") 'jd:backward-line)
 (define-key xref--xref-buffer-mode-map (kbd "k") 'jd:forward-line)
 (define-key xref--xref-buffer-mode-map (kbd "l") 'xref-goto-xref)
-(define-key xref--xref-buffer-mode-map (kbd "q") 'quit-window)
+(define-key xref--xref-buffer-mode-map (kbd "q") 'jd:kill-buffer)
+(define-key xref--xref-buffer-mode-map (kbd "<jd:ret>") 'xref-goto-xref)
 
-(provide 'jd:xref-kb)
+(jd:provide-feature jd:xref-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/xref.elc
 ;; 

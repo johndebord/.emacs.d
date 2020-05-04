@@ -2,4 +2,4 @@
 (jd:load-feature jd:pcomplete-kb jd:internal-prefix "pcomplete/")
 (jd:load-feature jd:pcomplete-st jd:internal-prefix "pcomplete/")
 
-(provide 'jd:pcomplete)
+(jd:provide-feature jd:pcomplete)

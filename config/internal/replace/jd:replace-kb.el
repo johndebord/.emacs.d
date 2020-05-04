@@ -1,6 +1,6 @@
 (define-key query-replace-map (kbd "a") 'automatic)
 
-(provide 'jd:replace-kb)
+(jd:provide-feature jd:replace-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/replace.elc
 ;; 

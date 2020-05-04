@@ -2,4 +2,4 @@
 (jd:load-feature jd:lisp-mode-kb jd:internal-prefix "lisp-mode/")
 (jd:load-feature jd:lisp-mode-st jd:internal-prefix "lisp-mode/")
 
-(provide 'jd:lisp-mode)
+(jd:provide-feature jd:lisp-mode)

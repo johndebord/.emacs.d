@@ -5,4 +5,4 @@
 (defvar eshell-special-chars-inside-quoting)
 (defvar eshell-special-chars-outside-quoting)
 
-(provide 'jd:esh-arg-st)
+(jd:provide-feature jd:esh-arg-st)

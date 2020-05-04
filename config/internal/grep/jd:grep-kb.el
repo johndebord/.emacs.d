@@ -1,8 +1,10 @@
-(provide 'jd:grep-kb)
-
 (define-key grep-mode-map (kbd "i") 'jd:backward-line)
 (define-key grep-mode-map (kbd "k") 'jd:forward-line)
+(define-key grep-mode-map (kbd "l") 'compile-goto-error)
+(define-key grep-mode-map (kbd "q") 'quit-window)
 (define-key grep-mode-map (kbd "<jd:ret>") 'compile-goto-error)
+
+(jd:provide-feature jd:grep-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/grep.elc
 ;; 

@@ -1,4 +1,4 @@
-(provide 'jd:comint-kb)
+(jd:provide-feature jd:comint-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/comint.elc
 ;; 

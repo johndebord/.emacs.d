@@ -71,4 +71,4 @@
 (add-to-list 'auto-mode-alist '("\\.gp\\'" . gnuplot-mode))
 (add-to-list 'auto-mode-alist '("[Mm]akefile\\'" . makefile-mode))
 
-(provide 'jd:files-st)
+(jd:provide-feature jd:files-st)

@@ -1,4 +1,4 @@
 ;; Customization variables.
 (defvar edmacro-eight-bits)
 
-(provide 'jd:edmacro-st)
+(jd:provide-feature jd:edmacro-st)

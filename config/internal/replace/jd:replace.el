@@ -2,4 +2,4 @@
 (jd:load-feature jd:replace-kb jd:internal-prefix "replace/")
 (jd:load-feature jd:replace-st jd:internal-prefix "replace/")
 
-(provide 'jd:replace)
+(jd:provide-feature jd:replace)

@@ -1,4 +1,4 @@
-(provide 'jd:make-mode-kb)
+(jd:provide-feature jd:make-mode-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/make-mode.elc
 ;; 

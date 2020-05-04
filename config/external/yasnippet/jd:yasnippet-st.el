@@ -29,4 +29,4 @@
 (yas-load-directory
  (concat jd:external-elisp-files-prefix "yasnippet/snippets/"))
 
-(provide 'jd:yasnippet-st)
+(jd:provide-feature jd:yasnippet-st)

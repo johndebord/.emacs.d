@@ -184,4 +184,4 @@
 (add-hook 'gdb-threads-mode-hook 'jd:gdb-threads-mode-hook)
 (add-hook 'gdb-inferior-io-mode-hook 'jd:gdb-inferior-io-mode-hook)
 
-(provide 'jd:gdb-mi-st)
+(jd:provide-feature jd:gdb-mi-st)

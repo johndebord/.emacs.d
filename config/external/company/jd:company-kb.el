@@ -8,7 +8,7 @@
 (define-key company-active-map (kbd "<M-k>") 'company-select-next)
 (define-key company-active-map (kbd "<jd:ret>") 'company-complete-selection)
 
-(provide 'jd:company-kb)
+(jd:provide-feature jd:company-kb)
 
 ;; File: $HOME/.emacs.d/config/external/elpa/company-20190907.1149/company.el
 ;; 

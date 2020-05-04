@@ -2,4 +2,4 @@
 (jd:load-feature jd:gud-kb jd:internal-prefix "gud/")
 (jd:load-feature jd:gud-st jd:internal-prefix "gud/")
 
-(provide 'jd:gud)
+(jd:provide-feature jd:gud)

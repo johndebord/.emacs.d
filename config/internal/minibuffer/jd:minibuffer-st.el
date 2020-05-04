@@ -22,4 +22,4 @@
 
 (add-hook 'eval-expression-minibuffer-setup-hook 'jd:eval-expression-minibuffer-setup-hook)
 
-(provide 'jd:minibuffer-st)
+(jd:provide-feature jd:minibuffer-st)

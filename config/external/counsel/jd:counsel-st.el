@@ -64,4 +64,4 @@
 
 (setq-default counsel-preselect-current-file t)
 
-(provide 'jd:counsel-st)
+(jd:provide-feature jd:counsel-st)

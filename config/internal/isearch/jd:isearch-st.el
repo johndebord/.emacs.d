@@ -26,4 +26,4 @@
 (defvar search-upper-case)
 (defvar search-whitespace-regexp)
 
-(provide 'jd:isearch-st)
+(jd:provide-feature jd:isearch-st)

@@ -1,4 +1,4 @@
-(provide 'jd:edmacro-kb)
+(jd:provide-feature jd:edmacro-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/edmacro.elc
 ;; 

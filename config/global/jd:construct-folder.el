@@ -17,7 +17,7 @@
 ;; (jd:load-feature jd:cc-mode-kb jd:internal-prefix "cc-mode/")
 ;; (jd:load-feature jd:cc-mode-st jd:internal-prefix "cc-mode/")
 ;; 
-;; (provide 'jd:cc-mode)
+;; (jd:provide-feature 'jd:cc-mode)
 ;; `````````````````````
 ;;
 ;; The `*-kb.el` file should have this structure:
@@ -79,7 +79,7 @@
                   (concat ";; (jd:load-feature " customization-name " " source-path-prefix-str        " \"\")\n"
                           "(jd:load-feature "    keybindings-name   " " customization-path-prefix-str " \"" customization-name "/\")\n"
                           "(jd:load-feature "    settings-name      " " customization-path-prefix-str " \"" customization-name "/\")\n\n"
-                          "(provide '" root-name ")\n"))
+                          "(jd:provide-feature " root-name ")\n"))
                  (keybindings-file-str
                   (concat "(provide '" keybindings-name ")\n"))
                  (settings-file-str

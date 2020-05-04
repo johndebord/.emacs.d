@@ -12,7 +12,7 @@
 (define-key gud-mode-map (kbd "<C-c> <C-l>") 'jd:gud-clear-buffer)
 (define-key gud-mode-map (kbd "<jd:ret>") 'comint-send-input)
 
-(provide 'jd:gud-kb)
+(jd:provide-feature jd:gud-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/gud.elc
 ;; 

@@ -2,4 +2,4 @@
 (jd:load-feature jd:em-prompt-kb jd:internal-prefix "em-prompt/")
 (jd:load-feature jd:em-prompt-st jd:internal-prefix "em-prompt/")
 
-(provide 'jd:em-prompt)
+(jd:provide-feature jd:em-prompt)

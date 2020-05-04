@@ -2,4 +2,4 @@
 (jd:load-feature jd:esh-arg-kb jd:internal-prefix "esh-arg/")
 (jd:load-feature jd:esh-arg-st jd:internal-prefix "esh-arg/")
 
-(provide 'jd:esh-arg)
+(jd:provide-feature jd:esh-arg)

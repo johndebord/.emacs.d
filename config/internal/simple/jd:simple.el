@@ -2,4 +2,4 @@
 (jd:load-feature jd:simple-kb jd:internal-prefix "simple/")
 (jd:load-feature jd:simple-st jd:internal-prefix "simple/")
 
-(provide 'jd:simple)
+(jd:provide-feature jd:simple)

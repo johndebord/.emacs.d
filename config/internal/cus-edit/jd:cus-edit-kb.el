@@ -3,7 +3,7 @@
 (define-key custom-mode-map (kbd "<jd:tab>") 'widget-forward)
 (define-key custom-mode-map (kbd "<jd:S-tab>") 'widget-backward)
 
-(provide 'jd:cus-edit-kb)
+(jd:provide-feature jd:cus-edit-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/cus-edit.elc
 ;; 

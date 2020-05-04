@@ -3,7 +3,7 @@
 (define-key emacs-lisp-mode-map (kbd "<jd:C-ret>") 'jd:eval-print-last-sexp)
 (define-key emacs-lisp-mode-map (kbd "<f1>") 'jd:eval-last-sexp)
 
-(provide 'jd:elisp-mode-kb)
+(jd:provide-feature jd:elisp-mode-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/elisp-mode.elc
 ;; 

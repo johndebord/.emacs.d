@@ -23,6 +23,7 @@
 ;; know where to go for the deletion of the prints in the buffer.
 (defun jd:cpp-print-add-print ()
   (interactive)
+  (read-only-mode 0)
   (if (null jd:cpp-print-active)
       (progn
         (setq jd:cpp-print-value (read-from-minibuffer "Enter a value to print (if any): "))
@@ -31,32 +32,34 @@
                                               (number-to-string jd:cpp-print-count)
                                               "---\" << "
                                               jd:cpp-print-value
-                                              " << std::endl;"))
+                                              " << '\\n';"))
           (setq jd:cpp-print-string (concat " /*jd:cpp-print*/ std::cout << \"---"
                                             (number-to-string jd:cpp-print-count)
-                                            "---\" << std::endl;"))))
+                                            "---\" << '\\n';"))))
     (progn
       (if (= (length jd:cpp-print-value) 0)
           (setq jd:cpp-print-string (concat " /*jd:cpp-print*/ std::cout << \"---"
                                             (number-to-string jd:cpp-print-count)
-                                            "---\" << std::endl;"))
+                                            "---\" << '\\n';"))
         (setq jd:cpp-print-string (concat " /*jd:cpp-print*/ std::cout << \"---"
                                           (number-to-string jd:cpp-print-count)
                                           "---\" << "
                                           jd:cpp-print-value
-                                          " << std::endl;")))))
+                                          " << '\\n';")))))
   (if (null jd:cpp-print-active)
       (setq jd:cpp-print-active t))
   (point-to-register jd:cpp-print-count)
   (insert jd:cpp-print-string)
   (indent-for-tab-command)
-  (setq jd:cpp-print-count (1+ jd:cpp-print-count)))
+  (setq jd:cpp-print-count (1+ jd:cpp-print-count))
+  (read-only-mode 1))
 
 ;; When you are finished debugging, a call to this function shall delete all of
 ;; the print strings accordingly and reset all state variables having to do with
 ;; this library.
 (defun jd:cpp-print-delete-prints ()
   (interactive)
+  (read-only-mode 0)
   (save-excursion
     (let ((i 0))
       (while (< i jd:cpp-print-count)

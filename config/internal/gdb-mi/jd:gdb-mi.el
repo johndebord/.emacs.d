@@ -2,4 +2,4 @@
 (jd:load-feature jd:gdb-mi-kb jd:internal-prefix "gdb-mi/")
 (jd:load-feature jd:gdb-mi-st jd:internal-prefix "gdb-mi/")
 
-(provide 'jd:gdb-mi)
+(jd:provide-feature jd:gdb-mi)

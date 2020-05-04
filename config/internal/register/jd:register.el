@@ -2,4 +2,4 @@
 (jd:load-feature jd:register-kb jd:internal-prefix "register/")
 (jd:load-feature jd:register-st jd:internal-prefix "register/")
 
-(provide 'jd:register)
+(jd:provide-feature jd:register)

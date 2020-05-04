@@ -2,4 +2,4 @@
 (jd:load-feature jd:cc-mode-kb jd:internal-prefix "cc-mode/")
 (jd:load-feature jd:cc-mode-st jd:internal-prefix "cc-mode/")
 
-(provide 'jd:cc-mode)
+(jd:provide-feature jd:cc-mode)

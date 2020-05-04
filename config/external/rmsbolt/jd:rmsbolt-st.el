@@ -17,4 +17,4 @@
 (defvar rmsbolt-mode-lighter)
 (defvar rmsbolt-use-overlays)
 
-(provide 'jd:rmsbolt-st)
+(jd:provide-feature jd:rmsbolt-st)

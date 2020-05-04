@@ -15,4 +15,4 @@
 (setq-default initial-major-mode 'emacs-lisp-mode)
 (setq-default initial-scratch-message "")
 
-(provide 'jd:startup-st)
+(jd:provide-feature jd:startup-st)

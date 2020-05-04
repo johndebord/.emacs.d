@@ -2,4 +2,4 @@
 (jd:load-feature jd:files-kb jd:internal-prefix "files/")
 (jd:load-feature jd:files-st jd:internal-prefix "files/")
 
-(provide 'jd:files)
+(jd:provide-feature jd:files)

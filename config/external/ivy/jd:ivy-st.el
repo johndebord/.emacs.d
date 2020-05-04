@@ -84,4 +84,4 @@
     (ivy-set-index (min (1- (+ ivy--index ivy-height))
                         (1- ivy--length)))))
 
-(provide 'jd:ivy-st)
+(jd:provide-feature jd:ivy-st)

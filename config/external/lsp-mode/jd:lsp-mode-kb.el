@@ -1,4 +1,4 @@
-(provide 'jd:lsp-mode-kb)
+(jd:provide-feature jd:lsp-mode-kb)
 
 ;; File: $HOME/.emacs.d/config/external/elpa/lsp-mode-20200303.109/lsp-mode.el
 ;; 

@@ -18,7 +18,7 @@
 (define-key ivy-minibuffer-map (kbd "<up>") 'ivy-previous-line)
 (define-key ivy-minibuffer-map (kbd "<jd:C-bks>") 'jd:delete-word-backward)
 
-(provide 'jd:ivy-kb)
+(jd:provide-feature jd:ivy-kb)
 
 ;; File: $HOME/.emacs.d/config/external/elpa/ivy-20190825.1023/ivy.el
 ;; 

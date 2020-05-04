@@ -2,7 +2,7 @@
 (define-key Buffer-menu-mode-map (kbd "k") 'jd:forward-line)
 (define-key Buffer-menu-mode-map (kbd "<jd:ret>") 'Buffer-menu-this-window)
 
-(provide 'jd:buff-menu-kb)
+(jd:provide-feature jd:buff-menu-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/buff-menu.elc
 ;; 

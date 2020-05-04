@@ -12,4 +12,4 @@
 
 (blink-cursor-mode 0)
 
-(provide 'jd:frame-st)
+(jd:provide-feature jd:frame-st)

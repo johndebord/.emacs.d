@@ -3,4 +3,4 @@
 
 (setq-default eshell-banner-message "")
 
-(provide 'jd:em-banner-st)
+(jd:provide-feature jd:em-banner-st)

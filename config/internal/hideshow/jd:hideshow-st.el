@@ -3,4 +3,4 @@
 (defvar hs-isearch-open)
 (defvar hs-minor-mode-hook)
 
-(provide 'jd:hideshow-st)
+(jd:provide-feature jd:hideshow-st)

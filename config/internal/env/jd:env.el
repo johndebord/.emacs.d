@@ -2,4 +2,4 @@
 (jd:load-feature jd:env-kb jd:internal-prefix "env/")
 (jd:load-feature jd:env-st jd:internal-prefix "env/")
 
-(provide 'jd:env)
+(jd:provide-feature jd:env)

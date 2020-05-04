@@ -38,15 +38,37 @@
                (goto-char (point-min))
 	       (forward-line (- (string-to-number line-number) 1)))
               
-              ((equal (nth 0 (cdr char-property-value)) "#666666")
+              ((or (equal (nth 0 (cdr char-property-value)) "#666666")
+                   (not (null (string-match ":[0-9]+:[0-9]+:" (thing-at-point 'filename 'no-properties)))))
 	       (setq file-name (car (split-string (thing-at-point 'filename 'no-properties) ":")))
                (setq line-number (car (cdr (split-string (thing-at-point 'filename 'no-properties) ":"))))
                (setq column-number (car (cddr (split-string (thing-at-point 'filename 'no-properties) ":"))))
                (find-file file-name)
                (goto-char (point-min))
                (forward-line (- (string-to-number line-number) 1))
-               (forward-char (- (string-to-number column-number) 1)))))
-    (eshell-send-input)))
+               (forward-char (- (string-to-number column-number) 1)))
+
+              ((not (null (string-match ":[0-9]+:[0-9]+:" (thing-at-point 'filename 'no-properties))))
+               (setq file-name (car (split-string (thing-at-point 'filename 'no-properties) ":")))
+               (setq line-number (car (cdr (split-string (thing-at-point 'filename 'no-properties) ":"))))
+               (setq column-number (car (cddr (split-string (thing-at-point 'filename 'no-properties) ":"))))
+               (find-file file-name)
+               (goto-char (point-min))
+               (forward-line (- (string-to-number line-number) 1))
+               (forward-char (- (string-to-number column-number) 1))))))
+  
+  (if (and (thing-at-point 'filename)
+           (not (null (string-match ":[0-9]+:[0-9]+:" (thing-at-point 'filename 'no-properties)))))
+      (progn
+        (setq file-name (car (split-string (thing-at-point 'filename 'no-properties) ":")))
+        (setq line-number (car (cdr (split-string (thing-at-point 'filename 'no-properties) ":"))))
+        (setq column-number (car (cddr (split-string (thing-at-point 'filename 'no-properties) ":"))))
+        (find-file file-name)
+        (goto-char (point-min))
+        (forward-line (- (string-to-number line-number) 1))
+        (forward-char (- (string-to-number column-number) 1))))
+  
+  (eshell-send-input))
 
 ;; Depending on the context of where the cursor is, this function will be smart
 ;; enough to know whether to do the following: complete a `yasnippet` snippet,
@@ -201,14 +223,14 @@
 ;; Depending on the context of where the cursor is, this function will
 ;; instantiate a new `eshell` buffer in the given directory or it will pop to
 ;; the default `eshell` buffer.
-(defun jd:incredibly-smart-eshell ()
-  (interactive)
+(defun jd:incredibly-smart-eshell (&optional arg)
+  (interactive "P")
   (if (minibuffer-window-active-p (get-buffer-window))
       (ivy-exit-with-action
        (lambda (_)
          (let ((current-prefix-arg '-)
                (default-directory ivy--directory))
            (call-interactively 'eshell))))
-    (eshell)))
+    (eshell arg)))
 
 (provide 'jd:incredible)

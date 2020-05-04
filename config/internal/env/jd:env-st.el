@@ -20,4 +20,4 @@
          "/usr/local/bin:"
          "/usr/local/sbin"))
 
-(provide 'jd:env-st)
+(jd:provide-feature jd:env-st)

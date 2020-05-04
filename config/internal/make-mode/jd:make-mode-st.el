@@ -34,4 +34,4 @@
 
 (add-hook 'makefile-mode-hook 'jd:makefile-mode-hook)
 
-(provide 'jd:make-mode-st)
+(jd:provide-feature jd:make-mode-st)

@@ -13,4 +13,4 @@
 (defvar eshell-input-filter)
 (defvar eshell-save-history-on-exit)
 
-(provide 'jd:em-hist-st)
+(jd:provide-feature jd:em-hist-st)

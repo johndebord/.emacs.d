@@ -51,13 +51,10 @@
                        '(byte-force-recompile
                          compile-goto-error
                          jd:byte-compile-file
-                         
                          jd:edebug-eval-top-level-form
                          jd:eval
                          jd:eval-print-last-sexp
-
-                         jd:incredibly-smart-return
-                         
+                         jd:incredibly-smart-return                         
                          jd:next-error
                          jd:previous-error)))
                (display-buffer-reuse-window
@@ -79,4 +76,4 @@
 (add-to-list 'same-window-regexps ".+hpp")
 (add-to-list 'same-window-regexps ".+ipp")
 
-(provide 'jd:window-st)
+(jd:provide-feature jd:window-st)

@@ -4,4 +4,4 @@
 (defvar temp-buffer-max-height)
 (defvar temp-buffer-max-width)
 
-(provide 'jd:help-st)
+(jd:provide-feature jd:help-st)

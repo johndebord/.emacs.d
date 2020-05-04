@@ -4,7 +4,7 @@
 (define-key debugger-mode-map (kbd "<jd:tab>") 'forward-button)
 (define-key debugger-mode-map (kbd "<jd:S-tab>") 'backward-button)
 
-(provide 'jd:debug-kb)
+(jd:provide-feature jd:debug-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/emacs-lisp/debug.elc
 ;; 

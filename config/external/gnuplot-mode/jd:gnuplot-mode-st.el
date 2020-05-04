@@ -8,4 +8,4 @@
 
 (add-hook 'gnuplot-mode-hook 'jd:gnuplot-mode-hook)
 
-(provide 'jd:gnuplot-mode-st)
+(jd:provide-feature jd:gnuplot-mode-st)

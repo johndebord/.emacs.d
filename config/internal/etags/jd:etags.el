@@ -2,4 +2,4 @@
 (jd:load-feature jd:etags-kb jd:internal-prefix "etags/")
 (jd:load-feature jd:etags-st jd:internal-prefix "etags/")
 
-(provide 'jd:etags)
+(jd:provide-feature jd:etags)

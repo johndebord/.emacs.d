@@ -213,10 +213,10 @@ Also note that `<C-q><C-j>` constitutes a newline character.
 cmake -DCMAKE_INSTALL_PREFIX=/home/i/install .
 ```
 
-Apt List All Installed Packages:
---------------------------------
+Apt Remove Package(s:)
+----------------------
 ```bash
-apt list --installed
+sudo apt-get remove <package-name>
 ```
 
 ag Search Only Specific File Names:
@@ -232,3 +232,18 @@ Recursively Delete Files Of A Specific Extension:
 find . -name "*.<ext>" -type f         # To check first.
 find . -name "*.<ext>" -type f -delete # To delete the files.
 ```
+
+View Terminal Settings:
+-----------------------
+```bash
+stty -a
+```
+
+Emacs Define/Name/Save Macro:
+-----------------------------
+Note: `macro-lambda-form` might be worth looking into as well.
+`(kmacro-start-macro)`
+`(kmacro-end-or-call-macro)`
+`(kmacro-name-last-macro)`
+`(insert-kbd-macro)`
+`(define-key global-map (kbd "") ')`

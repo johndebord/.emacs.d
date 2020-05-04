@@ -81,4 +81,4 @@
 
 (add-hook 'rcirc-mode-hook 'jd:rcirc-mode-hook)
 
-(provide 'jd:rcirc-st)
+(jd:provide-feature jd:rcirc-st)

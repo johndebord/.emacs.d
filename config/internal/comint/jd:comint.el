@@ -2,4 +2,4 @@
 (jd:load-feature jd:comint-kb jd:internal-prefix "comint/")
 (jd:load-feature jd:comint-st jd:internal-prefix "comint/")
 
-(provide 'jd:comint)
+(jd:provide-feature jd:comint)

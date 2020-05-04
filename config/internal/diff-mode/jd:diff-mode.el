@@ -2,4 +2,4 @@
 (jd:load-feature jd:diff-mode-kb jd:internal-prefix "diff-mode/")
 (jd:load-feature jd:diff-mode-st jd:internal-prefix "diff-mode/")
 
-(provide 'jd:diff-mode)
+(jd:provide-feature jd:diff-mode)

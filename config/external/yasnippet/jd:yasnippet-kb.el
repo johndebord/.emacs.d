@@ -1,4 +1,4 @@
-(provide 'jd:yasnippet-kb)
+(jd:provide-feature jd:yasnippet-kb)
 
 ;; File: $HOME/.emacs.d/config/external/elpa/yasnippet-20190724.1204/yasnippet.el
 ;; 

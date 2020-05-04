@@ -68,4 +68,4 @@
 
 (add-hook 'gud-mode-hook 'jd:gud-mode-hook)
 
-(provide 'jd:gud-st)
+(jd:provide-feature jd:gud-st)

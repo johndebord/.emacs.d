@@ -6,4 +6,4 @@
                 (member-init-intro . 0)
                 (template-args-cont . 0))))
 
-(provide 'jd:cc-styles-st)
+(jd:provide-feature jd:cc-styles-st)

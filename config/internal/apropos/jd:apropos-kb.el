@@ -4,7 +4,7 @@
 (define-key apropos-mode-map (kbd "<jd:tab>") 'forward-button)
 (define-key apropos-mode-map (kbd "<jd:S-tab>") 'backward-button)
 
-(provide 'jd:apropos-kb)
+(jd:provide-feature jd:apropos-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/apropos.elc
 ;; 

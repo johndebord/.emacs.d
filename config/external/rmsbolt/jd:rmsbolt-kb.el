@@ -1,4 +1,4 @@
-(provide 'jd:rmsbolt-kb)
+(jd:provide-feature jd:rmsbolt-kb)
 
 ;; File: $HOME/.emacs.d/config/external/elpa/rmsbolt-20191113.210/rmsbolt.el
 ;; 

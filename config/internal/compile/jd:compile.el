@@ -2,4 +2,4 @@
 (jd:load-feature jd:compile-kb jd:internal-prefix "compile/")
 (jd:load-feature jd:compile-st jd:internal-prefix "compile/")
 
-(provide 'jd:compile)
+(jd:provide-feature jd:compile)

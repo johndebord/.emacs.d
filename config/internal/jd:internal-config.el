@@ -53,6 +53,7 @@
 (jd:load-feature jd:minibuffer jd:internal-prefix "minibuffer/")
 (jd:load-feature jd:mwheel jd:internal-prefix "mwheel/")
 (jd:load-feature jd:newcomment jd:internal-prefix "newcomment/")
+(jd:load-feature jd:package jd:internal-prefix "package/")
 (jd:load-feature jd:paren jd:internal-prefix "paren/")
 (jd:load-feature jd:pcomplete jd:internal-prefix "pcomplete/")
 (jd:load-feature jd:rcirc jd:internal-prefix "rcirc/")

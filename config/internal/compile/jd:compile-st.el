@@ -37,4 +37,4 @@
 
 (add-hook 'compilation-mode-hook 'jd:compilation-mode-hook)
 
-(provide 'jd:compile-st)
+(jd:provide-feature jd:compile-st)

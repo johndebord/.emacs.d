@@ -58,4 +58,4 @@
 (setq-default c-default-style "johndebord")
 (setq-default c-progress-interval 1)
 
-(provide 'jd:cc-vars-st)
+(jd:provide-feature jd:cc-vars-st)
