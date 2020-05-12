@@ -247,3 +247,10 @@ Note: `macro-lambda-form` might be worth looking into as well.
 `(kmacro-name-last-macro)`
 `(insert-kbd-macro)`
 `(define-key global-map (kbd "") ')`
+
+Connecting To AWS Instance:
+---------------------------
+```bash
+ssh -i ./000.pem ec2-user@ec2-18-191-219-151.us-east-2.compute.amazonaws.com
+# Afterwhich I can TRAMP into the filesystem.
+```

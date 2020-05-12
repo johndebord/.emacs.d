@@ -1,10 +1,11 @@
-alias ff find-file $1
-alias up cd .. $*
-alias push pushd ./ $*
-alias pop popd $*
-alias lla ls -la $*
-alias ll ls -l $*
-alias la ls -a $*
-alias gr grep -rnw './' -e $*
-alias fnd find . -name $*
+alias tmpfs  $*
 alias bear-eosio bear --use-only --use-cc /usr/local/bin/eosio-cc --use-c++ /usr/local/bin/eosio-cpp $*
+alias fnd find . -name $*
+alias gr grep -rnw './' -e $*
+alias la ls -a $*
+alias ll ls -l $*
+alias lla ls -la $*
+alias pop popd $*
+alias push pushd ./ $*
+alias up cd .. $*
+alias ff find-file $1
