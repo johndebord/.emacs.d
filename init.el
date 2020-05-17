@@ -342,7 +342,7 @@
  '(ivy-modified-buffer ((t (:foreground "#ff7400"))))
  '(ivy-modified-outside-buffer ((t (:foreground "#ff0000"))))
  '(ivy-prompt-match ((t (:background "purple" :foreground "black"))))
- '(ivy-remote ((t (:background "purple" :foreground "black"))))
+ '(ivy-remote ((t (:underline "#00cc00"))))
  '(ivy-subdir ((t nil)))
  '(ivy-virtual ((t (:background "purple" :foreground "black"))))
  '(lazy-highlight ((t (:background "#535353"))))

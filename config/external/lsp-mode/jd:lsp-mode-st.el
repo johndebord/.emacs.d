@@ -203,4 +203,11 @@
   (jd:incredibly-smart-tab 'progmode)
   (company-set-selection current-company-index))
 
+;; Boiler-plate for making `lsp-mode` work during and `ssh` session.
+(lsp-register-client
+ (make-lsp-client :new-connection (lsp-tramp-connection "/home/i/install/bin/clangd")
+                  :major-modes '(c++-mode)
+                  :remote? t
+                  :server-id 'desktop))
+
 (jd:provide-feature jd:lsp-mode-st)

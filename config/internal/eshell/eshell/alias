@@ -9,3 +9,5 @@ alias pop popd $*
 alias push pushd ./ $*
 alias up cd .. $*
 alias ff find-file $1
+alias ff find-file $1
+alias ssh cd /ssh:$1:~/
