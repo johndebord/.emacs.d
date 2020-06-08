@@ -84,4 +84,59 @@
     (ivy-set-index (min (1- (+ ivy--index ivy-height))
                         (1- ivy--length)))))
 
+;; TODO:
+;; [ ] Add scrolling functionality.
+;; State variable to keep track of the state needed for this custom
+;; functionality.
+;; `idx0` the list is to say if this functionality is active.
+;; `idx1` the list is the buffer for which to delete after exploring its
+;; contents.
+;; `idx2` whether or not the buffer already exists.
+;; `idx3` the buffer that this functionality is originally called from.
+(defvar jd:preview [nil nil nil nil])
+;; Preview the file before actually navigating to it; this automates the process
+;; of just exploring a codebase and/or various files without actually having to
+;; open a up a fully committed buffer and then having to delete it later.
+(defun jd:preview-function ()
+  (interactive)
+  (let ((file (expand-file-name (ivy-state-current ivy-last) ivy--directory)))
+    ;; If previewing isn't active and not the same buffer and not a directory.
+    (if (and (null (aref jd:preview 0))
+             (not (string= (buffer-name (ivy-state-buffer ivy-last)) (ivy-state-current ivy-last)))
+             (not (directory-name-p file)))
+        (progn
+          (with-ivy-window
+            ;; If the buffer currently exists beforehand.
+            (if (get-file-buffer file)
+                (setf (aref jd:preview 2) t))
+            (find-file file))
+          (setf (aref jd:preview 0) t)
+          (setf (aref jd:preview 1) file)
+          (setf (aref jd:preview 3) (ivy-state-buffer ivy-last))))))
+;; Reset the state variable and kill the buffer being previewed.
+(defun jd:delete-preview ()
+  (if (and (eq (aref jd:preview 0) t)
+           (not (eq this-command 'jd:preview-function)))
+      (progn
+        ;; If this command isn't `ivy-alt-done`.
+        (if (not (eq this-command 'ivy-alt-done))
+            (progn
+              ;; If the buffer did not currently exists beforehand.
+              (if (eq (aref jd:preview 2) t)
+                  (with-ivy-window
+                    (select-window (ivy-state-window ivy-last))
+                    (switch-to-buffer (aref jd:preview 3)))
+                (kill-buffer (get-file-buffer (aref jd:preview 1))))))
+        (setf (aref jd:preview 0) nil)
+        (setf (aref jd:preview 1) nil)
+        (setf (aref jd:preview 2) nil)
+        (setf (aref jd:preview 3) nil))))
+;; Add the hook to `post-command-hook` to ensure proper state throughout.
+(add-hook 'post-command-hook 'jd:delete-preview)
+
+;;; Add functionality for colorization of buffers in `ivy`.
+(ivy-configure 'counsel-switch-buffer
+  :occur #'ivy-switch-buffer-occur
+  :display-transformer-fn #'ivy-switch-buffer-transformer)
+
 (jd:provide-feature jd:ivy-st)

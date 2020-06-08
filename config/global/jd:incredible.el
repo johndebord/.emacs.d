@@ -20,7 +20,10 @@
         
         (setq char-property-value (get-char-property (point) 'face))
         
-        (cond ((or
+        (cond ((not (null (button-at (point))))
+               (push-button))
+              
+              ((or
                 (equal (cdr (nth 0 char-property-value)) "green3")
                 (equal (cdr (nth 0 char-property-value)) "blue2"))
 	       (setq file-name (thing-at-point 'filename 'no-properties))
@@ -67,7 +70,6 @@
         (goto-char (point-min))
         (forward-line (- (string-to-number line-number) 1))
         (forward-char (- (string-to-number column-number) 1))))
-  
   (eshell-send-input))
 
 ;; Depending on the context of where the cursor is, this function will be smart
@@ -233,4 +235,4 @@
            (call-interactively 'eshell))))
     (eshell arg)))
 
-(provide 'jd:incredible)
+(jd:provide-feature jd:incredible)

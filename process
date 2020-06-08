@@ -16,7 +16,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_
 CMake More Commands(1):
 -----------------------
 ```bash
-rm -r *;cmake -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DBOOST_ROOT=/home/i/0EXTERNAL/boost_1_72_0 -DLLVM_DIR=/home/i/0EXTERNAL/git-repos/llvm-project/Release/lib/cmake/llvm -DCLANG_BUILD_TOOLS=ON -DCLANG_DEFAULT_CXX_STDLIB="libc++" -DCMAKE_CXX_COMPILER_AR=llvm-ar -DCMAKE_CXX_COMPILER_RANLIB=llvm-ranlib -DCMAKE_CXX_STANDARD=20 -DCOMPILER_RT_USE_LIBCXX=ON -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="" -DCMAKE_CXX_FLAGS="-stdlib=libc++" -DCMAKE_LINKER=lld -DCLANG_DEFAULT_LINKER=lld -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_MODULE_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_STATIC_LINKER_FLAGS="-stdlib=libc++" ..
+rm -r *; cmake -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DBOOST_ROOT=/home/i/0EXTERNAL/boost_1_72_0 -DLLVM_DIR=/home/i/0EXTERNAL/git-repos/llvm-project/Release/lib/cmake/llvm -DCLANG_BUILD_TOOLS=ON -DCLANG_DEFAULT_CXX_STDLIB="libc++" -DCMAKE_CXX_COMPILER_AR=llvm-ar -DCMAKE_CXX_COMPILER_RANLIB=llvm-ranlib -DCMAKE_CXX_STANDARD=20 -DCOMPILER_RT_USE_LIBCXX=ON -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="" -DCMAKE_CXX_FLAGS="-stdlib=libc++" -DCMAKE_LINKER=lld -DCLANG_DEFAULT_LINKER=lld -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_MODULE_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_STATIC_LINKER_FLAGS="-stdlib=libc++" ..
 ```
 
 `configure` Commands For Building Bitcoin:
@@ -187,7 +187,7 @@ SSH Workflow:
 ```bash
 eval "$(ssh-agent -s)"
 ssh-keygen -t rsa # add this public key to GitHub.
-ssh-add $ssh-key # don't know if this is really necessary; don't know if `ssh-key` is referring to pub or priv.
+ssh-add $ssh-key # don't know if this is really necessary (doesn't seem to be); don't know if `ssh-key` is referring to pub or priv.
 ssh-keyscan github.com >> ~/.ssh/known_hosts # clone GitHub repo.
 ```
 * `-t`  means dsa
@@ -202,6 +202,12 @@ CMake Delete All Files That Have Been Installed:
 ------------------------------------------------
 ```bash
 xargs rm < install_manifest.txt
+```
+
+Execute Make In A Specific Directory:
+-------------------------------------
+```bash
+make -C <path>
 ```
 
 Query Replace Newlines Plus Strings:
@@ -248,9 +254,21 @@ Note: `macro-lambda-form` might be worth looking into as well.
 `(insert-kbd-macro)`
 `(define-key global-map (kbd "") ')`
 
+Emacs Running Emacs Lisp Code In Terminal:
+------------------------------------------
+```bash
+emacs --batch --eval '(message "Hello, world.")'
+```
+
 Connecting To AWS Instance:
 ---------------------------
 ```bash
 ssh -i ./000.pem ec2-user@ec2-18-191-219-151.us-east-2.compute.amazonaws.com
 # Afterwhich I can TRAMP into the filesystem.
+```
+
+Chmod Online Calculator:
+------------------------
+```text
+https://chmod-calculator.com/
 ```

@@ -96,4 +96,4 @@
           (with-current-buffer "*Help*"
             (insert (substitute-command-keys (concat "\\{" name "}")))))))))
 
-(provide 'jd:describe)
+(jd:provide-feature jd:describe)

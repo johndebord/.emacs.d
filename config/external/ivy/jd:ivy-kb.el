@@ -14,9 +14,11 @@
 (define-key ivy-minibuffer-map (kbd "<C-M-k>") 'ivy-next-history-element)
 (define-key ivy-minibuffer-map (kbd "<jd:ret>") 'ivy-alt-done)
 (define-key ivy-minibuffer-map (kbd "<jd:tab>") 'ivy-partial)
+(define-key ivy-minibuffer-map (kbd "<jd:C-bks>") 'jd:delete-word-backward)
+(define-key ivy-minibuffer-map (kbd "<jd:M-bks>") 'ivy-switch-buffer-kill)
+(define-key ivy-minibuffer-map (kbd "<jd:M-ret>") 'jd:preview-function)
 (define-key ivy-minibuffer-map (kbd "<down>") 'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "<up>") 'ivy-previous-line)
-(define-key ivy-minibuffer-map (kbd "<jd:C-bks>") 'jd:delete-word-backward)
 
 (jd:provide-feature jd:ivy-kb)
 

@@ -1,4 +1,4 @@
-(defvar tramp-copy-size-limit 10240)
+(defvar tramp-copy-size-limit)
 (defvar tramp-histfile-override)
 (defvar tramp-inline-compress-start-size)
 (defvar tramp-remote-process-environment)

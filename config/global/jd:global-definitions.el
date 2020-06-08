@@ -334,7 +334,9 @@
 
 (defun jd:self-insert-space ()
   (interactive)
-  (insert #x20) ; spacebar.
+  (if (eq major-mode 'term-mode)
+      (term-send-raw-string (string #x20))
+    (insert #x20))
   (jd:company-select-nil)
   (jd:recently-finished-completion-nil))
 
@@ -379,4 +381,10 @@
   (interactive)
   (jd:incredibly-smart-tab 'progmode))
 
-(provide 'jd:global-definitions)
+(defun jd:find-lisp-example ()
+  (interactive)
+  (grep-compute-defaults)
+  (let ((str (read-string "Example To Search For: " nil)))
+    (rgrep str "*.el" (concat source-directory "lisp") nil)))
+
+(jd:provide-feature jd:global-definitions)

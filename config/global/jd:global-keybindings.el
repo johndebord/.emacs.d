@@ -912,4 +912,4 @@
 (define-key minibuffer-local-map (kbd "<jd:tab>") 'minibuffer-complete)
 (define-key minibuffer-local-map (kbd "<jd:C-ret>") 'exit-minibuffer)
 
-(provide 'jd:global-keybindings)
+(jd:provide-feature jd:global-keybindings)

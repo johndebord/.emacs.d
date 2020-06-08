@@ -759,4 +759,4 @@
 (define-key input-decode-map (kbd "H-<tab>")             [jd:H-tab])
 (define-key input-decode-map (kbd "H-S-<iso-lefttab>")   [jd:H-S-tab])
 
-(provide 'jd:global-key-translations)
+(jd:provide-feature jd:global-key-translations)

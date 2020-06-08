@@ -10,10 +10,6 @@
 (define-key c++-mode-map (kbd "<mouse-8>") 'xref-pop-marker-stack)
 (define-key c++-mode-map (kbd "<mouse-9>") 'lsp-find-definition)
 
-(define-key c++-mode-map (kbd "<M-h>") 'jd:lsp-find-definition)
-(define-key c++-mode-map (kbd "<C-M-h>") 'jd:lsp-find-references)
-(define-key c++-mode-map (kbd "<C-x> <M-h>") 'jd:lsp-find-declaration)
-
 (jd:provide-feature jd:cc-mode-kb)
 
 ;; File: $HOME/install/share/emacs/26.3.50/lisp/progmodes/cc-mode.elc

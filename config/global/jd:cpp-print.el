@@ -75,4 +75,4 @@
   (setq jd:cpp-print-string nil)
   (setq jd:cpp-print-count 0))
 
-(provide 'jd:cpp-print)
+(jd:provide-feature jd:cpp-print)

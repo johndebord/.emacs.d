@@ -15,7 +15,6 @@
 (defvar explicit-shell-file-name)
 (defvar term-buffer-maximum-size)
 (defvar term-char-mode-buffer-read-only)
-(defvar term-char-mode-point-at-process-mark)
 (defvar term-completion-addsuffix)
 (defvar term-completion-autolist)
 (defvar term-completion-fignore)
@@ -32,6 +31,8 @@
 (defvar term-scroll-show-maximum-output)
 (defvar term-scroll-to-bottom-on-output)
 (defvar term-suppress-hard-newline)
+
+(setq-default term-char-mode-point-at-process-mark nil)
 
 ;; https://emacs.stackexchange.com/questions/23798/enable-cua-mode-in-term-or-ansi-term-mode
 ;; enable cua and transient mark modes in term-line-mode

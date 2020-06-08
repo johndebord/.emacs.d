@@ -12,4 +12,4 @@
 (jd:load-feature jd:swiper jd:external-prefix "swiper/")
 (jd:load-feature jd:yasnippet jd:external-prefix "yasnippet/")
 
-(provide 'jd:external-config)
+(jd:provide-feature jd:external-config)

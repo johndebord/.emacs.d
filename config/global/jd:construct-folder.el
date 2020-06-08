@@ -129,4 +129,4 @@
 		(insert new-buffer-string)))))
       (error "Please give valid arguments"))))
 
-(provide 'jd:construct-folder)
+(jd:provide-feature jd:construct-folder)

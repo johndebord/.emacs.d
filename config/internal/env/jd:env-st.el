@@ -8,11 +8,13 @@
 
 (setenv "LD_LIBRARY_PATH"
         (concat
-         "/home/i/install/lib"))
+         "/home/i/install/lib"
+         "/root/install/lib"))
 
 (setenv "PATH"
         (concat
          "/home/i/install/bin:"
+         "/root/install/bin:"
          "/bin:"
          "/sbin:"
          "/usr/bin:"

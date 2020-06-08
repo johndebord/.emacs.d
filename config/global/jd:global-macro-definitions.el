@@ -8,4 +8,4 @@
         (interactive "p")
         (kmacro-exec-ring-item (quote ("\206\353\354" 0 "%d")) arg)))
 
-(provide 'jd:global-macro-definitions)
+(jd:provide-feature jd:global-macro-definitions)

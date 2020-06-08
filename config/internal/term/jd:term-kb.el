@@ -1,4 +1,4 @@
-(define-key term-raw-map (kbd "<C-c> <C-\\") 'term-quit-subjob)
+(define-key term-raw-map (kbd "<C-c> <C-\\>") 'term-quit-subjob)
 (define-key term-raw-map (kbd "<C-c> <C-c>") 'term-interrupt-subjob)
 (define-key term-raw-map (kbd "<C-c> <C-d>") 'term-send-eof)
 (define-key term-raw-map (kbd "<C-c> <C-q>") 'term-continue-subjob)
@@ -1032,4 +1032,3 @@
 ;; <Help>          term-pager-help
 ;; 
 ;; [back]
-

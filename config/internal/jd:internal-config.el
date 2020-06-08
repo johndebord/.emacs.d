@@ -72,4 +72,4 @@
 (jd:load-feature jd:window jd:internal-prefix "window/")
 (jd:load-feature jd:xref jd:internal-prefix "xref/")
 
-(provide 'jd:internal-config)
+(jd:provide-feature jd:internal-config)

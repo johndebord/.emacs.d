@@ -805,28 +805,6 @@ With prefix arg MODE a query for the symbol help mode is offered."
   :type 'boolean
   :group 'ivy)
 
-;; (defun counsel-M-x-transformer (cmd)
-;;   "Return CMD annotated with its active key binding, if any."
-;;   (let ((alias (symbol-function (intern cmd)))
-;;         (key (where-is-internal (intern cmd) nil t)))
-;;     (concat cmd
-;;             (when (and (symbolp alias) counsel-alias-expand)
-;;               (format " (%s)" alias))
-;;             (when key
-;;               ;; Prefer `<f2>' over `C-x 6' where applicable
-;;               (let ((i (cl-search [?\C-x ?6] key)))
-;;                 (when i
-;;                   (let ((dup (vconcat (substring key 0 i) [f2] (substring key (+ i 2))))
-;;                         (map (current-global-map)))
-;;                     (when (equal (lookup-key map key)
-;;                                  (lookup-key map dup))
-;;                       (setq key dup)))))
-;;               (setq key (key-description key))
-;;               (put-text-property 0 (length key) 'face 'counsel-key-binding key)
-;;               (format " (%s)" key)))))
-
-;;; John DeBord
-;;; Dec. 28th, 2019
 (defun counsel-M-x-transformer (cmd)
   "Return CMD annotated with its active key binding, if any."
   (let ((alias (symbol-function (intern cmd)))
@@ -845,8 +823,7 @@ With prefix arg MODE a query for the symbol help mode is offered."
                       (setq key dup)))))
               (setq key (key-description key))
               (put-text-property 0 (length key) 'face 'counsel-key-binding key)
-              ;; (format " (%s)" key)
-              ))))
+              (format " (%s)" key)))))
 
 (defvar amx-initialized)
 (defvar amx-cache)
@@ -5466,10 +5443,10 @@ Display a preview of the selected ivy completion candidate buffer
 in the current window."
   (interactive)
   (ivy-read "Switch to buffer: " 'internal-complete-buffer
-            ;; HACK
-            ;; Oct. 14th, 2019
-            ;; My ideal functionality is for `counsel-switch-buffer'
-            ;; to show the current buffer upon activation of this command.
+            ;;; John DeBord
+            ;;; Oct. 14th, 2019
+            ;;; My ideal functionality is for `counsel-switch-buffer'
+            ;;; to show the current buffer upon activation of this command.
             :preselect (buffer-name (current-buffer))
             :keymap ivy-switch-buffer-map
             :action #'ivy--switch-buffer-action

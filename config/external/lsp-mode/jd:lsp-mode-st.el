@@ -51,7 +51,6 @@
 (defvar lsp-enable-folding)
 (defvar lsp-enable-imenu)
 (defvar lsp-enable-indentation)
-(defvar lsp-enable-links)
 (defvar lsp-enable-on-type-formatting)
 (defvar lsp-enable-semantic-highlighting)
 (defvar lsp-enable-snippet)
@@ -94,6 +93,7 @@
 (defvar lsp-workspace-folders-changed-functions)
 
 (setq-default lsp-diagnostic-package :flymake)
+(setq-default lsp-enable-links nil)
 (setq-default lsp-enable-symbol-highlighting nil)
 (setq-default lsp-session-file (concat
                                 jd:external-prefix
@@ -101,7 +101,8 @@
 
 ;; `lsp-clients.el`
 (setq-default lsp-clients-clangd-args '("--background-index=true" "--header-insertion=never" "--pretty"))
-(setq-default lsp-clients-clangd-executable "/home/i/install/bin/clangd")
+;; (setq-default lsp-clients-clangd-executable "/home/i/install/bin/clangd")
+(setq-default lsp-clients-clangd-executable "clangd")
 
 ;; Find lsp declaration in either the `company` popup or in a normal fashion.
 (defun jd:lsp-find-declaration ()
@@ -203,11 +204,11 @@
   (jd:incredibly-smart-tab 'progmode)
   (company-set-selection current-company-index))
 
-;; Boiler-plate for making `lsp-mode` work during and `ssh` session.
+;; Boiler-plate for making `lsp-mode` work during an `ssh` session.
 (lsp-register-client
- (make-lsp-client :new-connection (lsp-tramp-connection "/home/i/install/bin/clangd")
+ (make-lsp-client :new-connection (lsp-tramp-connection "/root/install/bin/clangd")
                   :major-modes '(c++-mode)
                   :remote? t
-                  :server-id 'desktop))
+                  :server-id 'work))
 
 (jd:provide-feature jd:lsp-mode-st)

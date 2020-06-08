@@ -31,10 +31,17 @@
 (setq-default compile-command
               (purecopy "make"))
 
+(defun jd:compilation-ansi-colors-filter ()
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region
+     compilation-filter-start (point))))
+
 (defun jd:compilation-mode-hook ()
   (font-lock-mode 1)
-  (idle-highlight-mode 1))
+  (idle-highlight-mode 1)
+  (toggle-truncate-lines))
 
+(add-hook 'compilation-filter-hook 'jd:compilation-ansi-colors-filter)
 (add-hook 'compilation-mode-hook 'jd:compilation-mode-hook)
 
 (jd:provide-feature jd:compile-st)

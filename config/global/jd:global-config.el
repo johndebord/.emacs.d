@@ -7,4 +7,4 @@
 (jd:load-feature jd:global-keybindings jd:global-prefix)
 (jd:load-feature jd:global-macro-definitions jd:global-prefix)
 
-(provide 'jd:global-config)
+(jd:provide-feature jd:global-config)
