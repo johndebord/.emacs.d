@@ -8,11 +8,12 @@
     (progn
       (company-mode 1)
       (electric-pair-mode 1)
-      (flymake-mode 1)
       (font-lock-mode 1)
       (idle-highlight-mode 1)
       (yas-minor-mode 1)
       (lsp)
+      (if (eq lsp-mode t)
+          (flymake-mode 1))
       (set (make-local-variable 'company-backends)
            '((company-lsp :separate company-dabbrev-code :separate company-yasnippet)))
       (set (make-local-variable 'compile-command)

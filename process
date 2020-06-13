@@ -1,6 +1,13 @@
 File For Documenting Processes
 ==============================
 
+Goto CMake Command:
+-------------------
+```bash
+cmake -DCMAKE_INSTALL_PREFIX=/home/i/install/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE ..
+```
+
+
 CMake Command/Extra:
 --------------------
 ```bash
@@ -271,4 +278,10 @@ Chmod Online Calculator:
 ------------------------
 ```text
 https://chmod-calculator.com/
+```
+
+View All Compile Commands:
+--------------------------
+```bash
+clang -cc1 --help
 ```

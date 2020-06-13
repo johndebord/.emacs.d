@@ -67,6 +67,7 @@
 (jd:load-feature jd:subr jd:internal-prefix "subr/")
 (jd:load-feature jd:term jd:internal-prefix "term/")
 (jd:load-feature jd:tool-bar jd:internal-prefix "tool-bar/")
+(jd:load-feature jd:tramp jd:internal-prefix "tramp/")
 (jd:load-feature jd:tramp-sh jd:internal-prefix "tramp-sh/")
 (jd:load-feature jd:view jd:internal-prefix "view/")
 (jd:load-feature jd:window jd:internal-prefix "window/")

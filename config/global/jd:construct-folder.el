@@ -81,9 +81,9 @@
                           "(jd:load-feature "    settings-name      " " customization-path-prefix-str " \"" customization-name "/\")\n\n"
                           "(jd:provide-feature " root-name ")\n"))
                  (keybindings-file-str
-                  (concat "(jd:provide-feature '" keybindings-name ")\n"))
+                  (concat "(jd:provide-feature " keybindings-name ")\n"))
                  (settings-file-str
-                  (concat "(jd:provide-feature '" settings-name ")\n")))
+                  (concat "(jd:provide-feature " settings-name ")\n")))
             
 	    (shell-command (concat "mkdir " customization-folder-path "/" customization-name))
 	    (shell-command (concat "touch " customization-folder-path "/" customization-name "/" root-file))
