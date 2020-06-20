@@ -11,7 +11,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/home/i/install/ -DCMAKE_BUILD_TYPE=Release -DCMAKE
 CMake Command/Extra:
 --------------------
 ```bash
-rm -r *; cmake -DCMAKE_PREFIX_PATH=/home/i/install -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DBOOST_ROOT=/home/i/2boosts/boost_1_71_0 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;debuginfo-tests;libc;libclc;libcxx;libcxxabi;libunwind;lld;lldb;openmp;parallel-libs;polly;pstl" -DLLVM_DIR=/home/i/0EXTERNAL/llvm-project-9.0.1/llvm/Release/lib/cmake/llvm -DPYTHON_EXECUTABLE=/usr/bin/python3 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ..; make -j2;
+rm -r *; cmake -DCMAKE_PREFIX_PATH=/home/i/install -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DBoost_NO_BOOST_CMAKE=ON -DBOOST_ROOT=/home/i/2boosts/boost_1_71_0 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;debuginfo-tests;libc;libclc;libcxx;libcxxabi;libunwind;lld;lldb;openmp;parallel-libs;polly;pstl" -DLLVM_DIR=/home/i/0EXTERNAL/llvm-project-9.0.1/llvm/Release/lib/cmake/llvm -DPYTHON_EXECUTABLE=/usr/bin/python3 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ..; make -j2;
 ```
 
 CMake More Commands(0):
