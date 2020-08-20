@@ -34,23 +34,120 @@
 
 (setq-default term-char-mode-point-at-process-mark nil)
 
-;; https://emacs.stackexchange.com/questions/23798/enable-cua-mode-in-term-or-ansi-term-mode
-;; enable cua and transient mark modes in term-line-mode
-(defadvice term-line-mode (after term-line-mode-fixes ())
-  (set (make-local-variable 'cua-mode) t)
-  (set (make-local-variable 'transient-mark-mode) t))
-(ad-activate 'term-line-mode)
+;; Determine if the cursor is on the prompt line.
+(defun jd:is-on-prompt-line ()
+  (equal (line-number-at-pos) (line-number-at-pos (point-max))))
 
-;; https://emacs.stackexchange.com/questions/23798/enable-cua-mode-in-term-or-ansi-term-mode
-;; disable cua and transient mark modes in term-char-mode
-(defadvice term-char-mode (after term-char-mode-fixes ())
-  (set (make-local-variable 'cua-mode) t)
-  (set (make-local-variable 'transient-mark-mode) t))
-(ad-activate 'term-char-mode)
+;; Decide how to move the cursor, depending on the context of the cursor in the
+;; buffer.
+(defun jd:term-beginning-of-line ()
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-home)
+    (beginning-of-line)))
+
+;; Decide how to move the cursor, depending on the context of the cursor in the
+;; buffer.
+(defun jd:term-end-of-line ()
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-end)
+    (end-of-line)))
+
+;; Decide how to move the cursor, depending on the context of the cursor in the
+;; buffer.
+(defun jd:term-backward-char ()
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-left)
+    (backward-char)))
+
+;; Decide how to move the cursor, depending on the context of the cursor in the
+;; buffer.
+(defun jd:term-forward-char ()
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-right)
+    (forward-char)))
+
+;; Decide how to move the cursor, depending on the context of the cursor in the
+;; buffer.
+(defun jd:term-backward-word ()
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-ctrl-left)
+    (backward-word)))
+
+;; Decide how to move the cursor, depending on the context of the cursor in the
+;; buffer.
+(defun jd:term-forward-word ()
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-ctrl-right)
+    (forward-word)))
+
+;; Decide whether or not the next input should be displayed, depending on the
+;; context of the cursor in the buffer.
+(defun jd:term-next-input ()
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-down)
+    (progn
+      (scroll-down-line -1)
+      (line-move 1))))
+
+;; Decide whether or not the previous input should be displayed, depending on
+;; the context of the cursor in the buffer.
+(defun jd:term-previous-input ()
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-up)
+    (progn
+      (scroll-down-line 1)
+      (line-move -1))))
+
+;; Go to the next line or where the currect term process mark is, depending on
+;; the context of the cursor in the buffer.
+(defun jd:term-next-line ()
+  (interactive "^")
+  (if (save-excursion
+        (forward-line)
+        (jd:is-on-prompt-line))
+      (goto-char (term-process-mark))
+    (next-line)))
+
+;; Decide whether or not the previous word should be deleted, depending on the
+;; context of the cursor in the buffer.
+(defun jd:term-delete-backward-word ()
+  (interactive)
+  (if (jd:is-on-prompt-line)
+      (term-send-raw-string "\C-w")
+    (jd:delete-backward-word-and-reset-state-variables)))
+
+;; Enable `cua-mode` in terminal emulator.
+(advice-add 'term-line-mode
+            :after
+            (lambda ()
+              (set (make-local-variable 'cua-mode) t)
+              (set (make-local-variable 'transient-mark-mode) t)))
+
+;; Enable `cua-mode` in terminal emulator.
+(advice-add 'term-char-mode
+            :after
+            (lambda ()
+              (set (make-local-variable 'cua-mode) t)
+              (set (make-local-variable 'transient-mark-mode) t)))
+
+;; Force default length columns upon a successful clear.
+(defun jd:term-clear-buffer ()
+  (interactive)
+  (comint-clear-buffer)
+  (jd:force-linum-update-columns-hack))
 
 (defun jd:term-mode-hook ()
+  (font-lock-mode 1)
   (idle-highlight-mode 1)
-  (font-lock-mode 1))
+  (toggle-truncate-lines 1))
 
 (add-hook 'term-mode-hook 'jd:term-mode-hook)
 

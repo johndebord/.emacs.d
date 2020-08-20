@@ -57,7 +57,8 @@
         (backward-delete-char 1))
       (goto-char (point-max))
       (if (not (equal saved-column-number nil))
-          (move-to-column saved-column-number)))))
+          (move-to-column saved-column-number)))
+    (jd:force-linum-update-columns-hack)))
 
 ;; Ensures that `company` will discontinue so that this command may ensue.
 (defun jd:counsel-esh-history ()

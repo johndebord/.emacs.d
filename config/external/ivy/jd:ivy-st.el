@@ -35,7 +35,6 @@
 (defvar ivy-format-functions-alist)
 (defvar ivy-height-alist)
 (defvar ivy-hooks-alist)
-(defvar ivy-ignore-buffers)
 (defvar ivy-initial-inputs-alist)
 (defvar ivy-magic-slash-non-match-action)
 (defvar ivy-magic-tilde)
@@ -60,6 +59,7 @@
 (setq-default ivy-extra-directories nil)
 (setq-default ivy-format-function 'ivy-format-function-line)
 (setq-default ivy-height 15)
+(setq-default ivy-ignore-buffers nil)
 (setq-default ivy-recursive-restore nil)
 
 ;; Scroll down in the `ivy` minibuffer whilst keeping the selection centered in

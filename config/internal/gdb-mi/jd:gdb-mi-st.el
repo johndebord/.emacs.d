@@ -50,8 +50,7 @@
        (save-selected-window
          (select-window (posn-window (event-start event)))
          (switch-to-buffer
-          (window-buffer
-           (funcall ',display-function)) nil 'force-same-window))))))
+          (window-buffer (funcall ',display-function)) nil 'force-same-window))))))
 
 (defconst jd:gdb-comint-header
   (list

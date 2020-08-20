@@ -81,7 +81,9 @@
    ((eq arg 'eshell)
     (funcall 'jd:ist-eshell))
    ((eq arg 'progmode)
-    (funcall 'jd:ist-progmode))))
+    (funcall 'jd:ist-progmode))
+   ((eq arg 'term-mode)
+    (funcall 'jd:ist-term-mode))))
 
 (defun jd:ist-eshell ()
   (cond
@@ -109,6 +111,9 @@
 
    (t
     (jd:skip-char-if-possible 'progmode))))
+
+(defun jd:ist-term-mode ()
+  (term-send-raw-string "\C-I"))
 
 (defun jd:company-complete (mode)
   (cond

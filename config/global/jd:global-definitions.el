@@ -381,10 +381,48 @@
   (interactive)
   (jd:incredibly-smart-tab 'progmode))
 
-(defun jd:find-lisp-example ()
+(defun jd:incredibly-smart-tab-term-mode ()
+  (interactive)
+  (jd:incredibly-smart-tab 'term-mode))
+
+(defun jd:search-site-lisp-sources ()
   (interactive)
   (grep-compute-defaults)
-  (let ((str (read-string "Example To Search For: " nil)))
+  (let ((str (read-string "Search For: " nil)))
     (rgrep str "*.el" (concat source-directory "lisp") nil)))
+
+(defun jd:search-config-sources ()
+  (interactive)
+  (grep-compute-defaults)
+  (let ((str (read-string "Search For: " nil)))
+    (rgrep str "*.el" jd:path-prefix nil)))
+
+(defun jd:force-linum-update-columns-hack ()
+  (jd:select-window-and-macro-swap-buffers)
+  (jd:select-window-and-macro-swap-buffers))
+
+;; Custom switch buffer command that works intuitively.
+(defun jd:switch-buffer ()
+  (interactive)
+  (select-window (get-buffer-window))
+  (switch-to-buffer (buffer-name (other-buffer)) t 'force-same-window)
+  (select-window (get-buffer-window)))
+
+(defun jd:wrap-ivy-alt-done ()
+  (interactive)
+  (ivy-alt-done)
+  ((ivy--reset-state ivy-last)))
+
+(define-key ivy-minibuffer-map (kbd "<M-l>") 'jd:wrap-ivy-alt-done)
+
+(add-hook 'post-command-hook
+          (lambda ()
+            (let ((inhibit-message t)))
+            (message (format "%s" (buffer-list)))))
+
+(remove-hook 'post-command-hook
+          (lambda ()
+            (let ((inhibit-message t)))
+            (message (format "%s" (buffer-list)))))
 
 (jd:provide-feature jd:global-definitions)
