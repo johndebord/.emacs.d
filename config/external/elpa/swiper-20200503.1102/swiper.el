@@ -196,45 +196,33 @@ If the input is empty, select the previous history element instead."
           (unless (> (match-end 0) (match-beginning 0))
             (forward-char)))))))
 
+;;; John DeBord
+;;; Sept. 7th, 2020
+;;; Original modification.
+;;;
+;;; Revert this function to `swiper` version 0.11.0 to fix erroneous behavior.
 (defun swiper-query-replace ()
   "Start `query-replace' with string to replace from last search string."
   (interactive)
-  (cond ((null (window-minibuffer-p))
-         (user-error "Should only be called in the minibuffer through `swiper-map'"))
-        ((string= "" ivy-text)
-         (user-error "Empty input"))
-        (t
-         (swiper--query-replace-setup)
-         (unwind-protect
-              (let* ((enable-recursive-minibuffers t)
-                     (from (ivy-re-to-str ivy-regex))
-                     (groups (number-sequence 1 ivy--subexps))
-                     (default
-                      (list
-                       (mapconcat (lambda (i) (format "\\%d" i)) groups " ")
-                       (format "\\,(concat %s)"
-                               (if (<= ivy--subexps 1)
-                                   "\\&"
-                                 (mapconcat
-                                  (lambda (i) (format "\\%d" i))
-                                  groups
-                                  " \" \" ")))))
-                     (to
-                      (query-replace-compile-replacement
-                       (ivy-read
-                        (format "Query replace %s with: " from) nil
-                        :def default
-                        :caller 'swiper-query-replace)
-                       t)))
-                (swiper--cleanup)
-                (ivy-exit-with-action
-                 (lambda (_)
-                   (with-ivy-window
-                     (move-beginning-of-line 1)
-                     (let ((inhibit-read-only t))
-                       (perform-replace from to
-                                        t t nil))))))
-           (swiper--query-replace-cleanup)))))
+  (if (null (window-minibuffer-p))
+      (user-error "Should only be called in the minibuffer through `swiper-map'")
+    (let* ((enable-recursive-minibuffers t)
+           (from (ivy--regex ivy-text))
+           (to (minibuffer-with-setup-hook
+                   (lambda ()
+                     (setq minibuffer-default
+                           (if (string-match "\\`\\\\_<\\(.*\\)\\\\_>\\'" ivy-text)
+                               (match-string 1 ivy-text)
+                             ivy-text)))
+                 (read-from-minibuffer (format "Query replace %s with: " from)))))
+      (swiper--cleanup)
+      (ivy-exit-with-action
+       (lambda (_)
+         (with-ivy-window
+           (move-beginning-of-line 1)
+           (let ((inhibit-read-only t))
+             (perform-replace from to
+                              t t nil))))))))
 
 (ivy-configure 'swiper-query-replace
   :update-fn #'swiper--query-replace-updatefn)
@@ -487,10 +475,8 @@ such as `scroll-conservatively' are set to a high value.")
 (declare-function dired-move-to-filename "dired")
 
 ;;; John DeBord
-;;; Original modification:
 ;;; Jan. 1st, 2019
-;;;
-;;; Updated:
+;;; Original modification.
 ;;; Jun. 13th, 2020
 ;;; Upgraded to swiper-20200503.1102.
 ;;;
@@ -514,7 +500,7 @@ such as `scroll-conservatively' are set to a high value.")
 
     (concat
      " "
-     (buffer-substring-no-properties beg end)))) ;; jd
+     (buffer-substring-no-properties beg end))))
 
 (defvar swiper-use-visual-line-p
   (lambda (n-lines)

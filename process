@@ -11,7 +11,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/home/i/install/ -DCMAKE_BUILD_TYPE=Release -DCMAKE
 CMake Command/Extra:
 --------------------
 ```bash
-rm -r *; cmake -DCMAKE_PREFIX_PATH=/home/i/install -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DBoost_NO_BOOST_CMAKE=ON -DBOOST_ROOT=/home/i/2boosts/boost_1_71_0 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;debuginfo-tests;libc;libclc;libcxx;libcxxabi;libunwind;lld;lldb;openmp;parallel-libs;polly;pstl" -DLLVM_DIR=/home/i/0EXTERNAL/llvm-project-9.0.1/llvm/Release/lib/cmake/llvm -DPYTHON_EXECUTABLE=/usr/bin/python3 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ..; make -j2;
+rm -r * && cmake -DCMAKE_PREFIX_PATH=/home/i/install -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DBoost_NO_BOOST_CMAKE=ON -DBOOST_ROOT=/home/i/2boosts/boost_1_71_0 -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt;debuginfo-tests;libc;libclc;libcxx;libcxxabi;libunwind;lld;lldb;openmp;parallel-libs;polly;pstl" -DLLVM_DIR=/home/i/0EXTERNAL/llvm-project-9.0.1/llvm/Release/lib/cmake/llvm -DPYTHON_EXECUTABLE=/usr/bin/python3 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ .. && make -j2;
 ```
 
 CMake More Commands(0):
@@ -23,13 +23,19 @@ cmake -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_
 CMake More Commands(1):
 -----------------------
 ```bash
-rm -r *; cmake -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DBOOST_ROOT=/home/i/0EXTERNAL/boost_1_72_0 -DLLVM_DIR=/home/i/0EXTERNAL/git-repos/llvm-project/Release/lib/cmake/llvm -DCLANG_BUILD_TOOLS=ON -DCLANG_DEFAULT_CXX_STDLIB="libc++" -DCMAKE_CXX_COMPILER_AR=llvm-ar -DCMAKE_CXX_COMPILER_RANLIB=llvm-ranlib -DCMAKE_CXX_STANDARD=20 -DCOMPILER_RT_USE_LIBCXX=ON -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="" -DCMAKE_CXX_FLAGS="-stdlib=libc++" -DCMAKE_LINKER=lld -DCLANG_DEFAULT_LINKER=lld -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_MODULE_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_STATIC_LINKER_FLAGS="-stdlib=libc++" ..
+rm -r * && cmake -DCMAKE_INSTALL_PREFIX=/home/i/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -DBOOST_ROOT=/home/i/0EXTERNAL/boost_1_72_0 -DLLVM_DIR=/home/i/0EXTERNAL/git-repos/llvm-project/Release/lib/cmake/llvm -DCLANG_BUILD_TOOLS=ON -DCLANG_DEFAULT_CXX_STDLIB="libc++" -DCMAKE_CXX_COMPILER_AR=llvm-ar -DCMAKE_CXX_COMPILER_RANLIB=llvm-ranlib -DCMAKE_CXX_STANDARD=20 -DCOMPILER_RT_USE_LIBCXX=ON -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="" -DCMAKE_CXX_FLAGS="-stdlib=libc++" -DCMAKE_LINKER=lld -DCLANG_DEFAULT_LINKER=lld -DCMAKE_EXE_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_MODULE_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_SHARED_LINKER_FLAGS="-stdlib=libc++" -DCMAKE_STATIC_LINKER_FLAGS="-stdlib=libc++" ..
 ```
 
 `configure` Commands For Building Bitcoin:
 ------------------------------------------
 ```bash
-rm -r *; ../configure --prefix=/home/i/install --exec-prefix=/home/i/install --with-incompatible-bdb CC=/home/i/install/bin/clang CXX=/home/i/install/bin/clang++ CFLAGS="-O2" CXXFLAGS="-O2"; bear make -j1
+rm -r * && ../configure --prefix=/home/i/install --exec-prefix=/home/i/install --disable-wallet --with-incompatible-bdb CC=/home/i/install/bin/clang CXX=/home/i/install/bin/clang++ CFLAGS="-O2" CXXFLAGS="-O2" && bear make -j1
+```
+
+Building Emacs:
+---------------
+```bash
+./autogen.sh && mkdir build && cd build && ../configure && make -j4
 ```
 
 Symlink `compile_commands.json` To The Root Of The Project Directory:
@@ -126,6 +132,19 @@ git clean -dx--force
 * `-d` means to recurse through directories and directories themselves.
 * `-x` means to delete everything not having to do with the repository as well.
 
+Git Updating Fork:
+------------------
+```bash
+git remote add upstream <repo-url>
+git fetch upstream
+```
+
+Git clean everything and do it silently:
+----------------------------------------
+```bash
+git clean -qfdx
+```
+
 Creating A Swap File When In Need Of Extra Memory:
 --------------------------------------------------
 ```bash
@@ -217,6 +236,12 @@ Execute Make In A Specific Directory:
 make -C <path>
 ```
 
+Execute Make Dry-Run:
+---------------------
+```bash
+make -n <command>
+```
+
 Query Replace Newlines Plus Strings:
 ------------------------------------
 ```text
@@ -284,4 +309,10 @@ View All Compile Commands:
 --------------------------
 ```bash
 clang -cc1 --help
+```
+
+Updating Expired ELPA GPG Keys:
+-------------------------------
+```bash
+
 ```

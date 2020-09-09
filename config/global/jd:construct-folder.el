@@ -1,4 +1,5 @@
-;; Automates the construction of a customization directory.
+;; Automates the construction of a top-level customization directory.
+;; 
 ;;
 ;; A directory shall have this structure:
 ;; `````````````````````
@@ -101,32 +102,7 @@
                   (match nil)
 		  (matches nil)
 		  (match-pos nil)
-		  (new-buffer-string nil))
-	      (with-temp-buffer
-		(insert-file-contents (concat customization-folder-path "jd:" customization-folder-type "-config.el"))
-		(goto-char 1)
-		(while (search-forward-regexp "jd:.*\s" nil t 1)
-		  (setq match (match-string-no-properties 0))
-		  (setq match-pos (string-match (match-string-no-properties 0) (buffer-string)))
-		  (push (cons match match-pos) matches))
-		(while (and (string< root-name-expression (caar matches))
-                            (not (null matches)))
-		  (pop matches))
-		(if (eq matches nil)
-                    (progn
-		      (goto-char 1)
-                      (newline)
-                      (forward-line -1))
-		  (progn
-		    (goto-char (cdr (car matches)))
-		    (end-of-line)
-                    (newline)))
-		(insert
-		 (concat "(jd:load-feature " root-name " " customization-path-prefix-str " \"" customization-name "/\")"))
-		(setq new-buffer-string (buffer-string)))
-              
-	      (with-temp-file (concat customization-folder-path "/" "jd:" customization-folder-type "-config.el")
-		(insert new-buffer-string)))))
+		  (new-buffer-string nil)))))
       (error "Please give valid arguments"))))
 
 (jd:provide-feature jd:construct-folder)

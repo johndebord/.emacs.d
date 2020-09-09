@@ -1,0 +1,15 @@
+(define-key gud-minibuffer-local-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
+(define-key gud-minibuffer-local-map (kbd "<C-M-i>") 'previous-history-element)
+(define-key gud-minibuffer-local-map (kbd "<C-M-k>") 'next-history-element)
+(define-key gud-minibuffer-local-map (kbd "<jd:ret>") 'exit-minibuffer)
+(define-key gud-minibuffer-local-map (kbd "<jd:tab>") 'comint-dynamic-complete-filename)
+(define-key gud-minibuffer-local-map (kbd "<jd:C-ret>") 'exit-minibuffer)
+
+(define-key gud-mode-map (kbd "<M-u>") 'beginning-of-line)
+(define-key gud-mode-map (kbd "<C-M-i>") 'jd:comint-previous-input)
+(define-key gud-mode-map (kbd "<C-M-k>") 'jd:comint-next-input)
+(define-key gud-mode-map (kbd "<C-c> <C-d>") 'comint-send-eof)
+(define-key gud-mode-map (kbd "<C-c> <C-l>") 'comint-clear-buffer)
+(define-key gud-mode-map (kbd "<jd:ret>") 'comint-send-input)
+
+(jd:provide-feature jd:gud-kb)

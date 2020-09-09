@@ -1,114 +1,26 @@
-;; Faces.
-(defvar term)
-(defvar term-bold)
-(defvar term-color-black)
-(defvar term-color-blue)
-(defvar term-color-cyan)
-(defvar term-color-green)
-(defvar term-color-magenta)
-(defvar term-color-red)
-(defvar term-color-white)
-(defvar term-color-yellow)
-(defvar term-underline)
-
-;; Customization variables.
-(defvar explicit-shell-file-name)
-(defvar term-buffer-maximum-size)
-(defvar term-char-mode-buffer-read-only)
-(defvar term-completion-addsuffix)
-(defvar term-completion-autolist)
-(defvar term-completion-fignore)
-(defvar term-completion-recexact)
-(defvar term-default-bg-color)
-(defvar term-default-fg-color)
-(defvar term-eol-on-send)
-(defvar term-exec-hook)
-(defvar term-input-autoexpand)
-(defvar term-input-chunk-size)
-(defvar term-input-ignoredups)
-(defvar term-input-ring-file-name)
-(defvar term-mode-hook)
-(defvar term-scroll-show-maximum-output)
-(defvar term-scroll-to-bottom-on-output)
-(defvar term-suppress-hard-newline)
-
 (setq-default term-char-mode-point-at-process-mark nil)
 
-;; Determine if the cursor is on the prompt line.
 (defun jd:is-on-prompt-line ()
+  "Determine if the cursor is on the prompt line."
   (equal (line-number-at-pos) (line-number-at-pos (point-max))))
 
-;; Decide how to move the cursor, depending on the context of the cursor in the
-;; buffer.
-(defun jd:term-beginning-of-line ()
-  (interactive "^")
+(defun jd:term-paste ()
+  "Decide to paste, depending on the context of the cursor in the buffer."
+  (interactive)
   (if (jd:is-on-prompt-line)
-      (term-send-home)
-    (beginning-of-line)))
+      (term-paste)))
 
-;; Decide how to move the cursor, depending on the context of the cursor in the
-;; buffer.
-(defun jd:term-end-of-line ()
-  (interactive "^")
-  (if (jd:is-on-prompt-line)
-      (term-send-end)
-    (end-of-line)))
-
-;; Decide how to move the cursor, depending on the context of the cursor in the
-;; buffer.
 (defun jd:term-backward-char ()
+  "Decide how to move the cursor, depending on the context of the cursor in the
+buffer."
   (interactive "^")
   (if (jd:is-on-prompt-line)
       (term-send-left)
     (backward-char)))
 
-;; Decide how to move the cursor, depending on the context of the cursor in the
-;; buffer.
-(defun jd:term-forward-char ()
-  (interactive "^")
-  (if (jd:is-on-prompt-line)
-      (term-send-right)
-    (forward-char)))
-
-;; Decide how to move the cursor, depending on the context of the cursor in the
-;; buffer.
-(defun jd:term-backward-word ()
-  (interactive "^")
-  (if (jd:is-on-prompt-line)
-      (term-send-ctrl-left)
-    (backward-word)))
-
-;; Decide how to move the cursor, depending on the context of the cursor in the
-;; buffer.
-(defun jd:term-forward-word ()
-  (interactive "^")
-  (if (jd:is-on-prompt-line)
-      (term-send-ctrl-right)
-    (forward-word)))
-
-;; Decide whether or not the next input should be displayed, depending on the
-;; context of the cursor in the buffer.
-(defun jd:term-next-input ()
-  (interactive "^")
-  (if (jd:is-on-prompt-line)
-      (term-send-down)
-    (progn
-      (scroll-down-line -1)
-      (line-move 1))))
-
-;; Decide whether or not the previous input should be displayed, depending on
-;; the context of the cursor in the buffer.
-(defun jd:term-previous-input ()
-  (interactive "^")
-  (if (jd:is-on-prompt-line)
-      (term-send-up)
-    (progn
-      (scroll-down-line 1)
-      (line-move -1))))
-
-;; Go to the next line or where the currect term process mark is, depending on
-;; the context of the cursor in the buffer.
 (defun jd:term-next-line ()
+  "Go to the next line or where the currect term process mark is, depending on
+the context of the cursor in the buffer."
   (interactive "^")
   (if (save-excursion
         (forward-line)
@@ -116,13 +28,97 @@
       (goto-char (term-process-mark))
     (next-line)))
 
-;; Decide whether or not the previous word should be deleted, depending on the
-;; context of the cursor in the buffer.
-(defun jd:term-delete-backward-word ()
+(defun jd:term-forward-char ()
+  "Decide how to move the cursor, depending on the context of the cursor in the
+buffer."
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-right)
+    (forward-char)))
+
+(defun jd:term-end-of-line ()
+  "Decide how to move the cursor, depending on the context of the cursor in the
+buffer."
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-end)
+    (end-of-line)))
+
+(defun jd:term-beginning-of-line ()
+  "Decide how to move the cursor, depending on the context of the cursor in the
+buffer."
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-home)
+    (beginning-of-line)))
+
+(defun jd:term-previous-input ()
+  "Decide whether or not the previous input should be displayed, depending on
+the context of the cursor in the buffer."
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-up)
+    (progn
+      (scroll-down-line 1)
+      (line-move -1))))
+
+(defun jd:term-backward-word ()
+  "Decide how to move the cursor, depending on the context of the cursor in the
+buffer."
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-ctrl-left)
+    (backward-word)))
+
+(defun jd:term-next-input ()
+  "Decide whether or not the next input should be displayed, depending on the
+context of the cursor in the buffer."
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-down)
+    (progn
+      (scroll-down-line -1)
+      (line-move 1))))
+
+(defun jd:term-forward-word ()
+  "Decide how to move the cursor, depending on the context of the cursor in the
+buffer."
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (term-send-ctrl-right)
+    (forward-word)))
+
+(defun jd:term-clear-buffer ()
+  "Force default length columns upon a successful clear."
+  (interactive)
+  (comint-clear-buffer)
+  (jd:force-linum-update-columns-hack))
+
+(defun jd:term-send-input ()
+  "Decide whether or not the prompt line should be sent, depending on the
+context of the cursor in the buffer."
   (interactive)
   (if (jd:is-on-prompt-line)
-      (term-send-raw-string "\C-w")
-    (jd:delete-backward-word-and-reset-state-variables)))
+      (term-send-raw-string "\C-M")))
+
+(defun jd:term-delete-backward-word ()
+  "Decide whether or not the previous word should be deleted, depending on the
+context of the cursor in the buffer."
+  (interactive)
+  (if (jd:is-on-prompt-line)
+      (term-send-raw-string "\C-W")))
+
+(defun jd:goto-process-mark ()
+  "Helper function for process mark navigation."
+  (interactive)
+  (goto-char (term-process-mark)))
+
+(defun jd:term-mode-hook ()
+  (idle-highlight-mode 1)
+  (linum-mode 0)
+  (toggle-truncate-lines 1))
+
+(add-hook 'term-mode-hook 'jd:term-mode-hook)
 
 ;; Enable `cua-mode` in terminal emulator.
 (advice-add 'term-line-mode
@@ -137,18 +133,5 @@
             (lambda ()
               (set (make-local-variable 'cua-mode) t)
               (set (make-local-variable 'transient-mark-mode) t)))
-
-;; Force default length columns upon a successful clear.
-(defun jd:term-clear-buffer ()
-  (interactive)
-  (comint-clear-buffer)
-  (jd:force-linum-update-columns-hack))
-
-(defun jd:term-mode-hook ()
-  (font-lock-mode 1)
-  (idle-highlight-mode 1)
-  (toggle-truncate-lines 1))
-
-(add-hook 'term-mode-hook 'jd:term-mode-hook)
 
 (jd:provide-feature jd:term-st)

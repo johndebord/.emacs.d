@@ -1,10 +1,14 @@
 (setenv "CC"
         (concat
-         "clang"))
+         "/home/i/install/bin/clang"))
 
 (setenv "CXX"
         (concat
-         "clang++"))
+         "/home/i/install/bin/clang++"))
+
+(setenv "HISTFILE"
+        (concat
+         "/home/i/.bash_history"))
 
 (setenv "LD_LIBRARY_PATH"
         (concat

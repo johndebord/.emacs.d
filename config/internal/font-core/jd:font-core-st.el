@@ -1,5 +1,4 @@
-;; Customization variables.
-(setq-default font-lock-global-modes t)
+(setq-default font-lock-global-modes nil)
 
 ;; I've decided to disable global font-locking. This is so that it will be
 ;; apparent that I have not yet customized the mode that I'm cucrently in.

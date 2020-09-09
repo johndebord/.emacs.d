@@ -9,3 +9,4 @@ config/external/elpa/archives/
 config/external/lsp-mode/lsp-sessions/.lsp-session-v1
 config/internal/eshell/eshell/history
 config/internal/eshell/eshell/lastdir
+eln-cache/
