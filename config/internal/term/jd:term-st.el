@@ -1,8 +1,11 @@
 (setq-default term-char-mode-point-at-process-mark nil)
 
+(defvar jd:term-process-mark-overlay nil
+  "Overlay for the `term-mode` marker.")
+
 (defun jd:is-on-prompt-line ()
   "Determine if the cursor is on the prompt line."
-  (equal (line-number-at-pos) (line-number-at-pos (point-max))))
+  (equal (line-number-at-pos) (line-number-at-pos (term-process-mark))))
 
 (defun jd:term-paste ()
   "Decide to paste, depending on the context of the cursor in the buffer."
@@ -118,6 +121,34 @@ context of the cursor in the buffer."
   (linum-mode 0)
   (toggle-truncate-lines 1))
 
+(defun jd:term-process-mark ()
+  "Helper function since `term-process-mark` expects to be called in the
+`*terminal*` buffer itself."
+  (if (processp (get-buffer-process (get-buffer "*terminal*")))
+      (process-mark (get-buffer-process (get-buffer "*terminal*")))
+    nil))
+
+(defun jd:show-term-process-mark-overlay (&rest _)
+  "Show the current position of the process mark in the `*terminal*` buffer.
+Courtesy: https://emacs.stackexchange.com/questions/44642"
+  (unless (null (get-buffer "*terminal*"))
+    (unless jd:term-process-mark-overlay
+      (setq jd:term-process-mark-overlay (make-overlay
+                                          (jd:term-process-mark)
+                                          (jd:term-process-mark)
+                                          (get-buffer "*terminal*")))
+      (overlay-put jd:term-process-mark-overlay 'face '((t :inherit show-paren-mismatch))))
+    (let ((term-process-mark (jd:term-process-mark)))
+      (cond
+       ((null term-process-mark)
+        (delete-overlay jd:term-process-mark-overlay))
+       
+       (t
+        (move-overlay jd:term-process-mark-overlay
+                      term-process-mark (1+ term-process-mark)
+                      (get-buffer "*terminal*")))))))
+
+(add-hook 'pre-redisplay-functions 'jd:show-term-process-mark-overlay)
 (add-hook 'term-mode-hook 'jd:term-mode-hook)
 
 ;; Enable `cua-mode` in terminal emulator.
