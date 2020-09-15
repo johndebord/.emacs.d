@@ -316,3 +316,21 @@ Updating Expired ELPA GPG Keys:
 ```bash
 
 ```
+
+Echo Out Minimal C++ Program For Testing Purposes:
+--------------------------------------------------
+```bash
+printf "#include<iostream>\nint main(){std::cout<<\"ok\\\n\";}" > main.cpp
+```
+
+Git Amend Last Commit Message:
+------------------------------
+```bash
+git commit --amend -m "<commit-new-message>"
+```
+
+Git _Squash_ n Commits Into One:
+--------------------------------
+```bash
+git reset --soft HEAD~n && git commit -m "<commit-message>" 
+```

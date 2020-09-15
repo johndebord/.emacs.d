@@ -134,6 +134,7 @@ is on."
   "Clear the current buffer."
   (interactive)
   (let ((inhibit-read-only t))
-    (erase-buffer)))
+    (erase-buffer))
+  (jd:force-linum-update-columns-hack))
 
 (jd:provide-feature jd:global-definitions)

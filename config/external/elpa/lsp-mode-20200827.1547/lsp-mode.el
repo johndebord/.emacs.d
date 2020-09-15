@@ -5730,6 +5730,9 @@ textDocument/didOpen for the new file."
     (let ((lsp--flushing-delayed-changes t))
       (lsp--flush-delayed-changes)))
 
+  (message (format "In function `lsp--send-no-wait`...MESSAGE: %s" message))
+  (message (format "In function `lsp--send-no-wait`...PROC:    %s" proc))
+
   (condition-case err
       (process-send-string proc message)
     ('error (lsp--error "Sending to process failed with the following error: %s"

@@ -8,16 +8,18 @@
 
 (setenv "HISTFILE"
         (concat
-         "/home/i/.bash_history"))
+         "/home/i/.history"))
 
 (setenv "LD_LIBRARY_PATH"
         (concat
-         "/home/i/install/lib"
+         "/home/i/install/lib:"
          "/root/install/lib"))
 
 (setenv "PATH"
         (concat
+         "/home/i/install/wrapper-scripts:"
          "/home/i/install/bin:"
+         "/root/install/wrapper-scripts:"
          "/root/install/bin:"
          "/bin:"
          "/sbin:"

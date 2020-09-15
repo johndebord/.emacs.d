@@ -1,4 +1,5 @@
 (setq-default lsp-diagnostics-provider :none)
+(setq-default lsp-eldoc-enable-hover nil)
 (setq-default lsp-enable-links nil)
 (setq-default lsp-enable-symbol-highlighting nil)
 (setq-default lsp-modeline-code-actions-enable nil)

@@ -1,3 +1,5 @@
+(define-key messages-buffer-mode-map (kbd "<C-c> <C-l>") 'jd:erase-buffer)
+
 (define-key minibuffer-local-shell-command-map (kbd "<C-g>") 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-shell-command-map (kbd "<C-M-i>") 'previous-history-element)
 (define-key minibuffer-local-shell-command-map (kbd "<C-M-k>") 'next-history-element)
