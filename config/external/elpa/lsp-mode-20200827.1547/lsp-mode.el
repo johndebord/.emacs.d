@@ -3075,6 +3075,11 @@ CANCEL-TOKEN is the token that can be used to cancel request."
                                                    no-merge
                                                    target-workspaces))
              (callback (lambda (result)
+                         (if result
+                             (progn
+                               (message "In `lsp--send-request-async` Message:")
+                               (princ result)
+                               (message "In `lsp--send-request-async` End Message")))
                          (lsp--request-cleanup-hooks id)
                          (funcall callback result)))
              (error-callback (lsp--create-async-callback
@@ -5725,13 +5730,22 @@ textDocument/didOpen for the new file."
 
 (defun lsp--send-no-wait (message proc)
   "Send MESSAGE to PROC without waiting for further output."
+  
+  (if message
+      (progn
+        (message "In `lsp--send-no-wait` First Message:")
+        (princ message)
+        (message "In `lsp--send-no-wait` End First Message")))
+  
+  (if proc
+      (progn
+        (message "In `lsp--send-no-wait` Second Message:")
+        (princ proc)
+        (message "In `lsp--send-no-wait` End Second Message")))
 
   (unless lsp--flushing-delayed-changes
     (let ((lsp--flushing-delayed-changes t))
       (lsp--flush-delayed-changes)))
-
-  (message (format "In function `lsp--send-no-wait`...MESSAGE: %s" message))
-  (message (format "In function `lsp--send-no-wait`...PROC:    %s" proc))
 
   (condition-case err
       (process-send-string proc message)

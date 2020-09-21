@@ -127,7 +127,7 @@ git reset --hard HEAD
 Git Cleaning (Removing Unstaged Stuff) A Repository:
 ---------------------------
 ```bash
-git clean -dx--force
+git clean -dx --force
 ```
 * `-d` means to recurse through directories and directories themselves.
 * `-x` means to delete everything not having to do with the repository as well.

@@ -6,71 +6,81 @@ this function is for exactly that."
       (yas-exit-all-snippets)
     (keyboard-quit)))
 
+;; TODO select the buffer `(select-window (get-buffer-window))`
+;; TODO fix the "or: Wrong type argument: number-or-marker-p, nil [2 times]" error
 (defun jd:incredibly-smart-return ()
   "Depending on the context of the `eshell-mode` buffer and where the cursor is,
 this function will navigate to the given file and possibly line of context."
   (interactive)
-  (if (get-char-property (point) 'face)
+  (cond
+   ((get-char-property (point) 'face)
+    
+    (let ((save-point (point))
+          (char-property-value nil)
+          (file-name nil)
+          (line-number nil)
+          (column-number nil))
       
-      (let ((save-point (point))
-            (char-property-value nil)
-            (file-name nil)
-            (line-number nil)
-            (column-number nil))
-        
-        (setq char-property-value (get-char-property (point) 'face))
-        
-        (cond ((not (null (button-at (point))))
-               (jd:push-button))
-              
-              ((or
-                (equal (cdr (nth 0 char-property-value)) "green3")
-                (equal (cdr (nth 0 char-property-value)) "blue2"))
-	       (setq file-name (thing-at-point 'filename 'no-properties))
-	       (find-file file-name)
-	       (forward-line (- (line-number-at-pos))))
-              
-	      ((equal (cdr (nth 0 char-property-value)) "yellow3")
-	       (setq line-number (thing-at-point 'word 'no-properties))
-	       (beginning-of-line)
-	       (while (not (equal (cdr (nth 0 (get-char-property (point) 'face))) "green3"))
-	         (forward-line -1))
-	       (setq file-name (thing-at-point 'filename 'no-properties))
-               (goto-char save-point)
-	       (find-file file-name)
-               (goto-char (point-min))
-	       (forward-line (- (string-to-number line-number) 1)))
-              
-              ((or (equal (nth 0 (cdr char-property-value)) "#666666")
-                   (not (null (string-match ":[0-9]+:[0-9]+:" (thing-at-point 'filename 'no-properties)))))
-	       (setq file-name (car (split-string (thing-at-point 'filename 'no-properties) ":")))
-               (setq line-number (car (cdr (split-string (thing-at-point 'filename 'no-properties) ":"))))
-               (setq column-number (car (cddr (split-string (thing-at-point 'filename 'no-properties) ":"))))
-               (find-file file-name)
-               (goto-char (point-min))
-               (forward-line (- (string-to-number line-number) 1))
-               (forward-char (- (string-to-number column-number) 1)))
+      (setq char-property-value (get-char-property (point) 'face))
+      
+      (cond ((button-at (point))
+             (jd:push-button))
+            
+            ((or
+              (equal (cdr (nth 0 char-property-value)) "green3")
+              (equal (cdr (nth 0 char-property-value)) "blue2"))
+             (setq file-name (thing-at-point 'filename 'no-properties))
+             (find-file file-name)
+             (select-window (get-buffer-window))
+             (forward-line (- (line-number-at-pos))))
+            
+            ((equal (cdr (nth 0 char-property-value)) "yellow3")
+             (setq line-number (thing-at-point 'word 'no-properties))
+             (beginning-of-line)
+             (while (not (equal (cdr (nth 0 (get-char-property (point) 'face))) "green3"))
+               (forward-line -1))
+             (setq file-name (thing-at-point 'filename 'no-properties))
+             (goto-char save-point)
+             (find-file file-name)
+             (select-window (get-buffer-window))
+             (goto-char (point-min))
+             (forward-line (- (string-to-number line-number) 1)))
+            
+            ((or (equal (nth 0 (cdr char-property-value)) "#666666")
+                 (not (null (string-match ":[0-9]+:[0-9]+:" (thing-at-point 'filename 'no-properties)))))
+             (setq file-name (car (split-string (thing-at-point 'filename 'no-properties) ":")))
+             (setq line-number (car (cdr (split-string (thing-at-point 'filename 'no-properties) ":"))))
+             (setq column-number (car (cddr (split-string (thing-at-point 'filename 'no-properties) ":"))))
+             (find-file file-name)
+             (select-window (get-buffer-window))
+             (goto-char (point-min))
+             (forward-line (- (string-to-number line-number) 1))
+             (forward-char (- (string-to-number column-number) 1)))
 
-              ((not (null (string-match ":[0-9]+:[0-9]+:" (thing-at-point 'filename 'no-properties))))
-               (setq file-name (car (split-string (thing-at-point 'filename 'no-properties) ":")))
-               (setq line-number (car (cdr (split-string (thing-at-point 'filename 'no-properties) ":"))))
-               (setq column-number (car (cddr (split-string (thing-at-point 'filename 'no-properties) ":"))))
-               (find-file file-name)
-               (goto-char (point-min))
-               (forward-line (- (string-to-number line-number) 1))
-               (forward-char (- (string-to-number column-number) 1))))))
-  
-  (if (and (thing-at-point 'filename)
-           (not (null (string-match ":[0-9]+:[0-9]+:" (thing-at-point 'filename 'no-properties)))))
-      (progn
-        (setq file-name (car (split-string (thing-at-point 'filename 'no-properties) ":")))
-        (setq line-number (car (cdr (split-string (thing-at-point 'filename 'no-properties) ":"))))
-        (setq column-number (car (cddr (split-string (thing-at-point 'filename 'no-properties) ":"))))
-        (find-file file-name)
-        (goto-char (point-min))
-        (forward-line (- (string-to-number line-number) 1))
-        (forward-char (- (string-to-number column-number) 1))))
-  (eshell-send-input))
+            ((not (null (string-match ":[0-9]+:[0-9]+:" (thing-at-point 'filename 'no-properties))))
+             (setq file-name (car (split-string (thing-at-point 'filename 'no-properties) ":")))
+             (setq line-number (car (cdr (split-string (thing-at-point 'filename 'no-properties) ":"))))
+             (setq column-number (car (cddr (split-string (thing-at-point 'filename 'no-properties) ":"))))
+             (find-file file-name)
+             (select-window (get-buffer-window))
+             (goto-char (point-min))
+             (forward-line (- (string-to-number line-number) 1))
+             (forward-char (- (string-to-number column-number) 1))))))
+   
+   ((and (thing-at-point 'filename)
+         (not (null (string-match ":[0-9]+:[0-9]+:" (thing-at-point 'filename 'no-properties)))))
+    (progn
+      (setq file-name (car (split-string (thing-at-point 'filename 'no-properties) ":")))
+      (setq line-number (car (cdr (split-string (thing-at-point 'filename 'no-properties) ":"))))
+      (setq column-number (car (cddr (split-string (thing-at-point 'filename 'no-properties) ":"))))
+      (find-file file-name)
+      (select-window (get-buffer-window))
+      (goto-char (point-min))
+      (forward-line (- (string-to-number line-number) 1))
+      (forward-char (- (string-to-number column-number) 1))))
+
+   (t
+    (eshell-send-input))))
 
 (defun jd:incredibly-smart-tab-default () (interactive) (jd:incredibly-smart-tab 'default))
 (defun jd:incredibly-smart-tab-eshell () (interactive) (jd:incredibly-smart-tab 'eshell))

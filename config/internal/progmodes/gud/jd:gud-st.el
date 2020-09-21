@@ -5,7 +5,9 @@
 context of the cursor in the buffer."
   (interactive "^")
   (if (equal (line-number-at-pos) (count-lines (point-max) (point-min)))
-      (comint-next-input 1)
+      (progn
+        (end-of-line)
+        (comint-next-input 1))
     (progn
       (scroll-down-line -1)
       (forward-line 1))))
@@ -16,7 +18,9 @@ context of the cursor in the buffer."
 the context of the cursor in the buffer."
   (interactive "^")
   (if (equal (line-number-at-pos) (count-lines (point-max) (point-min)))
-      (comint-previous-input 1)
+      (progn
+        (end-of-line)
+        (comint-previous-input 1))
     (progn
       (scroll-down-line 1)
       (forward-line -1))))

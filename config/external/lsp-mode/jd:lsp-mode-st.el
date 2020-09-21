@@ -111,7 +111,7 @@
 
 ;; Boiler-plate for making `lsp-mode` work during an `ssh` session.
 (lsp-register-client
- (make-lsp-client :new-connection (lsp-tramp-connection "/root/install/bin/clangd")
+ (make-lsp-client :new-connection (lsp-tramp-connection "/root/install/bin/clangd --background-index=true --header-insertion=never --pretty")
                   :major-modes '(c++-mode)
                   :remote? t
                   :server-id 'work))

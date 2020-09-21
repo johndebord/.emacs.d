@@ -1,4 +1,5 @@
 (setq-default term-char-mode-point-at-process-mark nil)
+(setq-default term-buffer-maximum-size 32768)
 
 (defvar jd:term-process-mark-overlay nil
   "Overlay for the `term-mode` marker.")
@@ -55,12 +56,26 @@ buffer."
       (term-send-home)
     (beginning-of-line)))
 
+(defun jd:term-next-input ()
+  "Decide whether or not the next input should be displayed, depending on the
+context of the cursor in the buffer."
+  (interactive "^")
+  (if (jd:is-on-prompt-line)
+      (progn
+        (jd:term-end-of-line)
+        (term-send-down))
+    (progn
+      (scroll-down-line -1)
+      (line-move 1))))
+
 (defun jd:term-previous-input ()
   "Decide whether or not the previous input should be displayed, depending on
 the context of the cursor in the buffer."
   (interactive "^")
   (if (jd:is-on-prompt-line)
-      (term-send-up)
+      (progn
+        (jd:term-end-of-line)
+        (term-send-up))
     (progn
       (scroll-down-line 1)
       (line-move -1))))
@@ -72,16 +87,6 @@ buffer."
   (if (jd:is-on-prompt-line)
       (term-send-ctrl-left)
     (backward-word)))
-
-(defun jd:term-next-input ()
-  "Decide whether or not the next input should be displayed, depending on the
-context of the cursor in the buffer."
-  (interactive "^")
-  (if (jd:is-on-prompt-line)
-      (term-send-down)
-    (progn
-      (scroll-down-line -1)
-      (line-move 1))))
 
 (defun jd:term-forward-word ()
   "Decide how to move the cursor, depending on the context of the cursor in the
@@ -147,6 +152,17 @@ Courtesy: https://emacs.stackexchange.com/questions/44642"
         (move-overlay jd:term-process-mark-overlay
                       term-process-mark (1+ term-process-mark)
                       (get-buffer "*terminal*")))))))
+
+(defun jd:term-kill-buffer ()
+  "Created this function to avoid erroneous behavior when killing a `term-mode` buffer during an ssh session.
+
+TODO:
+Add advice in `term-emulate-terminal` instead of using this function of
+rind another way of fixing this behavior."
+  (interactive)
+  (if (processp (get-buffer-process (current-buffer)))
+      (message "Send `eof` before killing buffer.")
+    (kill-buffer)))
 
 (add-hook 'pre-redisplay-functions 'jd:show-term-process-mark-overlay)
 (add-hook 'term-mode-hook 'jd:term-mode-hook)

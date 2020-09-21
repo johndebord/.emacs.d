@@ -57,7 +57,9 @@ buffer."
 context of the cursor in the buffer."
   (interactive "^")
   (if (equal (line-number-at-pos) (count-lines (point-max) (point-min)))
-      (eshell-next-input 1)
+      (progn
+        (end-of-line)
+        (eshell-next-input 1))
     (progn
       (scroll-down-line -1)
       (line-move 1))))
@@ -67,7 +69,9 @@ context of the cursor in the buffer."
 the context of the cursor in the buffer."
   (interactive "^")
   (if (equal (line-number-at-pos) (count-lines (point-max) (point-min)))
-      (eshell-previous-input 1)
+      (progn
+        (end-of-line)
+        (eshell-previous-input 1))
     (progn
       (scroll-down-line 1)
       (line-move -1))))
