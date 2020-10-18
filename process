@@ -35,7 +35,7 @@ rm -r * && ../configure --prefix=/home/i/install --exec-prefix=/home/i/install -
 Building Emacs:
 ---------------
 ```bash
-./autogen.sh && mkdir build && cd build && ../configure && make -j4
+./autogen.sh && mkdir build && cd build && ../configure --prefix=/home/i/install --exec-prefix=/home/i/install --with-json && bear make -j2
 ```
 
 Symlink `compile_commands.json` To The Root Of The Project Directory:
@@ -187,6 +187,12 @@ Extracting a `.tar.xz` File:
 tar -xvf <file>.tar.xz
 ```
 
+Extracting a `.tar.gz` File:
+----------------------------
+```bash
+tar -xf <file>.tar.gz
+```
+
 OpenSSL Encrypting/Decrypting A File:
 -------------------------------------
 ```bash
@@ -333,4 +339,60 @@ Git _Squash_ n Commits Into One:
 --------------------------------
 ```bash
 git reset --soft HEAD~n && git commit -m "<commit-message>" 
+```
+
+Make Replace CXXFLAGS Environment Variable:
+-------------------------------------------
+```bash
+make CXXFLAGS="-<flag>"
+```
+
+Make Append CXXFLAGS Environment Variable:
+------------------------------------------
+```bash
+make CXXFLAGS:="$(CXXFLAGS) -<flag>"
+```
+
+Environment Variable To Look Into More:
+---------------------------------------
+```bash
+LDLIBS
+```
+
+C Compiler Flags:
+-----------------
+```bash
+CFLAGS
+```
+
+C++ Compiler Flags:
+-------------------
+```bash
+CXXFLAGS
+```
+
+Preprocessor Flags:
+-------------------
+```bash
+CPPFLAGS
+```
+
+Disable All Compiler Warnings:
+------------------------------
+```bash
+clang++ -Wno-everything
+```
+
+```bash
+g++ -w
+```
+
+Formatting An SD Card:
+----------------------
+```bash
+sudo dd if=/dev/zero of=/dev/<device> bs=4096 status=progress      # Zero-out The entire SD card.
+sudo parted /dev/<device> --script -- mklabel gpt                  # Create the GPT parition table.
+sudo parted /dev/<device> --script -- mkpart primary ext4 0% 100%  # Create an EXT4 partition that takes up the whole space.
+sudo mkfs.ext4 -F /dev/<device>1                                   # Format the partition to EXT4.
+sudo parted /dev/<device> --script print                           # Verify by printing the partition table.
 ```

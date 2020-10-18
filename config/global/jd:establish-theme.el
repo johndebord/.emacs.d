@@ -76,6 +76,7 @@
    `(mode-line ((t (:background ,jd:grey0 :foreground ,jd:white))))
    `(mode-line-inactive ((t (:background ,jd:grey5))))
    `(query-replace ((t (:background ,jd:grey2))))
+   `(reb-match-0 ((t (:background ,jd:grey2))))
    `(region ((t (:background ,jd:grey2))))
    `(show-paren-match ((t (:background ,jd:grey4))))
    `(show-paren-mismatch ((t (:background ,jd:reddd)))))

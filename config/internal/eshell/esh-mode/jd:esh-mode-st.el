@@ -84,7 +84,7 @@ the context of the cursor in the buffer."
   ;; implemented (this is one of the cleanest ways I could come up with).
   (let ((message-log-max nil))
     (with-temp-message (or (current-message) "")
-      (jd:load-feature jd:esh-mode-kb jd:internal-prefix "eshell/esh-mode/")))
+      (jd:load-feature jd:esh-mode-kb jd:internal-prefix "/eshell/esh-mode/")))
   (set (make-local-variable 'company-backends)
        '((company-capf)))
   (set (make-local-variable 'electric-pair-pairs)
