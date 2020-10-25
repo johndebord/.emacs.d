@@ -6,7 +6,7 @@
                         :family "Monospace"
                         ;; :foundry nil
                         :width 'normal
-                        :height 98
+                        :height 130
                         :weight 'normal
                         :slant 'normal
                         :foreground nil

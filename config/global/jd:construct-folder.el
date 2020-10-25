@@ -14,11 +14,11 @@
 ;;
 ;; The `*.el` file should have this structure:
 ;; ``````````````````````
-;; (jd:load-feature cc-mode jd:site-lisp-prefix "progmodes/")
+;; (jd:load-feature cc-mode (concat jd:site-lisp-prefix "/progmodes/"))
 ;; (jd:load-feature jd:cc-mode-kb jd:internal-prefix "cc-mode/")
 ;; (jd:load-feature jd:cc-mode-st jd:internal-prefix "cc-mode/")
 ;; 
-;; (jd:provide-feature 'jd:cc-mode)
+;; (jd:provide-feature jd:cc-mode)
 ;; `````````````````````
 ;;
 ;; The `*-kb.el` file should have this structure:
@@ -26,7 +26,7 @@
 ;; (setq-default c++-mode-map (make-sparse-keymap))
 ;; (define-key ...)
 ;; 
-;; (provide 'jd:cc-mode-kb)
+;; (provide jd:cc-mode-kb)
 ;; 
 ;; ;; File: /usr/local/share/emacs/26.3.50/lisp/progmodes/cc-mode.elc
 ;; ;; 
@@ -34,18 +34,15 @@
 ;;
 ;; The `*-st.el` file should have this structure:
 ;; `````````````````````
-;; ;; Faces.
-;; (defvar ...)
-
-;; ;; Customization variables.
-;; (defvar ...)
+;; ;; Customized variables.
+;; (setq-default ...)
 ;;
 ;; (defun jd:c++-mode-hook ()
 ;;   ...)
 ;; 
 ;; (add-hook ...)
 ;; 
-;; (provide 'jd:cc-mode-st)
+;; (provide jd:cc-mode-st)
 ;; `````````````````````
 (defun jd:construct-folder ()
   (interactive)
@@ -77,9 +74,9 @@
 		 (settings-file
                   (concat "jd:" customization-name "-st.el"))
                  (root-file-str
-                  (concat ";; (jd:load-feature " customization-name " " source-path-prefix-str        " \"\")\n"
-                          "(jd:load-feature "    keybindings-name   " " customization-path-prefix-str " \"" customization-name "/\")\n"
-                          "(jd:load-feature "    settings-name      " " customization-path-prefix-str " \"" customization-name "/\")\n\n"
+                  (concat ";; (jd:load-feature " customization-name " (concat " source-path-prefix-str " \"/\"))\n"
+                          "(jd:load-feature "    keybindings-name   " " customization-path-prefix-str " \"/" customization-name "/\")\n"
+                          "(jd:load-feature "    settings-name      " " customization-path-prefix-str " \"/" customization-name "/\")\n\n"
                           "(jd:provide-feature " root-name ")\n"))
                  (keybindings-file-str
                   (concat "(jd:provide-feature " keybindings-name ")\n"))
@@ -96,13 +93,7 @@
             (with-temp-file (concat customization-folder-path "/" customization-name "/" keybindings-file)
 	      (insert keybindings-file-str))
             (with-temp-file (concat customization-folder-path "/" customization-name "/" settings-file)
-	      (insert settings-file-str))
-            
-	    (let ((root-name-expression (concat "jd:load-feature " root-name " " customization-path-prefix-str " "))
-                  (match nil)
-		  (matches nil)
-		  (match-pos nil)
-		  (new-buffer-string nil)))))
+	      (insert settings-file-str))))
       (error "Please give valid arguments"))))
 
 (jd:provide-feature jd:construct-folder)

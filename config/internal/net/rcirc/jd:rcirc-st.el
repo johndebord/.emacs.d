@@ -23,7 +23,6 @@ the context of the cursor in the buffer."
     (forward-line -1)))
 
 (defun jd:rcirc-mode-hook ()
-  (electric-pair-mode 1)
   (idle-highlight-mode 1))
 
 (add-hook 'rcirc-mode-hook 'jd:rcirc-mode-hook)

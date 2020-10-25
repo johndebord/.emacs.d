@@ -3,7 +3,6 @@
 
 (defun jd:eval-expression-minibuffer-setup-hook ()
   (eldoc-mode 1)
-  (electric-pair-mode 1)
   (idle-highlight-mode 1))
 
 (add-hook 'eval-expression-minibuffer-setup-hook 'jd:eval-expression-minibuffer-setup-hook)

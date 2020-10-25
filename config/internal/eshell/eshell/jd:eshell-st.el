@@ -1,3 +1,3 @@
-(setq-default eshell-directory-name (concat jd:internal-prefix "/eshell/eshell/eshell"))
+(setq-default eshell-directory-name (concat jd:path-prefix "/eshell"))
 
 (jd:provide-feature jd:eshell-st)

@@ -4,7 +4,7 @@
 (setq-default lsp-enable-symbol-highlighting nil)
 (setq-default lsp-modeline-code-actions-enable nil)
 (setq-default lsp-modeline-diagnostics-enable nil)
-(setq-default lsp-session-file (concat jd:external-prefix "lsp-mode/lsp-sessions/lsp-session-v1"))
+(setq-default lsp-session-file (concat jd:path-prefix "/lsp-session-v1"))
 
 ;; `lsp-clangd.el`
 (setq-default lsp-clients-clangd-args '("--background-index=true" "--header-insertion=never" "--pretty"))
@@ -111,9 +111,11 @@
 
 ;; Boiler-plate for making `lsp-mode` work during an `ssh` session.
 (lsp-register-client
- (make-lsp-client :new-connection (lsp-tramp-connection "/root/install/bin/clangd --background-index=true --header-insertion=never --pretty")
-                  :major-modes '(c++-mode)
-                  :remote? t
-                  :server-id 'work))
+ (make-lsp-client
+  :new-connection
+  (lsp-tramp-connection "/root/install/bin/clangd --background-index=true --header-insertion=never --pretty")
+  :major-modes '(c++-mode)
+  :remote? t
+  :server-id 'work))
 
 (jd:provide-feature jd:lsp-mode-st)

@@ -25,8 +25,7 @@ which source code was evaluated."
              (save-excursion
                (end-of-defun)
                (point))))
-        (pulse-momentary-highlight-region beg end 'highlight)
-        (eval-defun nil)))))
+        (pulse-momentary-highlight-region beg end 'highlight)))))
 
 (defun jd:eval-last-sexp ()
   "Evaluate the sexp and pulse highlight the region to visibly show exactly
@@ -63,7 +62,6 @@ exactly which source code was evaluated."
 (defun jd:emacs-lisp-mode-hook ()
   (company-mode 1)
   (eldoc-mode 1)
-  (electric-pair-mode 1)
   (idle-highlight-mode 1)
   (yas-minor-mode 1)
   (set (make-local-variable 'company-backends)

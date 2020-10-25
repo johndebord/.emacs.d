@@ -2,6 +2,63 @@
 (setq-default gdb-show-main nil)
 (setq-default gud-gdb-command-name "gdb --quiet --interpreter=mi")
 
+(jd:site-source-redef
+ (define-derived-mode gdb-breakpoints-mode gdb-parent-mode "Breakpoints"
+   "Major mode for gdb breakpoints."
+   (setq header-line-format jd:gdb-breakpoints-header)
+   'gdb-invalidate-breakpoints))
+
+(jd:site-source-redef
+ (define-derived-mode gdb-locals-mode gdb-parent-mode "Locals"
+   "Major mode for gdb locals."
+   (setq header-line-format jd:gdb-locals-header)
+   'gdb-invalidate-locals))
+
+(jd:site-source-redef
+ (define-derived-mode gdb-registers-mode gdb-parent-mode "Registers"
+   "Major mode for gdb registers."
+   (setq header-line-format jd:gdb-registers-header)
+   'gdb-invalidate-registers))
+
+(jd:site-source-redef
+ (define-derived-mode gdb-disassembly-mode gdb-parent-mode "Disassembly"
+   "Major mode for GDB disassembly information."
+   (setq header-line-format jd:gdb-disassembly-header)
+   (add-to-list 'overlay-arrow-variable-list 'gdb-disassembly-position)
+   (setq fringes-outside-margins t)
+   (set (make-local-variable 'gdb-disassembly-position) (make-marker))
+   (set (make-local-variable 'font-lock-defaults)
+        '(gdb-disassembly-font-lock-keywords))
+   'gdb-invalidate-disassembly))
+
+(jd:site-source-redef
+ (define-derived-mode gdb-frames-mode gdb-parent-mode "Frames"
+   "Major mode for gdb call stack."
+   (setq header-line-format jd:gdb-stack-header)
+   (setq gdb-stack-position (make-marker))
+   (add-to-list 'overlay-arrow-variable-list 'gdb-stack-position)
+   (setq truncate-lines t)  ;; Make it easier to see overlay arrow.
+   (set (make-local-variable 'font-lock-defaults)
+        '(gdb-frames-font-lock-keywords))
+   'gdb-invalidate-frames))
+
+(jd:site-source-redef
+ (define-derived-mode gdb-threads-mode gdb-parent-mode "Threads"
+   "Major mode for GDB threads."
+   (setq header-line-format jd:gdb-threads-header)
+   (setq gdb-thread-position (make-marker))
+   (add-to-list 'overlay-arrow-variable-list 'gdb-thread-position)
+   (set (make-local-variable 'font-lock-defaults)
+        '(gdb-threads-font-lock-keywords))
+   'gdb-invalidate-threads))
+
+(jd:site-source-redef
+ (define-derived-mode gdb-inferior-io-mode comint-mode "Inferior I/O"
+   "Major mode for gdb inferior-io."
+   :syntax-table nil :abbrev-table nil
+   (setq header-line-format jd:gdb-inferior-io-header)
+   (make-comint-in-buffer "gdb-inferior" (current-buffer) nil)))
+
 (defmacro jd:gdb-propertize-header (name display-function mouse-face face)
   `(propertize
     ,name

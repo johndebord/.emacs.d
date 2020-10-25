@@ -1,7 +1,6 @@
 (defun jd:lisp-mode-hook ()
   (company-mode 1)
   (eldoc-mode 1)
-  (electric-pair-mode 1)
   (idle-highlight-mode 1)
   (yas-minor-mode 1)
   (set (make-local-variable 'company-backends)

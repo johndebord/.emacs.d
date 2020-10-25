@@ -78,7 +78,6 @@ the context of the cursor in the buffer."
 
 (defun jd:eshell-mode-hook ()
   (company-mode 1)
-  (electric-pair-mode 1)
   (idle-highlight-mode 1)
   ;; Hack to get around the wonky way the `eshell-mode` keybindings are
   ;; implemented (this is one of the cleanest ways I could come up with).

@@ -1,6 +1,6 @@
-(setq-default auto-save-file-name-transforms `((".*" ,(concat jd:path-prefix "autosaves/") t)))
+(setq-default auto-save-file-name-transforms `((".*" ,(concat jd:path-prefix "/autosaves") t)))
 (setq-default backup-by-copying t)
-(setq-default backup-directory-alist `((".*" . ,(concat jd:path-prefix "backups/"))))
+(setq-default backup-directory-alist `((".*" . ,(concat jd:path-prefix "/backups"))))
 (setq-default delete-auto-save-files nil)
 (setq-default remote-shell-program (purecopy "ssh"))
 

@@ -1,30 +1,17 @@
 ;;; Author: John DeBord
 
-(defconst jd:big-storage-dir
-  (concat (getenv "HOME") "/0EXTERNAL"))
+(defconst jd:site-lisp-prefix "/Applications/Emacs.app/Contents/Resources/lisp")
 
 (defconst jd:path-prefix
   (concat (getenv "HOME") "/.emacs.d"))
 
-(defconst jd:install-prefix
-  (concat (getenv "HOME") "/install"))
-
 (defconst jd:elc-prefix
   (concat jd:path-prefix "/.elc"))
-
-(defconst jd:site-lisp-prefix
-  (concat jd:big-storage-dir "/git-repos/emacs-fork/lisp"))
 
 (defconst jd:global-prefix
   (concat jd:path-prefix "/config/global"))
 
-(defconst jd:global-elisp-files-prefix
-  (concat jd:path-prefix "/config/global"))
-
 (defconst jd:external-prefix
-  (concat jd:path-prefix "/config/external"))
-
-(defconst jd:external-elisp-files-prefix
   (concat jd:path-prefix "/config/external"))
 
 (defconst jd:internal-prefix
@@ -84,7 +71,7 @@
 (setq-default show-help-function nil)
 
 ;;; `lread.c`
-(setq-default source-directory (concat jd:big-storage-dir "/git-repos/emacs-fork"))
+(setq-default source-directory (concat (getenv "HOME") "/emacs"))
 
 ;;; `minibuf.c`
 (setq-default enable-recursive-minibuffers t)
@@ -102,11 +89,9 @@
      (defconst ,feature nil)
      (provide ',feature)))
 
+(defmacro jd:site-source-redef (form)
+  form)
+
 (jd:load-feature jd:external-config (concat jd:external-prefix "/"))
 (jd:load-feature jd:internal-config (concat jd:internal-prefix "/"))
 (jd:load-feature jd:global-config (concat jd:global-prefix "/"))
-
-;; Strange bug that causes `electric-pair-mode` to not work correctly unless the
-;; file (not the `.elc` file) is explicitly loaded (Emacs version 28.0.50 does
-;; not have this problem).
-(jd:load-feature elec-pair (concat jd:site-lisp-prefix "/"))
