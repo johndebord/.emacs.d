@@ -1,6 +1,7 @@
 *~
 *#
 *.elc
+lsp-session-v1
 network-security.data
 tramp
 autosaves/
@@ -10,3 +11,5 @@ config/external/lsp-mode/lsp-sessions/lsp-session-v1
 config/internal/eshell/eshell/eshell/history
 config/internal/eshell/eshell/eshell/lastdir
 eln-cache/
+eshell/history
+eshell/lastdir

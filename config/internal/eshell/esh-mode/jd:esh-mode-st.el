@@ -85,11 +85,7 @@ the context of the cursor in the buffer."
     (with-temp-message (or (current-message) "")
       (jd:load-feature jd:esh-mode-kb jd:internal-prefix "/eshell/esh-mode/")))
   (set (make-local-variable 'company-backends)
-       '((company-capf)))
-  (set (make-local-variable 'electric-pair-pairs)
-       (append electric-pair-pairs
-               '((#x60 . #x60)     ; '`' '`'
-                 (#x27 . #x27))))) ; '\'' '\''
+       '((company-capf))))
 
 (add-hook 'eshell-mode-hook 'jd:eshell-mode-hook)
 

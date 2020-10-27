@@ -30,8 +30,7 @@
 
 (setq-default package-user-dir jd:elpa-prefix)
 (package-initialize)
-(setq-default package-archives '(("gnu" . "http://elpa.gnu.org/packages")
-                                 ("melpa" . "https://melpa.org/packages")))
+(setq-default package-archives '(("melpa" . "https://melpa.org/packages/")))
 
 ;;; `alloc.c`
 (setq-default gc-cons-threshold 64000000)
@@ -41,16 +40,6 @@
 (setq-default truncate-lines nil)
 (setq-default fill-column 80)
 (put 'erase-buffer 'disabled nil)
-
-;;; `callproc.c`
-(setq-default exec-path
-              (list "/home/i/install/bin"
-                    "/bin"
-                    "/sbin"
-                    "/usr/bin"
-                    "/usr/sbin"
-                    "/usr/local/bin"
-                    "/usr/local/sbin"))
 
 ;;; `editfns.c`
 (put 'narrow-to-region 'disabled nil)
@@ -95,3 +84,50 @@
 (jd:load-feature jd:external-config (concat jd:external-prefix "/"))
 (jd:load-feature jd:internal-config (concat jd:internal-prefix "/"))
 (jd:load-feature jd:global-config (concat jd:global-prefix "/"))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(exec-path-from-shell yasnippet rmsbolt idle-highlight-mode gnuplot-mode counsel company-lsp cmake-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-scrollbar-bg ((t (:background "#f0f0f0"))))
+ '(company-scrollbar-fg ((t (:background "#000000"))))
+ '(company-tooltip ((t (:background "#f0f0f0"))))
+ '(company-tooltip-annotation ((t (:background "#f0f0f0"))))
+ '(company-tooltip-annotation-selection ((t (:background "#d2d2d2"))))
+ '(company-tooltip-common ((t (:background "#f0f0f0" :underline (:color "#000000")))))
+ '(company-tooltip-common-selection ((t (:background "#d2d2d2" :underline (:color "#000000")))))
+ '(company-tooltip-mouse ((t (:background "#d2d2d2" :underline (:color "#000000")))))
+ '(company-tooltip-selection ((t (:background "#d2d2d2"))))
+ '(highlight ((t (:background "#969696"))))
+ '(idle-highlight ((t (:background "#d2d2d2"))))
+ '(ivy-current-match ((t (:background "#d2d2d2"))))
+ '(ivy-minibuffer-match-face-1 ((t (:underline (:color "#000000")))))
+ '(ivy-minibuffer-match-face-2 ((t (:inherit ivy-minibuffer-match-face-1))))
+ '(ivy-minibuffer-match-face-3 ((t (:inherit ivy-minibuffer-match-face-1))))
+ '(ivy-minibuffer-match-face-4 ((t (:inherit ivy-minibuffer-match-face-1))))
+ '(lazy-highlight ((t (:background "#969696"))))
+ '(linum ((t (:background "#ffffff" :foreground "#000000"))))
+ '(mode-line ((t (:background "#5a5a5a" :foreground "#ffffff"))))
+ '(mode-line-inactive ((t (:background "#f0f0f0"))))
+ '(query-replace ((t (:background "#969696"))))
+ '(reb-match-0 ((t (:background "#969696"))))
+ '(region ((t (:background "#969696"))))
+ '(show-paren-match ((t (:background "#d2d2d2"))))
+ '(show-paren-mismatch ((t (:background "#ff0000"))))
+ '(swiper-background-match-face-1 ((t (:background "#cdcd00"))))
+ '(swiper-background-match-face-2 ((t (:inherit swiper-background-match-face-1))))
+ '(swiper-background-match-face-3 ((t (:inherit swiper-background-match-face-1))))
+ '(swiper-background-match-face-4 ((t (:inherit swiper-background-match-face-1))))
+ '(swiper-line-face ((t (:background "#d2d2d2"))))
+ '(swiper-match-face-1 ((t (:background "#cdcd00"))))
+ '(swiper-match-face-2 ((t (:inherit swiper-match-face-1))))
+ '(swiper-match-face-3 ((t (:inherit swiper-match-face-1))))
+ '(swiper-match-face-4 ((t (:inherit swiper-match-face-1))))
+ '(yas--field-debug-face ((t (:background "#d2d2d2"))) t))
