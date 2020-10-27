@@ -226,8 +226,8 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts # clone GitHub repo.
 * `rsa` means rsa
 * `-s`  means print to stdout
 
-CMake Modifying Installation Path For Project:
-----------------------------------------------
+CMake Modifying Installation Path For Project (And Example For Modifying `CMakeCache.txt` Without Having To Rebuild:
+--------------------------------------------------------------------------------------------------------------------
 cmake -DCMAKE_INSTALL_PREFIX=/home/i/install .
 
 CMake Delete All Files That Have Been Installed:

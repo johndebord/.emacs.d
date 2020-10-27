@@ -7,8 +7,7 @@
 (setq-default lsp-session-file (concat jd:path-prefix "/lsp-session-v1"))
 
 ;; `lsp-clangd.el`
-(setq-default lsp-clients-clangd-args '("--background-index=true" "--header-insertion=never" "--pretty"))
-;; (setq-default lsp-clients-clangd-executable "/Users/john.debord/llvm-project/build/bin/clangd")
+(setq-default lsp-clients-clangd-args '("-j8" "--background-index" "--header-insertion=never" "--pretty" "--log=verbose"))
 
 (defun jd:lsp-find-declaration ()
   "Find lsp declaration in either the `company` popup or in a normal fashion."
