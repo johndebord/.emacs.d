@@ -25,6 +25,7 @@ which source code was evaluated."
              (save-excursion
                (end-of-defun)
                (point))))
+        (eval-region beg end)
         (pulse-momentary-highlight-region beg end 'highlight)))))
 
 (defun jd:eval-last-sexp ()

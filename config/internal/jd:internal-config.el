@@ -45,6 +45,9 @@
 (jd:load-feature jd:rcirc jd:internal-prefix "/net/rcirc/")
 (jd:load-feature jd:tramp-sh jd:internal-prefix "/net/tramp-sh/")
 
+;; `emacs/lisp/org/`
+(jd:load-feature jd:org jd:internal-prefix "/org/org/")
+
 ;; `emacs/lisp/progmodes/`
 (jd:load-feature jd:asm-mode jd:internal-prefix "/progmodes/asm-mode/")
 (jd:load-feature jd:cc-mode jd:internal-prefix "/progmodes/cc-mode/")
@@ -56,6 +59,7 @@
 (jd:load-feature jd:grep jd:internal-prefix "/progmodes/grep/")
 (jd:load-feature jd:gud jd:internal-prefix "/progmodes/gud/")
 (jd:load-feature jd:make-mode jd:internal-prefix "/progmodes/make-mode/")
+(jd:load-feature jd:python jd:internal-prefix "/progmodes/python/")
 (jd:load-feature jd:sh-script jd:internal-prefix "/progmodes/sh-script/")
 (jd:load-feature jd:xref jd:internal-prefix "/progmodes/xref/")
 

@@ -396,3 +396,33 @@ sudo parted /dev/<device> --script -- mkpart primary ext4 0% 100%  # Create an E
 sudo mkfs.ext4 -F /dev/<device>1                                   # Format the partition to EXT4.
 sudo parted /dev/<device> --script print                           # Verify by printing the partition table.
 ```
+
+Git Place All Submodules In Their Correct State
+-----------------------------------------------
+```bash
+git checkout --recurse-submodules <branch>
+```
+
+Mac Disassemble A Program Into Assembly Code
+--------------------------------------------
+```bash
+otool -tvXV <program>
+```
+
+Getting Around The GitHub Unicorn
+---------------------------------
+```
+# Linux
+sudo add-apt-repository ppa:cpick/hub
+sudo apt-get update
+sudo apt-get install hub
+
+# Mac
+brew install hub
+
+# Navigate to repository
+hub pull-request -m "message" -b <branch-to-make-PR-to>
+# Must enter username
+# Must enter password (check your LastPass vault if you forgot it)
+# Must enter 2-factor auth code (text message)
+```

@@ -1,3 +1,5 @@
+alias fd-symbol-a fd '.*\.a$' -x /bin/zsh -c "nm --defined-only {} 2>/dev/null | grep $1 && echo {}"
+alias fd-symbol-dylib fd '.*\.dylib$' -x /bin/zsh -c "nm --defined-only {} 2>/dev/null | grep $1 && echo {}"
 alias tmpfs $*
 alias bear-eosio bear --use-only --use-cc /usr/local/bin/eosio-cc --use-c++ /usr/local/bin/eosio-cpp $*
 alias fnd find . -name $*

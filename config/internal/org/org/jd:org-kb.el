@@ -1,0 +1,10 @@
+(define-key org-mode-map (kbd "<C-c> <C-c>") 'org-ctrl-c-ctrl-c)
+(define-key org-mode-map (kbd "<jd:ret>") 'org-return)
+(define-key org-mode-map (kbd "<jd:tab>") 'org-cycle)
+(define-key org-mode-map (kbd "<jd:S-tab>") 'org-shifttab)
+(define-key org-mode-map (kbd "<jd:M-ret>") 'org-meta-return)
+(define-key org-mode-map (kbd "<jd:M-S-ret>") 'org-insert-todo-heading)
+(define-key org-mode-map (kbd "<S-left>") 'org-shiftleft)
+(define-key org-mode-map (kbd "<S-right>") 'org-shiftright)
+
+(jd:provide-feature jd:org-kb)

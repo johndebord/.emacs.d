@@ -1,6 +1,7 @@
 ;;; Author: John DeBord
 
-(defconst jd:site-lisp-prefix "/Applications/Emacs.app/Contents/Resources/lisp")
+(defconst jd:site-lisp-prefix
+  "/Applications/Emacs.app/Contents/Resources/lisp")
 
 (defconst jd:path-prefix
   (concat (getenv "HOME") "/.emacs.d"))
@@ -90,7 +91,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(exec-path-from-shell yasnippet rmsbolt idle-highlight-mode gnuplot-mode counsel company-lsp cmake-mode)))
+   '(lsp-jedi exec-path-from-shell yasnippet rmsbolt idle-highlight-mode gnuplot-mode counsel company-lsp cmake-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
